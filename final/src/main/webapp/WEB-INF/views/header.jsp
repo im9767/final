@@ -57,7 +57,7 @@
 				<div class="row">
 					<div class="col-lg-12 text-right">
 						<div class="logo_container">
-							<a href="${pageContext.request.contextPath }/">요기<span style="font-size: 40px;">어때</span></a>
+							<a href="${pageContext.request.contextPath }/" style="text-decoration: none;"><span class="aa" style="color:black;">요기</span><span style="font-size: 40px;">어때</span></a>
 						</div>
 						<nav class="navbar">
 							<ul class="navbar_user">

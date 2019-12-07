@@ -2,7 +2,9 @@ package test.app.project.dao.p;
 
 
 import java.util.HashMap;
+import java.util.List;
 
+import test.app.project.vo.CouponVo;
 import test.app.project.vo.MembersVo;
 import test.app.project.vo.QnaboardVo;
 
@@ -29,5 +31,7 @@ public interface MembersDao {
 	public java.util.List<HashMap<String, Object>> qnalist(String mid);
 	
 	public HashMap<String, Object> qnaDetail(int qna_num);
+	
+	public List<CouponVo> couponList(String mid);
 	
 }

@@ -2,12 +2,14 @@ package test.app.project.daoimpl.p;
 
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import test.app.project.dao.p.MembersDao;
+import test.app.project.vo.CouponVo;
 import test.app.project.vo.MembersVo;
 import test.app.project.vo.QnaboardVo;
 
@@ -94,6 +96,12 @@ public class MembersDaoImpl implements MembersDao{
 	@Override
 	public HashMap<String, Object> qnaDetail(int qna_num) {
 		return sqlSessionTemplate.selectOne(NAMESPACE+".qnaDetail", qna_num);
+	}
+	
+	// 회원의 쿠폰목록 조회
+	@Override
+	public List<CouponVo> couponList(String mid) {
+		return sqlSessionTemplate.selectList(NAMESPACE+".couponList", mid);
 	}
 	
 }

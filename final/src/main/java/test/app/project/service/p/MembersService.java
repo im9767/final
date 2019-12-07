@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import test.app.project.daoimpl.p.MembersDaoImpl;
+import test.app.project.vo.CouponVo;
 import test.app.project.vo.MembersVo;
 import test.app.project.vo.QnaboardVo;
 
@@ -74,5 +75,10 @@ public class MembersService {
 	// 문의글 상세보기
 	public HashMap<String, Object> qnaDetail(int qna_num){
 		return membersDaoImpl.qnaDetail(qna_num);
+	}
+	
+	// 회원 쿠폰목록 조회
+	public List<CouponVo> couponList(String mid){
+		return membersDaoImpl.couponList(mid);
 	}
 }
