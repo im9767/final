@@ -78,7 +78,7 @@ $(function(){
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
-	  
+      
       <!-- Divider -->
       <hr class="sidebar-divider">
 	  
@@ -173,6 +173,9 @@ $(function(){
           <span>Charts</span></a>
       </li>
 
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+	  
       <li class="nav-item">
         <a class="nav-link" href="${cp}/admin_view/noticeboard">
           <i class="fas fa-fw fa-table"></i>

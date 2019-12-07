@@ -32,7 +32,7 @@
         <div class="row" style="height: 800px">
           <div class="col-lg-7" style="margin-left: 100px; margin-top: 20px;" >     
               <div class="text-center">
-                <h1 class="h4 text-gray-900 mb-4" style="text-align: left;">이벤트 작성</h1>
+                <h1 class="h4 text-gray-900 mb-4" style="text-align: left;">공지사항 작성</h1>
               </div>
               <div class="user" style="width: 900px; height: 700px;">
               <form method="GET" action="${cp}/admin_view/writenoticeok">

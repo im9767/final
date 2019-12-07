@@ -1,8 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-    <!-- Content Wrapper -->
+     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column" style="width:1680px;">
 
       <!-- Main Content -->
@@ -50,8 +49,8 @@
                 </form>
               </div>
             </li>
-
-            <div class="topbar-divider d-none d-sm-block"></div>
+            
+			<div class="topbar-divider d-none d-sm-block"></div>
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -89,59 +88,45 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">등록업체목록</h1>
+          <h1 class="h3 mb-2 text-gray-800">등록회원 조회</h1>
+          
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">업체</h6>
+              <h6 class="m-0 font-weight-bold text-primary">조회테이블</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
                     <tr>
-                      <th>업체명</th>
-                      <th>종목명</th>
-                      <th>대표자</th>
-                      <th>사업번호</th>
-                      <th>본점소재지</th>
-                      <th>사업장소재지</th>                
+                      <th>아이디</th>
+                      <th>비밀번호</th>
+                      <th>이름</th>
                       <th>전화번호</th>
-                      <th>삭제</th>
+                      <th>이메일</th>
+                      <th>가입일</th>
+                      <th>포인트</th>
                     </tr>
                   </thead>
-                  <tfoot>
-                    <tr>
-                      <th>업체명</th>
-                      <th>종목명</th>
-                      <th>대표자</th>
-                      <th>사업번호</th>
-                      <th>본점소재지</th>
-                      <th>사업장소재지</th>
-                      <th>전화번호</th>
-                      <th>삭제</th>
-                    </tr>
-                  </tfoot>
                   <tbody>
-                  	<c:forEach var="vo" items="${list}">
-                    <tr>
-                      <td>${vo.COMPANY}</td>
-                      <td>${vo.BTYPE}</td>
-                      <td>${vo.CEO}</td>
-                      <td>${vo.LICENSE}</td>
-                      <td>${vo.ORGADDR}</td>
-                      <td>${vo.WORKPLACE}</td>
-                      <td>${vo.COM_TEL}</td>
-                      <td><a href="${cp}/admin_view/deletehouse?house_Num=${vo.HOUSE_NUM}">삭제</a></td>
-                    </tr>
+                    <c:forEach var="vo" items="${list}">
+                    	<tr>
+                    		<td>${vo.mid}</td>
+                    		<td>${vo.mpwd}</td>
+                    		<td>${vo.mname}</td>
+                    		<td>${vo.mphone}</td>
+                    		<td>${vo.memail}</td>
+                    		<td>${vo.mregdate}</td>
+                    		<td>${vo.mpoint}</td>
+                    	</tr>
                     </c:forEach>
                   </tbody>
                 </table>
               </div>
             </div>
           </div>
-
         </div>
         <!-- /.container-fluid -->
 

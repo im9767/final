@@ -1,15 +1,17 @@
 package test.app.project.service.Y;
 
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import test.app.project.dao.Y.AdminDao;
 import test.app.project.vo.EventVo;
+import test.app.project.vo.EventimagesVo;
 import test.app.project.vo.HouseVo;
 import test.app.project.vo.NoticeVo;
-
 
 @Service
 public class AdminService {
@@ -24,10 +26,13 @@ public class AdminService {
 		return dao.login(map);
 	}
 	//업체관련
-	public List<HouseVo> listAll(){
+	public List<HashMap<String, Object>> listAll(){
 		return dao.listAll();
 	}
-	public List<HouseVo> applistAll(){
+	public int deletehouse(int house_Num){
+		return dao.deletehouse(house_Num);
+	}
+	public List<HashMap<String, Object>> applistAll(){
 		return dao.applistAll();
 	}
 	public int appupdate(int house_Num){
@@ -60,6 +65,20 @@ public class AdminService {
 	public int eventdelete(int event_Num){
 		return dao.eventdelete(event_Num);
 	}
+	@Transactional(rollbackFor=Exception.class)
+		public int writeevent(HashMap<String, Object> map) throws Exception{
+		
+			return 1;
+		}
+		
+	/*
+	public int insert(MembersVo vo){
+		 membersDao.insert(vo);
+		 PointsVo pvo=new PointsVo(0,vo.getNum(),1000000, null);
+		 pointsDao.insert(pvo);
+		 return 1;
+	}
+	*/
 }
 
 

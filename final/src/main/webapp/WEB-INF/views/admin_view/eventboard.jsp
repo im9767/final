@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <!-- Content Wrapper -->
-    <div id="content-wrapper" class="d-flex flex-column">
+    <div id="content-wrapper" class="d-flex flex-column" style="width:1680px;">
 
       <!-- Main Content -->
       <div id="content">
@@ -201,7 +201,7 @@
           <div class="card shadow mb-4">
           
             <div class="card-header py-3">
-                <a href="${cp}/admin_view/writenotice" class="btn btn-primary btn-icon-split" style="float:right">
+                <a href="${cp}/admin_view/writeevent" class="btn btn-primary btn-icon-split" style="float:right">
                     <span class="text">작성하기</span>
                   </a>
               <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>

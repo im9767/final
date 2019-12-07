@@ -24,10 +24,13 @@ public class AdminDao {
 		sqlSessionTemplate.selectOne("test.app.mybatis.mapperY.AdminMapper.login",map);
 	}
 	//업체관련
-	public List<HouseVo> listAll(){
+	public List<HashMap<String, Object>> listAll(){
 		return sqlSessionTemplate.selectList("test.app.mybatis.mapperY.AdminMapper.listAll");
 	}
-	public List<HouseVo> applistAll(){
+	public int deletehouse(int house_Num){
+		return sqlSessionTemplate.delete("test.app.mybatis.mapperY.AdminMapper.deletehouse",house_Num);
+	}
+	public List<HashMap<String, Object>> applistAll(){
 		return sqlSessionTemplate.selectList("test.app.mybatis.mapperY.AdminMapper.applistAll");
 	}
 	public int appupdate(int house_Num){
@@ -60,6 +63,10 @@ public class AdminDao {
 	}
 	public int eventdelete(int event_Num){
 		return sqlSessionTemplate.delete("test.app.mybatis.mapperY.AdminMapper.eventdelete",event_Num);
+	}
+	public int writeevent(HashMap<String, Object> map){
+		return 
+		sqlSessionTemplate.insert("test.app.mybatis.mapperY.AdminMapper.writeevent",map);
 	}
 	
 }

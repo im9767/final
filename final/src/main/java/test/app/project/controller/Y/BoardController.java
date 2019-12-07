@@ -1,9 +1,6 @@
 package test.app.project.controller.Y;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
-
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -17,44 +14,38 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import test.app.project.service.Y.AdminService;
-import test.app.project.vo.EventVo;
 import test.app.project.vo.HouseVo;
 import test.app.project.vo.NoticeVo;
 
 @Controller
-public class EventController {
+public class BoardController {
 	@Autowired
 	private AdminService service;
 	public void setService(AdminService service) {
 		this.service = service;
 	}
-	@RequestMapping(value = "/admin_view/eventboard", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin_view/noticeboard", method = RequestMethod.GET)
 	public String applist(Model model) {
-		List<EventVo> elist = service.elistAll();
-		model.addAttribute("list2", elist);
-		return ".eventboard";
+		List<NoticeVo> nlist = service.nlistAll();
+		model.addAttribute("list", nlist);
+		return ".noticeboard";
 	}
-
-	@RequestMapping(value = "/admin_view/writeevent", method = RequestMethod.GET)
+	@RequestMapping(value = "/admin_view/writenotice", method = RequestMethod.GET)
 	public String lookwrite(){
-		return "admin_view/writeevent";
+		return "admin_view/writenotice";
 	}
-	@RequestMapping(value="/admin_view/writeeventok",method=RequestMethod.GET)
-	public String writeeventok(String etitle,String edate,String sdate,String imgIn,HttpSession session){
-		System.out.println(etitle);
-		System.out.println(edate);
-		System.out.println(sdate);
-		ArrayList<String> a = new ArrayList<String>();
-		System.out.println(a);
-		int n=1;
-		//int n=service.writeevent;
+	@RequestMapping(value="/admin_view/writenoticeok",method=RequestMethod.GET)
+	public String writenoticeok(String ntitle,String ncontent,HttpSession session){
+		HashMap<String,Object> map=new HashMap<String, Object>();
+		map.put("ntitle",ntitle);
+		map.put("ncontent",ncontent);
+		int n=service.wnotice(map);
 		if(n>0){
-			return "redirect:/admin_view/eventboard";
+			return "redirect:/admin_view/noticeboard";
 		}else{
-			return "admin_view/writeevent";
+			return "admin_view/writenotice";
 		}
 	}
-	/*
 	@RequestMapping(value = "/admin_view/upnotice", method = RequestMethod.GET)
 	public ModelAndView upnotice(int nnum){
 		List<NoticeVo> nlist = service.nlist(nnum);
@@ -65,28 +56,22 @@ public class EventController {
 	@RequestMapping(value = "/admin_view/upnoticeok", method = RequestMethod.GET)
 	public String upnotice(NoticeVo vo){
 		int n=service.upnotice(vo);
-		System.out.println(vo.getNcontent());
-		System.out.println(vo.getNnum());
-		System.out.println(vo.getNtitle());
-		System.out.println(vo.getNregdate());
 		if (n > 0) {
 			return "redirect:/admin_view/noticeboard";
 		} else {
 			return "redirect:/admin_view/login";
 		}
 	}
-	*/
-	
-	@RequestMapping(value = "/admin_view/delevent", method = RequestMethod.GET)
-	public String delevent(int event_Num, HttpSession session) {
-		int n = service.eventdelete(event_Num);
+
+	@RequestMapping(value = "/admin_view/delnotice", method = RequestMethod.GET)
+	public String delnotice(int nnum, HttpSession session) {
+		int n = service.noticedelete(nnum);
 		if (n > 0) {
-			return "redirect:/admin_view/eventboard";
+			return "redirect:/admin_view/noticeboard";
 		} else {
-			return "redirect:/admin_view/eventboard";
+			return "redirect:/admin_view/noticeboard";
 		}
 	}
-	/*
 	@RequestMapping(value = "/admin_view/selnotice", method = RequestMethod.GET)
 	public ModelAndView selnotice(int nnum, HttpSession session) {
 		List<NoticeVo> nlist = service.nlist(nnum);
@@ -94,7 +79,6 @@ public class EventController {
 		mv.addObject("list", nlist);
 		return mv;
 	}
-	*/
 }
 	
 	

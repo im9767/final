@@ -1,9 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
      <!-- Content Wrapper -->
-    <div id="content-wrapper" class="d-flex flex-column">
+    <div id="content-wrapper" class="d-flex flex-column" style="width:1680px;">
 
       <!-- Main Content -->
       <div id="content">
@@ -86,11 +85,11 @@
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
+        
         <div class="container-fluid">
-
           <!-- Page Heading -->
           <h1 class="h3 mb-2 text-gray-800">등록업체목록</h1>
-
+          
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
@@ -100,7 +99,7 @@
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
-                    <tr>
+                    <tr>                    
                       <th>업체명</th>
                       <th>종목명</th>
                       <th>대표자</th>
@@ -113,7 +112,7 @@
                     </tr>
                   </thead>
                   <tfoot>
-                    <tr>
+                    <tr>                   
                       <th>업체명</th>
                       <th>종목명</th>
                       <th>대표자</th>
@@ -127,16 +126,16 @@
                   </tfoot>
                   <tbody>
                   	<c:forEach var="vo" items="${list}">
-                    <tr>
-                      <td>${vo.conpany}</td>
-                      <td>${vo.bnum}</td>
-                      <td>${vo.ceo}</td>
-                      <td>${vo.license}</td>
-                      <td>${vo.orgaddr}</td>
-                      <td>${vo.workplace}</td>
-                      <td>${vo.com_Tel}</td>
-                      <td><a href="${cp}/admin_view/uphouse?house_Num=${vo.house_Num}">대기중</a></td>
-                      <td><a href="${cp}/admin_view/delhouse?house_Num=${vo.house_Num}">거절</a></td>
+                    <tr>                    
+                      <td>${vo.COMPANY}</td>
+                      <td>${vo.BTYPE}</td>
+                      <td>${vo.CEO}</td>
+                      <td>${vo.LICENSE}</td>
+                      <td>${vo.ORGADDR}</td>
+                      <td>${vo.WORKPLACE}</td>
+                      <td>${vo.COM_TEL}</td>
+                      <td><a href="${cp}/admin_view/uphouse?house_Num=${vo.HOUSE_NUM}">대기중</a></td>
+                      <td><a href="${cp}/admin_view/delhouse?house_Num=${vo.HOUSE_NUM}">거절</a></td>
                     </tr>
                     </c:forEach>
                   </tbody>

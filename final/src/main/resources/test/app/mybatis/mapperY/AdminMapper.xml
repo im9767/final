@@ -8,11 +8,14 @@
 		select * from administrator where aid=#{aid} and apwd=#{apwd}
 	</select>
 	<!-- 업체관련 -->
-	<select id="listAll"  resultType="test.app.project.vo.HouseVo">
-		select * from house where approval=1
+	<select id="listAll"  parameterType="String" resultType="hashmap">
+		select * from house a,b_event b where a.approval=1 and a.bnum=b.bnum
 	</select>
-	<select id="applistAll"  resultType="test.app.project.vo.HouseVo">
-		select * from house where approval=0
+	<delete id="deletehouse" parameterType="int" >
+		delete house where house_Num=#{house_Num}
+	</delete>
+	<select id="applistAll" parameterType="String"   resultType="hashmap">
+		select * from house a,b_event b where a.approval=0 and a.bnum=b.bnum
 	</select>
 	<update id="appupdate" parameterType="int" >
 		update house set approval=1 where house_Num=#{house_Num}

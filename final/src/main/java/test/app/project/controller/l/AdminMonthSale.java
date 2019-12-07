@@ -18,8 +18,6 @@ public class AdminMonthSale {
 	
 	@RequestMapping(value="/admin/month",method=RequestMethod.POST)
 	public String MonthSales(@RequestParam String year,String month,Model model){
-		System.out.println("year: " + year);
-		System.out.println("month: " + month);
 		HashMap<String, Object> map=new HashMap<String, Object>();
 		DecimalFormat dc=new DecimalFormat("###,###,###,###");
 		map.put("year", year);
@@ -27,8 +25,6 @@ public class AdminMonthSale {
 		int sumprice=service.monthsale(map);
 		String coma=dc.format(sumprice);
 		model.addAttribute("coma",coma);
-		model.addAttribute("year",year);
-		model.addAttribute("month",month);
 		return ".admin";
 	}
 	@RequestMapping(value="/admin/period",method=RequestMethod.POST)

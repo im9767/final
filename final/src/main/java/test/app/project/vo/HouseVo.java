@@ -1,5 +1,6 @@
 package test.app.project.vo;
 
+
 /**
  * 업소테이블 모델 클래스.
  * 
@@ -10,7 +11,7 @@ public class HouseVo {
 
 
 	/** 업체식별키. */
-	private int house_num;
+	private int house_Num;
 
 	/** 종목(종류). */
 	private int bnum;
@@ -25,7 +26,7 @@ public class HouseVo {
 	private String checkouttime;
 
 	/** 업체명. */
-	private String conpany;
+	private String company;
 
 	/** 사업자등록번호. */
 	private String license;
@@ -40,44 +41,54 @@ public class HouseVo {
 	private String workplace;
 
 	/** 사업장전화번호. */
-	private String com_tel;
+	private String com_Tel;
 
 	/** 승인여부. */
 	private String approval;
 
-
-	/**
-	 * 생성자.
-	 */
+	private String business_id;
 	public HouseVo() {
+
 	}
 
 
-	public HouseVo(int house_num, int bnum, String intro, String checkintime, String checkouttime, String conpany,
-			String license, String ceo, String orgaddr, String workplace, String com_tel, String approval) {
+	public HouseVo(int house_Num, int bnum, String intro, String checkintime, String checkouttime,
+			String company, String license, String ceo, String orgaddr, String workplace, String com_Tel,
+			String approval,String business_id) {
 		super();
-		this.house_num = house_num;
+		this.house_Num = house_Num;
 		this.bnum = bnum;
 		this.intro = intro;
 		this.checkintime = checkintime;
 		this.checkouttime = checkouttime;
-		this.conpany = conpany;
+		this.company = company;
 		this.license = license;
 		this.ceo = ceo;
 		this.orgaddr = orgaddr;
 		this.workplace = workplace;
-		this.com_tel = com_tel;
+		this.com_Tel = com_Tel;
 		this.approval = approval;
+		this.business_id= business_id;
 	}
 
 
-	public int getHouse_num() {
-		return house_num;
+	public String getBusiness_id() {
+		return business_id;
 	}
 
 
-	public void setHouse_num(int house_num) {
-		this.house_num = house_num;
+	public void setBusiness_id(String business_id) {
+		this.business_id = business_id;
+	}
+
+
+	public int getHouse_Num() {
+		return house_Num;
+	}
+
+
+	public void setHouse_Num(int house_Num) {
+		this.house_Num = house_Num;
 	}
 
 
@@ -121,13 +132,13 @@ public class HouseVo {
 	}
 
 
-	public String getConpany() {
-		return conpany;
+	public String getCompany() {
+		return company;
 	}
 
 
-	public void setConpany(String conpany) {
-		this.conpany = conpany;
+	public void setCompany(String company) {
+		this.company = company;
 	}
 
 
@@ -171,13 +182,13 @@ public class HouseVo {
 	}
 
 
-	public String getCom_tel() {
-		return com_tel;
+	public String getCom_Tel() {
+		return com_Tel;
 	}
 
 
-	public void setCom_tel(String com_tel) {
-		this.com_tel = com_tel;
+	public void setCom_Tel(String com_Tel) {
+		this.com_Tel = com_Tel;
 	}
 
 
@@ -189,7 +200,5 @@ public class HouseVo {
 	public void setApproval(String approval) {
 		this.approval = approval;
 	}
-
-
-
+	
 }

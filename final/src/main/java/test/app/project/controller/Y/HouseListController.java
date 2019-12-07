@@ -1,5 +1,7 @@
 package test.app.project.controller.Y;
 
+
+import java.util.HashMap;
 import java.util.List;
 import javax.servlet.http.HttpSession;
 
@@ -28,15 +30,23 @@ public class HouseListController {
 
 	@RequestMapping(value = "/admin_view/housetable", method = RequestMethod.GET)
 	public String list(Model model) {
-		List<HouseVo> mlist = service.listAll();
+		List<HashMap<String, Object>> mlist = service.listAll();
 		model.addAttribute("list",mlist);
 		return ".housetable";
 	}
-
+	@RequestMapping(value = "/admin_view/deletehouse", method = RequestMethod.GET)
+	public String deletehouse(int house_Num, HttpSession session) {
+		int n = service.deletehouse(house_Num);
+		if (n > 0) {
+			return "redirect:/admin_view/housetable";
+		} else {
+			return "admin_view/housetable";
+		}
+	}
 	@RequestMapping(value = "/admin_view/apphouse", method = RequestMethod.GET)
 	public String applist(Model model) {
-		List<HouseVo> alist = service.applistAll();
-		model.addAttribute("list", alist);
+		List<HashMap<String,Object>> alist = service.applistAll();
+		model.addAttribute("list",alist);
 		return ".apphouse";
 	}
 
