@@ -11,4 +11,5 @@ public class HomeController {
 		return ".main";
 	}
 	////////안녕
+	//준빈가나다라마바사
 }
