@@ -25,6 +25,8 @@ public class AdminMonthSale {
 		int sumprice=service.monthsale(map);
 		String coma=dc.format(sumprice);
 		model.addAttribute("coma",coma);
+		model.addAttribute("year",year);
+		model.addAttribute("month",month);
 		return ".admin";
 	}
 	@RequestMapping(value="/admin/period",method=RequestMethod.POST)
