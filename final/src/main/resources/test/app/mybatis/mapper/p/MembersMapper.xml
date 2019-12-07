@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="test.app.mybatis.mapper.p.MembersMapper">
+	
+	<!-- 회원가입 insert -->
+	<insert id="join" parameterType="members">
+		INSERT INTO members VALUES(#{mid},#{gnum},#{mpwd},#{mname},#{mphone},#{memail},sysdate,0)
+	</insert>
+
+	<!-- 로그인시 존재하는 회원인지 체크 -->
+	<select id="isMember" parameterType="members" resultType="members">
+		SELECT * FROM members WHERE mid=#{mid} AND mpwd=#{mpwd}
+	</select>
+	
+	<!-- 회원가입 아이디 중복검사 / 해당 아이디 회원 있는지 조회-->
+	<select id="idCheck" parameterType="String" resultType="members">
+		SELECT * FROM members WHERE mid=#{mid}
+	</select>
+	<!-- 임시비밀번호 발송 위해 존재하는 회원인지 체크 -->
+	<select id="findPwd" parameterType="hashmap" resultType="members">
+		SELECT * FROM members WHERE mid=#{mid} AND memail=#{memail}
+	</select>
+	
+	<!-- 임시비밀번호로 비밀번호 변경 -->
+	<update id="changePwd" parameterType="members">
+		UPDATE members SET mpwd=#{mpwd} WHERE mid=#{mid}
+	</update>
+	
+	<!-- 마이페이지 회원정보 담아가기 -->
+	<select id="myinfo" parameterType="String" resultType="hashmap">
+		SELECT 
+				m.mid,
+				m.mname,
+				m.mpwd,
+				m.mphone,
+				m.memail,
+				to_char(m.mregdate,'yyyy/mm/dd') mregdate,
+				m.mpoint,
+				g.gname
+		FROM 
+				members m,grade g
+		WHERE 
+				m.gnum = g.gnum AND m.mid=#{mid}
+	</select>
+	
+	<!-- 회원의 쿠폰 갯수 얻어오기 -->
+	<select id="cntCoupon" parameterType="String" resultType="int">
+		SELECT NVL(COUNT(*),0)
+		FROM coupon
+		WHERE mid=#{mid}
+	</select>
+	
+	<!-- 회원정보 수정하기 -->
+	<update id="myinfoupdate" parameterType="members">
+		UPDATE members
+		SET mpwd=#{mpwd},memail=#{memail},mphone=#{mphone}
+		WHERE mid=#{mid}
+	</update>
+	
+	<!-- 문의글 등록하기 -->
+	<insert id="qnainsert" parameterType="qnaboard">
+		INSERT INTO qnaboard VALUES(qnaboard_seq.nextval,#{mid},#{qna_category_num},#{qna_title},#{qna_content},null,sysdate,null)
+	</insert>
+	
+	<!-- 회원 본인이 작성한 문의 내역 조회 -->
+	<select id="qnalist" parameterType="String" resultType="hashmap">
+		SELECT 
+				q.qna_num,
+				q.mid,
+				q.qna_category_num,
+				q.qna_title,
+				q.qna_content,
+				q.anwser,
+				q.qna_date,
+				qc.qna_category_name
+		FROM 
+				qnaboard q,qna_category qc
+		WHERE 
+				q.qna_category_num = qc.qna_category_num
+			  	AND q.mid = #{mid}
+		ORDER BY 
+				qna_date DESC
+	</select>
+	
+	<!-- 해당 번호 문의글 상세정보 보기 -->
+	<select id="qnaDetail" parameterType="int" resultType="hashmap">
+		SELECT 
+				q.qna_num,
+				q.mid,
+				q.qna_category_num,
+				q.qna_title,
+				q.qna_content,
+				q.anwser,
+				to_char(q.qna_date,'yyyy/mm/dd hh:mi') qna_date,
+				to_char(q.anwser_date,'yyyy/mm/dd hh:mi') anwser_date,
+				qc.qna_category_name
+		FROM 
+				qnaboard q,qna_category qc
+		WHERE 
+				q.qna_category_num = qc.qna_category_num
+				AND q.qna_num = #{qna_num}
+	</select>
+	
+</mapper>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+<!--
+	<typeAliases>
+		<typeAlias type="test.app.spring11.vo.BoardVo" alias="board"/>
+	</typeAliases>
+	<mappers>
+		<mapper resource="test/app/mybatis/mapper/BoardMapper.xml"/>
+	</mappers>
+-->
+	<typeAliases>
+		<typeAlias type="test.app.project.vo.MembersVo" alias="members"/>
+		<typeAlias type="test.app.project.vo.QnaboardVo" alias="qnaboard"/>
+	</typeAliases>
+
+	<mappers>
+		<mapper resource="test/app/mybatis/mapper/p/MembersMapper.xml"/>
+	</mappers>
+</configuration>  
+  
+  
