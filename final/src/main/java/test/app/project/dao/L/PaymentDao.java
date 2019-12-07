@@ -8,4 +8,5 @@ import test.app.project.vo.MembersVo;
 public interface PaymentDao {
 	int monthsale(HashMap<String, Object> map);
 	int periodsale(HashMap<String, Object> map);
+	int companycount(HashMap<String, Object> map);
 }

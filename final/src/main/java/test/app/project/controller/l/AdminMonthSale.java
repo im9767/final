@@ -40,6 +40,15 @@ public class AdminMonthSale {
 		model.addAttribute("endday",endday);
 		return ".admin";
 	}
+	@RequestMapping(value="/company/register",method=RequestMethod.POST)
+	public String RegisterCompany(int company,Model model){
+		HashMap<String, Object> map=new HashMap<String, Object>();
+		map.put("company", company);
+		int companycount=service.companycount(map);
+		model.addAttribute("company",company);
+		model.addAttribute("companycount",companycount);
+		return ".admin";
+	}
 }
 
 

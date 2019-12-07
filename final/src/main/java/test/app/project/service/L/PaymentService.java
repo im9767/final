@@ -22,6 +22,9 @@ public class PaymentService {
 	public int periodsale(HashMap<String, Object> map){
 		return dao.periodsale(map);
 	}
+	public int companycount(HashMap<String, Object> map){
+		return dao.companycount(map);
+	}
 }
 
 

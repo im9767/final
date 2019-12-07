@@ -24,6 +24,8 @@ public class Paymentimpl implements PaymentDao{
 	public int periodsale(HashMap<String, Object> map) {
 		return sqlSessionTemplate.selectOne(NAMESPACE+".periodsale",map);
 	}
-	
-	
+	@Override
+	public int companycount(HashMap<String, Object> map) {
+		return sqlSessionTemplate.selectOne(NAMESPACE+".companycount",map);
+	}
 }

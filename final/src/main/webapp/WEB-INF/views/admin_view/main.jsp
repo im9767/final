@@ -222,27 +222,27 @@
                       	<br>
                       	<form action="${cp}/admin/month" method="post">
                       	<select name="year" id="year" class="form-control form-control-user" style="width:100px;display: inline-block;">
-                      		<option value="19" selected="selected">2019</option>
-                      		<option value="18">2018</option>
-                      		<option value="17">2017</option>
-                      		<option value="16">2016</option>
-                      		<option value="15">2015</option>
-                      		<option value="14">2014</option>
-                      		<option value="13">2013</option>
+                      		<option value="19" <c:if test="${year=='19'}">selected</c:if>>2019</option>
+                      		<option value="18" <c:if test="${year=='18'}">selected</c:if>>2018</option>
+                      		<option value="17" <c:if test="${year=='17'}">selected</c:if>>2017</option>
+                      		<option value="16" <c:if test="${year=='16'}">selected</c:if>>2016</option>
+                      		<option value="15" <c:if test="${year=='15'}">selected</c:if>>2015</option>
+                      		<option value="14" <c:if test="${year=='14'}">selected</c:if>>2014</option>
+                      		<option value="13" <c:if test="${year=='13'}">selected</c:if>>2013</option>
                       	</select>&nbsp;&nbsp;&nbsp;&nbsp;
                       	<select name="month" id="month" class="form-control form-control-user" style="width:80px;display: inline-block;">
-                      		<option value="01">1월</option>
-                      		<option value="02">2월</option>
-                      		<option value="03">3월</option>
-                      		<option value="04">4월</option>
-                      		<option value="05">5월</option>
-                      		<option value="06">6월</option>
-                      		<option value="07">7월</option>
-                      		<option value="08">8월</option>
-                      		<option value="09">9월</option>
-                      		<option value="10">10월</option>
-                      		<option value="11">11월</option>
-                      		<option value="12" selected="selected">12월</option>
+                      		<option value="01" <c:if test="${month=='01'}">selected</c:if>>1월</option>
+                      		<option value="02" <c:if test="${month=='02'}">selected</c:if>>2월</option>
+                      		<option value="03" <c:if test="${month=='03'}">selected</c:if>>3월</option>
+                      		<option value="04" <c:if test="${month=='04'}">selected</c:if>>4월</option>
+                      		<option value="05" <c:if test="${month=='05'}">selected</c:if>>5월</option>
+                      		<option value="06" <c:if test="${month=='06'}">selected</c:if>>6월</option>
+                      		<option value="07" <c:if test="${month=='07'}">selected</c:if>>7월</option>
+                      		<option value="08" <c:if test="${month=='08'}">selected</c:if>>8월</option>
+                      		<option value="09" <c:if test="${month=='09'}">selected</c:if>>9월</option>
+                      		<option value="10" <c:if test="${month=='10'}">selected</c:if>>10월</option>
+                      		<option value="11" <c:if test="${month=='11'}">selected</c:if>>11월</option>
+                      		<option value="12" <c:if test="${month=='12'}">selected</c:if>>12월</option>
                       	</select>&nbsp;&nbsp;&nbsp;&nbsp;
                       	<!--  <input type="submit" value="조회">-->
                       	<button id="search" class="btn btn-success btn-circle">
@@ -321,14 +321,18 @@
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">등록된 업체수</div>
                       <div>
-                      	<select name="company" class="form-control form-control-user" style="width:230px;">
-                      		<option value="호텔">호텔</option>
-                      		<option value="모텔">모텔</option>
-                      		<option value="리조트">리조트</option>
+                      <form action="${cp}/company/register" method="post">
+                      	<select onchange="this.form.submit()" name="company" class="form-control form-control-user" style="width:230px;">
+                      		<option value="20" <c:if test="${company=='20'}">selected</c:if>>전체</option>
+                      		<option value="22" <c:if test="${company=='22'}">selected</c:if>>호텔</option>
+                      		<option value="21" <c:if test="${company=='21'}">selected</c:if>>모텔</option>
+                      		<option value="24" <c:if test="${company=='24'}">selected</c:if>>펜션</option>
+                      		<option value="23" <c:if test="${company=='23'}">selected</c:if>>리조트</option>
                       	</select>
+                      </form>
                       </div>
                       <br>
-                      <div class="h3 mb-0 font-weight-bold text-gray-800">18</div>
+                      <div class="h3 mb-0 font-weight-bold text-gray-800">${companycount}곳</div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-comments fa-2x text-gray-300"></i>

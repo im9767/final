@@ -13,6 +13,13 @@
 	<select id="memberslist" resultType="members">
 		select mid,rpad(substr(mpwd,0,2),length(mpwd),'*') as mpwd,mname,mphone,memail,mregdate,mpoint from members
 	</select>
+	
+	<select id="companycount" resultType="int" parameterType="hashmap">
+		select NVL(count(*),0) from house
+		<if test="company!='20' and company!=null">
+			where bnum=#{company}
+		</if>
+	</select>
 </mapper>
 
 
