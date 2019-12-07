@@ -230,8 +230,6 @@
                     </tr>
                     </c:forEach>
                   </tbody>
-  					
-              	</div>
                 </table>
             </div>
             

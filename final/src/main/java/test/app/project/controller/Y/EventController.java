@@ -40,19 +40,23 @@ public class EventController {
 		return "admin_view/writeevent";
 	}
 	@RequestMapping(value="/admin_view/writeeventok",method=RequestMethod.GET)
-	public String writeeventok(String etitle,String edate,String sdate,String imgIn,HttpSession session){
-		System.out.println(etitle);
-		System.out.println(edate);
-		System.out.println(sdate);
-		ArrayList<String> a = new ArrayList<String>();
-		System.out.println(a);
-		int n=1;
-		//int n=service.writeevent;
-		if(n>0){
-			return "redirect:/admin_view/eventboard";
-		}else{
-			return "admin_view/writeevent";
+	public String writeeventok(String etitle,String edate,String sdate,String[] imgIn,Model model){
+		HashMap<String, Object> elist= new HashMap<String, Object>();
+		elist.put("etitle", etitle);
+		elist.put("sdate", sdate);
+		elist.put("edate", edate);
+		for(int i=0;i<imgIn.length;i++){
+				elist.put("orgfilename"+i+1,imgIn[i]);	
 		}
+		elist.put("imgcnt", imgIn.length);
+		try{
+			service.writeevent(elist);
+			model.addAttribute("code","success");
+		}catch(Exception e){
+			model.addAttribute("code","fail");
+			e.printStackTrace();
+		}
+		return ".eventboard";		
 	}
 	/*
 	@RequestMapping(value = "/admin_view/upnotice", method = RequestMethod.GET)

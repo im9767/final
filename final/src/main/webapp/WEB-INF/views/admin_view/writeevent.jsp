@@ -41,7 +41,8 @@
            		
             	reader.onload = function (e){                               		
             		console.log(input.files[b].name);
-            		var aa=$("<img src='"+e.target.result+"' id='"+input.files[b].name+"'><br>").appendTo("#imgbox");
+            		//var aa=$("<img src='"+e.target.result+"' name='"+input.files[b].name+"'><br>").appendTo("#imgbox");
+            		var aa=$("<img src='"+e.target.result+"' id='ss'><br>").appendTo("#imgbox");
             		aa.css("width","700px");
             		aa.css("height","700px");
             		console.log(b++);

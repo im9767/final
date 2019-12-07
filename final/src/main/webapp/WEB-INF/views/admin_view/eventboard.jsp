@@ -234,9 +234,8 @@
                       <td>${vo.ehit}</td>           
                     </tr>
                     </c:forEach>
-                  </tbody>
-  					
-              	</div>
+                  </tbody> 					
+              	
                 </table>
             </div>
             

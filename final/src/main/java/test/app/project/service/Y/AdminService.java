@@ -2,9 +2,13 @@ package test.app.project.service.Y;
 
 
 
+import java.lang.reflect.Parameter;
 import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -69,19 +73,15 @@ public class AdminService {
 		return dao.eventdelete(event_Num);
 	}
 	@Transactional(rollbackFor=Exception.class)
-		public int writeevent(HashMap<String, Object> map) throws Exception{
-		
-			return 1;
+		public int writeevent(HashMap<String, Object> elist) throws Exception{
+		EventVo vo=new EventVo(0,(String)elist.get("etitle"),null,0,(Date)elist.get("sdate"),(Date)elist.get("edate"));	
+		//dao.inevent(vo);
+		for(int i=0;i<Integer.parseInt((String)(elist.get("imgcnt")));i++){
+			String uuid = UUID.randomUUID().toString();
+		EventimagesVo vo1=new EventimagesVo(0, (String)elist.get("orgfilename"+i),uuid,vo.getEvent_Num());
+		}	
+		return 1;
 		}
-		
-	/*
-	public int insert(MembersVo vo){
-		 membersDao.insert(vo);
-		 PointsVo pvo=new PointsVo(0,vo.getNum(),1000000, null);
-		 pointsDao.insert(pvo);
-		 return 1;
-	}
-	*/
 }
 
 
