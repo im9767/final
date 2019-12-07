@@ -5,12 +5,12 @@
 <div class="mypage-wrap">
 		
 	<!-- mypage header -->
-		<jsp:include page="mypageHeader.jsp"/>
+		<jsp:include page="/WEB-INF/views/members_p/include/mypageHeader.jsp"/>
 	<!-- mypage header -->	
 	<!-- mypage area -->
 	<div class="mypage-area">
 	<!-- mypage nav -->
-		<jsp:include page="mypageNav.jsp"/>
+		<jsp:include page="/WEB-INF/views/members_p/include/mypageNav.jsp"/>
 	<!-- //mypage nav -->			
 		<!-- contents -->
 		<section class="mypage-cont">
