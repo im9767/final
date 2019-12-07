@@ -19,7 +19,7 @@ public class MembersListController {
 	public String memberslist(Model model){
 		List<MembersVo> list=service.memberslist();
 		model.addAttribute("list",list);
-		return ".table";
+		return ".memberstable";
 	}
 }
 

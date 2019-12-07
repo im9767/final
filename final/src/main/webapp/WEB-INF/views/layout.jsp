@@ -118,12 +118,12 @@
 	
 	
 </head>
-<body>
+<body style="padding-top: 150px;">
 <div class="super_container">
 	<div id="header">
 		<tiles:insertAttribute name="header"/>
 	</div>
-	<div id="main">
+	<div id="main" style="width:100%">
 		<tiles:insertAttribute name="main"/>
 	</div>
 	<div id="footer">

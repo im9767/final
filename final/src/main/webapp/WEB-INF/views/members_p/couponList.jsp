@@ -15,20 +15,33 @@
 		<!-- contents -->
 		<section class="mypage-cont">
 			<header class="n-section-title">
-				<h1 class="tit">래플 응모내역</h1>
+				<h1 class="tit">쿠폰 내역</h1>
 			</header>
-			<form>
-			  <div class="form-group">
-			    <label for="exampleInputEmail1">Email address</label>
-			    <input type="email" class="form-control span5" id="exampleInputEmail1" aria-describedby="emailHelp">
-			    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-			  </div>
-			  <div class="form-group">
-			    <label for="exampleInputPassword1">Password</label>
-			    <input type="password" class="form-control" id="exampleInputPassword1">
-			  </div>
-			  <button type="submit" class="btn btn-primary">Submit</button>
-			</form>
+			<br>
+			<table class="table table-striped">
+			  <thead>
+			    <tr>
+			      <th scope="col">쿠폰번호</th>
+			      <th scope="col">쿠폰명</th>
+			      <th scope="col">쿠폰유형</th>
+			      <th scope="col">쿠폰사용여부</th>
+			      <th scope="col">쿠폰발행일</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			  	<c:forEach var="couponList" items="${couponList }">
+			  		<tr>
+				      <th>${couponList.coupon_num }</th>
+				      <td>${couponList.coupon_name }</td>
+				      <td>${couponList.coupon_type }</td>
+				      <td>${couponList.coupon_status }</td>
+				      <td>${couponList.making_date }</td>
+				     
+				      
+				    </tr>
+			  	</c:forEach>
+			  </tbody>
+			</table>
 		</section>
 		<!-- //contents -->
 		<!--래플 당첨결과-->

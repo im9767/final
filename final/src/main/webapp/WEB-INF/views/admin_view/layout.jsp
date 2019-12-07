@@ -78,15 +78,37 @@ $(function(){
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
-
+      
       <!-- Divider -->
       <hr class="sidebar-divider">
-
-      <!-- Heading -->
+	  
+	  <!-- Heading -->
+      <div class="sidebar-heading">
+        회원
+      </div>
+	  
+	  <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsemember" aria-expanded="true" aria-controls="collapsemember">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>회원</span>
+        </a>
+        <div id="collapsemember" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Custom Utilities:</h6>
+            <a class="collapse-item" href="${cp}/admin/members">등록회원조회</a>
+            <a class="collapse-item" href="utilities-border.html"></a>
+          </div>
+        </div>
+      </li>
+	  
+	  <!-- Divider -->
+      <hr class="sidebar-divider">
+	  
+	  <!-- Heading -->
       <div class="sidebar-heading">
         업체
       </div>
-
+	  
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
@@ -96,8 +118,8 @@ $(function(){
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Components:</h6>
-            <a class="collapse-item" href="buttons.html">등록업체현황</a>
-            <a class="collapse-item" href="cards.html">업체등록여부</a>
+            <a class="collapse-item" href="${cp}/admin_view/housetable">등록업체현황</a>
+            <a class="collapse-item" href="${cp}/admin_view/apphouse">업체등록여부</a>
           </div>
         </div>
       </li>
@@ -110,25 +132,8 @@ $(function(){
         </a>
         <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Utilities:</h6>
-            <a class="collapse-item" href="utilities-color.html">Colors</a>
-            <a class="collapse-item" href="utilities-border.html">Borders</a>
-            <a class="collapse-item" href="utilities-animation.html">Animations</a>
-            <a class="collapse-item" href="utilities-other.html">Other</a>
-          </div>
-        </div>
-      </li>
-	
-	  <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsemember" aria-expanded="true" aria-controls="collapsemember">
-          <i class="fas fa-fw fa-folder"></i>
-          <span>회원</span>
-        </a>
-        <div id="collapsemember" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Utilities:</h6>
-            <a class="collapse-item" href="${cp}/admin/members">등록회원조회</a>
-            <a class="collapse-item" href="utilities-border.html"></a>
+            <h6 class="collapse-header">매출/통계:</h6>
+            <a class="collapse-item" href="utilities-color.html">업체별 통계</a>
           </div>
         </div>
       </li>
@@ -168,22 +173,9 @@ $(function(){
           <span>Charts</span></a>
       </li>
 
-      <!-- Nav Item - Tables -->
-      <li class="nav-item">
-        <a class="nav-link" href="${cp}/admin_view/table">
-          <i class="fas fa-fw fa-table"></i>
-          <span>회원목록</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="${cp}/admin_view/housetable">
-          <i class="fas fa-fw fa-table"></i>
-          <span>업체목록</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="${cp}/admin_view/apphouse">
-          <i class="fas fa-fw fa-table"></i>
-          <span>업체승인목록</span></a>
-      </li>
+      <!-- Divider -->
+      <hr class="sidebar-divider">
+	  
       <li class="nav-item">
         <a class="nav-link" href="${cp}/admin_view/noticeboard">
           <i class="fas fa-fw fa-table"></i>
