@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="test.app.mybatis.mapperL.PayMapper">
+	<select id="monthsale" resultType="int" parameterType="hashmap">
+		select NVL(sum(pay),0) from payment where substr(pay_day,1,2)=#{year} and substr(pay_day,4,2)=#{month}
+	</select>
+	<select id="periodsale" resultType="int" parameterType="hashmap">
+		select NVL(sum(pay),0) from payment 
+		<![CDATA[where pay_day >= #{startday} and pay_day <= #{endday}]]>
+	</select>
+	<select id="memberslist" resultType="members">
+		select mid,rpad(substr(mpwd,0,2),length(mpwd),'*') as mpwd,mname,mphone,memail,mregdate,mpoint from members
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

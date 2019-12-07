@@ -18,6 +18,8 @@
 
 	<mappers>
 		<mapper resource="test/app/mybatis/mapper/p/MembersMapper.xml"/>
+		<mapper resource="test/app/mybatis/mapperY/AdminMapper.xml"/>
+		<mapper resource="test/app/mybatis/mapperL/PayMapper.xml"/>
 	</mappers>
 </configuration>  
   
