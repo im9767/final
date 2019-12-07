@@ -41,7 +41,22 @@
 											<a href="${pageContext.request.contextPath }/members/logout" style='color:white;'>로그아웃</a>
 										</c:otherwise>
 									</c:choose>
-									
+									<c:choose>
+										<c:when test="${code=='success' }">
+											<li class="account" style='background-color: red;border:none;'>
+													<a href="${cp}/admin" style='color:white;'>
+														관리자페이지로이동
+													</a>
+											</li>
+											</c:when>
+											<c:otherwise>
+											<li class="account" style='background-color: red;border:none;'>
+													<a href="<c:url value='/admin_view/login'/>" style='color:white;'>
+														관리자
+													</a>
+											</li>
+											</c:otherwise>
+										</c:choose>		
 								</li>
 							</ul>
 						</div>
