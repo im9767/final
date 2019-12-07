@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="test.app.mybatis.mapperY.AdminMapper">
+	<!--관리자로그인 -->
+	<select id="login" parameterType="hashmap" resultType="hashmap">
+		select * from administrator where aid=#{aid} and apwd=#{apwd}
+	</select>
+	<!-- 업체관련 -->
+	<select id="listAll"  resultType="test.app.project.vo.HouseVo">
+		select * from house where approval=1
+	</select>
+	<select id="applistAll"  resultType="test.app.project.vo.HouseVo">
+		select * from house where approval=0
+	</select>
+	<update id="appupdate" parameterType="int" >
+		update house set approval=1 where house_Num=#{house_Num}
+	</update>
+	<delete id="appdelete" parameterType="int" >
+		delete house where house_Num=#{house_Num}
+	</delete>
+	<!-- 공지사항 -->
+	<select id="nlistAll"  resultType="test.app.project.vo.NoticeVo">
+		select * from notice
+	</select>
+	<insert id="wnotice" parameterType="hashmap" >
+		insert into notice values(notice_seq.nextval,#{ntitle},#{ncontent},sysdate)
+	</insert>
+	<delete id="noticedelete" parameterType="int" >
+		delete notice where nnum=#{nnum}
+	</delete>
+	<select id="nlist"  parameterType="int" resultType="test.app.project.vo.NoticeVo">
+		select * from notice where nnum=#{nnum}
+	</select>
+	<update id="upnotice" parameterType="test.app.project.vo.NoticeVo">			
+		update notice set ntitle=#{ntitle},ncontent=#{ncontent} where nnum=#{nnum}
+	</update>
+	<!-- 이벤트 -->
+	<select id="elistAll"  resultType="test.app.project.vo.EventVo">
+		select * from event
+	</select>
+	<delete id="eventdelete" parameterType="int" >
+		delete event where event_Num=#{event_Num}
+	</delete>
+</mapper>
+
+
+
+
+

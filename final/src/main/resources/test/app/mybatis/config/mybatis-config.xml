@@ -14,10 +14,15 @@
 	<typeAliases>
 		<typeAlias type="test.app.project.vo.MembersVo" alias="members"/>
 		<typeAlias type="test.app.project.vo.QnaboardVo" alias="qnaboard"/>
+		<typeAlias type="test.app.project.vo.CouponVo" alias="coupon"/>
+		<typeAlias type="test.app.project.vo.PaymentVo" alias="pay"/>
 	</typeAliases>
 
 	<mappers>
 		<mapper resource="test/app/mybatis/mapper/p/MembersMapper.xml"/>
+		<mapper resource="test/app/mybatis/mapperY/AdminMapper.xml"/>
+		<mapper resource="test/app/mybatis/mapperL/PayMapper.xml"/>
+		<mapper resource="test/app/mybatis/mapperL/CouponMapper.xml"/>
 	</mappers>
 </configuration>  
   

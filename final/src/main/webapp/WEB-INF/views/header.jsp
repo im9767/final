@@ -43,6 +43,11 @@
 									</c:choose>
 									
 								</li>
+								<li class="account" style='background-color: red;border:none;'>
+								<a href="<c:url value='/admin_view/login'/>" style='color:white;'>
+										관리자
+									</a>
+								</li>
 							</ul>
 						</div>
 					</div>
