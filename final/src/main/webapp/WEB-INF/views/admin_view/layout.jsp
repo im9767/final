@@ -20,6 +20,7 @@
 <link href="${cp}/resources/admin/css/sb-admin-2.min.css" rel="stylesheet">
 <link href="${cp}/resources/admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 <script type="text/javascript" src="${cp}/resources/admin/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript">
 $(function(){
 	$("#cal").datepicker({
@@ -52,7 +53,164 @@ $(function(){
 		showMonthAfterYear: true,
 		showAnim: "slideDown"
 	});
-	
+	Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
+	Chart.defaults.global.defaultFontColor = '#858796';
+
+	// Pie Chart Example
+	var ctx = document.getElementById("myPieChart");
+	var chartstr=[];
+	<c:forEach var="vo" items="${list}">
+		chartstr.push('${vo.CNT}');
+	</c:forEach>
+	var myPieChart = new Chart(ctx, {
+	  type: 'doughnut',
+	  data: {
+	    labels: ["모텔","호텔", "리조트", "펜션"],
+	    datasets: [{
+	      data: chartstr,
+	      backgroundColor: ['#e74a3b','#4e73df', '#1cc88a', '#f6c23e'],
+	      hoverBackgroundColor: ['#e74a3b','#2e59d9', '#17a673', '#2c9faf'],
+	      hoverBorderColor: "rgba(234, 236, 244, 1)",
+	    }],
+	  },
+	  options: {
+	    maintainAspectRatio: false,
+	    tooltips: {
+	      backgroundColor: "rgb(255,255,255)",
+	      bodyFontColor: "#858796",
+	      borderColor: '#dddfeb',
+	      borderWidth: 1,
+	      xPadding: 15,
+	      yPadding: 15,
+	      displayColors: false,
+	      caretPadding: 10,
+	    },
+	    legend: {
+	      display: false
+	    },
+	    cutoutPercentage: 80,
+	  },
+	});
+	function number_format(number, decimals, dec_point, thousands_sep) {
+			// *     example: number_format(1234.56, 2, ',', ' ');
+			// *     return: '1 234,56'
+			number = (number + '').replace(',', '').replace(' ', '');
+			var n = !isFinite(+number) ? 0 : +number, prec = !isFinite(+decimals) ? 0
+					: Math.abs(decimals), sep = (typeof thousands_sep === 'undefined') ? ','
+					: thousands_sep, dec = (typeof dec_point === 'undefined') ? '.'
+					: dec_point, s = '', toFixedFix = function(n, prec) {
+				var k = Math.pow(10, prec);
+				return '' + Math.round(n * k) / k;
+			};
+			// Fix for IE parseFloat(0.55).toFixed(0) = 0;
+			s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.');
+			if (s[0].length > 3) {
+				s[0] = s[0].replace(/\B(?=(?:\d{3})+(?!\d))/g, sep);
+			}
+			if ((s[1] || '').length < prec) {
+				s[1] = s[1] || '';
+				s[1] += new Array(prec - s[1].length + 1).join('0');
+			}
+		return s.join(dec);
+	}
+	// Area Chart Example
+	var ctx = document.getElementById("myAreaChart");
+	var staticstr=[0,0,0,0,0,0,0,0,0,0,0,0];
+	<c:forEach var="vo" items="${slist}">
+		//staticstr.push('${vo.PAY}');
+		for(var i=0;i<staticstr.length;i++){
+			if('${vo.MONTH}'== (i+1) ){
+				staticstr[i] = '${vo.PAY}';
+			}
+		}
+	</c:forEach>
+	var myLineChart = new Chart(ctx, {
+	  type: 'line',
+	  data: {
+	    labels: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월", "10월", "11월", "12월"],
+	    datasets: [{
+	      label: "매출",
+	      lineTension: 0.1,
+	      backgroundColor: "rgba(78, 115, 223, 0.05)",
+	      borderColor: "rgba(78, 115, 223, 1)",
+	      pointRadius: 3,
+	      pointBackgroundColor: "rgba(78, 115, 223, 1)",
+	      pointBorderColor: "rgba(78, 115, 223, 1)",
+	      pointHoverRadius: 4,
+	      pointHoverBackgroundColor: "#fd0304",
+	      pointHoverBorderColor: "#fd0304",
+	      pointHitRadius: 10,
+	      pointBorderWidth: 2,
+	      data: staticstr,
+	    }],
+	  },
+	  options: {
+	    maintainAspectRatio: false,
+	    layout: {
+	      padding: {
+	        left: 10,
+	        right: 25,
+	        top: 25,
+	        bottom: 0
+	      }
+	    },
+	    scales: {
+	      xAxes: [{
+	        time: {
+	          unit: 'date'
+	        },
+	        gridLines: {
+	          display: true,
+	          drawBorder: false
+	        },
+	        ticks: {
+	          maxTicksLimit: 7
+	        }
+	      }],
+	      yAxes: [{
+	        ticks: {
+	          maxTicksLimit: 5,
+	          padding: 10,
+	          // Include a dollar sign in the ticks
+	          callback: function(value, index, values) {
+	            return number_format(value) + '원';
+	          }
+	        },
+	        gridLines: {
+	          color: "rgb(234, 236, 244)",
+	          zeroLineColor: "rgb(234, 236, 244)",
+	          drawBorder: true,
+	          borderDash: [2],
+	          zeroLineBorderDash: [2]
+	        }
+	      }],
+	    },
+	    legend: {
+	      display: false
+	    },
+	    tooltips: {
+	      backgroundColor: "rgb(255,255,255)",
+	      bodyFontColor: "#858796",
+	      titleMarginBottom: 10,
+	      titleFontColor: '#6e707e',
+	      titleFontSize: 14,
+	      borderColor: '#dddfeb',
+	      borderWidth: 1,
+	      xPadding: 15,
+	      yPadding: 15,
+	      displayColors: false,
+	      intersect: false,
+	      mode: 'index',
+	      caretPadding: 10,
+	      callbacks: {
+	        label: function(tooltipItem, chart) {
+	          var datasetLabel = chart.datasets[tooltipItem.datasetIndex].label || '';
+	          return datasetLabel + ': ' + number_format(tooltipItem.yLabel) +'원';
+	        }
+	      }
+	    }
+	  }
+	});
 });
 </script>
 </head>
@@ -217,7 +375,7 @@ $(function(){
   <script src="${cp}/resources/admin/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
   <!-- Page level custom scripts -->
-  <script src="${cp}/resources/admin/js/demo/chart-area-demo.js"></script>
+  <!--  <script src="${cp}/resources/admin/js/demo/chart-area-demo.js"></script>-->
   <script src="${cp}/resources/admin/js/demo/chart-pie-demo.js"></script>
   <script src="${cp}/resources/admin/js/demo/datatables-demo.js"></script>
 </body>

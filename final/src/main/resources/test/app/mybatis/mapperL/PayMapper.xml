@@ -20,6 +20,18 @@
 			where bnum=#{company}
 		</if>
 	</select>
+	<select id="chartcount" resultType="hashmap">
+		select bnum,count(bnum) as cnt from house 
+		group by bnum 
+		order by bnum
+	</select>
+	<select id="statics" parameterType="hashmap" resultType="hashmap">
+		select nvl(sum(pay),0) as pay, to_char(pay_day,'YYYY/MM') as pay_day, LTRIM(substr(to_char(pay_day,'YYYY/MM'),6,2),'0') as month
+		from payment 
+		<![CDATA[where pay_day>=#{year}||'-01-01' and pay_day<#{years}||'-01-01']]>
+		group by to_char(pay_day,'YYYY/MM')
+		order by pay_day
+	</select>
 </mapper>
 
 

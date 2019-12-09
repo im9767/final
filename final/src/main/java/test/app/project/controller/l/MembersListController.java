@@ -18,7 +18,7 @@ public class MembersListController {
 	@RequestMapping(value="/admin/members",method=RequestMethod.GET)
 	public String memberslist(Model model){
 		List<MembersVo> list=service.memberslist();
-		model.addAttribute("list",list);
+		model.addAttribute("mlist",list);
 		return ".memberstable";
 	}
 }
