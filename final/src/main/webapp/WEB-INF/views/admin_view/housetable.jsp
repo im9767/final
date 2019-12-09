@@ -124,7 +124,7 @@
                     </tr>
                   </tfoot>
                   <tbody>
-                  	<c:forEach var="vo" items="${list}">
+                  	<c:forEach var="vo" items="${okapplist}">
                     <tr>
                       <td>${vo.COMPANY}</td>
                       <td>${vo.BTYPE}</td>

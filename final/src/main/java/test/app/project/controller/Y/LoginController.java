@@ -20,10 +20,12 @@ public class LoginController {
 	public void setService(AdminService service) {
 		this.service = service;
 	}
+	//관리자 로그인페이지 이동
 	@RequestMapping(value="/admin_view/login",method=RequestMethod.GET)
 	public String loginForm(){
 		return "admin_view/login";
 	}
+	//관리자 로그인 체크
 	@RequestMapping(value="/loginok",method=RequestMethod.POST)
 	public String loginok(String aid,String apwd,HttpSession session){
 		HashMap<String,Object> map=new HashMap<String, Object>();
@@ -38,28 +40,13 @@ public class LoginController {
 			return "admin_view/login";
 		}
 	}
-	/*
-	@RequestMapping(value="/logout",method=RequestMethod.POST)
-	public String logout(String aid,String apwd,HttpSession session){
-		HashMap<String,Object> map=new HashMap<String, Object>();
-		map.put("aid",aid);
-		map.put("apwd",apwd);
-		HashMap<String,Object> admin=service.logout(map);
-		if(admin!=null){
-			session.setAttribute("aid",aid);
-			return ".admin";
-		}else{
-			return "admin_view/login";
-		}
-	}
-	*/
+	//회원이보는 페이지로 이동
 	@RequestMapping(value="/admin_view/gohome",method=RequestMethod.GET)
 	public String gohome(String aid,String apwd,Model model){
 		try{
 			List alist=new List();
 			alist.add(aid);
 			alist.add(apwd);
-			System.out.println(alist);
 			model.addAttribute("code","success");
 		}catch(Exception e){
 			model.addAttribute("code","null");

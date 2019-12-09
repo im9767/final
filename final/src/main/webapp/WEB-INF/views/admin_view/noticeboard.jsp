@@ -220,7 +220,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                  	<c:forEach var="vo" items="${list}">
+                  	<c:forEach var="vo" items="${allnoticelist}">
                     <tr>
                       <td>${vo.nnum}</td>
                       <td><a href="${cp}/admin_view/selnotice?nnum=${vo.nnum}">${vo.ntitle}</a></td>

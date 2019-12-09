@@ -24,16 +24,19 @@ public class BoardController {
 	public void setService(AdminService service) {
 		this.service = service;
 	}
+	//공지사항전체조회
 	@RequestMapping(value = "/admin_view/noticeboard", method = RequestMethod.GET)
-	public String applist(Model model) {
+	public String allnoticelist(Model model) {
 		List<NoticeVo> nlist = service.nlistAll();
-		model.addAttribute("list", nlist);
+		model.addAttribute("allnoticelist", nlist);
 		return ".noticeboard";
 	}
+	//공지사항 작성
 	@RequestMapping(value = "/admin_view/writenotice", method = RequestMethod.GET)
 	public String lookwrite(){
 		return "admin_view/writenotice";
 	}
+	//공지사항 작성체크
 	@RequestMapping(value="/admin_view/writenoticeok",method=RequestMethod.GET)
 	public String writenoticeok(String ntitle,String ncontent,HttpSession session){
 		HashMap<String,Object> map=new HashMap<String, Object>();
@@ -46,13 +49,15 @@ public class BoardController {
 			return "admin_view/writenotice";
 		}
 	}
+	//공지사항 수정하기
 	@RequestMapping(value = "/admin_view/upnotice", method = RequestMethod.GET)
 	public ModelAndView upnotice(int nnum){
 		List<NoticeVo> nlist = service.nlist(nnum);
 		ModelAndView mv = new ModelAndView("admin_view/updatenotice");
-		mv.addObject("list", nlist);
+		mv.addObject("upnoticelist", nlist);
 		return mv;
 	}
+	//공지사항 수정체크
 	@RequestMapping(value = "/admin_view/upnoticeok", method = RequestMethod.GET)
 	public String upnotice(NoticeVo vo){
 		int n=service.upnotice(vo);
@@ -62,7 +67,7 @@ public class BoardController {
 			return "redirect:/admin_view/login";
 		}
 	}
-
+	//공지사항 삭제
 	@RequestMapping(value = "/admin_view/delnotice", method = RequestMethod.GET)
 	public String delnotice(int nnum, HttpSession session) {
 		int n = service.noticedelete(nnum);
@@ -72,11 +77,12 @@ public class BoardController {
 			return "redirect:/admin_view/noticeboard";
 		}
 	}
+	//공지사항 상세조회
 	@RequestMapping(value = "/admin_view/selnotice", method = RequestMethod.GET)
 	public ModelAndView selnotice(int nnum, HttpSession session) {
 		List<NoticeVo> nlist = service.nlist(nnum);
 		ModelAndView mv = new ModelAndView("admin_view/selnotice");
-		mv.addObject("list", nlist);
+		mv.addObject("noticeinfolist", nlist);
 		return mv;
 	}
 }
