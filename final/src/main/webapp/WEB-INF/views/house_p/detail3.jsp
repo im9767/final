@@ -63,20 +63,24 @@
 		</div>
 		
 		<!-- 객실정보 -->
-		<div style="width:100%;min-height:1000px;background-color: pink;clear: both;padding;">
+	<div style="width:100%;min-height:1000px;background-color: pink;clear: both;padding;">
 						
-			<p>
-			  <a id="id1" class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="true" aria-controls="collapseExample">
-			    	객실 안내/예약
-			  </a>
-			  <a id="id2" class="btn btn-primary" data-toggle="collapse" href="#collapseExample2" role="button" aria-expanded="true" aria-controls="collapseExample2">
-			    	숙소 정보
-			  </a>
-			   <a id="id3" class="btn btn-primary" data-toggle="collapse" href="#collapseExample3" role="button" aria-expanded="true" aria-controls="collapseExample3">
-			    	리뷰
-			  </a>
-			</p>
-			<section id="div1" class="info" style="width:100%;min-height: 500px;background-color: red;">
+		<ul class="nav nav-tabs" id="myTab" role="tablist">
+			  <li class="nav-item">
+			    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
+			  </li>
+			  <li class="nav-item">
+			    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+		 	 </li>
+		</ul>
+		
+		<div class="tab-content" id="myTabContent">
+			  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+			  		
+			  		<section id="div1" class="info" style="width:100%;min-height: 500px;background-color: red;">
 			
 				<div style="border-radius: 10px 10px 10px 10px;background-color: gray;width:100%;min-height:300px;padding-top: 25px;padding-bottom:25px;margin-bottom: 20px;">
 					<div style="margin: auto;width:95%;background-color: white;min-height: 250px;">
@@ -186,9 +190,12 @@
 				
 				
 			</section>
-			
-			<!-- 객실정보 -->
-			<section id="div2" class="info" style="width:100%;min-height: 500px;display:none;background-color: blue;">
+			  		
+			  </div>
+			  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab" style="width:100%;min-height: 500px;background-color: blue;">
+			  		
+			  		<!-- 객실정보 -->
+<!-- 			<section id="div2" class="info" style="width:100%;min-height: 500px;display:none;background-color: blue;"> -->
 				
 				<div class="card">
 				
@@ -222,14 +229,14 @@
 				  
 				</div>
 								
-			</section>
-			
-			<!-- 리뷰 -->
-			<div id="div3" class="info" style="width:100%;min-height: 500px;display:none;background-color: gray;">
-				<div class="card">리뷰페이지</div>
-			</div>
+<!-- 			</section> -->
+			  		
+			  </div>
+			  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+			  
+			  </div>
 		</div>
-		
+				
 		<!-- 지도 -->
 		<div id="map" style="width:100%;height:400px;"></div>
 				
@@ -238,6 +245,7 @@
 
 <script>
 	$(function(){
+		/*
 		$("#id1").click(function(){
 			$(".info").css("display","none");
 			$("#div1").css("display","block");
@@ -250,7 +258,7 @@
 			$(".info").css("display","none");
 			$("#div3").css("display","block");
 		});
-		
+		*/
 		$("#room-1").click(function () {
 			$("#room-detail-1").css("display","block");
 		});
