@@ -20,6 +20,7 @@
 								<li class="currency" style='background-color: red;border:none;'>
 									<a href="${pageContext.request.contextPath }/house/detail" style='color:white;'>예약내역</a>
 								</li>
+
 								<li class="language" style='background-color: red;border:none;'>
 									<a href="#" style='color:white;'>
 										더보기
@@ -34,7 +35,7 @@
 								</li>
 								<li class="account" style='background-color: red;border:none;'>
 									<c:choose>
-										<c:when test="${empty sessionScope.id }">
+										<c:when test="${empty sessionScope.id }">			
 											<a href="${pageContext.request.contextPath }/members/login" style='color:white;'>로그인</a>	
 										</c:when>
 										<c:otherwise>
@@ -56,8 +57,11 @@
 													</a>
 											</li>
 											</c:otherwise>
-										</c:choose>		
+										</c:choose>	
 								</li>
+								<li class="account" style='background-color: red;border:none;'>
+									<a href="${pageContext.request.contextPath }/product/accommodationList" style='color:white;'>업소목록(임시)</a>
+								</li>	
 							</ul>
 						</div>
 					</div>

@@ -8,9 +8,7 @@
     }
   },
   "ecmaVersion": 5,
-  "ide": {
-    "scriptPaths": [
-      
-    ]
-  }
+  "libs": [
+    
+  ]
 }
