@@ -217,7 +217,7 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <c:forEach var="vo" items="${list}">
+                    <c:forEach var="vo" items="${mlist}">
                     	<tr>
                     		<td>${vo.mid}</td>
                     		<td>${vo.mpwd}</td>

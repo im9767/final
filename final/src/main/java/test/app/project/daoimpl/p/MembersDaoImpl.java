@@ -87,8 +87,9 @@ public class MembersDaoImpl implements MembersDao{
 	
 	// 문의글 리스트
 	@Override
-	public java.util.List<HashMap<String, Object>> qnalist(String mid) {
-		return sqlSessionTemplate.selectList(NAMESPACE+".qnalist", mid);
+	public java.util.List<HashMap<String, Object>> qnalist(HashMap<String, Object> parameter) {
+		
+		return sqlSessionTemplate.selectList(NAMESPACE+".qnalist", parameter);
 		
 	}
 	
@@ -102,6 +103,12 @@ public class MembersDaoImpl implements MembersDao{
 	@Override
 	public List<CouponVo> couponList(String mid) {
 		return sqlSessionTemplate.selectList(NAMESPACE+".couponList", mid);
+	}
+	
+	// 회원이 문의한 글 갯수 조회
+	@Override
+	public int qnaListCount(String mid) {
+		return sqlSessionTemplate.selectOne(NAMESPACE+".qnaListCount", mid);
 	}
 	
 }

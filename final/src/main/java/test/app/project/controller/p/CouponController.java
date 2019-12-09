@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import test.app.project.service.p.MembersService;
 import test.app.project.vo.CouponVo;
@@ -20,7 +21,7 @@ public class CouponController {
 	private MembersService membersService;
 	
 	@RequestMapping(value="/members/couponList")
-	public String couponPage(Model model, HttpSession session){
+	public String couponPage(@RequestParam(value="pageNum",defaultValue="1")int pageNum,Model model, HttpSession session){
 		
 		String mid = (String)session.getAttribute("id");
 		HashMap<String, Object> map = membersService.myinfo(mid);

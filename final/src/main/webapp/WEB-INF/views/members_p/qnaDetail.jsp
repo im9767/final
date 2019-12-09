@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<div class="mypage-wrap">
+<div class="mypage-wrap" style="min-height: 1200px;">
 		
 	<!-- mypage header -->
 		<jsp:include page="/WEB-INF/views/members_p/include/mypageHeader.jsp"/>
@@ -13,7 +13,7 @@
 			<jsp:include page="/WEB-INF/views/members_p/include/mypageNav.jsp"/>
 		<!-- //mypage nav -->					
 		<!-- contents -->
-		<section class="mypage-cont">
+		<section class="mypage-cont"  style="float: left;width:85%;margin: auto;padding: 10px;">
 			<header class="n-section-title">
 				<h1 class="tit">문의글 보기</h1>
 			</header>

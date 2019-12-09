@@ -222,27 +222,27 @@
                       	<br>
                       	<form action="${cp}/admin/month" method="post">
                       	<select name="year" id="year" class="form-control form-control-user" style="width:100px;display: inline-block;">
-                      		<option value="19" selected="selected">2019</option>
-                      		<option value="18">2018</option>
-                      		<option value="17">2017</option>
-                      		<option value="16">2016</option>
-                      		<option value="15">2015</option>
-                      		<option value="14">2014</option>
-                      		<option value="13">2013</option>
+                      		<option value="19" <c:if test="${year=='19'}">selected</c:if>>2019</option>
+                      		<option value="18" <c:if test="${year=='18'}">selected</c:if>>2018</option>
+                      		<option value="17" <c:if test="${year=='17'}">selected</c:if>>2017</option>
+                      		<option value="16" <c:if test="${year=='16'}">selected</c:if>>2016</option>
+                      		<option value="15" <c:if test="${year=='15'}">selected</c:if>>2015</option>
+                      		<option value="14" <c:if test="${year=='14'}">selected</c:if>>2014</option>
+                      		<option value="13" <c:if test="${year=='13'}">selected</c:if>>2013</option>
                       	</select>&nbsp;&nbsp;&nbsp;&nbsp;
                       	<select name="month" id="month" class="form-control form-control-user" style="width:80px;display: inline-block;">
-                      		<option value="01">1월</option>
-                      		<option value="02">2월</option>
-                      		<option value="03">3월</option>
-                      		<option value="04">4월</option>
-                      		<option value="05">5월</option>
-                      		<option value="06">6월</option>
-                      		<option value="07">7월</option>
-                      		<option value="08">8월</option>
-                      		<option value="09">9월</option>
-                      		<option value="10">10월</option>
-                      		<option value="11">11월</option>
-                      		<option value="12" selected="selected">12월</option>
+                      		<option value="01" <c:if test="${month=='01'}">selected</c:if>>1월</option>
+                      		<option value="02" <c:if test="${month=='02'}">selected</c:if>>2월</option>
+                      		<option value="03" <c:if test="${month=='03'}">selected</c:if>>3월</option>
+                      		<option value="04" <c:if test="${month=='04'}">selected</c:if>>4월</option>
+                      		<option value="05" <c:if test="${month=='05'}">selected</c:if>>5월</option>
+                      		<option value="06" <c:if test="${month=='06'}">selected</c:if>>6월</option>
+                      		<option value="07" <c:if test="${month=='07'}">selected</c:if>>7월</option>
+                      		<option value="08" <c:if test="${month=='08'}">selected</c:if>>8월</option>
+                      		<option value="09" <c:if test="${month=='09'}">selected</c:if>>9월</option>
+                      		<option value="10" <c:if test="${month=='10'}">selected</c:if>>10월</option>
+                      		<option value="11" <c:if test="${month=='11'}">selected</c:if>>11월</option>
+                      		<option value="12" <c:if test="${month=='12'}">selected</c:if>>12월</option>
                       	</select>&nbsp;&nbsp;&nbsp;&nbsp;
                       	<!--  <input type="submit" value="조회">-->
                       	<button id="search" class="btn btn-success btn-circle">
@@ -321,14 +321,18 @@
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">등록된 업체수</div>
                       <div>
-                      	<select name="company" class="form-control form-control-user" style="width:230px;">
-                      		<option value="호텔">호텔</option>
-                      		<option value="모텔">모텔</option>
-                      		<option value="리조트">리조트</option>
+                      <form action="${cp}/company/register" method="post">
+                      	<select onchange="this.form.submit()" name="company" class="form-control form-control-user" style="width:230px;">
+                      		<option value="20" <c:if test="${company=='20'}">selected</c:if>>전체</option>
+                      		<option value="22" <c:if test="${company=='22'}">selected</c:if>>호텔</option>
+                      		<option value="21" <c:if test="${company=='21'}">selected</c:if>>모텔</option>
+                      		<option value="24" <c:if test="${company=='24'}">selected</c:if>>펜션</option>
+                      		<option value="23" <c:if test="${company=='23'}">selected</c:if>>리조트</option>
                       	</select>
+                      </form>
                       </div>
                       <br>
-                      <div class="h3 mb-0 font-weight-bold text-gray-800">18</div>
+                      <div class="h3 mb-0 font-weight-bold text-gray-800">${companycount}곳</div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -348,7 +352,7 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">년도/월별 매출 통계</h6>
                   <div class="dropdown no-arrow">
                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -362,6 +366,19 @@
                     </div>
                   </div>
                 </div>
+                <div>
+                	<form action="${cp}/company/statics" method="post">
+                	<select onchange="this.form.submit()" name="year" id="year" class="form-control form-control-user" style="width:100px;display: inline-block;">
+                      	<option value="2019" <c:if test="${year=='2019'}">selected</c:if>>2019</option>
+                      	<option value="2018" <c:if test="${year=='2018'}">selected</c:if>>2018</option>
+                      	<option value="2017" <c:if test="${year=='2017'}">selected</c:if>>2017</option>
+                      	<option value="2016" <c:if test="${year=='2016'}">selected</c:if>>2016</option>
+                      	<option value="2015" <c:if test="${year=='2015'}">selected</c:if>>2015</option>
+                      	<option value="2014" <c:if test="${year=='2014'}">selected</c:if>>2014</option>
+                      	<option value="2013" <c:if test="${year=='2013'}">selected</c:if>>2013</option>
+                   </select>&nbsp;&nbsp;&nbsp;&nbsp;
+                   </form>
+                </div> 
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="chart-area">
@@ -376,7 +393,7 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">숙박종목별 등록건수</h6>
                   <div class="dropdown no-arrow">
                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -397,13 +414,16 @@
                   </div>
                   <div class="mt-4 text-center small">
                     <span class="mr-2">
-                      <i class="fas fa-circle text-primary"></i> Direct
+                      <i class="fas fa-circle text-danger"></i> 모텔
                     </span>
                     <span class="mr-2">
-                      <i class="fas fa-circle text-success"></i> Social
+                      <i class="fas fa-circle text-primary"></i> 호텔
                     </span>
                     <span class="mr-2">
-                      <i class="fas fa-circle text-info"></i> Referral
+                      <i class="fas fa-circle text-success"></i> 리조트
+                    </span>
+                     <span class="mr-2">
+                      <i class="fas fa-circle text-warning"></i> 펜션
                     </span>
                   </div>
                 </div>
