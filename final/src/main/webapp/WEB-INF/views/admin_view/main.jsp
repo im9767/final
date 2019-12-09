@@ -352,7 +352,7 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">년도/월별 매출 통계</h6>
                   <div class="dropdown no-arrow">
                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -366,6 +366,19 @@
                     </div>
                   </div>
                 </div>
+                <div>
+                	<form action="${cp}/company/statics" method="post">
+                	<select onchange="this.form.submit()" name="year" id="year" class="form-control form-control-user" style="width:100px;display: inline-block;">
+                      	<option value="2019" <c:if test="${year=='2019'}">selected</c:if>>2019</option>
+                      	<option value="2018" <c:if test="${year=='2018'}">selected</c:if>>2018</option>
+                      	<option value="2017" <c:if test="${year=='2017'}">selected</c:if>>2017</option>
+                      	<option value="2016" <c:if test="${year=='2016'}">selected</c:if>>2016</option>
+                      	<option value="2015" <c:if test="${year=='2015'}">selected</c:if>>2015</option>
+                      	<option value="2014" <c:if test="${year=='2014'}">selected</c:if>>2014</option>
+                      	<option value="2013" <c:if test="${year=='2013'}">selected</c:if>>2013</option>
+                   </select>&nbsp;&nbsp;&nbsp;&nbsp;
+                   </form>
+                </div> 
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="chart-area">
@@ -380,7 +393,7 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Revenue Sources</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">숙박종목별 등록건수</h6>
                   <div class="dropdown no-arrow">
                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -401,13 +414,16 @@
                   </div>
                   <div class="mt-4 text-center small">
                     <span class="mr-2">
-                      <i class="fas fa-circle text-primary"></i> Direct
+                      <i class="fas fa-circle text-danger"></i> 모텔
                     </span>
                     <span class="mr-2">
-                      <i class="fas fa-circle text-success"></i> Social
+                      <i class="fas fa-circle text-primary"></i> 호텔
                     </span>
                     <span class="mr-2">
-                      <i class="fas fa-circle text-info"></i> Referral
+                      <i class="fas fa-circle text-success"></i> 리조트
+                    </span>
+                     <span class="mr-2">
+                      <i class="fas fa-circle text-warning"></i> 펜션
                     </span>
                   </div>
                 </div>

@@ -348,6 +348,7 @@
             </div>
         </div>
  <script type="text/javascript">
+
  $("#startDate").datepicker({
 		dateFormat: "yy-mm-dd", // 날짜의 형식
 		minDate: 0,
@@ -378,7 +379,6 @@
 			
 		}
 	});
-
 </script>        
 
         

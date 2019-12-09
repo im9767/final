@@ -10,7 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import test.app.project.service.L.PaymentService;
 import test.app.project.service.Y.AdminService;
 
 @Controller
@@ -20,19 +22,32 @@ public class LoginController {
 	public void setService(AdminService service) {
 		this.service = service;
 	}
+	@Autowired private PaymentService service1;
+	
 	@RequestMapping(value="/admin_view/login",method=RequestMethod.GET)
 	public String loginForm(){
 		return "admin_view/login";
 	}
 	@RequestMapping(value="/loginok",method=RequestMethod.POST)
-	public String loginok(String aid,String apwd,HttpSession session){
+	public String loginok(@RequestParam(value="year",defaultValue="2019")int year,String aid,String apwd,HttpSession session,Model model){
 		HashMap<String,Object> map=new HashMap<String, Object>();
+		HashMap<String,Object> map1=new HashMap<String, Object>();
 		map.put("aid",aid);
 		map.put("apwd",apwd);
+		
+		int years=year+1;
+		map1.put("year", year);
+		map1.put("years", years);
+		
 		HashMap<String,Object> admin=service.login(map);
+		java.util.List<HashMap<String, Object>> piechart=service1.piechart();
+		java.util.List<HashMap<String, Object>> slist=service1.statics(map1);
 		if(admin!=null){
 			session.setAttribute("aid",aid);
 			session.setAttribute("apwd",apwd);
+			model.addAttribute("list",piechart);
+			model.addAttribute("slist",slist);
+			model.addAttribute("year",year);
 			return ".admin";
 		}else{
 			return "admin_view/login";
