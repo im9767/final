@@ -28,10 +28,12 @@ public interface MembersDao {
 	
 	public int qnainsert(QnaboardVo vo);
 	
-	public java.util.List<HashMap<String, Object>> qnalist(String mid);
+	public java.util.List<HashMap<String, Object>> qnalist(HashMap<String, Object> parameter);
 	
 	public HashMap<String, Object> qnaDetail(int qna_num);
 	
 	public List<CouponVo> couponList(String mid);
+	
+	public int qnaListCount(String mid);
 	
 }

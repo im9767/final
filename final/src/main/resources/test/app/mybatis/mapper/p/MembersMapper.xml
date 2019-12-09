@@ -18,6 +18,7 @@
 	<select id="idCheck" parameterType="String" resultType="members">
 		SELECT * FROM members WHERE mid=#{mid}
 	</select>
+	
 	<!-- 임시비밀번호 발송 위해 존재하는 회원인지 체크 -->
 	<select id="findPwd" parameterType="hashmap" resultType="members">
 		SELECT * FROM members WHERE mid=#{mid} AND memail=#{memail}
@@ -36,7 +37,7 @@
 				m.mpwd,
 				m.mphone,
 				m.memail,
-				to_char(m.mregdate,'yyyy/mm/dd') mregdate,
+				to_char(m.mregdate,'yyyy.mm.dd') mregdate,
 				m.mpoint,
 				g.gname
 		FROM 
@@ -47,9 +48,12 @@
 	
 	<!-- 회원의 쿠폰 갯수 얻어오기 -->
 	<select id="cntCoupon" parameterType="String" resultType="int">
-		SELECT NVL(COUNT(*),0)
-		FROM coupon
-		WHERE mid=#{mid}
+		SELECT 
+				NVL(COUNT(*),0)
+		FROM 
+				coupon
+		WHERE 
+				mid=#{mid}
 				AND coupon_status = '사용안함'
 	</select>
 	
@@ -66,23 +70,29 @@
 	</insert>
 	
 	<!-- 회원 본인이 작성한 문의 내역 조회 -->
-	<select id="qnalist" parameterType="String" resultType="hashmap">
-		SELECT 
-				q.qna_num,
-				q.mid,
-				q.qna_category_num,
-				q.qna_title,
-				q.qna_content,
-				q.anwser,
-				q.qna_date,
-				qc.qna_category_name
-		FROM 
-				qnaboard q,qna_category qc
-		WHERE 
-				q.qna_category_num = qc.qna_category_num
-			  	AND q.mid = #{mid}
-		ORDER BY 
-				qna_date DESC
+	<select id="qnalist" parameterType="hashmap" resultType="hashmap">
+		SELECT * FROM
+			(
+			    SELECT AA.*,ROWNUM AS rnum FROM
+			    (
+			        SELECT 
+							q.qna_num,
+							q.mid,
+							q.qna_category_num,
+							q.qna_title,
+							q.qna_content,
+							q.anwser,
+							q.qna_date,
+							qc.qna_category_name
+					FROM 
+							qnaboard q,qna_category qc
+					WHERE 
+							q.qna_category_num = qc.qna_category_num
+						  	AND q.mid = #{mid}
+					ORDER BY 
+							qna_date DESC
+			    )AA
+			)<![CDATA[WHERE rnum>=#{startRow} AND rnum<=#{endRow}]]>
 	</select>
 	
 	<!-- 해당 번호 문의글 상세정보 보기 -->
@@ -119,5 +129,16 @@
 				mid=#{mid}
 		ORDER BY 
 				making_date DESC
+	</select>
+	
+	<!-- 회원의 문의 글 갯수 얻어오기 -->
+	<select id="qnaListCount" parameterType="String" resultType="int">
+	
+		SELECT 
+				COUNT(*)
+		FROM 
+				qnaboard
+		WHERE 
+				mid = #{mid}
 	</select>
 </mapper>

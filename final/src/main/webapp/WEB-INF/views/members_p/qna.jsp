@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<div class="mypage-wrap">
+<div class="mypage-wrap" style="min-height: 1200px;">
 		
 	<!-- mypage header -->
 		<jsp:include page="/WEB-INF/views/members_p/include/mypageHeader.jsp"/>
