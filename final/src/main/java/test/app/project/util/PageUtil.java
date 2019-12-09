@@ -31,6 +31,17 @@ public class PageUtil {
 		if(totalPageCount<endPageNum){
 			endPageNum=totalPageCount;
 		}
+		
+		System.out.println("pageNum:"+pageNum);
+		System.out.println("startRow:"+startRow);
+		System.out.println("endRow:"+endRow);
+		System.out.println("totalPageCount:"+totalPageCount);
+		System.out.println("startPageNum:"+startPageNum);
+		System.out.println("endPageNum:"+endPageNum);
+		System.out.println("rowBlockCount:"+rowBlockCount);
+		System.out.println("pageBlockCount:"+pageBlockCount);
+		System.out.println("totalRowCount:"+totalRowCount);
+		System.out.println();
 	}
 
 	public int getPageNum() {

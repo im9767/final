@@ -1,0 +1,12 @@
+@CHARSET "UTF-8";
+
+.mypage-wrap{
+	min-height: 1200px;
+}
+
+.mypage-cont{
+	float: left;
+	width:85%;
+	margin: auto;
+	padding: 10px;
+}

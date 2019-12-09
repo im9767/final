@@ -11,90 +11,25 @@
 <meta name="description" content="Colo Shop Template">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-
-
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/styles/bootstrap4/bootstrap.min.css">
-<link href="${pageContext.request.contextPath}/resources/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/plugins/OwlCarousel2-2.2.1/animate.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/styles/main_styles.css">
-<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/styles/responsive.css">
-
-
-<script type="text/javascript" src="${pageContext.request.contextPath }/resources/jquery/jquery-3.4.1.js"></script>
-
-
-
-
-<!-- 마이페이지 -->
-	<link type="text/css" rel="stylesheet" href="//static.msscdn.net/skin/musinsa/css/mypage.min.css?20191119">
-	<link rel="stylesheet" type="text/css" href="//static.msscdn.net/skin/musinsa/css/magazine_common.css?20191107_1">
-	<link rel="stylesheet" type="text/css" href="//static.msscdn.net/skin/musinsa/css/store_common.css?20191106_4">
-	<link rel="stylesheet" type="text/css" href="//static.msscdn.net/skin/musinsa/css/layout.min.css?20191121">
-	<link rel="stylesheet" type="text/css" href="//static.msscdn.net/skin/musinsa/css/guide.min.css?20191204">
-	<link rel="stylesheet" type="text/css" href="//static.msscdn.net/skin/musinsa/css/style.min.css?20191203"><link rel="stylesheet" type="text/css" href="//static.msscdn.net/skin/musinsa/css/sub.css?20191202">
-	<link rel="stylesheet" type="text/css" href="//static.msscdn.net/skin/musinsa/css/media_query.css?20191015">
-	<!--<link rel="stylesheet" type="text/css" href="//static.msscdn.net/skin/musinsa/css/font.css?20170221" />-->
-	<link rel="stylesheet" type="text/css" href="//static.msscdn.net/skin/musinsa/css/new.css?20191015">
-	<!-- Swiper -->
-	<link rel="stylesheet" type="text/css" href="//static.msscdn.net/swiper/swiper.min.css">
-	<script src="//static.msscdn.net/swiper/swiper.min.js"></script>
-	<!-- 스토어, 매거진 공통 스크립트 -->
-	<script type="text/javascript" src="//static.msscdn.net/mfile_outsrc/js/vendor/jquery-1.11.1.min.js?20160201"></script>
-	<script type="text/javascript" src="//static.msscdn.net/mfile_outsrc/js/common/base.js?20160201"></script>
-	<script type="text/javascript" src="//static.msscdn.net/mfile_outsrc/js/common/common.js?20191015"></script>
-	<script type="text/javascript" src="//static.msscdn.net/mfile_outsrc/js/vendor/jquery.easing.js?20160201"></script>
-	<!--// 스토어, 매거진 공통 스크립트 -->
+	<!-- mypage css -->
+		<link rel="stylesheet" type="text/css" href="${cp }/resources/mypage/mypage.css">
+	<!-- /mypage css -->
 	
-	<script type="text/javascript" src="//static.msscdn.net/skin/musinsa/js/mini_cart.js?20181029_1"></script>
-	<script type="text/javascript" src="//static.msscdn.net/skin/musinsa/js/common.js?20191122"></script>
-	<script type="text/javascript" src="//static.msscdn.net/skin/musinsa/js/jquery.cycle.all.js?20160202"></script>
-	<script type="text/javascript" src="//static.msscdn.net/skin/musinsa/js/m_js/jquery-ui.min.js?20160202"></script>
-	<script type="text/javascript" src="//static.msscdn.net/skin/musinsa/js/jslib.js?20190701"></script>
-	<script type="text/javascript" src="//static.msscdn.net/skin/musinsa/js/jquery.bxslider.js?20180503"></script>
-	<script type="text/javascript" src="//static.msscdn.net/skin/musinsa/js/suggestions.js?20190819"></script>
-	<script type="text/javascript" src="//static.msscdn.net/skin/musinsa/js/clipboard.min.js?20170406"></script>
-	<script type="text/javascript" src="//static.msscdn.net/skin/musinsa/js/ui.js?20191015"></script>
-	
-	<!--jqModal-->
-	<link rel="stylesheet" type="text/css" href="//static.msscdn.net/skin/musinsa/css/jqModal.css?20160119">
-	<script src="//static.msscdn.net/skin/musinsa/js/jqModal.min.js?20160511" type="text/javascript"></script>
-	<!--//jqModal-->
-	
-	<!-- 매거진 관심브랜드 관련 스크립트 -->
-	<script type="text/javascript" src="https://www.musinsa.com/layouts/community/js/ex.script.js"></script>
-	<!--// 매거진 관심브랜드 관련 스크립트 -->
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/styles/bootstrap4/bootstrap.min.css">
+	<link href="${pageContext.request.contextPath}/resources/plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/plugins/OwlCarousel2-2.2.1/animate.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/styles/main_styles.css">
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/styles/responsive.css">
 
 
+	<script type="text/javascript" src="${pageContext.request.contextPath }/resources/jquery/jquery-3.4.1.js"></script>
 
-
-<!-- <link rel="stylesheet" href="${pageConctext.request.contextPath }/resources/detailcss/detail.css">
-<link rel="stylesheet" href="${pageConctext.request.contextPath }/resources/detailcss/detail2.css"> -->
-
-		<!-- 상세페이지 css -->
-		<!-- all css here -->
-        <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/ezone/assets/css/bootstrap.min.css">
-        <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/ezone/assets/css/magnific-popup.css">
-        <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/ezone/assets/css/animate.css">
-        <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/ezone/assets/css/owl.carousel.min.css">
-        <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/ezone/assets/css/themify-icons.css">
-        <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/ezone/assets/css/pe-icon-7-stroke.css">
-        <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/ezone/assets/css/icofont.css">
-        <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/ezone/assets/css/meanmenu.min.css">
-        <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/ezone/assets/css/easyzoom.css">
-        <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/ezone/assets/css/bundle.css">
-        <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/ezone/assets/css/style.css">
-        <link rel="stylesheet" href="${pageContext.request.contextPath }/resources/ezone/assets/css/responsive.css">
-        <script src="${pageContext.request.contextPath }/resources/ezone/assets/js/vendor/modernizr-2.8.3.min.js"></script>
-	
-	<!-- 유사 이미지 상품 검색 -->
-	<link type="text/css" rel="stylesheet" href="//static.msscdn.net/skin/musinsa/css/image_search.css?20181203_02">
-	
 	
 	<!-- ezone템플릿 css -->
-<!-- Favicon -->
-<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath }/resources/assets/img/favicon.png">
+	<!-- Favicon -->
+	<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath }/resources/assets/img/favicon.png">
 		
 
 		<!-- 부트스트랩 기본 css -->

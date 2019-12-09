@@ -1,37 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-	<!-- mypage header -->
-<div class="mypage-info" style="margin-top:150px;background-color:lightgray;">
-	<div class="inner">
-		<h1 class="tit"><a href="${pageContext.request.contextPath }/members/mypage" style="text-decoration: none;">My Page</a></h1>
-		
-		<div class="my-profile">
-					<div class="img"></div>
-					<strong class="name">${map.MNAME }</strong>
-			<em class="account" style="background-color:lightgray;">${map.MID }</em>
-			<a href="${pageContext.request.contextPath }/members/infoupdate" class="link-modify" style="text-decoration: none;">회원정보변경</a>
-			<div class="member">
-				<em class="level">${map.GNAME }</em>
-				<a href="#" class="link-level" style="text-decoration: none;">등급 혜택 보기 &gt;</a>
-			</div>
-			<p class="txt">다음 등급인 브론즈까지 40,808점 남았습니다 <span>|</span>${map.MREGDATE }</p>
-		</div>
-		<div class="my-menu">
-			
-			<a href="#" style="text-decoration: none;">
-				<i class="my-ico ico-point"></i>포인트 &gt;
-				<strong>${map.MPOINT }</strong>
-			</a>
-			<a href="#" style="text-decoration: none;">
-				<i class="my-ico ico-coupon"></i>쿠폰 &gt;
-				<strong>${cntCoupon }</strong>
-			</a>
-			<a href="${pageContext.request.contextPath }/members/qna" style="text-decoration: none;">
-				<i class="my-ico ico-review"></i>Q&A &gt;
-				<strong>작성</strong>
-			</a>
-		</div>
+
+<div style="min-height: 300px;width:100%;background-color: lightgray;margin-bottom: 20px;">
+	
+	<!-- 마이페이지 프로필 이미지 -->
+	<div style="height:300px;width:30%;padding: 30px;display: inline-block;text-align: center;">
+		<img src="${cp }/resources/bootstrap_icons/icons/person.svg" width="200" height="200" title="Bootstrap">
 	</div>
+	<div style="display: inline-block;width:30%;height:150px;padding-top: 10px;">
+		<strong class="name" style="font-size: 2.5em;">${map.MNAME }</strong>
+		<em class="account" style="background-color:lightgray;">${map.MID }님</em>
+		<div class="level">등급 : ${map.GNAME }</div>
+	
+		<p class="txt">가입일 <span>:</span> ${map.MREGDATE }</p>
+	</div>
+
 </div>
-<!-- mypage header -->	
