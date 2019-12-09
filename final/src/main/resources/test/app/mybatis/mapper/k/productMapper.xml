@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="test.app.mybatis.mapper.k.productMapper">
+	<select id="roomsList" parameterType="hashmap" resultType="rooms">
+		select * 
+			from(
+			select h.company, h.workplace, hi.house_save_name, min(r.room_price) room_price, trunc(AVG(r.room_check),1) room_check
+					from house h, rooms r, house_img hi
+					where h.house_num = r.house_num and h.house_num = hi.house_num and r.house_num = hi.house_num
+					group by  h.company, h.workplace, hi.house_save_name
+			<![CDATA[)where room_check>1]]>
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

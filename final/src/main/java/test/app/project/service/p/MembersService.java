@@ -68,8 +68,8 @@ public class MembersService {
 	}
 
 	// 문의글 리스트
-	public List<HashMap<String, Object>> qnalist(String mid){
-		return membersDaoImpl.qnalist(mid);
+	public List<HashMap<String, Object>> qnalist(HashMap<String, Object> parameter){
+		return membersDaoImpl.qnalist(parameter);
 	}
 	
 	// 문의글 상세보기
@@ -80,5 +80,10 @@ public class MembersService {
 	// 회원 쿠폰목록 조회
 	public List<CouponVo> couponList(String mid){
 		return membersDaoImpl.couponList(mid);
+	}
+	
+	// 회원 문의글 갯수 얻어오기
+	public int qnaListCount(String mid){
+		return membersDaoImpl.qnaListCount(mid);
 	}
 }

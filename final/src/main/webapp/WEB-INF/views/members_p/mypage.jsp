@@ -11,7 +11,9 @@
 	<div class="mypage-area">
 		<!-- mypage nav -->
 			<jsp:include page="/WEB-INF/views/members_p/include/mypageNav.jsp"/>
-		<!-- //mypage nav -->				
+		<!-- //mypage nav -->
+		
+						
 		<!-- contents -->
 		<section class="mypage-cont">
 			<header class="n-section-title">
@@ -31,6 +33,8 @@
 			</form>
 		</section>
 		<!-- //contents -->
+		
+		
 		<!--래플 당첨결과-->
 		<div class="layer_cont layer-raffle-result" id="raffle_result" style="display:none; position: fixed; top:50%; left: 60%; margin-left:-800px;  z-index: 100;margin-top:-404px"></div>
 		<!--//래플 당첨결과-->

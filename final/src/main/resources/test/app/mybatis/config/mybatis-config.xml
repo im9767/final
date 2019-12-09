@@ -17,6 +17,7 @@
 		<typeAlias type="test.app.project.vo.CouponVo" alias="coupon"/>
 		<typeAlias type="test.app.project.vo.PaymentVo" alias="pay"/>
 		<typeAlias type="test.app.project.vo.HouseVo" alias="house"/>
+		<typeAlias type="test.app.project.vo.RoomsVo" alias="rooms"/>
 	</typeAliases>
 
 	<mappers>
@@ -24,6 +25,7 @@
 		<mapper resource="test/app/mybatis/mapperY/AdminMapper.xml"/>
 		<mapper resource="test/app/mybatis/mapperL/PayMapper.xml"/>
 		<mapper resource="test/app/mybatis/mapperL/CouponMapper.xml"/>
+		<mapper resource="test/app/mybatis/mapper/k/productMapper.xml"/>
 	</mappers>
 </configuration>  
   
