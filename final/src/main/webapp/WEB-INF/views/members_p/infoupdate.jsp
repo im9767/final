@@ -15,7 +15,7 @@
 		<!-- contents -->
 		<section class="mypage-cont">
 			<header class="n-section-title">
-				<h1 class="tit">회원 정보 수정</h1>
+				<h3 class="tit">회원 정보 수정</h3>
 			</header>
 			<br>
 			<form action="${pageContext.request.contextPath }/members/infoupdate" method="post" onsubmit="return validation()" style="margin-left:10px;">

@@ -4,19 +4,21 @@
 
 <div class="mypage-wrap">
 		
-	<!-- mypage header -->
+	<!-- 마이페이지 헤더 -->
 		<jsp:include page="/WEB-INF/views/members_p/include/mypageHeader.jsp"/>
-	<!-- mypage header -->	
+	<!-- 마이페이지 헤더 -->	
+	
 	<!-- mypage area -->
 	<div class="mypage-area">
-		<!-- mypage nav -->
+	
+		<!-- 마이페이지 네비게이션 바 -->
 			<jsp:include page="/WEB-INF/views/members_p/include/mypageNav.jsp"/>
-		<!-- //mypage nav -->		
+		<!-- //마이페이지 네비게이션 바 -->		
 			
-		<!-- contents -->
+		<!-- 마이페이지 컨텐츠 -->
 		<section class="mypage-cont">
 			<header class="n-section-title">
-				<h1 class="tit">문의 내역</h1>
+				<h3 class="tit">문의 내역</h3>
 			</header>
 			<br>
 			<table class="table">
@@ -97,7 +99,7 @@
 			</nav>
 
 		</section>
-		<!-- //contents -->
+		<!-- //마이페이지 컨텐츠 -->
 
 	</div>
 	<!-- //mypage area -->
