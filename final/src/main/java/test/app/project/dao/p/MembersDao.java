@@ -36,4 +36,6 @@ public interface MembersDao {
 	
 	public int qnaListCount(String mid);
 	
+	public List<HashMap<String, Object>> qnaListAll();
+	
 }

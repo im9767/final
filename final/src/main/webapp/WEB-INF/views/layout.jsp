@@ -28,6 +28,10 @@
 
 
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<!-- 결제 연동 api -->
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+
 <style>
 		
 	.ui-datepicker-week-end{color:#f00;}
@@ -69,5 +73,4 @@
 <script src="${pageContext.request.contextPath}/resources/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
 <script src="${pageContext.request.contextPath}/resources/plugins/easing/easing.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/custom.js"></script>
-
 </html>

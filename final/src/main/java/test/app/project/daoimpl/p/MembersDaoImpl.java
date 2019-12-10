@@ -113,4 +113,10 @@ public class MembersDaoImpl implements MembersDao{
 		return sqlSessionTemplate.selectOne(NAMESPACE+".qnaListCount", mid);
 	}
 	
+	//qna리스트 엑셀 출력
+	@Override
+	public List<HashMap<String, Object>> qnaListAll() {
+		return sqlSessionTemplate.selectList(NAMESPACE+".qnaListAll");
+	}
+	
 }

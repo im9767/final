@@ -60,7 +60,7 @@
 				업소 소개좀 잘해봐 업소 소개좀 잘해봐 업소 소개좀 잘해봐 업소 소개좀 잘해봐 업소 소개좀 잘해봐 업소 소개좀 잘해봐</span>
 			</p>
 			<p style="text-align: right;">
-				<button type="button" class="btn btn-success">찜목록 추가</button>
+				<a type="button" class="btn btn-success" href="${cp }/members/payment">찜목록 추가</a>
 			</p>
 			
 		</div>

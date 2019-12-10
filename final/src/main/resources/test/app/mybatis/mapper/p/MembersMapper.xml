@@ -141,4 +141,25 @@
 		WHERE 
 				mid = #{mid}
 	</select>
+	
+	<!-- 회원 본인이 작성한 문의글 내역 전체 조회 -->
+	<select id="qnaListAll" resultType="hashmap">
+		
+		SELECT 
+				q.qna_num,
+				q.mid,
+				q.qna_category_num,
+				q.qna_title,
+				q.qna_content,
+				q.anwser,
+				q.qna_date,
+				qc.qna_category_name
+		FROM 
+				qnaboard q,qna_category qc
+		WHERE 
+				q.qna_category_num = qc.qna_category_num
+		ORDER BY 
+				qna_date DESC
+		
+	</select>
 </mapper>

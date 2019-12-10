@@ -86,4 +86,8 @@ public class MembersService {
 	public int qnaListCount(String mid){
 		return membersDaoImpl.qnaListCount(mid);
 	}
+	
+	public List<HashMap<String, Object>> qnaListAll(){
+		return membersDaoImpl.qnaListAll();
+	}
 }
