@@ -125,7 +125,7 @@
                     </tr>
                   </tfoot>
                   <tbody>
-                  	<c:forEach var="vo" items="${list}">
+                  	<c:forEach var="vo" items="${noapplist}">
                     <tr>                    
                       <td>${vo.COMPANY}</td>
                       <td>${vo.BTYPE}</td>
