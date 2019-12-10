@@ -52,12 +52,15 @@
 			<p>
 				<div style="font-size: 1.5em;"><span>입실시간 15시부터</span></div>
 				<div style="font-size: 1.5em;"><span>퇴실시간 11시까지</span></div>
-			</p>
+
 			<br>
 			<p class="card" style="font-size: 1.2em;background-color: lightgray;min-height: 100px;padding:10px;">
 				<span>업소 소개좀 잘해봐 업소 소개좀 잘해봐 업소 소개좀 잘해봐 업소 소개좀 잘해봐업소 소개좀 잘해봐업소 소개좀 잘해봐업소 소개좀 잘해봐업소 소개좀 잘해봐
 				업소 소개좀 잘해봐 업소 소개좀 잘해봐 업소 소개좀 잘해봐 업소 소개좀 잘해봐 업소 소개좀 잘해봐업소 소개좀 잘해봐 업소 소개좀 잘해봐 업소 소개좀 잘해봐 업소 소개좀 잘해봐
 				업소 소개좀 잘해봐 업소 소개좀 잘해봐 업소 소개좀 잘해봐 업소 소개좀 잘해봐 업소 소개좀 잘해봐 업소 소개좀 잘해봐</span>
+			</p>
+			<p style="text-align: right;">
+				<button type="button" class="btn btn-success">찜목록 추가</button>
 			</p>
 			
 		</div>
@@ -67,13 +70,13 @@
 						
 		<ul class="nav nav-tabs" id="myTab" role="tablist">
 			  <li class="nav-item">
-			    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
+			    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">예약</a>
 			  </li>
 			  <li class="nav-item">
-			    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
+			    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">소개</a>
 			  </li>
 			  <li class="nav-item">
-			    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
+			    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">리뷰</a>
 		 	 </li>
 		</ul>
 		
@@ -97,7 +100,7 @@
 							<p>최대인원</p>
 							
 					
-							<button type="button" class="btn btn-danger" style="width:200px;height:50px;position: absolute;bottom: 20px;right: 20px;">숙박 예약</button>
+							<button type="button" class="btn btn-danger" style="width: 100%;height:50px;position: absolute;bottom: 0px;">숙박 예약</button>
 							
 							
 						</div>
@@ -150,7 +153,7 @@
 							<p>최대인원</p>
 							
 					
-							<button type="button" class="btn btn-danger" style="width:200px;height:50px;position: absolute;bottom: 20px;right: 20px;">숙박 예약</button>
+							<button type="button" class="btn btn-danger" style="width:100%;height:50px;position: absolute;bottom: 0px;">숙박 예약</button>
 							
 							
 						</div>
@@ -161,7 +164,7 @@
 							  	<span aria-hidden="true" style="font-size: 1.5em;">&times;</span>
 							</button>
 						    
-							<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+							<div id="carouselExampleFade1" class="carousel slide carousel-fade" data-ride="carousel">
 							  <div class="carousel-inner">
 							    <div class="carousel-item active">
 							      <img style="width:100%;height: 400px;" src="${cp }/resources/images/banner_1.jpg" class="d-block w-100" alt="...">
@@ -173,11 +176,11 @@
 							      <img style="width:100%;height: 400px;" src="${cp }/resources/images/banner_3.jpg" class="d-block w-100" alt="...">
 							    </div>
 							  </div>
-							  <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+							  <a class="carousel-control-prev" href="#carouselExampleFade1" role="button" data-slide="prev">
 							    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
 							    <span class="sr-only">Previous</span>
 							  </a>
-							  <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+							  <a class="carousel-control-next" href="#carouselExampleFade1" role="button" data-slide="next">
 							    <span class="carousel-control-next-icon" aria-hidden="true"></span>
 							    <span class="sr-only">Next</span>
 							  </a>
@@ -201,39 +204,176 @@
 				
 				  <div class="card-body" style="margin: 10px;">
 				   
-				   <h4>편의 시설</h4>
-				   
-				   <div>
-				   		<ul>
-				   			<li style="display: inline-block;margin-right: 10px;"><img style="width:60px;height:60px;" src="${cp }/resources/a_icon/001-bathtub.png"></li>
-				   			<li style="display: inline-block;margin-right: 10px;"><img style="width:60px;height:60px;" src="${cp }/resources/a_icon/001-bathtub.png"></li>
-				   			<li style="display: inline-block;margin-right: 10px;"><img style="width:60px;height:60px;" src="${cp }/resources/a_icon/001-bathtub.png"></li>
-				   			<li style="display: inline-block;margin-right: 10px;"><img style="width:60px;height:60px;" src="${cp }/resources/a_icon/001-bathtub.png"></li>
-				   			<li style="display: inline-block;margin-right: 10px;"><img style="width:60px;height:60px;" src="${cp }/resources/a_icon/001-bathtub.png"></li>
-				   			<li style="display: inline-block;margin-right: 10px;"><img style="width:60px;height:60px;" src="${cp }/resources/a_icon/001-bathtub.png"></li>
-				   			<li style="display: inline-block;margin-right: 10px;"><img style="width:60px;height:60px;" src="${cp }/resources/a_icon/001-bathtub.png"></li>
-				   			<li style="display: inline-block;margin-right: 10px;"><img style="width:60px;height:60px;" src="${cp }/resources/a_icon/001-bathtub.png"></li>
-				   			<li style="display: inline-block;margin-right: 10px;"><img style="width:60px;height:60px;" src="${cp }/resources/a_icon/001-bathtub.png"></li>
-				   			<li style="display: inline-block;margin-right: 10px;"><img style="width:60px;height:60px;" src="${cp }/resources/a_icon/001-bathtub.png"></li>
-				   			<li style="display: inline-block;margin-right: 10px;"><img style="width:60px;height:60px;" src="${cp }/resources/a_icon/001-bathtub.png"></li>
-				   			<li style="display: inline-block;margin-right: 10px;"><img style="width:60px;height:60px;" src="${cp }/resources/a_icon/001-bathtub.png"></li>
-				   			<li style="display: inline-block;margin-right: 10px;"><img style="width:60px;height:60px;" src="${cp }/resources/a_icon/001-bathtub.png"></li>
-				   			<li style="display: inline-block;margin-right: 10px;"><img style="width:60px;height:60px;" src="${cp }/resources/a_icon/001-bathtub.png"></li>
-				   			<li style="display: inline-block;margin-right: 10px;"><img style="width:60px;height:60px;" src="${cp }/resources/a_icon/001-bathtub.png"></li>
-				   			<li style="display: inline-block;margin-right: 10px;"><img style="width:60px;height:60px;" src="${cp }/resources/a_icon/001-bathtub.png"></li>
-				   			<li style="display: inline-block;margin-right: 10px;"><img style="width:60px;height:60px;" src="${cp }/resources/a_icon/001-bathtub.png"></li>
-				   		</ul>
-				   </div>
+					   <h4>편의 시설</h4>
+					   <!-- 편의시설 목록 -->
+					   <div>
+					   		<ul>
+					   			<li style="display: inline-block;margin-right: 10px;"><img style="width:60px;height:60px;" src="${cp }/resources/a_icon/001-bathtub.png"></li>
+					   			<li style="display: inline-block;margin-right: 10px;"><img style="width:60px;height:60px;" src="${cp }/resources/a_icon/001-bathtub.png"></li>
+					   			<li style="display: inline-block;margin-right: 10px;"><img style="width:60px;height:60px;" src="${cp }/resources/a_icon/001-bathtub.png"></li>
+					   			<li style="display: inline-block;margin-right: 10px;"><img style="width:60px;height:60px;" src="${cp }/resources/a_icon/001-bathtub.png"></li>
+					   			<li style="display: inline-block;margin-right: 10px;"><img style="width:60px;height:60px;" src="${cp }/resources/a_icon/001-bathtub.png"></li>
+					   			<li style="display: inline-block;margin-right: 10px;"><img style="width:60px;height:60px;" src="${cp }/resources/a_icon/001-bathtub.png"></li>
+					   			<li style="display: inline-block;margin-right: 10px;"><img style="width:60px;height:60px;" src="${cp }/resources/a_icon/001-bathtub.png"></li>
+					   			<li style="display: inline-block;margin-right: 10px;"><img style="width:60px;height:60px;" src="${cp }/resources/a_icon/001-bathtub.png"></li>
+					   			<li style="display: inline-block;margin-right: 10px;"><img style="width:60px;height:60px;" src="${cp }/resources/a_icon/001-bathtub.png"></li>
+					   			<li style="display: inline-block;margin-right: 10px;"><img style="width:60px;height:60px;" src="${cp }/resources/a_icon/001-bathtub.png"></li>
+					   			<li style="display: inline-block;margin-right: 10px;"><img style="width:60px;height:60px;" src="${cp }/resources/a_icon/001-bathtub.png"></li>
+					   			<li style="display: inline-block;margin-right: 10px;"><img style="width:60px;height:60px;" src="${cp }/resources/a_icon/001-bathtub.png"></li>
+					   			<li style="display: inline-block;margin-right: 10px;"><img style="width:60px;height:60px;" src="${cp }/resources/a_icon/001-bathtub.png"></li>
+					   			<li style="display: inline-block;margin-right: 10px;"><img style="width:60px;height:60px;" src="${cp }/resources/a_icon/001-bathtub.png"></li>
+					   			<li style="display: inline-block;margin-right: 10px;"><img style="width:60px;height:60px;" src="${cp }/resources/a_icon/001-bathtub.png"></li>
+					   			<li style="display: inline-block;margin-right: 10px;"><img style="width:60px;height:60px;" src="${cp }/resources/a_icon/001-bathtub.png"></li>
+					   			<li style="display: inline-block;margin-right: 10px;"><img style="width:60px;height:60px;" src="${cp }/resources/a_icon/001-bathtub.png"></li>
+					   		</ul>
+					   </div>
+					   
+					   <!-- 편의시설 설명 -->
+					   <div>
+					   		<div>
+					   			<span>편의시설 설명 1</span>
+					   		</div>
+					   		<div>
+					   			<span>편의시설 설명 2</span>
+					   		</div>
+					   		<div>
+					   			<span>편의시설 설명 3</span>
+					   		</div>
+					   		<div>
+					   			<span>편의시설 설명 4</span>
+					   		</div>
+					   		<div>
+					   			<span>편의시설 설명 5</span>
+					   		</div>
+					   		<div>
+					   			<span>편의시설 설명 6</span>
+					   		</div>
+					   		<div>
+					   			<span>편의시설 설명 7</span>
+					   		</div>
+					   </div>
 				   
 				  </div>
 				  
 				</div>
 								
-<!-- 			</section> -->
+		<!-- </section> -->
 			  		
 			  </div>
-			  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
 			  
+			  <!-- 리뷰 탭 -->
+			  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab" style="padding:20px;">
+			  	
+			  		<div style="border-bottom: 2px;">
+			  			<h2 style="text-align: center;">추천해요</h2>
+			  			<h2 style="text-align: center;color:orange;">★★★★★</h2>
+			  		</div>
+			  		
+					<div class="media" style="padding:20px;">
+					  <img src="${cp }/resources/review_icon/ico_15.png" class="mr-3" alt="..." style="width:56px;height:56px;">
+					  <div class="media-body">
+					  
+					    <h5 class="mt-0">Media heading 
+					    </h5>
+					    <div>
+					    	스위트룸 <span style="font-size: 1.0em;color:orange;">  친절도 : ★★★★★   청결도 : ★★★★  편의설 : ★★★</span>
+					    </div>
+					   
+					    	Cras sit amet nibh libero, in gravida nulla.nibh libero,gravida nulla.
+						    nibh lib in gravida nulla Nulla vel metus scelerisque ante sollicitudin.
+						     Cras purus odio, vestibulum in vulputate at, tempus viverra turpis.
+						      Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+						
+					  	<div style="margin-top:15px;">
+					  		<img src="${cp }/resources/review_icon/ico_15.png" class="mr-3" alt="..." style="width:100px;height:100px;">
+					  		<img src="${cp }/resources/review_icon/ico_15.png" class="mr-3" alt="..." style="width:100px;height:100px;">
+					  		<img src="${cp }/resources/review_icon/ico_15.png" class="mr-3" alt="..." style="width:100px;height:100px;">
+					  		<img src="${cp }/resources/review_icon/ico_15.png" class="mr-3" alt="..." style="width:100px;height:100px;">
+					  	</div>
+					  	<p style="margin-top: 15px;font-size: 1em;">
+					  		2019.12.10
+					  	</p>
+					  </div>
+				
+					</div>
+					
+					<div class="media" style="padding:20px;">
+					  <img src="${cp }/resources/review_icon/ico_15.png" class="mr-3" alt="..." style="width:56px;height:56px;">
+					  <div class="media-body">
+					  
+					    <h5 class="mt-0">Media heading 
+					    	<span style="font-size: 0.7em;color:orange;">  친절도 : ★★★★★   청결도 : ★★★★  편의설 : ★★★</span>
+					    </h5>
+					    
+					    Cras sit amet nibh libero, in gravida nulla.nibh libero,gravida nulla.nibh lib in gravida nulla Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+					  	<div style="margin-top:15px;">
+					  		<img src="${cp }/resources/review_icon/ico_15.png" class="mr-3" alt="..." style="width:100px;height:100px;">
+					  		<img src="${cp }/resources/review_icon/ico_15.png" class="mr-3" alt="..." style="width:100px;height:100px;">
+					  		<img src="${cp }/resources/review_icon/ico_15.png" class="mr-3" alt="..." style="width:100px;height:100px;">
+					  		<img src="${cp }/resources/review_icon/ico_15.png" class="mr-3" alt="..." style="width:100px;height:100px;">
+					  	</div>
+					  </div>
+				
+					</div>
+					
+					<div class="media" style="padding:20px;">
+					  <img src="${cp }/resources/review_icon/ico_14.png" class="mr-3" alt="..." style="width:56px;height:56px;">
+					  <div class="media-body">
+					  
+					    <h5 class="mt-0">Media heading 
+					    	<span style="font-size: 0.7em;color:orange;">  친절도 : ★★★★★   청결도 : ★★★★  편의설 : ★★★</span>
+					    </h5>
+					    
+					    Cras sit amet nibh libero, in gravida nulla.nibh libero,gravida nulla.nibh lib in gravida nulla Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+					  	<div style="margin-top:15px;">
+					  		<img src="${cp }/resources/review_icon/ico_15.png" class="mr-3" alt="..." style="width:100px;height:100px;">
+					  		<img src="${cp }/resources/review_icon/ico_15.png" class="mr-3" alt="..." style="width:100px;height:100px;">
+					  		<img src="${cp }/resources/review_icon/ico_15.png" class="mr-3" alt="..." style="width:100px;height:100px;">
+					  		<img src="${cp }/resources/review_icon/ico_15.png" class="mr-3" alt="..." style="width:100px;height:100px;">
+					  	</div>
+					  </div>
+				
+					</div>
+					
+					<div class="media" style="padding:20px;">
+					  <img src="${cp }/resources/review_icon/ico_13.png" class="mr-3" alt="..." style="width:56px;height:56px;">
+					  <div class="media-body">
+					  
+					    <h5 class="mt-0">Media heading 
+					    	<span style="font-size: 0.7em;color:orange;">  친절도 : ★★★★★   청결도 : ★★★★  편의설 : ★★★</span>
+					    </h5>
+					    
+					    Cras sit amet nibh libero, in gravida nulla.nibh libero,gravida nulla.nibh lib in gravida nulla Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+					  	<div style="margin-top:15px;">
+					  		<img src="${cp }/resources/review_icon/ico_15.png" class="mr-3" alt="..." style="width:100px;height:100px;">
+					  		<img src="${cp }/resources/review_icon/ico_15.png" class="mr-3" alt="..." style="width:100px;height:100px;">
+					  		<img src="${cp }/resources/review_icon/ico_15.png" class="mr-3" alt="..." style="width:100px;height:100px;">
+					  		<img src="${cp }/resources/review_icon/ico_15.png" class="mr-3" alt="..." style="width:100px;height:100px;">
+					  	</div>
+					  </div>
+				
+					</div>
+					
+					<div class="media" style="padding:20px;">
+					  <img src="${cp }/resources/review_icon/ico_11.png" class="mr-3" alt="..." style="width:56px;height:56px;">
+					  <div class="media-body">
+					  
+					    <h5 class="mt-0">Media heading 
+					    	<span style="font-size: 0.7em;color:orange;">  친절도 : ★★★★★   청결도 : ★★★★  편의설 : ★★★</span>
+					    </h5>
+					    
+					    Cras sit amet nibh libero, in gravida nulla.nibh libero,gravida nulla.nibh lib in gravida nulla Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+					  	<div style="margin-top:15px;">
+					  		<img src="${cp }/resources/review_icon/ico_15.png" class="mr-3" alt="..." style="width:100px;height:100px;">
+					  		<img src="${cp }/resources/review_icon/ico_15.png" class="mr-3" alt="..." style="width:100px;height:100px;">
+					  		<img src="${cp }/resources/review_icon/ico_15.png" class="mr-3" alt="..." style="width:100px;height:100px;">
+					  		<img src="${cp }/resources/review_icon/ico_15.png" class="mr-3" alt="..." style="width:100px;height:100px;">
+					  	</div>
+					  </div>
+				
+					</div>
+					
+					
 			  </div>
 		</div>
 				

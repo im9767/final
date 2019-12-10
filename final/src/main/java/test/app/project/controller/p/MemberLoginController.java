@@ -26,9 +26,9 @@ public class MemberLoginController {
 		MembersVo vo = new MembersVo();
 		vo.setMid(id);
 		vo.setMpwd(pwd);
-		MembersVo vo1 = membersService.isMember(vo);
+		boolean vo1 = membersService.isMember(vo);
 		
-		if(vo1 == null){
+		if(!vo1){
 			model.addAttribute("msg","아이디 또는 비밀번호가 틀렸습니다");
 			return "/members_p/login";
 		}else{

@@ -23,9 +23,11 @@ public class MembersDaoImpl implements MembersDao{
 	
 	// 로그인시 회원인지 체크
 	@Override
-	public MembersVo isMember(MembersVo vo) {
+	public boolean isMember(MembersVo vo) {
 		
-		return sqlSessionTemplate.selectOne(NAMESPACE+".isMember", vo);
+		MembersVo isMember =  sqlSessionTemplate.selectOne(NAMESPACE+".isMember", vo);
+		
+		return (isMember == null) ? false : true;
 		
 		
 	}

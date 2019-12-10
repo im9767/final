@@ -17,7 +17,7 @@ public class MembersService {
 	private MembersDaoImpl membersDaoImpl;
 	
 	// 로그인
-	public MembersVo isMember(MembersVo vo){
+	public boolean isMember(MembersVo vo){
 		return membersDaoImpl.isMember(vo);
 	}
 	
