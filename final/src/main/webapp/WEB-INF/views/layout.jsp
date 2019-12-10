@@ -25,8 +25,6 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/styles/main_styles.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/styles/responsive.css">
 
-<!-- Favicon -->
-<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath }assets/img/favicon.png">
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <style>
 	
