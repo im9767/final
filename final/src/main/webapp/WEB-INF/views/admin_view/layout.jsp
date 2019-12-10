@@ -344,7 +344,16 @@ $(function(){
           <i class="fas fa-fw fa-table"></i>
           <span>이벤트</span></a>
       </li>
-
+	 <li class="nav-item">
+        <a class="nav-link" href="${cp}/admin_view/writeamenities">
+          <i class="fas fa-fw fa-table"></i>
+          <span>편의시설 등록</span></a>
+      </li>
+       <li class="nav-item">
+        <a class="nav-link" href="${cp}/admin_view/roomsboard">
+          <i class="fas fa-fw fa-table"></i>
+          <span>객실정보</span></a>
+      </li>
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 

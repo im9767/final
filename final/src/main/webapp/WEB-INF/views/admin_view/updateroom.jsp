@@ -27,7 +27,9 @@
 	rel="stylesheet">
 
 <script type="text/javascript" src="${cp}/resources/admin/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="${cp}/resources/admin/js/jquery-3.4.1.js"></script>
 <script type="text/javascript">
+
         $(function() {
             $("#imgIn").on('change', function(){
             	$("#imgbox img").remove();
@@ -41,7 +43,7 @@
            		var reader = new FileReader();
            		
             	reader.onload = function (e){                               		
-            		console.log(input.files[b].name);
+            		console.log(input.files[b].name);      		
             		var aa=$("<img src='"+e.target.result+"'><br>").appendTo("#imgbox");           		
             		aa.css("width","700px");
             		aa.css("height","700px");
@@ -50,6 +52,21 @@
             	reader.readAsDataURL(input.files[a]);
             	}           
         }
+   
+        function pplus(){
+        	var ppp = $("#max").val();
+        	console.log(ppp);
+    		var x= $("#max").val(++ppp);
+    	}
+        function mmanous(){
+        	var sss = $("#max").val();
+        	var one=parseInt($("#max").val());
+    		if(one<=1){
+    			$("#max").val(1);
+    		}else{
+    			var y= $("#max").val(--sss);
+    		}
+    	}
     </script>
 </head>
 <body class="bg-gradient-primary">
@@ -62,28 +79,29 @@
 				<div class="row" style="height: auto;">
 					<div class="col-lg-7" style="margin-left: 10px; margin-top: 20px; margin-bottom: 20px;">
 						<div class="text-center">
-							<h1 class="h4 text-gray-900 mb-4" style="text-align: left;">이벤트
-								수정</h1>
+							<h1 class="h4 text-gray-900 mb-4" style="text-align: left; font-size: 50px;">수정하기</h1>
 						</div>
 						<div class="user" style="width: 900px; height: 700px;">
-							<form method="POST" action="${cp}/admin_view/updateeventok" enctype="multipart/form-data">
-							<c:forEach  var="vo" items="${upeventlist}" varStatus="vs">
+							<form method="POST" action="${cp}/admin_view/updateroomok" enctype="multipart/form-data">
+								<c:forEach  var="vo" items="${uproomlist}" varStatus="vs">	
 								<c:if test="${vs.index==0 }">
 								<div class="form-group row" style="width: auto">
 									<div class="col-sm-6 mb-3 mb-sm-0" style="width: auto">
-										<input type="text" name="event_Num" value="${vo.EVENT_NUM}" hidden="" >
-										<input type="text" name="etitle" id="etitle" placeholder="제목" value="${vo.ETITLE}">
-									</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									시작&nbsp;<input type="date" id="edate" name="edate" style="float:right;" value="${vo.ESTARTDATE}">&nbsp;
-									종료&nbsp;<input type="date" id="sdate" name="sdate" style="float:right;" value="${vo.EENDDATE }">
+									<input type="text" name="rname" id="rname" placeholder="방이름" style="width: 450px;" value="${vo.ROOMNAME }"><input type="text" name="room_num" id="room_num"  value="${vo.ROOM_NUM}" hidden="">
+									</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									가격:&nbsp;<input type="text" id="price" name="price" style="float:right; width: 100px;" value="${vo.ROOM_PRICE}">&nbsp;
+									최대인원:&nbsp;<input type="button" id="mm" onclick="mmanous()" value="-">&nbsp;<input type="text" id="max" name="max" readonly="readonly" style="float:right; width:20px;" value="${vo.MAX_PERSONNEL}" >&nbsp;<input type="button" id="pp" value="+" onclick="pplus()">
 								</div><hr style="width: 900px;">
-								<div id="imgbox"></div>
+								<h2>소개</h2>
+								<input type="text" style="width: 900px; height: 500px;" name="rcontent" id="rcontent" value="${vo.ROOM_INFO}">
+								<hr style="width: 900px;">
+								<h2>이미지</h2>													
+								<div id="imgbox"></div>					
 								</c:if>
-								<div id="fimgbox">
-								<img src="../resources/upload/${vo.SAVEFILENAME}" style="width: 700px; height: 700px;"><br>	
+								<div id="fimgbox">				
+								<img src="../resources/upload/${vo.ROOM_SAVE_NAME}" style="width: 700px; height: 700px;"><br>	
 								</div>
-								</c:forEach>
-																																										
+								</c:forEach>					
 								<hr style="width: 900px;">
 								<input multiple="multiple" type="file" id="imgIn" name="imgIn" class="btn btn-secondary btn-icon-split" >						
 								 <input type="submit" class="btn btn-primary btn-icon-split"
