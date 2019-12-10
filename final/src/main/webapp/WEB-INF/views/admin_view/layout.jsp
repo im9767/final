@@ -211,6 +211,26 @@ $(function(){
 	    }
 	  }
 	});
+	$("#couponBtn").click(function(){
+		var gnum=$("#gnum option:selected").val();
+		var coupon_type=$("#coupon_type option:selected").val();
+		var coupon_name=$("#coupon_name option:selected").val();
+		alert(coupon_name);
+		$.ajax({
+			url:"${cp}/admin/coupon?gnum="+gnum+"&coupon_type="+coupon_type+"&coupon_name="+encodeURI(coupon_name),
+			dataType:"xml",
+			success:function(data){
+				$("#couponMsg").empty();
+				$(data).find("result").each(function(){
+					var user=$(this).find("user").text();
+					var msg=$(this).find("msg").text();
+					var str=user +" "+ msg;
+					$("#couponMsg").append("<div>" + str +"</div>");
+				});
+			}
+		});
+	});
+	
 });
 </script>
 </head>
@@ -344,6 +364,66 @@ $(function(){
           <i class="fas fa-fw fa-table"></i>
           <span>이벤트</span></a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" data-toggle="modal" href="#myModal" data-backdrop="static">
+          <i class="fas fa-fw fa-table"></i>
+          <span>쿠폰발행</span></a>
+      </li>
+
+	 <!-- Modal -->
+  	<div class="modal fade" id="myModal" aria-labelledby="쿠폰발행" role="dialog" style="color: blue">
+      <div class="modal-dialog" style="max-width: 100%; width: auto; display: table;">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title" style="font-family: 궁서체;font-size:45px">쿠폰발행</h4>
+        </div>
+        <div class="modal-body">
+        	<div class="col-lg-6 mb-4" style="width:550px;">
+                  <div class="card bg-primary text-white shadow">
+                    <div class="card-body">
+                      	쿠폰발급대상(등급별)
+                    </div>
+                  </div>
+                  <div>
+              		<select name="gnum" id="gnum" class="form-control form-control-user" style="width:150px;display: inline-block;
+              		margin-top: 10px;">
+	                  <option value="4" <c:if test="${gnum=='4'}">selected</c:if>>전체</option>
+	                  <option value="3" <c:if test="${gnum=='3'}">selected</c:if>>골드</option>
+	                  <option value="2" <c:if test="${gnum=='2'}">selected</c:if>>실버</option>
+	                  <option value="1" <c:if test="${gnum=='1'}">selected</c:if>>브론즈</option>
+           		   </select>
+         		 
+         		 </div> 
+            </div>
+            <hr>
+         	 	<div class="col-lg-6 mb-4" style="width:550px">
+              		<div class="card bg-info text-white shadow">
+              			<div class="card-body">
+                  			쿠폰유형/발행쿠폰명
+               			</div>
+               		</div>
+               	<select name="coupon_type" id="coupon_type" class="form-control form-control-user" style="width:150px;display: inline-block;
+              		margin-top: 10px;">
+	                  <option value="할인" <c:if test="${coupon_type=='할인'}">selected</c:if>>할인</option>
+	                  <option value="응모" <c:if test="${coupon_type=='응모'}">selected</c:if>>응모</option>
+           		</select>
+               	<select name="coupon_name" id="coupon_name" class="form-control form-control-user" style="width:500px;display: inline-block;
+              		margin-top: 10px;">
+              		<c:forEach var="vo" items="${eelist }">
+              			<option value="${vo.etitle} 쿠폰">${vo.etitle} 쿠폰</option>
+              		</c:forEach>
+           		   </select>
+           		   <div id="couponMsg"></div>
+           		</div>
+        </div>
+        <div class="modal-footer">
+          <input type="button" id="couponBtn" class="btn btn-success btn-circle" value="발행"> 
+          <input type="button" class="btn btn-danger btn-circle" data-dismiss="modal" value="닫기">
+        </div>
+       </div>
+     </div>
+    </div>
 
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">

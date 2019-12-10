@@ -1,10 +1,12 @@
 package test.app.project.service.L;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import test.app.project.daoimpl.L.AdminMembersimpl;
+import test.app.project.vo.CouponVo;
 import test.app.project.vo.MembersVo;
 
 @Service
@@ -15,5 +17,14 @@ public class MembersService1 {
 	}
 	public List<MembersVo> memberslist(){
 		return dao.memberslist();
+	}
+	public int couponInsert(CouponVo vo){
+		return dao.couponInsert(vo);
+	}
+	public int countMembers(HashMap<String, Object> map){
+		return dao.countMembers(map);
+	}
+	public List<MembersVo> membersId(HashMap<String, Object> map){
+		return dao.membersId(map);
 	}
 }

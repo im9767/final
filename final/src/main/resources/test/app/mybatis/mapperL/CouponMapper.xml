@@ -2,7 +2,57 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-
 <mapper namespace="test.app.mybatis.mapperL.CouponMapper">
-	
+	<!-- 쿠폰 등록하기 -->
+	<insert id="couponinsert" parameterType="coupon">
+		insert into coupon values(coupon_seq.nextval,#{mid},#{coupon_name},#{coupon_type},'사용안함',sysdate)
+	</insert>
+	<!-- 등급별(or 전체) 회원수 구하기 -->
+	<select id="countmembers" resultType="int" parameterType="hashmap">
+		select NVL(count(mid),0) from members
+		<choose>
+			<when test="gnum!=null and gnum=='3'">
+				where gnum=#{ggnum}
+			</when>
+			<when test="gnum!=null and gnum=='2'">
+				where gnum=#{ggnum}
+			</when>
+			<when test="gnum!=null and gnum=='1'">
+				where gnum=#{ggnum}
+			</when>
+			<when test="gnum!=null and gnum=='4'">
+				where not gnum=#{ggnum}
+			</when>
+		</choose>
+	</select>
+	<!-- 등급별 아이디 추출하기 -->
+	<select id="gradeId" resultType="members" parameterType="hashmap">
+		select m.mid,m.gnum
+		from members m,grade g
+		where m.gnum=g.gnum
+		<choose>
+			<when test="gnum!=null and gnum=='3'">
+				and m.gnum=#{ggnum}
+			</when>
+			<when test="gnum!=null and gnum=='2'">
+				and m.gnum=#{ggnum}
+			</when>
+			<when test="gnum!=null and gnum=='1'">
+				and m.gnum=#{ggnum}
+			</when>
+			<when test="gnum!=null and gnum=='4'">
+				and not m.gnum=#{ggnum}
+			</when>
+		</choose>
+	</select>
 </mapper>
+
+
+
+
+
+
+
+
+
+

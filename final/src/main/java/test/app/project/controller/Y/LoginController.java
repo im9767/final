@@ -1,7 +1,6 @@
 package test.app.project.controller.Y;
-
-import java.awt.List;
 import java.util.HashMap;
+import java.awt.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -14,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import test.app.project.service.L.PaymentService;
 import test.app.project.service.Y.AdminService;
+import test.app.project.vo.EventVo;
 
 @Controller
 public class LoginController {
@@ -40,6 +40,7 @@ public class LoginController {
 		int years=year+1;
 		map1.put("year", year);
 		map1.put("years", years);
+		java.util.List<EventVo> elist=service.elistAll();
 		
 		HashMap<String,Object> admin=service.login(map);
 		java.util.List<HashMap<String, Object>> piechart=service1.piechart();
@@ -49,6 +50,7 @@ public class LoginController {
 			session.setAttribute("apwd",apwd);
 			model.addAttribute("list",piechart);
 			model.addAttribute("slist",slist);
+			session.setAttribute("eelist",elist);
 			model.addAttribute("year",year);
 			return ".admin";
 		}else{
