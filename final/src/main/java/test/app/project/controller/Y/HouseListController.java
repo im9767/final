@@ -23,17 +23,19 @@ public class HouseListController {
 	public void setService(AdminService service) {
 		this.service = service;
 	}
+	//관리자 로그인페이지 이동
 	@RequestMapping(value="/admin_view/table",method=RequestMethod.GET)
 	public String loginForm(){
 		return ".table";
 	}
-
+	//승인완료된 업체정보 조회
 	@RequestMapping(value = "/admin_view/housetable", method = RequestMethod.GET)
-	public String list(Model model) {
+	public String okapplist(Model model) {
 		List<HashMap<String, Object>> mlist = service.listAll();
-		model.addAttribute("list",mlist);
+		model.addAttribute("okapplist",mlist);
 		return ".housetable";
 	}
+	//승인완료된 등록업체삭제
 	@RequestMapping(value = "/admin_view/deletehouse", method = RequestMethod.GET)
 	public String deletehouse(int house_Num, HttpSession session) {
 		int n = service.deletehouse(house_Num);
@@ -43,13 +45,24 @@ public class HouseListController {
 			return "admin_view/housetable";
 		}
 	}
+	//승인대기 업체조회
 	@RequestMapping(value = "/admin_view/apphouse", method = RequestMethod.GET)
-	public String applist(Model model) {
+	public String noapplist(Model model) {
 		List<HashMap<String,Object>> alist = service.applistAll();
-		model.addAttribute("list",alist);
+		model.addAttribute("noapplist",alist);
 		return ".apphouse";
 	}
-
+	//승인대기중인 업체 삭제
+		@RequestMapping(value = "/admin_view/delhouse", method = RequestMethod.GET)
+		public String delhouse(int house_Num, HttpSession session) {
+			int n = service.appdelete(house_Num);
+			if (n > 0) {
+				return "redirect:/admin_view/apphouse";
+			} else {
+				return "admin_view/apphouse";
+			}
+		}
+	//승인해주기
 	@RequestMapping(value = "/admin_view/uphouse", method = RequestMethod.GET)
 	public String uphouse(int house_Num, HttpSession session) {
 		int n = service.appupdate(house_Num);
@@ -59,14 +72,5 @@ public class HouseListController {
 			return "admin_view/apphouse";
 		}
 	}
-
-	@RequestMapping(value = "/admin_view/delhouse", method = RequestMethod.GET)
-	public String delhouse(int house_Num, HttpSession session) {
-		int n = service.appdelete(house_Num);
-		if (n > 0) {
-			return "redirect:/admin_view/apphouse";
-		} else {
-			return "admin_view/apphouse";
-		}
-	}
+	
 }

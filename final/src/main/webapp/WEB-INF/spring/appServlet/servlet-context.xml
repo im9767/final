@@ -39,7 +39,25 @@
 		value="org.springframework.web.servlet.view.tiles3.TilesView"/>
 		<beans:property name="order" value="1"/>
 	</beans:bean>
+	<!-- //// 파일업로드 설정 ///////////////// 
+	id="multipartResolver" 로 id속성 지정하기
+	-->
+	<beans:bean id="multipartResolver"
+ class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+ 		<!-- 최대업로드 크기 지정 -->
+		<beans:property name="maxUploadSize" value="9999999999"/>	
+	</beans:bean>
 	
+	<!-- 파일다운로드 뷰 -->
+	<beans:bean id="filedownloadView"
+	 class="test.app.project.upload.Y.FiledownloadView"/>
+	
+	<!-- filedownloadView -->
+	<!-- 뷰이름으로 뷰를 찾아 응답하는 뷰리절버 -->
+	<beans:bean 
+		class="org.springframework.web.servlet.view.BeanNameViewResolver">
+		<beans:property name="order" value="1"/>
+	</beans:bean>
 	<context:component-scan base-package="test.app.project.controller" />
 	
 </beans:beans>

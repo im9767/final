@@ -17,7 +17,7 @@ public class EventimagesVo {
 	/** 저장파일명. */
 	private String savefilename;
 
-	private int event_num;
+	private int event_Num;
 
 	/**
 	 * 생성자.
@@ -25,12 +25,12 @@ public class EventimagesVo {
 	public EventimagesVo() {
 	}
 
-	public EventimagesVo(int eimgnum, String orgfilename, String savefilename, int event_num) {
+	public EventimagesVo(int eimgnum, String orgfilename, String savefilename, int event_Num) {
 		super();
 		this.eimgnum = eimgnum;
 		this.orgfilename = orgfilename;
 		this.savefilename = savefilename;
-		this.event_num = event_num;
+		this.event_Num = event_Num;
 	}
 
 	public int getEimgnum() {
@@ -57,12 +57,12 @@ public class EventimagesVo {
 		this.savefilename = savefilename;
 	}
 
-	public int getEvent_num() {
-		return event_num;
+	public int getEvent_Num() {
+		return event_Num;
 	}
 
-	public void setEvent_num(int event_num) {
-		this.event_num = event_num;
+	public void setEvent_Num(int event_Num) {
+		this.event_Num = event_Num;
 	}
 
 }
