@@ -31,6 +31,7 @@
         $(function() {
             $("#imgIn").on('change', function(){
             	$("#imgbox img").remove();
+            	$("#fimgbox img").remove();
             	readURL(this);
             });
         });
@@ -42,7 +43,7 @@
             	reader.onload = function (e){                               		
             		console.log(input.files[b].name);
             		//var aa=$("<img src='"+e.target.result+"' name='"+input.files[b].name+"'><br>").appendTo("#imgbox");
-            		var aa=$("<img src='"+e.target.result+"'name='imgs'><br>").appendTo("#imgbox");           		
+            		var aa=$("<img src='"+e.target.result+"'><br>").appendTo("#imgbox");           		
             		aa.css("width","700px");
             		aa.css("height","700px");
             		console.log(b++);
@@ -63,22 +64,31 @@
 					<div class="col-lg-7" style="margin-left: 10px; margin-top: 20px; margin-bottom: 20px;">
 						<div class="text-center">
 							<h1 class="h4 text-gray-900 mb-4" style="text-align: left;">이벤트
-								작성</h1>
+								수정</h1>
 						</div>
 						<div class="user" style="width: 900px; height: 700px;">
-							<form method="POST" action="${cp}/admin_view/writeeventok" enctype="multipart/form-data">
+							<form method="POST" action="${cp}/admin_view/updateeventok" enctype="multipart/form-data">
+							<c:forEach  var="vo" items="${upeventlist}" varStatus="vs">
+								<c:if test="${vs.index==0 }">
 								<div class="form-group row" style="width: auto">
 									<div class="col-sm-6 mb-3 mb-sm-0" style="width: auto">
-										<input type="text" name="etitle" id="etitle" placeholder="제목">
+										<input type="text" name="event_Num" value="${vo.EVENT_NUM}" hidden="" >
+										<input type="text" name="etitle" id="etitle" placeholder="제목" value="${vo.ETITLE}">
 									</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									시작&nbsp;<input type="date" id="edate" name="edate" style="float:right;" value="">&nbsp;
-									종료&nbsp;<input type="date" id="sdate" name="sdate" style="float:right;" value="">
-								</div><hr style="width: 900px;">													
-								<div id="imgbox"></div>						
+									시작&nbsp;<input type="date" id="edate" name="edate" style="float:right;" value="${vo.ESTARTDATE}">&nbsp;
+									종료&nbsp;<input type="date" id="sdate" name="sdate" style="float:right;" value="${vo.EENDDATE }">
+								</div><hr style="width: 900px;">
+								<div id="imgbox"></div>
+								</c:if>
+								<div id="fimgbox">
+								<img src="../resources/upload/${vo.SAVEFILENAME}" style="width: 700px; height: 700px;"><br>	
+								</div>
+								</c:forEach>
+																																										
 								<hr style="width: 900px;">
 								<input multiple="multiple" type="file" id="imgIn" name="imgIn" class="btn btn-secondary btn-icon-split" >						
 								 <input type="submit" class="btn btn-primary btn-icon-split"
-									style="float: right" value="작성하기">
+									style="float: right" value="수정하기">
 							</form>
 						</div>
 						<hr>

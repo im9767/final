@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import test.app.project.vo.EventVo;
+import test.app.project.vo.EventimagesVo;
 import test.app.project.vo.HouseVo;
 import test.app.project.vo.NoticeVo;
 
@@ -64,9 +65,40 @@ public class AdminDao {
 	public int eventdelete(int event_Num){
 		return sqlSessionTemplate.delete("test.app.mybatis.mapperY.AdminMapper.eventdelete",event_Num);
 	}
+	public int eventimgdelete(int event_Num){
+		return sqlSessionTemplate.delete("test.app.mybatis.mapperY.AdminMapper.eventimgdelete",event_Num);
+	}
 	public int writeevent(HashMap<String, Object> map){
 		return 
 		sqlSessionTemplate.insert("test.app.mybatis.mapperY.AdminMapper.writeevent",map);
+	}
+	public int inevent(EventVo vo){
+		return 
+		sqlSessionTemplate.insert("test.app.mybatis.mapperY.AdminMapper.inevent",vo);
+	}
+	public int ineventimg(EventimagesVo vo){
+		return 
+		sqlSessionTemplate.insert("test.app.mybatis.mapperY.AdminMapper.ineventimg",vo);
+	}
+	public int selenum(String etitle){
+		return 
+		sqlSessionTemplate.selectOne("test.app.mybatis.mapperY.AdminMapper.selenum",etitle);
+	}
+	public List<HashMap<String, Object>> selevent(int event_Num){
+		return sqlSessionTemplate.selectList("test.app.mybatis.mapperY.AdminMapper.selevent",event_Num);
+	}
+	public EventimagesVo imginfo(int event_Num){
+		return sqlSessionTemplate.selectOne("test.app.mybatis.mapperY.AdminMapper.imginfo",event_Num);
+	}
+	public List<HashMap<String, Object>> seleventinfo(int event_Num){
+		return sqlSessionTemplate.selectList("test.app.mybatis.mapperY.AdminMapper.seleventinfo",event_Num);
+	}
+	public int hitup(int event_Num){
+		return sqlSessionTemplate.update("test.app.mybatis.mapperY.AdminMapper.hitup",event_Num);
+	}
+	public int upevent(EventVo vo){
+		return 
+		sqlSessionTemplate.update("test.app.mybatis.mapperY.AdminMapper.upevent",vo);
 	}
 	
 }

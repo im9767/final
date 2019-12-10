@@ -35,7 +35,7 @@
                 <h1 class="h4 text-gray-900 mb-4" style="text-align: left;">공지사항 수정</h1>
               </div>             
               <div class="user" style="width: 900px; height: 700px;">
-              <c:forEach var="vo" items="${list}">
+              <c:forEach var="vo" items="${upnoticelist}">
               <form method="GET" action="${cp}/admin_view/upnoticeok">
                 <div class="form-group row">                 
                     <div class="col-sm-6 mb-3 mb-sm-0" style="font-size:1.7em; color: black;">

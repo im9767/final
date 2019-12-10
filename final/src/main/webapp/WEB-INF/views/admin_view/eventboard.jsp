@@ -222,10 +222,10 @@
                     </tr>
                   </thead>
                   <tbody>
-                  	<c:forEach var="vo" items="${list2}">
+                  	<c:forEach var="vo" items="${alleventlist}">
                     <tr>
                       <td>${vo.event_Num}</td>
-                      <td><a href="${cp}/admin_view/selevent?event_Num=${vo.event_Num}">${vo.etitle}</a></td>
+                      <td><a href="${cp}/admin_view/seleventinfo?event_Num=${vo.event_Num}">${vo.etitle}</a></td>
                       <td><a href="${cp}/admin_view/upevent?event_Num=${vo.event_Num}">수정</a></td>
                       <td><a href="${cp}/admin_view/delevent?event_Num=${vo.event_Num}">삭제</a></td>
                       <td>${vo.eregdate}</td>
@@ -234,9 +234,8 @@
                       <td>${vo.ehit}</td>           
                     </tr>
                     </c:forEach>
-                  </tbody>
-  					
-              	</div>
+                  </tbody> 					
+              	
                 </table>
             </div>
             

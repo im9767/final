@@ -2,24 +2,33 @@ package test.app.project.controller.Y;
 
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.forwardedUrl;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Date;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import test.app.project.service.Y.AdminService;
 import test.app.project.vo.EventVo;
-import test.app.project.vo.HouseVo;
-import test.app.project.vo.NoticeVo;
+import test.app.project.vo.EventimagesVo;
+
+
 
 @Controller
 public class EventController {
@@ -28,55 +37,57 @@ public class EventController {
 	public void setService(AdminService service) {
 		this.service = service;
 	}
+	//이벤트 전체조회
 	@RequestMapping(value = "/admin_view/eventboard", method = RequestMethod.GET)
-	public String applist(Model model) {
+	public String eventlist(Model model) {
 		List<EventVo> elist = service.elistAll();
-		model.addAttribute("list2", elist);
+		model.addAttribute("alleventlist", elist);
 		return ".eventboard";
 	}
-
+	//이벤트작성
 	@RequestMapping(value = "/admin_view/writeevent", method = RequestMethod.GET)
 	public String lookwrite(){
 		return "admin_view/writeevent";
 	}
-	@RequestMapping(value="/admin_view/writeeventok",method=RequestMethod.GET)
-	public String writeeventok(String etitle,String edate,String sdate,String imgIn,HttpSession session){
-		System.out.println(etitle);
-		System.out.println(edate);
-		System.out.println(sdate);
-		ArrayList<String> a = new ArrayList<String>();
-		System.out.println(a);
-		int n=1;
-		//int n=service.writeevent;
-		if(n>0){
-			return "redirect:/admin_view/eventboard";
-		}else{
-			return "admin_view/writeevent";
+	//이벤트작성체크
+	@RequestMapping(value="/admin_view/writeeventok",method=RequestMethod.POST)
+	public String writeeventok(String etitle,java.sql.Date edate,java.sql.Date sdate,@RequestParam(required=false) List<MultipartFile> imgIn,HttpSession session) throws IOException{
+		HashMap<String, Object> elist= new HashMap<String, Object>();
+
+		elist.put("etitle", etitle);
+		elist.put("sdate", sdate);
+		elist.put("edate", edate);
+		//업로드할 폴더의 절대경로 얻어오기
+				String uploadPath=
+					session.getServletContext().getRealPath("/resources/upload");
+				System.out.println(uploadPath);
+	try{
+		
+	   for(int j = 0;j<imgIn.size();j++){
+		 //전송된 파일명
+			String orgfilename=imgIn.get(j).getOriginalFilename();
+			elist.put("orgfilename"+j+1,orgfilename);
+		//저장될 파일명(중복되지 않는 이름으로 만들기)
+			String savefilename=UUID.randomUUID() +"_" + orgfilename;
+			elist.put("savefilename"+j+1,savefilename);
+		//전송된 파일을 읽어오기 위한 스트림
+				InputStream fis=imgIn.get(j).getInputStream();
+		//전송된 파일을 서버에 출력하기 위한 스트림
+				FileOutputStream fos=
+						new FileOutputStream(uploadPath+"\\" + savefilename);
+		//파일복사하기(업로드하기)
+				FileCopyUtils.copy(fis, fos);
+				fis.close();
+				fos.close();
+	   }
+		elist.put("imgcnt", imgIn.size());
+		service.writeevent(elist);	
+		}catch(Exception e){
+			e.printStackTrace();
 		}
+		return "redirect:/admin_view/eventboard";		
 	}
-	/*
-	@RequestMapping(value = "/admin_view/upnotice", method = RequestMethod.GET)
-	public ModelAndView upnotice(int nnum){
-		List<NoticeVo> nlist = service.nlist(nnum);
-		ModelAndView mv = new ModelAndView("admin_view/updatenotice");
-		mv.addObject("list", nlist);
-		return mv;
-	}
-	@RequestMapping(value = "/admin_view/upnoticeok", method = RequestMethod.GET)
-	public String upnotice(NoticeVo vo){
-		int n=service.upnotice(vo);
-		System.out.println(vo.getNcontent());
-		System.out.println(vo.getNnum());
-		System.out.println(vo.getNtitle());
-		System.out.println(vo.getNregdate());
-		if (n > 0) {
-			return "redirect:/admin_view/noticeboard";
-		} else {
-			return "redirect:/admin_view/login";
-		}
-	}
-	*/
-	
+	//이벤트삭제
 	@RequestMapping(value = "/admin_view/delevent", method = RequestMethod.GET)
 	public String delevent(int event_Num, HttpSession session) {
 		int n = service.eventdelete(event_Num);
@@ -86,15 +97,62 @@ public class EventController {
 			return "redirect:/admin_view/eventboard";
 		}
 	}
-	/*
-	@RequestMapping(value = "/admin_view/selnotice", method = RequestMethod.GET)
-	public ModelAndView selnotice(int nnum, HttpSession session) {
-		List<NoticeVo> nlist = service.nlist(nnum);
-		ModelAndView mv = new ModelAndView("admin_view/selnotice");
-		mv.addObject("list", nlist);
+	//이벤트 상세조회
+	@RequestMapping(value = "/admin_view/seleventinfo", method = RequestMethod.GET)
+	public ModelAndView selevent(int event_Num, HttpSession session) {
+		List<HashMap<String, Object>> nlist = service.seleventinfo(event_Num);
+		ModelAndView mv = new ModelAndView("admin_view/selevent");
+		mv.addObject("eventinfolist", nlist);
 		return mv;
 	}
-	*/
+	//이벤트 수정하기
+	@RequestMapping(value = "/admin_view/upevent", method = RequestMethod.GET)
+	public ModelAndView upevent(int event_Num, HttpSession session) {
+		List<HashMap<String, Object>> nlist = service.selevent(event_Num);
+		ModelAndView mv = new ModelAndView("admin_view/updateevent");	
+		mv.addObject("upeventlist", nlist);
+		return mv;
+	}
+	//이벤트 수정체크
+	@RequestMapping(value="/admin_view/updateeventok",method=RequestMethod.POST)
+	public String updateeventok(int event_Num,String etitle,java.sql.Date edate,java.sql.Date sdate,@RequestParam(required=false) List<MultipartFile> imgIn,HttpSession session) throws IOException{
+		HashMap<String, Object> elist= new HashMap<String, Object>();
+		elist.put("etitle", etitle);
+		elist.put("sdate", sdate);
+		elist.put("edate", edate);
+				String uploadPath=
+					session.getServletContext().getRealPath("/resources/upload");
+				System.out.println(uploadPath);
+	try{
+		/*
+		EventimagesVo vo=service.imginfo(event_Num);
+		String savefilename1=vo.getSavefilename();
+		File f=new File(uploadPath +"\\" + savefilename1);
+		if(!f.delete()) {
+			new Exception("파일삭제실패!");
+		}
+		*/
+		
+	   for(int j = 0;j<imgIn.size();j++){
+			String orgfilename=imgIn.get(j).getOriginalFilename();
+			elist.put("orgfilename"+j+1,orgfilename);
+			String savefilename=UUID.randomUUID() +"_" + orgfilename;
+			elist.put("savefilename"+j+1,savefilename);
+				InputStream fis=imgIn.get(j).getInputStream();
+				FileOutputStream fos=
+						new FileOutputStream(uploadPath+"\\" + savefilename);
+				FileCopyUtils.copy(fis, fos);
+				fis.close();
+				fos.close();
+	   }
+		elist.put("imgcnt", imgIn.size());
+		service.updateevent(elist,event_Num);	
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return "redirect:/admin_view/eventboard";		
+	}
+	
 }
 	
 	

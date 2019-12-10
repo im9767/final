@@ -43,9 +43,37 @@
 	<select id="elistAll"  resultType="test.app.project.vo.EventVo">
 		select * from event
 	</select>
+	<select id="seleventinfo"  parameterType="int" resultType="hashmap">
+		select e.event_num,e.etitle,to_char(e.eregdate,'yyyy-mm-dd') eregdate,to_char(e.estartdate,'yyyy-mm-dd') estartdate,to_char(e.eenddate,'yyyy-mm-dd') eenddate,e.ehit,ei.orgfilename,ei.savefilename from event e,eventimages ei where e.event_num=ei.event_num and ei.event_num=#{event_Num}
+	</select>
+	<select id="imginfo"  parameterType="int" resultType="hashmap">
+		select * from eventimages where event_num=#{event_Num} 
+	</select>
+	<update id="hitup" parameterType="int">
+		update event set ehit=ehit+1 where event_num=#{event_Num}
+	</update>
 	<delete id="eventdelete" parameterType="int" >
 		delete event where event_Num=#{event_Num}
 	</delete>
+	<delete id="eventimgdelete" parameterType="int" >
+		delete eventimages where event_Num=#{event_Num}
+	</delete>
+	<insert id="inevent" parameterType="test.app.project.vo.EventVo">
+		insert into event values(event_seq.nextval,#{etitle},sysdate,0,#{estartdate},#{eenddate})
+	</insert>
+	<insert id="ineventimg" parameterType="test.app.project.vo.EventimagesVo">
+		insert into eventimages values(eventimages_seq.nextval,#{orgfilename},#{savefilename},#{event_Num})
+	</insert>
+	<select id="selenum"  parameterType="String" resultType="int">
+		select event_num from event where etitle=#{etitle}
+	</select>
+	<select id="selevent"  parameterType="int" resultType="hashmap">
+		select e.event_num,e.etitle,to_char(e.eregdate,'yyyy-mm-dd') eregdate,to_char(e.estartdate,'yyyy-mm-dd') estartdate,to_char(e.eenddate,'yyyy-mm-dd') eenddate,e.ehit,ei.orgfilename,ei.savefilename from event e,eventimages ei where e.event_num=ei.event_num and ei.event_num=#{event_Num}
+	</select>
+	<update id="upevent" parameterType="test.app.project.vo.EventVo">
+		update event set etitle=#{etitle},estartdate=#{estartdate},eenddate=#{eenddate} where event_num=#{event_Num}
+	</update>
+	
 </mapper>
 
 
