@@ -142,7 +142,7 @@
 				mid = #{mid}
 	</select>
 	
-	<!-- 회원 본인이 작성한 문의글 내역 전체 조회 -->
+	<!-- 회원 본인이 작성한 문의글 내역 전체 조회 엑셀용-->
 	<select id="qnaListAll" resultType="hashmap">
 		
 		SELECT 
