@@ -211,26 +211,6 @@ $(function(){
 	    }
 	  }
 	});
-	$("#couponBtn").click(function(){
-		var gnum=$("#gnum option:selected").val();
-		var coupon_type=$("#coupon_type option:selected").val();
-		var coupon_name=$("#coupon_name option:selected").val();
-		alert(coupon_name);
-		$.ajax({
-			url:"${cp}/admin/coupon?gnum="+gnum+"&coupon_type="+coupon_type+"&coupon_name="+encodeURI(coupon_name),
-			dataType:"xml",
-			success:function(data){
-				$("#couponMsg").empty();
-				$(data).find("result").each(function(){
-					var user=$(this).find("user").text();
-					var msg=$(this).find("msg").text();
-					var str=user +" "+ msg;
-					$("#couponMsg").append("<div>" + str +"</div>");
-				});
-			}
-		});
-	});
-	
 });
 </script>
 </head>
@@ -456,8 +436,29 @@ $(function(){
 
   <!-- Page level custom scripts -->
   <!--  <script src="${cp}/resources/admin/js/demo/chart-area-demo.js"></script>-->
-  <script src="${cp}/resources/admin/js/demo/chart-pie-demo.js"></script>
   <script src="${cp}/resources/admin/js/demo/datatables-demo.js"></script>
+  <script type="text/javascript">
+	  $("#couponBtn").on('click',function(){
+			console.log('aaaaaaaaaa');
+			var gnum=$("#gnum option:selected").val();
+			var coupon_type=$("#coupon_type option:selected").val();
+			var coupon_name=$("#coupon_name option:selected").val();
+			alert(coupon_name);
+			$.ajax({
+				url:"${cp}/admin/coupon?gnum="+gnum+"&coupon_type="+coupon_type+"&coupon_name="+encodeURI(coupon_name),
+				dataType:"xml",
+				success:function(data){
+					$("#couponMsg").empty();
+					$(data).find("result").each(function(){
+						var user=$(this).find("user").text();
+						var msg=$(this).find("msg").text();
+						var strs=user +" "+ msg;
+						$("#couponMsg").append("<div>" + strs +"</div>");
+					});
+				}
+			});
+		});  
+  </script> 
 </body>
 </html>
 
