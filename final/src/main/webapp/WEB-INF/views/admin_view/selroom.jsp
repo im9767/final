@@ -43,14 +43,13 @@
 							<c:forEach  var="vo" items="${roominfolist}" varStatus="vs">	
 								<c:if test="${vs.index==0 }">
 								<div class="form-group row" style="width: auto">
-									<div class="col-sm-6 mb-3 mb-sm-0" style="width: auto">
-									<span>${vo.ROOMNAME}</span>
-									</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									가격:&nbsp;<span>${vo.ROOM_PRICE}</span>원
-									최대인원:&nbsp;<span>${vo.MAX_PERSONNEL}</span>
+									<div class="col-sm-6 mb-3 mb-sm-0" style="width: auto;">
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>방이름:&nbsp;${vo.ROOMNAME}</span>&nbsp;가격:&nbsp;<span>${vo.ROOM_PRICE}</span>원&nbsp;
+									최대인원:&nbsp;<span>${vo.MAX_PERSONNEL}</span>																		
+								</div>
 								</div><hr style="width: 1750px;">
 								<h2>소개</h2>
-								<span>${vo.ROOM_INFO }</span>
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>${vo.ROOM_INFO }</span>
 								<hr style="width: 1750px;">
 								<h2>이미지</h2>
 								</c:if>

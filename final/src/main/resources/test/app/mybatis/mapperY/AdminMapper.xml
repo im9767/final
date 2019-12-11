@@ -46,8 +46,8 @@
 	<select id="seleventinfo"  parameterType="int" resultType="hashmap">
 		select e.event_num,e.etitle,to_char(e.eregdate,'yyyy-mm-dd') eregdate,to_char(e.estartdate,'yyyy-mm-dd') estartdate,to_char(e.eenddate,'yyyy-mm-dd') eenddate,e.ehit,ei.orgfilename,ei.savefilename from event e,eventimages ei where e.event_num=ei.event_num and ei.event_num=#{event_Num}
 	</select>
-	<select id="imginfo"  parameterType="int" resultType="hashmap">
-		select * from eventimages where event_num=#{event_Num} 
+	<select id="imginfo"  parameterType="int" resultType="String">
+		select savefilename from eventimages where event_num=#{event_Num} 
 	</select>
 	<update id="hitup" parameterType="int">
 		update event set ehit=ehit+1 where event_num=#{event_Num}
@@ -90,11 +90,14 @@
 	<select id="roomlistAll" parameterType="int"   resultType="hashmap">
 		select *  from rooms r,house h where h.house_num=r.house_num and h.approval=1 and h.house_num=#{house_num}
 	</select>
+	<select id="rimginfo"  parameterType="int" resultType="String">
+		select room_save_name from rooms_img where room_num=#{room_num} 
+	</select>
 	<insert id="inroom" parameterType="test.app.project.vo.RoomsVo">
-		insert into rooms values(rooms_seq.nextval,#{house_num},#{roomname},#{room_price},#{room_info},0,#{max_Personnel})
+		insert into rooms values(rooms_seq.nextval,#{house_num},#{roomname},#{room_price},#{room_info},1,#{max_Personnel})
 	</insert>
-	<select id="selrnum"  parameterType="String" resultType="int">
-		select room_num from rooms where roomname=#{rname}
+	<select id="selrnum"  parameterType="test.app.project.vo.RoomsVo" resultType="int">
+		select room_num from rooms where roomname=#{roomname} and house_num=#{house_num} and room_price=#{room_price} and room_info=#{room_info}
 	</select>
 	<insert id="inroomimg" parameterType="test.app.project.vo.RoomsImgVo">
 		insert into rooms_img values(rooms_img_seq.nextval,#{room_num},#{room_org_name},#{room_save_name})

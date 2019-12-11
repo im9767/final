@@ -28,25 +28,27 @@
 
 <script type="text/javascript" src="${cp}/resources/admin/js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
-        $(function() {
-            $("#imgIn").on('change', function(){
-            	$("#imgbox img").remove();
-            	readURL(this);
-            });
-        });
-        var b=0;
-        function readURL(input) {
-        	for(var a=0;a<input.files.length;a++){
-           		var reader = new FileReader();         
-            	reader.onload = function (e){                               		
-            		console.log(input.files[b].name);         		
-            		var aa=$("<img src='"+e.target.result+"'><br>").appendTo("#imgbox");           	
-            		aa.css("width","200px");
-            		aa.css("height","200px");         		
-            		}
-            	reader.readAsDataURL(input.files[a]);
-            	}           
-        }
+function validate() {
+    var am=document.frm1.am;//동일한 name속성을 갖는객체가 여러개면 자동으로 배열로 만들어짐
+    var am2=document.getElementsByName("am");
+	var cnt=0;
+	for (var i = 0; i < am.length; i++) {
+		if(am[i].checked){
+			cnt++;
+		}
+	}
+	for (var j = 0; j < am2.length; j++) {
+		if(am2[j].checked){
+			var aa=$("<input type='text' name='sublist' hidden='' value='"+am2[j].value+"'>").appendTo("#subitem");
+			console.log(am[j].value) 
+		}
+	}
+	if(cnt<1){
+		alert("편의시설은 무조건 하나이상 고르세요.");
+		return false;
+	}
+	return true;
+}
     </script>
 </head>
 <body class="bg-gradient-primary">
@@ -62,16 +64,16 @@
 							<h1 class="h4 text-gray-900 mb-4" style="text-align: left;">편의시설 등록</h1>
 						</div>
 						<div class="user" style="width: 900px; height: 700px;">
-							<form method="POST" action="${cp}/admin_view/writeamenitiesok" enctype="multipart/form-data">							
+							<form method="POST" name="frm1" onsubmit="return validate();" action="${cp}/admin_view/writeamenitiesok" enctype="multipart/form-data">							
 								<hr style="width: 900px;">
 								<div id="imgbox"></div>																		
 								<hr style="width: 900px;">
 								편의시설명:&nbsp;<input type="text" name="aname" style="width:800px;"><br>	<br>
 								&nbsp;&nbsp;&nbsp;내&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;용&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;<input type="text" name="acontent" style="width: 800px;height: 50px;">						
 								<hr style="width: 900px;">
-								<input  type="file" id="imgIn" name="imgIn" class="btn btn-secondary btn-icon-split" >						
+								<input  type="file" id="imgIn" name="imgIn" class="btn btn-secondary btn-icon-split" ><div id="subitem"></div>						
 								 <input type="submit" class="btn btn-primary btn-icon-split"
-									style="float: right" value="등록">
+									style="float: right" value="등록" onclick="valiDate()">
 							</form>
 						</div>
 					</div>
