@@ -73,9 +73,20 @@
 	<update id="upevent" parameterType="test.app.project.vo.EventVo">
 		update event set etitle=#{etitle},estartdate=#{estartdate},eenddate=#{eenddate} where event_num=#{event_Num}
 	</update>
+	<!-- 편의시설-->
 	<insert id="inamenities" parameterType="test.app.project.vo.AmenitiesVo" >
 		insert into amenities values(amenities_seq.nextval,#{amenities_name},#{amenities_content},#{orgfilename},#{savefilename})
 	</insert>
+	<select id="allamenities" resultType="hashmap">
+		select *  from amenities
+	</select>
+	<select id="selanum" parameterType="String" resultType="int">
+		select amenities_num from amenities where amenities_name=#{aname}
+	</select>
+	<insert id="inserthouseintro" parameterType="test.app.project.vo.HouseintroVo" >
+		insert into houseintro values(houseintro_seq.nextval,#{house_num},#{amenities_num})
+	</insert>
+	<!-- 객실-->
 	<select id="roomlistAll" parameterType="int"   resultType="hashmap">
 		select *  from rooms r,house h where h.house_num=r.house_num and h.approval=1 and h.house_num=#{house_num}
 	</select>

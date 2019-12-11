@@ -11,6 +11,7 @@ import test.app.project.vo.AmenitiesVo;
 import test.app.project.vo.EventVo;
 import test.app.project.vo.EventimagesVo;
 import test.app.project.vo.HouseVo;
+import test.app.project.vo.HouseintroVo;
 import test.app.project.vo.NoticeVo;
 import test.app.project.vo.RoomsImgVo;
 import test.app.project.vo.RoomsVo;
@@ -103,10 +104,22 @@ public class AdminDao {
 		return 
 		sqlSessionTemplate.update("test.app.mybatis.mapperY.AdminMapper.upevent",vo);
 	}
+	//편의시설
 	public int inamenities(AmenitiesVo vo){
 		return 
 		sqlSessionTemplate.insert("test.app.mybatis.mapperY.AdminMapper.inamenities",vo);
 	}
+	public List<HashMap<String, Object>> selamenities(){
+		return sqlSessionTemplate.selectList("test.app.mybatis.mapperY.AdminMapper.allamenities");
+	}
+	public int selanum(String aname){
+		return sqlSessionTemplate.selectOne("test.app.mybatis.mapperY.AdminMapper.selanum",aname);
+	}
+	public int inhouseintro(HouseintroVo vo){
+		return 
+		sqlSessionTemplate.insert("test.app.mybatis.mapperY.AdminMapper.inserthouseintro",vo);
+	}
+	//객실
 	public List<HashMap<String, Object>> roomlistAll(int house_num){
 		return sqlSessionTemplate.selectList("test.app.mybatis.mapperY.AdminMapper.roomlistAll",house_num);
 	}

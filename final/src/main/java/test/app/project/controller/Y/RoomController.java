@@ -41,12 +41,16 @@ public class RoomController {
 	}
 	//방등록
 	@RequestMapping(value = "/admin_view/writeroom", method = RequestMethod.GET)
-	public String inroom(){
-		return "admin_view/writeroom";
+	public ModelAndView inroom(HttpSession session){
+		List<HashMap<String, Object>> amlist = service.selamenities();
+		System.out.println(amlist);
+		ModelAndView mv = new ModelAndView("admin_view/writeroom");
+		mv.addObject("allamenities",amlist);
+		return mv;
 	}
 	//방등록 체크
 	@RequestMapping(value="/admin_view/writeroomok",method=RequestMethod.POST)
-	public String writeroomok(String rcontent,String rname,@RequestParam(required=false) List<MultipartFile> imgIn,int price,int max,HttpSession session) throws IOException{
+	public String writeroomok(String[] sublist,String rcontent,String rname,@RequestParam(required=false) List<MultipartFile> imgIn,int price,int max,HttpSession session) throws IOException{
 		HashMap<String, Object> irlist= new HashMap<String, Object>();
 		int house_num=10;
 		irlist.put("rname", rname);
@@ -77,7 +81,7 @@ public class RoomController {
 				fos.close();
 	   }
 		irlist.put("imgcnt", imgIn.size());
-		service.writeroom(irlist,house_num);	
+		service.writeroom(irlist,house_num,sublist);	
 		}catch(Exception e){
 			e.printStackTrace();
 		}
@@ -122,8 +126,7 @@ public class RoomController {
 					String uploadPath=
 						session.getServletContext().getRealPath("/resources/upload");
 					System.out.println(uploadPath);
-		try{
-			
+		try{			
 		   for(int j = 0;j<imgIn.size();j++){
 			 //전송된 파일명
 				String orgfilename=imgIn.get(j).getOriginalFilename();

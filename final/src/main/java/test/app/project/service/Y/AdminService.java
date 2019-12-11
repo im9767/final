@@ -18,6 +18,7 @@ import test.app.project.vo.AmenitiesVo;
 import test.app.project.vo.EventVo;
 import test.app.project.vo.EventimagesVo;
 import test.app.project.vo.HouseVo;
+import test.app.project.vo.HouseintroVo;
 import test.app.project.vo.NoticeVo;
 import test.app.project.vo.RoomsImgVo;
 import test.app.project.vo.RoomsVo;
@@ -114,16 +115,20 @@ public class AdminService {
 	}
 	return 1;
 	}
-	//편의시설등록
+	//편의시설
 	public int writeamenities(AmenitiesVo vo) {		
 		return dao.inamenities(vo);	
 	}
+	public List<HashMap<String, Object>> selamenities(){
+		return dao.selamenities();
+	}
+	//객실정보
 	public List<HashMap<String, Object>> roomlistAll(int house_num){
 		return dao.roomlistAll(house_num);
 	}
 	
 	@Transactional(rollbackFor=Exception.class)
-	public int writeroom(HashMap<String, Object> irlist,int house_num) throws Exception{
+	public int writeroom(HashMap<String, Object> irlist,int house_num,String[] sublist) throws Exception{
 	RoomsVo vo=new RoomsVo(0,house_num,(String)irlist.get("rname"),(Integer)irlist.get("price"),(String)irlist.get("rcontent"),0,(Integer)irlist.get("max"));	
 	dao.inroom(vo);
 	int a=dao.selrnum((String)irlist.get("rname"));
@@ -133,6 +138,11 @@ public class AdminService {
 	RoomsImgVo vo1=new RoomsImgVo(0,a,orgfilename,savefilename);
 	dao.inroomimg(vo1);
 	}
+	for(int j=0;j<sublist.length;j++){
+		int anum=dao.selanum(sublist[j]);
+		HouseintroVo vo2=new HouseintroVo(0,house_num,anum);
+		dao.inhouseintro(vo2);
+			}
 	return 1;
 	}
 	@Transactional(rollbackFor=Exception.class)
