@@ -10,8 +10,20 @@
 		select NVL(sum(pay),0) from payment 
 		<![CDATA[where pay_day >= #{startday} and pay_day <= #{endday}]]>
 	</select>
-	<select id="memberslist" resultType="members">
-		select mid,rpad(substr(mpwd,0,2),length(mpwd),'*') as mpwd,mname,mphone,memail,mregdate,mpoint from members
+	<select id="memberslist" resultType="hashmap">
+		select 
+			mid,
+			rpad(substr(mpwd,0,2),length(mpwd),'*') as mpwd,
+			mname,
+			mphone,
+			memail,
+			to_char(mregdate,'yyyy-mm-dd') as mregdate,
+			mpoint,
+			gname
+		from 
+			members m, grade g
+		where
+			m.gnum=g.gnum
 	</select>
 	
 	<select id="companycount" resultType="int" parameterType="hashmap">

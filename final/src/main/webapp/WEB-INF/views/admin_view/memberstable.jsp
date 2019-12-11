@@ -214,18 +214,35 @@
                       <th>이메일</th>
                       <th>가입일</th>
                       <th>포인트</th>
+                      <th>등급</th>
                     </tr>
                   </thead>
                   <tbody>
                     <c:forEach var="vo" items="${mlist}">
                     	<tr>
-                    		<td>${vo.mid}</td>
-                    		<td>${vo.mpwd}</td>
-                    		<td>${vo.mname}</td>
-                    		<td>${vo.mphone}</td>
-                    		<td>${vo.memail}</td>
-                    		<td>${vo.mregdate}</td>
-                    		<td>${vo.mpoint}</td>
+                    		<td>${vo.MID}</td>
+                    		<td>${vo.MPWD}</td>
+                    		<td>${vo.MNAME}</td>
+                    		<td>${vo.MPHONE}</td>
+                    		<td>${vo.MEMAIL}</td>
+                    		<td>${vo.MREGDATE}</td>
+                    		<td>${vo.MPOINT}</td>
+                    		<td>
+                    			<c:choose>
+                    				<c:when test="${vo.GNAME=='골드'}">
+                    					<img src="${cp}/resources/admin/골드.png" style="width:20px;height:20px">
+                    					<b><span style="color:#ffd700">골드</span></b>
+                    				</c:when>
+                    				<c:when test="${vo.GNAME=='실버'}">
+                    					<img src="${cp}/resources/admin/실버.png" style="width:20px;height:20px">
+                    					<b><span style="color:#808080">실버</span></b>
+                    				</c:when>
+                    				<c:otherwise>
+                    					<img src="${cp}/resources/admin/브론즈.png" style="width:20px;height:20px">
+                    					<b><span style="color:#800000">브론즈</span></b>
+                    				</c:otherwise>
+                    			</c:choose>
+                    		</td>
                     	</tr>
                     </c:forEach>
                   </tbody>

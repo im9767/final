@@ -8,7 +8,8 @@ import test.app.project.vo.MembersVo;
 import test.app.project.vo.RoomsVo;
 
 public interface AdminMembersDao {
-	List<MembersVo> memberslist();
+	//가입회원 조회
+	List<HashMap<String, Object>> memberslist();
 	//쿠폰등록메소드
 	int couponInsert(CouponVo vo);
 	//등급별 회원수 구하기

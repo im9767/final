@@ -16,7 +16,7 @@ public class MembersService1 {
 	public void setDao(AdminMembersimpl dao) {
 		this.dao = dao;
 	}
-	public List<MembersVo> memberslist(){
+	public List<HashMap<String, Object>> memberslist(){
 		return dao.memberslist();
 	}
 	public int couponInsert(CouponVo vo){

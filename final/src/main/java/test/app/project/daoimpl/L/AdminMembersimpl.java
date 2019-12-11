@@ -22,7 +22,7 @@ public class AdminMembersimpl implements AdminMembersDao{
 		SqlSessionTemplate = sqlSessionTemplate;
 	}
 	@Override
-	public List<MembersVo> memberslist() {
+	public List<HashMap<String, Object>> memberslist() {
 		return SqlSessionTemplate.selectList(NAMESPACE+".memberslist");
 	}
 	@Override

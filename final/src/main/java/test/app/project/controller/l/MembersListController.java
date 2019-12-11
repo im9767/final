@@ -1,5 +1,6 @@
 package test.app.project.controller.l;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,7 @@ public class MembersListController {
 	
 	@RequestMapping(value="/admin/members",method=RequestMethod.GET)
 	public String memberslist(Model model){
-		List<MembersVo> list=service.memberslist();
+		List<HashMap<String, Object>> list=service.memberslist();
 		model.addAttribute("mlist",list);
 		return ".memberstable";
 	}
