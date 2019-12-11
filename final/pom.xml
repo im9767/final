@@ -14,8 +14,17 @@
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
 	<dependencies>
-	
-
+		
+		<!-- 엑셀 출력 -->
+			<!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+			<dependency>
+			    <groupId>org.apache.poi</groupId>
+			    <artifactId>poi</artifactId>
+			    <version>4.1.1</version>
+			</dependency>
+			
+		<!-- /엑셀 출력 -->
+		
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>

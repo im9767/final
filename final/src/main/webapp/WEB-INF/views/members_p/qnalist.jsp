@@ -4,19 +4,21 @@
 
 <div class="mypage-wrap">
 		
-	<!-- mypage header -->
+	<!-- 마이페이지 헤더 -->
 		<jsp:include page="/WEB-INF/views/members_p/include/mypageHeader.jsp"/>
-	<!-- mypage header -->	
+	<!-- 마이페이지 헤더 -->	
+	
 	<!-- mypage area -->
 	<div class="mypage-area">
-		<!-- mypage nav -->
+	
+		<!-- 마이페이지 네비게이션 바 -->
 			<jsp:include page="/WEB-INF/views/members_p/include/mypageNav.jsp"/>
-		<!-- //mypage nav -->		
+		<!-- //마이페이지 네비게이션 바 -->		
 			
-		<!-- contents -->
+		<!-- 마이페이지 컨텐츠 -->
 		<section class="mypage-cont">
 			<header class="n-section-title">
-				<h1 class="tit">문의 내역</h1>
+				<h3 class="tit">문의 내역</h3>
 			</header>
 			<br>
 			<table class="table">
@@ -51,16 +53,18 @@
 			<nav aria-label="Page navigation example">
 			  <ul class="pagination justify-content-end">
 			  
-			    <li class="page-item">
-			    	<c:choose>
-					    <c:when test="${pagination.startPageNum>pagination.pageBlockCount }">
-					    	<a class="page-link" href="${cp }/members/qnalist?pageNum=${pagination.startPageNum-1 }">Previous</a>
-					    </c:when>
-					    <c:otherwise>
-					      	<a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-					    </c:otherwise>
-				    </c:choose>
-			    </li>
+			    <c:choose>
+			  		<c:when test="${pagination.startPageNum > pagination.pageBlockCount }">
+				    	<li class="page-item">
+				    		<a class="page-link" href="${cp }/members/qnalist?pageNum=${pagination.startPageNum-1 }">이전</a>
+				    	</li>
+					</c:when>
+					 <c:otherwise>
+					 	<li class="page-item disabled">
+						   	<a class="page-link" href="#" aria-disabled="true">이전</a>
+						</li>
+					 </c:otherwise>
+			   </c:choose>
 			   
 			   	<c:forEach var="i" begin="${pagination.startPageNum }" end="${pagination.endPageNum }">
 			   	
@@ -83,21 +87,20 @@
 			   <c:choose>
 				 <c:when test="${pagination.endPageNum<pagination.totalPageCount }">
 					    <li class="page-item">
-					   	  <a class="page-link" href="${cp }/members/qnalist?pageNum=${pagination.endPageNum+1 }">Next</a>
+					   	  <a class="page-link" href="${cp }/members/qnalist?pageNum=${pagination.endPageNum+1 }">다음</a>
 					   	</li>
 				 </c:when>
 				 <c:otherwise>
 				 			<li class="page-item disabled">
-					      		<a class="page-link" href="#" aria-disabled="true">Next</a>
+					      		<a class="page-link" href="#" aria-disabled="true">다음</a>
 					        </li>
 			 	 </c:otherwise>
 			 	</c:choose>
 
 			  </ul>
 			</nav>
-
 		</section>
-		<!-- //contents -->
+		<!-- //마이페이지 컨텐츠 -->
 
 	</div>
 	<!-- //mypage area -->

@@ -3,6 +3,7 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee https://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
 
+
 	<!-- 한글이 깨지지 않도록 필터 설정하기 -->
 	<filter>
 		<filter-name>characterEncoding</filter-name>

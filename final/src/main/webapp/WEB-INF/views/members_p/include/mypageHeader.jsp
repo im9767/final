@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<div style="min-height: 300px;width:100%;background-color: lightgray;margin-bottom: 20px;">
+<div style="min-height: 300px;width:100%;background-color: lightgray;margin-bottom: 20px;margin-top: 150px;">
 	
 	<!-- 마이페이지 프로필 이미지 -->
 	<div style="height:300px;width:30%;padding: 30px;display: inline-block;text-align: center;">

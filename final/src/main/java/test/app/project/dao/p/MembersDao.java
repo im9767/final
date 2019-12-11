@@ -10,7 +10,7 @@ import test.app.project.vo.QnaboardVo;
 
 public interface MembersDao {
 	
-	public MembersVo isMember(MembersVo vo);
+	public boolean isMember(MembersVo vo);
 	
 	public int join(MembersVo vo);
 	
@@ -35,5 +35,7 @@ public interface MembersDao {
 	public List<CouponVo> couponList(String mid);
 	
 	public int qnaListCount(String mid);
+	
+	public List<HashMap<String, Object>> qnaListAll();
 	
 }

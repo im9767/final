@@ -9,7 +9,9 @@
 <title>Insert title here</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Colo Shop Template">
+
 <meta name="viewport" content="width=device-width, initial-scale=1">
+
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.4.1.js"></script>
 
 	<!-- mypage css -->
@@ -24,27 +26,32 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/styles/main_styles.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/styles/responsive.css">
 
-<!-- Favicon -->
-<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath }assets/img/favicon.png">
+
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+<!-- 결제 연동 api -->
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
+
 <style>
-	
-.ui-datepicker-week-end{color:#f00;}
-.ui-datepicker-current-day
-{
-    background: #83C948
-}
-/* today's background color */
-.ui-datepicker-today 
-{
-    background: #83C948
-}
+		
+	.ui-datepicker-week-end{color:#f00;}
+	.ui-datepicker-current-day
+	{
+	    background: #83C948
+	}
+	/* today's background color */
+	.ui-datepicker-today 
+	{
+	    background: #83C948
+	}
 </style>
-	<!-- ezone템플릿 css -->
-	<!-- Favicon -->
-	<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath }/resources/assets/img/favicon.png">	
+
+
 	<!-- 부트스트랩 기본 css -->
-	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
+	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
 </head>
 <body>
 <div class="super_container">
@@ -60,13 +67,10 @@
 </div>
 </body>
 
-<!-- 
-<script src="${pageContext.request.contextPath}/resources/js/jquery-3.2.1.min.js"></script> -->
 <script src="${pageContext.request.contextPath}/resources/styles/bootstrap4/popper.js"></script>
 <script src="${pageContext.request.contextPath}/resources/styles/bootstrap4/bootstrap.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/plugins/Isotope/isotope.pkgd.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
 <script src="${pageContext.request.contextPath}/resources/plugins/easing/easing.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/custom.js"></script>
-
 </html>

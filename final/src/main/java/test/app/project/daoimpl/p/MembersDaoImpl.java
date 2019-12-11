@@ -23,9 +23,11 @@ public class MembersDaoImpl implements MembersDao{
 	
 	// 로그인시 회원인지 체크
 	@Override
-	public MembersVo isMember(MembersVo vo) {
+	public boolean isMember(MembersVo vo) {
 		
-		return sqlSessionTemplate.selectOne(NAMESPACE+".isMember", vo);
+		MembersVo isMember =  sqlSessionTemplate.selectOne(NAMESPACE+".isMember", vo);
+		
+		return (isMember == null) ? false : true;
 		
 		
 	}
@@ -109,6 +111,12 @@ public class MembersDaoImpl implements MembersDao{
 	@Override
 	public int qnaListCount(String mid) {
 		return sqlSessionTemplate.selectOne(NAMESPACE+".qnaListCount", mid);
+	}
+	
+	//qna리스트 엑셀 출력
+	@Override
+	public List<HashMap<String, Object>> qnaListAll() {
+		return sqlSessionTemplate.selectList(NAMESPACE+".qnaListAll");
 	}
 	
 }
