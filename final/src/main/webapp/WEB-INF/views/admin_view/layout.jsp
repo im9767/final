@@ -443,11 +443,11 @@ $(function(){
 			var gnum=$("#gnum option:selected").val();
 			var coupon_type=$("#coupon_type option:selected").val();
 			var coupon_name=$("#coupon_name option:selected").val();
-			alert(coupon_name);
 			$.ajax({
 				url:"${cp}/admin/coupon?gnum="+gnum+"&coupon_type="+coupon_type+"&coupon_name="+encodeURI(coupon_name),
 				dataType:"xml",
 				success:function(data){
+					alert('쿠폰 발행완료!');
 					$("#couponMsg").empty();
 					$(data).find("result").each(function(){
 						var user=$(this).find("user").text();

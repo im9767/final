@@ -28,10 +28,9 @@ public class CouponController1 {
 		List<MembersVo> mlist=service.membersId(map);
 		for(MembersVo vo:mlist){
 			System.out.println(vo.getMid());
-			//CouponVo cvo=new CouponVo(0, vo.getMid(), coupon_name, coupon_type, null, null);
-			//service.couponInsert(cvo);
+			CouponVo cvo=new CouponVo(0, vo.getMid(), coupon_name, coupon_type, null, null);
+			service.couponInsert(cvo);
 		}
-		//CouponVo vo=new CouponVo(0, mid, coupon_name, coupon_type, null, null);
 		StringBuffer sb=new StringBuffer();
 		sb.append("<?xml version='1.0' encoding='utf-8'?>");
 		sb.append("<result>");
