@@ -18,6 +18,7 @@
 		<typeAlias type="test.app.project.vo.PaymentVo" alias="pay"/>
 		<typeAlias type="test.app.project.vo.HouseVo" alias="house"/>
 		<typeAlias type="test.app.project.vo.RoomsVo" alias="rooms"/>
+		<typeAlias type="test.app.project.vo.NoticeVo" alias="notice"/>
 	</typeAliases>
 
 	<mappers>
@@ -27,6 +28,7 @@
 		<mapper resource="test/app/mybatis/mapperL/CouponMapper.xml"/>
 		<mapper resource="test/app/mybatis/mapperL/RoomlistMapper.xml"/>
 		<mapper resource="test/app/mybatis/mapper/k/productMapper.xml"/>
+		<mapper resource="test/app/mybatis/mapper/p/NoticeMapper.xml"/>
 	</mappers>
 </configuration>  
   

@@ -89,12 +89,12 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">객실현황</h1>
+          <h1 class="h3 mb-2 text-gray-800">객실현황(${company})</h1>
 
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
             <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">객실정보</h6>
+              <h6 class="m-0 font-weight-bold text-primary">객실정보(${company})</h6>
             </div>
             <div class="card-body">
               <div class="table-responsive">
@@ -103,37 +103,28 @@
                     <tr>
                       <th>객실명</th>
                       <th>객실가격</th>
-                      <th>대표자</th>
-                      <th>사업번호</th>
-                      <th>본점소재지</th>
-                      <th>사업장소재지</th>                
-                      <th>전화번호</th>
-                      <th>삭제</th>
+                      <th>객실정보</th>
+                      <th>룸체크인(상태)</th>
+                      <th>수용인원</th>
                     </tr>
                   </thead>
-                  <tfoot>
-                    <tr>
-                      <th>업체명</th>
-                      <th>종목명</th>
-                      <th>대표자</th>
-                      <th>사업번호</th>
-                      <th>본점소재지</th>
-                      <th>사업장소재지</th>
-                      <th>전화번호</th>
-                      <th>삭제</th>
-                    </tr>
-                  </tfoot>
                   <tbody>
-                  	<c:forEach var="vo" items="${okapplist}">
+                  	<c:forEach var="vo" items="${rlist}">
                     <tr>
-                      <td><a href="${cp}/company/roominfo?house_num=${vo.HOUSE_NUM}">${vo.COMPANY}</a></td>
-                      <td>${vo.BTYPE}</td>
-                      <td>${vo.CEO}</td>
-                      <td>${vo.LICENSE}</td>
-                      <td>${vo.ORGADDR}</td>
-                      <td>${vo.WORKPLACE}</td>
-                      <td>${vo.COM_TEL}</td>
-                      <td><a href="${cp}/admin_view/deletehouse?house_Num=${vo.HOUSE_NUM}">삭제</a></td>
+                      <td>${vo.roomname}</td>
+                      <td>${dc.format(vo.room_price)}원</td>
+                      <td>${vo.room_info}</td>
+                      <td>
+                      	<c:choose>
+                      		<c:when test="${vo.room_check=='1'}">
+                      			<b><span style="color:red">체크인</span></b>
+                      		</c:when>
+                      		<c:otherwise>
+                      			<b><span style="color:blue">체크아웃</span></b>
+                      		</c:otherwise>
+                      	</c:choose>
+                      </td>
+                      <td>${vo.max_Personnel}명</td>
                     </tr>
                     </c:forEach>
                   </tbody>

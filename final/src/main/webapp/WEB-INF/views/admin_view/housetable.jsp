@@ -126,7 +126,7 @@
                   <tbody>
                   	<c:forEach var="vo" items="${okapplist}">
                     <tr>
-                      <td><a href="${cp}/company/roominfo?house_num=${vo.HOUSE_NUM}">${vo.COMPANY}</a></td>
+                      <td><a href="${cp}/company/roominfo?house_num=${vo.HOUSE_NUM}&company=${vo.COMPANY}">${vo.COMPANY}</a></td>
                       <td>${vo.BTYPE}</td>
                       <td>${vo.CEO}</td>
                       <td>${vo.LICENSE}</td>
