@@ -10,6 +10,7 @@
 
 <div style="width:80%;min-height: 1200px;margin: auto;padding: 40px;margin-top: 150px;">
 	
+	
 	<div style="width:90%;background-color: lightgray;min-height:1100px;margin: auto;">
 		<!-- 큰 이미지 div  -->
 		<div style="width:50%;background-color: yellow;min-height:700px;float:left;">
@@ -66,7 +67,7 @@
 		</div>
 		
 		<!-- 객실정보 -->
-	<div style="width:100%;min-height:1000px;background-color: pink;clear: both;padding;">
+	<div style="width:100%;min-height:1000px;background-color: pink;clear: both;">
 						
 		<ul class="nav nav-tabs" id="myTab" role="tablist">
 			  <li class="nav-item">
@@ -83,8 +84,12 @@
 		<div class="tab-content" id="myTabContent">
 			  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 			  		
-			  		<section id="div1" class="info" style="width:100%;min-height: 500px;background-color: red;">
-			
+			  <section id="div1" class="info" style="width:100%;min-height: 500px;background-color: red;">
+				
+				<div>
+					<input class="form-control" type="date" name="start_date" style="width: 400px;">
+				</div>
+					
 				<div style="border-radius: 10px 10px 10px 10px;background-color: gray;width:100%;min-height:300px;padding-top: 25px;padding-bottom:25px;margin-bottom: 20px;">
 					<div style="margin: auto;width:95%;background-color: white;min-height: 250px;">
 						<!-- 객실 대표이미지 -->
