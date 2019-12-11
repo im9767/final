@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-/final/
-=======
 # Created by https://www.gitignore.io/api/java,eclipse,gradle
 
 ### Eclipse ###
@@ -87,4 +84,3 @@ gradle-app.setting
 
 # # Work around https://youtrack.jetbrains.com/issue/IDEA-116898
 # gradle/wrapper/gradle-wrapper.properties
->>>>>>> branch 'master' of https://github.com/im9767/final.git
