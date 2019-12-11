@@ -73,7 +73,7 @@
             </div>
 
             <div class="inp_type_1 ico_email form-errors"><!-- focus / err -->
-                <input type="text" name="id" placeholder="이메일 주소" required="" class="required" value="" data-msg-required="아이디를 확인해 주세요.">
+                <input type="text" name="id" placeholder="아이디" required="" class="required" value="" data-msg-required="아이디를 확인해 주세요.">
             	<button type="button" class="reset_val">초기화</button>
             </div>
             <div class="inp_type_1 ico_email form-errors"><!-- focus / err -->

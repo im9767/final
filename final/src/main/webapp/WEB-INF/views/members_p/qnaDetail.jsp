@@ -15,7 +15,7 @@
 		<!-- contents -->
 		<section class="mypage-cont"  style="float: left;width:85%;margin: auto;padding: 10px;">
 			<header class="n-section-title">
-				<h1 class="tit">문의글 보기</h1>
+				<h3 class="tit">문의글 보기</h3>
 			</header>
 			<br>
 			<table class="table">

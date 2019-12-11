@@ -17,7 +17,7 @@ public class MembersService {
 	private MembersDaoImpl membersDaoImpl;
 	
 	// 로그인
-	public MembersVo isMember(MembersVo vo){
+	public boolean isMember(MembersVo vo){
 		return membersDaoImpl.isMember(vo);
 	}
 	
@@ -85,5 +85,9 @@ public class MembersService {
 	// 회원 문의글 갯수 얻어오기
 	public int qnaListCount(String mid){
 		return membersDaoImpl.qnaListCount(mid);
+	}
+	
+	public List<HashMap<String, Object>> qnaListAll(){
+		return membersDaoImpl.qnaListAll();
 	}
 }

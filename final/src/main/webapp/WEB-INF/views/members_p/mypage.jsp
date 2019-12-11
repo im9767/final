@@ -17,7 +17,7 @@
 		<!-- contents -->
 		<section class="mypage-cont">
 			<header class="n-section-title">
-				<h1 class="tit">래플 응모내역</h1>
+				<h3 class="tit">래플 응모내역</h3>
 			</header>
 			<form>
 			  <div class="form-group">
