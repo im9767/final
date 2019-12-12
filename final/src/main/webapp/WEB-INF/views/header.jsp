@@ -15,7 +15,7 @@
 						<div class="top_nav_right">
 							<ul class="top_nav_menu">
 
-								<!-- Currency h/ Language / My Account -->
+								<!-- Currency hf/ Language / My Account -->
 
 								<li class="currency" style='background-color: red;border:none;'>
 									<a href="${pageContext.request.contextPath }/house/detail" style='color:white;'>예약내역</a>
