@@ -22,18 +22,18 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import test.app.project.service.Y.AdminService;
-import test.app.project.service.Y.BusinessService;
+import test.app.project.service.Y.BusinessYService;
 import test.app.project.vo.HouseVo;
 import test.app.project.vo.NoticeVo;
 
 @Controller
 public class RoomController {
 	@Autowired
-	private BusinessService service;
-	public void setService(BusinessService service) {
+	private BusinessYService service;
+	public void setService(BusinessYService service) {
 		this.service = service;
 	}
-	//사업자 등록된 방전체조회
+	//�궗�뾽�옄 �벑濡앸맂 諛⑹쟾泥댁“�쉶
 	@RequestMapping(value = "/admin_view/roomsboard", method = RequestMethod.GET)
 	public String allroomlist(Model model) {
 		int house_num=10;
@@ -41,12 +41,12 @@ public class RoomController {
 		model.addAttribute("allroomlist", arlist);
 		return ".roomsboard";
 	}
-	//방등록
+	//諛⑸벑濡�
 	@RequestMapping(value = "/admin_view/writeroom", method = RequestMethod.GET)
 	public String inroom(HttpSession session){
 		return "admin_view/writeroom";
 	}
-	//방등록 체크
+	//諛⑸벑濡� 泥댄겕
 	@RequestMapping(value="/admin_view/writeroomok",method=RequestMethod.POST)
 	public String writeroomok(String rcontent,String rname,@RequestParam(required=false) List<MultipartFile> imgIn,int price,int max,HttpSession session) throws IOException{
 		HashMap<String, Object> irlist= new HashMap<String, Object>();
@@ -55,25 +55,25 @@ public class RoomController {
 		irlist.put("rcontent",rcontent);
 		irlist.put("price", price);
 		irlist.put("max", max);
-		//업로드할 폴더의 절대경로 얻어오기
+		//�뾽濡쒕뱶�븷 �뤃�뜑�쓽 �젅��寃쎈줈 �뼸�뼱�삤湲�
 				String uploadPath=
 					session.getServletContext().getRealPath("/resources/upload");
 				System.out.println(uploadPath);
 	try{
 		
 	   for(int j = 0;j<imgIn.size();j++){
-		 //전송된 파일명
+		 //�쟾�넚�맂 �뙆�씪紐�
 			String orgfilename=imgIn.get(j).getOriginalFilename();
 			irlist.put("orgfilename"+j+1,orgfilename);
-		//저장될 파일명(중복되지 않는 이름으로 만들기)
+		//���옣�맆 �뙆�씪紐�(以묐났�릺吏� �븡�뒗 �씠由꾩쑝濡� 留뚮뱾湲�)
 			String savefilename=UUID.randomUUID() +"_" + orgfilename;
 			irlist.put("savefilename"+j+1,savefilename);
-		//전송된 파일을 읽어오기 위한 스트림
+		//�쟾�넚�맂 �뙆�씪�쓣 �씫�뼱�삤湲� �쐞�븳 �뒪�듃由�
 				InputStream fis=imgIn.get(j).getInputStream();
-		//전송된 파일을 서버에 출력하기 위한 스트림
+		//�쟾�넚�맂 �뙆�씪�쓣 �꽌踰꾩뿉 異쒕젰�븯湲� �쐞�븳 �뒪�듃由�
 				FileOutputStream fos=
 						new FileOutputStream(uploadPath+"\\" + savefilename);
-		//파일복사하기(업로드하기)
+		//�뙆�씪蹂듭궗�븯湲�(�뾽濡쒕뱶�븯湲�)
 				FileCopyUtils.copy(fis, fos);
 				fis.close();
 				fos.close();
@@ -85,7 +85,7 @@ public class RoomController {
 		}
 		return "redirect:/admin_view/roomsboard";		
 	}
-	//방 삭제
+	//諛� �궘�젣
 	@RequestMapping(value = "/admin_view/delroom", method = RequestMethod.GET)
 	public String delroom(int room_num, HttpSession session) {
 		String uploadPath=
@@ -97,7 +97,7 @@ public class RoomController {
 		String savefilename=s.get(a);
 		File f=new File(uploadPath +"\\" + savefilename);
 		if(!f.delete()) {
-			new Exception("파일삭제실패!");
+			new Exception("�뙆�씪�궘�젣�떎�뙣!");
 			}
 		}
 		int n = service.roomdelete(room_num);
@@ -107,7 +107,7 @@ public class RoomController {
 			return "redirect:/admin_view/roomsboard";
 		}
 	}
-	//방 상세정보
+	//諛� �긽�꽭�젙蹂�
 		@RequestMapping(value = "/admin_view/selroominfo", method = RequestMethod.GET)
 		public ModelAndView selroominfo(int room_num,HttpSession session) {
 			List<HashMap<String, Object>> srlist = service.selroominfo(room_num);
@@ -115,7 +115,7 @@ public class RoomController {
 			mv.addObject("roominfolist", srlist);
 			return mv;
 		}
-	//방정보 수정
+	//諛⑹젙蹂� �닔�젙
 		@RequestMapping(value = "/admin_view/uproom", method = RequestMethod.GET)
 		public ModelAndView uproom(int room_num, HttpSession session) {
 			List<HashMap<String, Object>> nlist = service.selroominfo(room_num);
@@ -123,7 +123,7 @@ public class RoomController {
 			mv.addObject("uproomlist", nlist);
 			return mv;
 		}
-	//방정보 수정체크
+	//諛⑹젙蹂� �닔�젙泥댄겕
 		@RequestMapping(value="/admin_view/updateroomok",method=RequestMethod.POST)
 		public String updateroomok(String rcontent,String rname,@RequestParam(required=false) List<MultipartFile> imgIn,int price,int max,int room_num,HttpSession session) throws IOException{
 			HashMap<String, Object> irlist= new HashMap<String, Object>();
@@ -142,22 +142,22 @@ public class RoomController {
 			String savefilename=s.get(a);
 			File f=new File(uploadPath +"\\" + savefilename);
 			if(!f.delete()) {
-				new Exception("파일삭제실패!");
+				new Exception("�뙆�씪�궘�젣�떎�뙣!");
 				}
 			}
 		   for(int j = 0;j<imgIn.size();j++){
-			 //전송된 파일명
+			 //�쟾�넚�맂 �뙆�씪紐�
 				String orgfilename=imgIn.get(j).getOriginalFilename();
 				irlist.put("orgfilename"+j+1,orgfilename);
-			//저장될 파일명(중복되지 않는 이름으로 만들기)
+			//���옣�맆 �뙆�씪紐�(以묐났�릺吏� �븡�뒗 �씠由꾩쑝濡� 留뚮뱾湲�)
 				String savefilename=UUID.randomUUID() +"_" + orgfilename;
 				irlist.put("savefilename"+j+1,savefilename);
-			//전송된 파일을 읽어오기 위한 스트림
+			//�쟾�넚�맂 �뙆�씪�쓣 �씫�뼱�삤湲� �쐞�븳 �뒪�듃由�
 					InputStream fis=imgIn.get(j).getInputStream();
-			//전송된 파일을 서버에 출력하기 위한 스트림
+			//�쟾�넚�맂 �뙆�씪�쓣 �꽌踰꾩뿉 異쒕젰�븯湲� �쐞�븳 �뒪�듃由�
 					FileOutputStream fos=
 							new FileOutputStream(uploadPath+"\\" + savefilename);
-			//파일복사하기(업로드하기)
+			//�뙆�씪蹂듭궗�븯湲�(�뾽濡쒕뱶�븯湲�)
 					FileCopyUtils.copy(fis, fos);
 					fis.close();
 					fos.close();

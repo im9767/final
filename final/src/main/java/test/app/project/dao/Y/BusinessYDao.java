@@ -12,13 +12,13 @@ import test.app.project.vo.RoomsImgVo;
 import test.app.project.vo.RoomsVo;
 
 @Repository
-public class BusinessDao {
+public class BusinessYDao {
 	@Autowired
 	private SqlSessionTemplate sqlSessionTemplate;
-	public BusinessDao(SqlSessionTemplate sqlSessionTemplate) {
+	public BusinessYDao(SqlSessionTemplate sqlSessionTemplate) {
 		this.sqlSessionTemplate=sqlSessionTemplate;
 	}
-	//í¸ì˜ì‹œì„¤
+	//?¸?˜?‹œ?„¤
 	public int inamenities(AmenitiesVo vo){
 		return 
 		sqlSessionTemplate.insert("test.app.mybatis.mapperY.BusinessMapper.inamenities",vo);
@@ -58,7 +58,7 @@ public class BusinessDao {
 		return 
 		sqlSessionTemplate.update("test.app.mybatis.mapperY.BusinessMapper.updateroom",vo);
 	}
-	//ì‚¬ì—…ì ì •ë³´ì¡°íšŒ
+	//?‚¬?—…? ? •ë³´ì¡°?šŒ
 	public List<HashMap<String, Object>> biflist(String id){
 		return sqlSessionTemplate.selectList("test.app.mybatis.mapperY.BusinessMapper.biflist",id);
 	}
