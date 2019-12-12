@@ -27,9 +27,11 @@ public class CouponVo {
 
 	/** 발행일. */
 	private java.sql.Date making_date;
-
+	
+	/** 쿠폰유형. */
 	private int coupon_typenum;
-
+	
+	public CouponVo(){}
 	public CouponVo(int coupon_num, String mid, String coupon_name, int coupon_saletype, String coupon_status,
 			Date making_date, int coupon_typenum) {
 		super();

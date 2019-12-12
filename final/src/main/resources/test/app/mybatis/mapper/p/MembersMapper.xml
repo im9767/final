@@ -120,9 +120,10 @@
 				coupon_num,
 				mid,
 				coupon_name,
-				coupon_type,
+				coupon_saletype,
 				coupon_status,
-				making_date
+				making_date,
+				coupon_typenum
 		FROM 
 				coupon
 		WHERE
