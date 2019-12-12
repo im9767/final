@@ -35,7 +35,7 @@ public class RoomsVo{
 	private String company;
 	private String house_save_name;
 	private String workplace;
-	
+	private double avg;
 	
 	/**
 	 * �깮�꽦�옄.
@@ -56,9 +56,9 @@ public class RoomsVo{
 		this.max_Personnel = max_Personnel;
 	}
 
-	
+
 	public RoomsVo(int room_num, int house_num, String roomname, int room_price, String room_info, int room_check,
-			int max_Personnel, String company, String house_save_name, String workplace) {
+			int max_Personnel, String company, String house_save_name, String workplace, double avg) {
 		super();
 		this.room_num = room_num;
 		this.house_num = house_num;
@@ -70,9 +70,20 @@ public class RoomsVo{
 		this.company = company;
 		this.house_save_name = house_save_name;
 		this.workplace = workplace;
+		this.avg = avg;
 	}
 
 	
+	public double getAvg() {
+		return avg;
+	}
+
+
+	public void setAvg(double avg) {
+		this.avg = avg;
+	}
+
+
 	public String getCompany() {
 		return company;
 	}

@@ -3,231 +3,155 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <div class="breadcrumb-content text-center">
-	<h2>shop list 2 column111111</h2>
 </div>
 
-<div class="shop-page-wrapper shop-page-padding ptb-100 ">
-	<div class="container-fluid border-secondary">
-		<div class="row">
-			<div class="col-lg-3">
-				<div class="shop-sidebar mr-50">
-					<div class="sidebar-widget mb-50">
-						<div class="sidebar-widget mb-50">
-							<h3 class="sidebar-title">날짜111</h3>
-							<div class="sidebar-search">
-								<input type="text" id="ss" style="width: 130px;"> <input
-									type="text" id="dd" style="width: 130px;">
-							</div>
-						</div>
-						<h3 class="sidebar-title">날짜</h3>
-						<div class="sidebar-search">
-							<input type="text" id="startDate" style="width: 130px;">
-							<input type="text" id="endDate" style="width: 130px;">
-						</div>
-					</div>
 
+<div class="container-fluid border-secondary">
+	<div class="row" style="margin-top: 200px;">
+		<div class="col-lg-2"
+			style="border: 1px solid #ddd; margin-left: 50px; height:500px; margin-top: 150px;">
 
-					<div class="sidebar-widget mb-60">
-						<h3 class="sidebar-title">상세조건</h3>
-						<button type="button" class="btn btn-outline-primary rounded"
-							style="width: 90px; height: 40px;">초기화</button>
-						&nbsp &nbsp
-						<button type="button" class="btn btn-danger rounded"
-							style="width: 90px; height: 40px;">적용</button>
-						<br>
-						<br>
-						<div class="form-check">
-							<input class="form-check-input" type="checkbox" value=""
-								id="defaultCheck1"> <label class="form-check-label"
-								for="defaultCheck1"> 예약가능 </label>
-						</div>
-					</div>
+			<div class="sidebar-widget mb-50" style="margin-top: 50px;">
 
-
-					<div class="sidebar-widget mb-50">
-						<div class="sidebar-top-rated-all"></div>
-					</div>
+				<h5 style="font-style: bold;" >날짜</h5>
+				<div class="form-row" style="padding-top: 18px;">
+					<input type="text" class="form-control" id="startDate"
+						style="width: 130px; " readonly>&nbsp 
+					<input type="text"
+						class="form-control" id="endDate" style="width: 130px;" readonly>
 				</div>
 			</div>
-			<div class="col-lg-9">
-
-				<div class="shop-product-wrapper res-xl">
-					<div class="shop-bar-area">
-						<div class="shop-bar pb-60">
-							<div class="shop-found-selector">
-								<div class="shop-found">
-									<!--       <p><span>23</span> Product Found of <span>50</span></p> -->
-								</div>
-								<div class="shop-selector">
-									<label>Sort By : </label> <select name="select">
-										<option value="">Default</option>
-										<option value="">A to Z</option>
-										<option value="">Z to A</option>
-										<option value="">In stock</option>
-									</select>
-								</div>
-							</div>
-							<div class="shop-filter-tab">
-								<div class="shop-tab nav" role=tablist>
-									<a href="#grid-sidebar11" data-toggle="tab" role="tab"
-										aria-selected="false"> <i class="ti-layout-grid4-alt"></i>
-									</a> <a class="active" href="#grid-sidebar12" data-toggle="tab"
-										role="tab" aria-selected="true"> <i class="ti-menu"></i>
-									</a>
-								</div>
-							</div>
-						</div>
-
-						<div class="shop-product-content tab-content">
-							<div id="grid-sidebar11" class="tab-pane fade">
-								<div class="row">
-									<div class="col-lg-6 col-md-6">
-										<div class="product-wrapper mb-30">
-
-											<div class="product-img">
-												<a href="#"> </a>
-												<!--  <span>hot</span>  -->
-												<div class="product-action">
-													<a class="animate-left" title="Wishlist" href="#"> <i
-														class="pe-7s-like"></i>
-													</a> <a class="animate-top" title="Add To Cart" href="#"> <i
-														class="pe-7s-cart"></i>
-													</a> <a class="animate-right" title="Quick View"
-														data-toggle="modal" data-target="#exampleModal" href="#">
-														<i class="pe-7s-look"></i>
-													</a>
-												</div>
-											</div>
-											<div class="product-content">
-												<h4>
-													<a href="#">100</a>
-												</h4>
-												<span>$115.00</span>
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-6 col-md-6">
-										<div class="product-wrapper mb-30">
-											<div class="product-img">
-												<a href="#"> <img
-													src="assets/img/product/fashion-colorful/2.jpg" alt="">
-												</a>
-												<div class="product-action">
-													<a class="animate-left" title="Wishlist" href="#"> <i
-														class="pe-7s-like"></i>
-													</a> <a class="animate-top" title="Add To Cart" href="#"> <i
-														class="pe-7s-cart"></i>
-													</a> <a class="animate-right" title="Quick View"
-														data-toggle="modal" data-target="#exampleModal" href="#">
-														<i class="pe-7s-look"></i>
-													</a>
-												</div>
-											</div>
-											<div class="product-content">
-												<h4>
-													<a href="#">Denim Stonewash</a>
-												</h4>
-												<span>$115.00</span>
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-6 col-md-6">
-										<div class="product-wrapper mb-30">
-											<div class="product-img">
-												<a href="#"> <img
-													src="assets/img/product/fashion-colorful/3.jpg" alt="">
-												</a> <span>new</span>
-												<div class="product-action">
-													<a class="animate-left" title="Wishlist" href="#"> <i
-														class="pe-7s-like"></i>
-													</a> <a class="animate-top" title="Add To Cart" href="#"> <i
-														class="pe-7s-cart"></i>
-													</a> <a class="animate-right" title="Quick View"
-														data-toggle="modal" data-target="#exampleModal" href="#">
-														<i class="pe-7s-look"></i>
-													</a>
-												</div>
-											</div>
-											<div class="product-content">
-												<h4>
-													<a href="#">Mini Waffle 5 Pack</a>
-												</h4>
-												<span>$115.00</span>
-											</div>
-										</div>
-									</div>
-									<div class="col-lg-6 col-md-6">
-										<div class="product-wrapper mb-30">
-											<div class="product-img">
-												<a href="#"> <img
-													src="assets/img/product/fashion-colorful/4.jpg" alt="">
-												</a>
-												<div class="product-action">
-													<a class="animate-left" title="Wishlist" href="#"> <i
-														class="pe-7s-like"></i>
-													</a> <a class="animate-top" title="Add To Cart" href="#"> <i
-														class="pe-7s-cart"></i>
-													</a> <a class="animate-right" title="Quick View"
-														data-toggle="modal" data-target="#exampleModal" href="#">
-														<i class="pe-7s-look"></i>
-													</a>
-												</div>
-											</div>
-											<div class="product-content">
-												<h4>
-													<a href="#">Dagger Smart Trousers</a>
-												</h4>
-												<span>$115.00</span>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<!-- 숙박 가능 업소 리스트 -->
-
-							<div id="grid-sidebar12" class="tab-pane fade active show">
-								<div class="row">
-									<c:forEach var="vo" items="${list }">
-										<div class="container" style="height: 85%; padding: 10px;">
-											<div class="card bg-white text-white" style="border: none;">
-												<img
-													src="${pageContext.request.contextPath }/resources/h_img/${vo.house_save_name}"
-													alt="" style="border-radius: 30px">
-												<div class="card-img-overlay" style="padding: 10px;">
-													<h1 class="card-title"
-														style="color: white; padding-top: 10px;">${vo.company }</h1>
-													<h2 class="card-text"
-														style="color: white; padding-top: 10px;">${vo.room_price }</h2>
-												</div>
-											</div>
-										</div>
-									</c:forEach>
-									<!-- 숙박 가능 업소 리스트 끝 -->
-								</div>
-							</div>
-						</div>
-
-					</div>
+			<br> <br>
+			<hr>
+			<div class="sidebar-widget mb-60" style="margin-top: 20px;">
+				<h5 class="sidebar-title " style="padding-bottom: 15px;">상세조건</h5>
+				<button type="button" class="btn btn-outline-primary rounded"
+					style="width: 90px; height: 40px;">초기화1</button>
+				&nbsp
+				<button type="button" class="btn btn-danger rounded"
+					style="width: 90px; height: 40px;">적용</button>
+				<br> <br>
+				<div class="custom-control custom-checkbox">
+					<input type="checkbox" class="custom-control-input"
+						id="customCheck1"> <label class="custom-control-label"
+						for="customCheck1">예약 가능</label>
+				</div>
+				<div class="custom-control custom-checkbox">
+					<input type="checkbox" class="custom-control-input"
+						id="customCheck2"> <label class="custom-control-label"
+						for="customCheck2">프로모션</label>
+				</div>
+				<div class="sidebar-widget mb-50" style="margin-top: 20px;">
+					<label>인원 &nbsp &nbsp &nbsp &nbsp</label> <span class="minus"
+						style=" margin-left:50px;padding-left: 10px; border: none; font: 25px bold;">-</span>
+					<input type="text" id="quantity" value="1"
+						style="color: #C90000; size: 10px; border: none"> <span
+						class="plus" style="border: none; font-size: 25px;">+</span>
 				</div>
 			</div>
+		</div>
 
+		<div class="col-lg-9">
+			<div class="row" style="margin-left: 50px;">
+				<div class="container" style="width: 85%;">
+					<div class="new_arrivals_sorting">
+						<ul
+							class="arrivals_grid_sorting clearfix button-group filters-button-group"
+							style="float: left">
+							<li
+								class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center active is-checked"
+								data-filter="*" style="width: 200px;" id="recomm">추천 순</li>
+							<li
+								class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center"
+								style="width: 200px;">거리 순</li>
+							<li
+								class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center"
+								style="width: 200px;">높은 가격 순</li>
+							<li
+								class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center"
+								style="width: 200px;">낮은 가격 순</li>
+						</ul>
+						<ul
+							class="arrivals_grid_sorting clearfix button-group filters-button-group"
+							style="float: left; padding-left: 25px;">
+							<li
+								class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center"
+								style="width: 50px;">지도</li>
+						</ul>
+					</div>
+				
+					<c:forEach var="vo" items="${list }">
+						<div class="card bg-white text-white"
+							style="border: none; padding: 10px; background: balck;">
+							<img
+								src="${pageContext.request.contextPath }/resources/h_img/${vo.house_save_name}"
+								alt=""
+								style="border-radius: 15px; height: 300px; width: 85%; background: black;">
+							<div class="card-img-overlay"
+								style="margin-top: 10px; margin-left: 10px; background: black; width: 83.4%; height: 94.5%; opacity: 0.5; border-radius: 15px;">
 
-
-
+							</div>
+							<div class="card-img-overlay" style="padding: 10px; width: 85%;">
+								<h5 class="card-title"
+									style="color: white; padding-top: 240px; padding-left: 780px; font: bold">${vo.room_price }원
+									~</h5>
+							</div>
+							<div class="card-img-overlay" style="padding: 20px; width: 85%;">
+								<h3 class="card-title"
+									style="color: white; padding-left: 20px; padding-top: 150px">${vo.company }</h3>
+								<c:choose>
+									<c:when test="${vo.avg > 9.0 }">
+										<h5 class="card-text"
+											style="color: #FFCD12; padding-left: 20px;">${vo.avg }
+											최고에요</h5>
+									</c:when>
+									<c:when test="${vo.avg > 7.0 }">
+										<h5 class="card-text"
+											style="color: #FFCD12; padding-left: 20px;">${vo.avg }
+											만족해요</h5>
+									</c:when>
+									<c:when test="${vo.avg > 5.0 }">
+										<h5 class="card-text"
+											style="color: #FFCD12; padding-left: 20px;">${vo.avg }
+											좋아요</h5>
+									</c:when>
+									<c:when test="${vo.avg == 0.0 }">
+										<h5 class="card-text"
+											style="color: #FFCD12; padding-left: 20px;">${vo.avg }</h5>
+									</c:when>
+									<c:otherwise>
+										<h5 class="card-text"
+											style="color: #FFCD12; padding-left: 20px;">${vo.avg }
+											평범해요</h5>
+									</c:otherwise>
+								</c:choose>
+								<h4 class="card-text" style="color: white; padding-left: 20px;">
+									${vo.workplace }</h4>
+							</div>
+						</div>
+					</c:forEach>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
 
+
+
+
 <script type="text/javascript">
 
  $("#startDate").datepicker({
-		dateFormat: "yy-mm-dd", // 날짜의 형식
+		dateFormat: "yy/mm/dd", // 날짜의 형식
 		minDate: 0,
 		nextText: ">",
 		prevText: "<",
 		//autoclose: false,
-		altFormat: "yy-mm-dd",
+		dayNamesMin: ["일", "월", "화", "수", "목", "금", "토"],
+		monthNames: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월" , "10월", "11월", "12월"],
+		yearSuffix: "년",
 		gotoCurrent: true,
+		showMonthAfterYear: true,
 		onSelect: function (date) {
 			var endDate = $('#endDate');
 			var startDate = $(this).datepicker('getDate');
@@ -243,13 +167,59 @@
 	});
 
 	$('#endDate').datepicker({
-		dateFormat: "yy-mm-dd", // 날짜의 형식
+		dateFormat: "yy/mm/dd", // 날짜의 형식
 		nextText: ">",
 		prevText: "<",
+		dayNamesMin: ["일", "월", "화", "수", "목", "금", "토"],
+		monthNames: ["1월", "2월", "3월", "4월", "5월", "6월", "7월", "8월", "9월" , "10월", "11월", "12월"],
+		yearSuffix: "년",
+		gotoCurrent: true,
+		showMonthAfterYear: true,
 		onClose: function(){
 			
 		}
 	});
+	//수량상자
+	var quantitiy=0;
+   $('.plus').click(function(e){
+        e.preventDefault();
+        var quantity = parseInt($('#quantity').val());
+            $('#quantity').val(quantity + 1);
+    });
+
+     $('.minus').click(function(e){
+        e.preventDefault();
+        var quantity = parseInt($('#quantity').val());
+            if(quantity>1){
+            $('#quantity').val(quantity - 1);
+            }
+    });
+     $('#recomm').click(function(){
+    	var date = new Date();
+     	var year = date.getFullYear();
+     	var month = date.getMonth()+1;
+     	var day = date.getDate();
+     	if(month < 10){
+     		month = "0"+month;
+     	}
+     	var today = year + "/" + month + "/" + day;
+
+     	var nextDate = new Date();
+     	nextDate.setDate(nextDate.getDate()+1);
+     	
+     	var nYear = nextDate.getFullYear();
+     	var nMonth = nextDate.getMonth()+1;
+     	var nDay = nextDate.getDate();
+     	
+     	var nextday = nYear + "/" + nMonth + "/" + nDay;
+		location.href="${pageContext.request.contextPath}/product/accommodationList?sort=price&startday="+today+"&endday="+nextday;
+    	 
+     });
+
+  
+
+     
+
 </script>
 
 
