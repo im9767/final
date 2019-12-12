@@ -31,7 +31,7 @@
               <div class="col-lg-6" style="margin: auto">
                 <div class="p-5" >
                   <div class="text-center">
-                    <h1 class="h4 text-gray-900 mb-4">관리자 로그인!</h1>
+                    <h1 class="h4 text-gray-900 mb-4">관리자 로그인</h1>
                   </div>
                   <form method="post" action="${pageContext.request.contextPath }/loginok">
                     <div class="form-group">
@@ -42,16 +42,8 @@
                     </div>
                     <input type="submit" class="btn btn-primary btn-user btn-block"
                     	  value="로그인"
-                    >
-                    <hr>
-                  </form>
-                  <hr>
-                  <div class="text-center">
-                    <a class="small" href="forgot-password.html">비밀번호 찾기</a>
-                  </div>
-                  <div class="text-center">
-                    <a class="small" href="forgot-id.html">아이디 찾기</a>
-                  </div>
+                    >                  
+                  </form>              
                 </div>
               </div>
           </div>

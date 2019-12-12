@@ -26,6 +26,7 @@
 		<mapper resource="test/app/mybatis/mapperL/PayMapper.xml"/>
 		<mapper resource="test/app/mybatis/mapperL/CouponMapper.xml"/>
 		<mapper resource="test/app/mybatis/mapper/k/productMapper.xml"/>
+		<mapper resource="test/app/mybatis/mapperY/BusinessMapper.xml"/>
 	</mappers>
 </configuration>  
   

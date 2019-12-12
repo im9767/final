@@ -112,38 +112,6 @@ public class AdminDao {
 	public List<HashMap<String, Object>> selamenities(){
 		return sqlSessionTemplate.selectList("test.app.mybatis.mapperY.AdminMapper.allamenities");
 	}
-	//객실
-	public List<HashMap<String, Object>> roomlistAll(int house_num){
-		return sqlSessionTemplate.selectList("test.app.mybatis.mapperY.AdminMapper.roomlistAll",house_num);
-	}
-	public List<String> rimginfo(int room_num){
-		return sqlSessionTemplate.selectList("test.app.mybatis.mapperY.AdminMapper.rimginfo",room_num);
-	}
-	public int inroom(RoomsVo vo){
-		return 
-		sqlSessionTemplate.insert("test.app.mybatis.mapperY.AdminMapper.inroom",vo);
-	}
-	public int selrnum(RoomsVo vo){
-		return 
-		sqlSessionTemplate.selectOne("test.app.mybatis.mapperY.AdminMapper.selrnum",vo);
-	}
-	public int inroomimg(RoomsImgVo vo){
-		return 
-		sqlSessionTemplate.insert("test.app.mybatis.mapperY.AdminMapper.inroomimg",vo);
-	}
-	public int roomimgdel(int room_num){
-		return sqlSessionTemplate.delete("test.app.mybatis.mapperY.AdminMapper.roomimgdel",room_num);
-	}
-	public int roomdel(int room_num){
-		return sqlSessionTemplate.delete("test.app.mybatis.mapperY.AdminMapper.roomdel",room_num);
-	}
-	public List<HashMap<String, Object>> selroominfo(int room_num){
-		return sqlSessionTemplate.selectList("test.app.mybatis.mapperY.AdminMapper.selroominfo",room_num);
-	}
-	public int updateroom(RoomsVo vo){
-		return 
-		sqlSessionTemplate.update("test.app.mybatis.mapperY.AdminMapper.updateroom",vo);
-	}
 }
 
 

@@ -22,14 +22,15 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import test.app.project.service.Y.AdminService;
+import test.app.project.service.Y.BusinessService;
 import test.app.project.vo.HouseVo;
 import test.app.project.vo.NoticeVo;
 
 @Controller
 public class RoomController {
 	@Autowired
-	private AdminService service;
-	public void setService(AdminService service) {
+	private BusinessService service;
+	public void setService(BusinessService service) {
 		this.service = service;
 	}
 	//사업자 등록된 방전체조회
@@ -130,12 +131,20 @@ public class RoomController {
 			irlist.put("rcontent",rcontent);
 			irlist.put("price", price);
 			irlist.put("max", max);
-			System.out.println(max);
-			//업로드할 폴더의 절대경로 얻어오기
-					String uploadPath=
-						session.getServletContext().getRealPath("/resources/upload");
-					System.out.println(uploadPath);
-		try{			
+			
+		try{
+			String uploadPath=
+					session.getServletContext().getRealPath("/resources/upload");
+			System.out.println(uploadPath);
+			List<String> s=service.rimginfo(room_num);
+			
+			for(int a=0;a<s.size();a++){
+			String savefilename=s.get(a);
+			File f=new File(uploadPath +"\\" + savefilename);
+			if(!f.delete()) {
+				new Exception("파일삭제실패!");
+				}
+			}
 		   for(int j = 0;j<imgIn.size();j++){
 			 //전송된 파일명
 				String orgfilename=imgIn.get(j).getOriginalFilename();

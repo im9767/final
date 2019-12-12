@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import test.app.project.service.L.PaymentService;
 import test.app.project.service.Y.AdminService;
@@ -34,6 +35,8 @@ public class LoginController {
 	public String loginok(@RequestParam(value="year",defaultValue="2019")int year,String aid,String apwd,HttpSession session,Model model){
 		HashMap<String,Object> map=new HashMap<String, Object>();
 		HashMap<String,Object> map1=new HashMap<String, Object>();
+		session.setAttribute("aid", aid);
+		
 		map.put("aid",aid);
 		map.put("apwd",apwd);
 		

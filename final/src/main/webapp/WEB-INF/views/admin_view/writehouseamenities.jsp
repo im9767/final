@@ -29,7 +29,7 @@
 <script type="text/javascript" src="${cp}/resources/admin/js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
 function validate() {
-    var am=document.frm1.am;//동일한 name속성을 갖는객체가 여러개면 자동으로 배열로 만들어짐
+    var am=document.frm1.am;
     var am2=document.getElementsByName("am");
 	var cnt=0;
 	for (var i = 0; i < am.length; i++) {
