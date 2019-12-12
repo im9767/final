@@ -90,6 +90,19 @@ public class EventController {
 	//이벤트삭제
 	@RequestMapping(value = "/admin_view/delevent", method = RequestMethod.GET)
 	public String delevent(int event_Num, HttpSession session) {
+		
+		String uploadPath=session.getServletContext().getRealPath("/resources/upload");
+		System.out.println(uploadPath);
+		
+		List<String> s=service.imginfo(event_Num);
+		
+		for(int a=0;a<s.size();a++){
+		String savefilename=s.get(a);
+		File f=new File(uploadPath +"\\" + savefilename);
+		if(!f.delete()) {
+			new Exception("파일삭제실패!");
+			}
+		}
 		int n = service.eventdelete(event_Num);
 		if (n > 0) {
 			return "redirect:/admin_view/eventboard";
@@ -120,19 +133,20 @@ public class EventController {
 		elist.put("etitle", etitle);
 		elist.put("sdate", sdate);
 		elist.put("edate", edate);
-				String uploadPath=
-					session.getServletContext().getRealPath("/resources/upload");
-				System.out.println(uploadPath);
 	try{
-		/*
-		EventimagesVo vo=service.imginfo(event_Num);
-		String savefilename1=vo.getSavefilename();
-		File f=new File(uploadPath +"\\" + savefilename1);
+		
+		String uploadPath=
+				session.getServletContext().getRealPath("/resources/upload");
+		System.out.println(uploadPath);
+		List<String> s=service.imginfo(event_Num);
+		
+		for(int a=0;a<s.size();a++){
+		String savefilename=s.get(a);
+		File f=new File(uploadPath +"\\" + savefilename);
 		if(!f.delete()) {
 			new Exception("파일삭제실패!");
+			}
 		}
-		*/
-		
 	   for(int j = 0;j<imgIn.size();j++){
 			String orgfilename=imgIn.get(j).getOriginalFilename();
 			elist.put("orgfilename"+j+1,orgfilename);

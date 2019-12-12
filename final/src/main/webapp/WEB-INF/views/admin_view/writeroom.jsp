@@ -70,28 +70,7 @@
     			var y= $("#max").val(--ppp);
     		}
     	}
-    
-        function validate() {
-        var am=document.frm1.am;//동일한 name속성을 갖는객체가 여러개면 자동으로 배열로 만들어짐
-        var am2=document.getElementsByName("am");
-		var cnt=0;
-		for (var i = 0; i < am.length; i++) {
-			if(am[i].checked){
-				cnt++;
-			}
-		}
-		for (var j = 0; j < am2.length; j++) {
-			if(am2[j].checked){
-				var aa=$("<input type='text' name='sublist' hidden='' value='"+am2[j].value+"'>").appendTo("#subitem");
-				console.log(am[j].value) 
-			}
-    	}
-		if(cnt<1){
-			alert("편의시설은 무조건 하나이상 고르세요.");
-			return false;
-		}
-		return true;
-}
+  
     </script>
 </head>
 <body class="bg-gradient-primary">
@@ -116,17 +95,7 @@
 									최대인원:&nbsp;<input type="button" id="mm" onclick="manous()" value="-">&nbsp;<input type="text" id="max" name="max" readonly="readonly" style="float:right; width:20px;" value="1" >&nbsp;<input type="button" id="pp" value="+" onclick="plus()">
 								</div><hr style="width: 1750px;">
 								<h2>소개</h2>
-								<textarea style="width: 900px; height: 500px;" name="rcontent" id="rcontent"></textarea>
-									<div style="padding-left: 50px; float: right; width: 800px;" id="radiobox">
-										<c:forEach var="vo" varStatus="vs" items="${ allamenities}">
-											<c:choose>
-											<c:when test="${vs.index==4}">
-											<input type="checkbox" name="am" onclick="ch()" value="${vo.AMENITIES_NAME}">${vo.AMENITIES_NAME}<br>
-												</c:when><c:otherwise>
-												<input type="checkbox" name="am" onclick="ch()" value="${vo.AMENITIES_NAME}">${vo.AMENITIES_NAME}
-												</c:otherwise>
-											</c:choose>
-											</c:forEach><br><br><span>기타</span><br><input type="text" style="width:400px;height:50px;" placeholder="추가입력"></div>
+								<textarea style="width: 1750px; height: 500px;" name="rcontent" id="rcontent"></textarea>
 								<hr style="width: 1750px;">
 								<h2>이미지</h2>													
 								<div id="imgbox"></div>						
@@ -136,7 +105,6 @@
 									style="float: right; margin-right:50px;" value="등록" onclick="valiDate()">
 							</form>
 						</div>
-						<hr>
 					</div>
 				</div>
 			</div>
