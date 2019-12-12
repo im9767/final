@@ -7,10 +7,14 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import test.app.project.vo.AmenitiesVo;
 import test.app.project.vo.EventVo;
 import test.app.project.vo.EventimagesVo;
 import test.app.project.vo.HouseVo;
+import test.app.project.vo.HouseintroVo;
 import test.app.project.vo.NoticeVo;
+import test.app.project.vo.RoomsImgVo;
+import test.app.project.vo.RoomsVo;
 
 @Repository
 public class AdminDao {
@@ -87,8 +91,8 @@ public class AdminDao {
 	public List<HashMap<String, Object>> selevent(int event_Num){
 		return sqlSessionTemplate.selectList("test.app.mybatis.mapperY.AdminMapper.selevent",event_Num);
 	}
-	public EventimagesVo imginfo(int event_Num){
-		return sqlSessionTemplate.selectOne("test.app.mybatis.mapperY.AdminMapper.imginfo",event_Num);
+	public List<String> imginfo(int event_Num){
+		return sqlSessionTemplate.selectList("test.app.mybatis.mapperY.AdminMapper.imginfo",event_Num);
 	}
 	public List<HashMap<String, Object>> seleventinfo(int event_Num){
 		return sqlSessionTemplate.selectList("test.app.mybatis.mapperY.AdminMapper.seleventinfo",event_Num);
@@ -100,7 +104,14 @@ public class AdminDao {
 		return 
 		sqlSessionTemplate.update("test.app.mybatis.mapperY.AdminMapper.upevent",vo);
 	}
-	
+	//편의시설
+	public int inamenities(AmenitiesVo vo){
+		return 
+		sqlSessionTemplate.insert("test.app.mybatis.mapperY.AdminMapper.inamenities",vo);
+	}
+	public List<HashMap<String, Object>> selamenities(){
+		return sqlSessionTemplate.selectList("test.app.mybatis.mapperY.AdminMapper.allamenities");
+	}
 }
 
 
