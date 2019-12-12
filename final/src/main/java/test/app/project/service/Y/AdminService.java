@@ -1,23 +1,24 @@
 package test.app.project.service.Y;
 
 
-import static org.hamcrest.CoreMatchers.equalTo;
 
 import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.UUID;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import test.app.project.dao.Y.AdminDao;
+import test.app.project.vo.AmenitiesVo;
 import test.app.project.vo.EventVo;
 import test.app.project.vo.EventimagesVo;
-import test.app.project.vo.HouseVo;
+
 import test.app.project.vo.NoticeVo;
+import test.app.project.vo.RoomsImgVo;
+import test.app.project.vo.RoomsVo;
 
 @Service
 public class AdminService {
@@ -61,7 +62,6 @@ public class AdminService {
 		return dao.nlist(nnum);
 	}
 	public int upnotice(NoticeVo vo){
-		System.out.println(vo.getNregdate());
 		return dao.upnotice(vo);
 	}
 	//이벤트
@@ -90,7 +90,7 @@ public class AdminService {
 	public List<HashMap<String, Object>> selevent(int event_Num) {		
 			return dao.selevent(event_Num);	
 	}
-	public EventimagesVo imginfo(int event_Num) {		
+	public List<String> imginfo(int event_Num) {		
 		return dao.imginfo(event_Num);	
 }
 	@Transactional(rollbackFor=Exception.class)
@@ -111,6 +111,14 @@ public class AdminService {
 	}
 	return 1;
 	}
+	//편의시설
+	public int writeamenities(AmenitiesVo vo) {		
+		return dao.inamenities(vo);	
+	}
+	public List<HashMap<String, Object>> selamenities(){
+		return dao.selamenities();
+	}
+	
 }
 
 

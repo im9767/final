@@ -31,21 +31,18 @@
         $(function() {
             $("#imgIn").on('change', function(){
             	$("#imgbox img").remove();
-            	$("#fimgbox img").remove();
             	readURL(this);
             });
         });
         var b=0;
         function readURL(input) {
         	for(var a=0;a<input.files.length;a++){
-           		var reader = new FileReader();
-           		
+           		var reader = new FileReader();         
             	reader.onload = function (e){                               		
-            		console.log(input.files[b].name);
-            		var aa=$("<img src='"+e.target.result+"'><br>").appendTo("#imgbox");           		
-            		aa.css("width","700px");
-            		aa.css("height","700px");
-            		console.log(b++);
+            		console.log(input.files[b].name);         		
+            		var aa=$("<img src='"+e.target.result+"'><br>").appendTo("#imgbox");           	
+            		aa.css("width","200px");
+            		aa.css("height","200px");         		
             		}
             	reader.readAsDataURL(input.files[a]);
             	}           
@@ -62,35 +59,21 @@
 				<div class="row" style="height: auto;">
 					<div class="col-lg-7" style="margin-left: 10px; margin-top: 20px; margin-bottom: 20px;">
 						<div class="text-center">
-							<h1 class="h4 text-gray-900 mb-4" style="text-align: left;">이벤트
-								수정</h1>
+							<h1 class="h4 text-gray-900 mb-4" style="text-align: left;">편의시설 등록</h1>
 						</div>
 						<div class="user" style="width: 900px; height: 700px;">
-							<form method="POST" action="${cp}/admin_view/updateeventok" enctype="multipart/form-data">
-							<c:forEach  var="vo" items="${upeventlist}" varStatus="vs">
-								<c:if test="${vs.index==0 }">
-								<div class="form-group row" style="width: auto">
-									<div class="col-sm-6 mb-3 mb-sm-0" style="width: auto">
-										<input type="text" name="event_Num" value="${vo.EVENT_NUM}" hidden="" >
-										<input type="text" name="etitle" id="etitle" placeholder="제목" value="${vo.ETITLE}">
-									</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									시작&nbsp;<input type="date" id="edate" name="edate" style="float:right;" value="${vo.ESTARTDATE}">&nbsp;
-									종료&nbsp;<input type="date" id="sdate" name="sdate" style="float:right;" value="${vo.EENDDATE }">
-								</div><hr style="width: 900px;">
-								<div id="imgbox"></div>
-								</c:if>
-								<div id="fimgbox">
-								<img src="../resources/upload/${vo.SAVEFILENAME}" style="width: 700px; height: 700px;"><br>	
-								</div>
-								</c:forEach>
-																																										
+							<form method="POST" action="${cp}/admin_view/writeamenitiesok" enctype="multipart/form-data">							
 								<hr style="width: 900px;">
-								<input multiple="multiple" type="file" id="imgIn" name="imgIn" class="btn btn-secondary btn-icon-split" >						
+								<div id="imgbox"></div>																		
+								<hr style="width: 900px;">
+								편의시설명:&nbsp;<input type="text" name="aname" style="width:800px;"><br>	<br>
+								&nbsp;&nbsp;&nbsp;내&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;용&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;<input type="text" name="acontent" style="width: 800px;height: 50px;">						
+								<hr style="width: 900px;">
+								<input  type="file" id="imgIn" name="imgIn" class="btn btn-secondary btn-icon-split" >						
 								 <input type="submit" class="btn btn-primary btn-icon-split"
-									style="float: right" value="수정하기">
+									style="float: right" value="등록">
 							</form>
 						</div>
-						<hr>
 					</div>
 				</div>
 			</div>
