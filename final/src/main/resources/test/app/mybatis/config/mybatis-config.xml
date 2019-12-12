@@ -29,6 +29,7 @@
 		<mapper resource="test/app/mybatis/mapperL/RoomlistMapper.xml"/>
 		<mapper resource="test/app/mybatis/mapper/k/productMapper.xml"/>
 		<mapper resource="test/app/mybatis/mapper/p/NoticeMapper.xml"/>
+		<mapper resource="test/app/mybatis/mapperY/BusinessMapper.xml"/>
 	</mappers>
 </configuration>  
   

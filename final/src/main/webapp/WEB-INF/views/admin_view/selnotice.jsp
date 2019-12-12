@@ -30,7 +30,7 @@
       <div class="card-body p-0">
         <!-- Nested Row within Card Body -->
         <div class="row" style="height: 800px">
-          <div class="col-lg-7" style="margin-left: 100px; margin-top: 20px;" >     
+          <div class="col-lg-7" style="margin-left: 100px; margin-top: 20px;">     
               <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4" style="text-align: left; font-size: xx-large;">공지사항 세부내용</h1>
               </div>             
