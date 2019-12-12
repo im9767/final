@@ -71,6 +71,13 @@ public class LoginController {
 		}
 		return ".main";		
 	}
+	//로그아웃 하는 컨트롤러
+	@RequestMapping(value="/admin/logout")
+	public String adminLogout(HttpSession session){
+		session.removeAttribute("aid");
+		session.removeAttribute("apwd");
+		return ".main";
+	}
 }
 	
 	

@@ -43,7 +43,7 @@
 										</c:otherwise>
 									</c:choose>
 									<c:choose>
-										<c:when test="${code=='success' }">
+										<c:when test="${not empty aid}">
 											<li class="account" style='background-color: red;border:none;'>
 													<a href="${cp}/admin" style='color:white;'>
 														관리자페이지로이동

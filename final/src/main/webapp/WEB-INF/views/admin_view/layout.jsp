@@ -254,7 +254,6 @@ $(function(){
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Utilities:</h6>
             <a class="collapse-item" href="${cp}/admin/members">등록회원조회</a>
-            <a class="collapse-item" href="utilities-border.html"></a>
           </div>
         </div>
       </li>
@@ -281,27 +280,13 @@ $(function(){
           </div>
         </div>
       </li>
-
-      <!-- Nav Item - Utilities Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
-          <i class="fas fa-fw fa-wrench"></i>
-          <span>매출</span>
-        </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">매출/통계:</h6>
-            <a class="collapse-item" href="utilities-color.html">업체별 통계</a>
-          </div>
-        </div>
-      </li>
 	  
       <!-- Divider -->
       <hr class="sidebar-divider">
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        Addons
+        기타
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
@@ -326,7 +311,7 @@ $(function(){
 
       <!-- Nav Item - Charts -->
       <li class="nav-item">
-        <a class="nav-link" href="charts.html">
+        <a class="nav-link" href="${cp}/admin">
           <i class="fas fa-fw fa-chart-area"></i>
           <span>Charts</span></a>
       </li>
@@ -349,8 +334,8 @@ $(function(){
           <i class="fas fa-fw fa-table"></i>
           <span>쿠폰발행</span></a>
       </li>
-
-	 <!-- Modal -->
+	
+	<!-- Modal -->
   	<div class="modal fade" id="myModal" aria-labelledby="쿠폰발행" role="dialog" style="color: blue">
       <div class="modal-dialog" style="max-width: 100%; width: auto; display: table;">
       <!-- Modal content-->
@@ -380,19 +365,26 @@ $(function(){
          	 	<div class="col-lg-6 mb-4" style="width:550px">
               		<div class="card bg-info text-white shadow">
               			<div class="card-body">
-                  			쿠폰유형/발행쿠폰명
+                  			발행쿠폰명
                			</div>
                		</div>
-               	<select name="coupon_type" id="coupon_type" class="form-control form-control-user" style="width:150px;display: inline-block;
+               		<!-- 
+               	<select name="coupon_typenum" id="coupon_typenum" class="form-control form-control-user" style="width:150px;display: inline-block;
               		margin-top: 10px;">
-	                  <option value="할인" <c:if test="${coupon_type=='할인'}">selected</c:if>>할인</option>
-	                  <option value="응모" <c:if test="${coupon_type=='응모'}">selected</c:if>>응모</option>
+	                  <option value="1" <c:if test="${coupon_type=='1'}">selected</c:if>>퍼센트할인</option>
+	                  <option value="2" <c:if test="${coupon_type=='2'}">selected</c:if>>포인트할인</option>
            		</select>
+           		 -->
                	<select name="coupon_name" id="coupon_name" class="form-control form-control-user" style="width:500px;display: inline-block;
               		margin-top: 10px;">
-              		<c:forEach var="vo" items="${eelist }">
-              			<option value="${vo.etitle} 쿠폰">${vo.etitle} 쿠폰</option>
-              		</c:forEach>
+              			<option value="10% 할인쿠폰:10:1">10% 할인쿠폰</option>
+              			<option value="30% 할인쿠폰:30:1">30% 할인쿠폰</option>
+              			<option value="50% 할인쿠폰:50:1">50% 할인쿠폰</option>
+              			<option value="70% 할인쿠폰:70:1">70% 할인쿠폰</option>
+              			<option value="3000포인트 할인쿠폰:3000:2">3000포인트 할인쿠폰</option>
+              			<option value="5000포인트 할인쿠폰:5000:2">5000포인트 할인쿠폰</option>
+              			<option value="7000포인트 할인쿠폰:7000:2">7000포인트 할인쿠폰</option>
+              			<option value="10000포인트 할인쿠폰:10000:2">10000포인트 할인쿠폰</option>
            		   </select>
            		   <div id="couponMsg"></div>
            		</div>
@@ -414,8 +406,8 @@ $(function(){
       </div>
     </ul>
  <!-- End of Sidebar -->
-	<div id="main">
-		<tiles:insertAttribute name="main"/>
+	<div id="maincontent">
+		<tiles:insertAttribute name="maincontent"/>
 	</div>
 </div>
 <!-- Bootstrap core JavaScript-->
@@ -439,12 +431,11 @@ $(function(){
   <script src="${cp}/resources/admin/js/demo/datatables-demo.js"></script>
   <script type="text/javascript">
 	  $("#couponBtn").on('click',function(){
-			console.log('aaaaaaaaaa');
 			var gnum=$("#gnum option:selected").val();
-			var coupon_type=$("#coupon_type option:selected").val();
+			var coupon_typenum=$("#coupon_typenum option:selected").val();
 			var coupon_name=$("#coupon_name option:selected").val();
 			$.ajax({
-				url:"${cp}/admin/coupon?gnum="+gnum+"&coupon_type="+coupon_type+"&coupon_name="+encodeURI(coupon_name),
+				url:"${cp}/admin/coupon?gnum="+gnum+"&coupon_typenum="+coupon_typenum+"&coupon_name="+encodeURI(coupon_name),
 				dataType:"xml",
 				success:function(data){
 					alert('쿠폰 발행완료!');
