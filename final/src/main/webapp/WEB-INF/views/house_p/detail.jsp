@@ -8,12 +8,12 @@
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=43ccdeeae05295dd6223a8c757111507&libraries=services,clusterer,drawing"></script>
 
-<div style="width:80%;min-height: 1200px;margin: auto;padding: 40px;margin-top: 150px;">
+<div style="width:65%;min-height: 1200px;margin: auto;padding: 40px;margin-top: 150px;">
 	
 	
-	<div style="width:90%;background-color: lightgray;min-height:1100px;margin: auto;">
+	<div style="width:90%;min-height:1100px;margin: auto;">
 		<!-- 큰 이미지 div  -->
-		<div style="width:50%;background-color: yellow;min-height:700px;float:left;">
+		<div style="width:50%;min-height:700px;float:left;" >
 			
 			<div id="carouselExampleControls" class="carousel slide" data-ride="false" style="width:100%;padding:10px;margin: auto;">
 				<div class="carousel-inner">
@@ -40,22 +40,21 @@
 		</div>
 		
 		<!-- 업소 정보 및 소개 div -->
-		<div style="width:50%;background-color: lightgreen;min-height:700px;float:left;padding:10px;">
+		<div style="width:50%;min-height:700px;float:left;padding:10px;">
 		
 			<h2 style="font-weight: bold;">업체명</h2>
-			<br>
+			
 			<p>
 				<span style="color:orange;font-size: 2.0em;">★★★★★</span>&nbsp;&nbsp;&nbsp;
-				<span style="font-size: 1.5em;color:gray;">리뷰 개수 1,100개</span>
+				<span style="font-size: 1.3em;color:gray;">리뷰 개수 1,100개</span>
 			</p>
-			<br>
-			<p style="font-size: 1.7em;color:black;">서울특별시 종로구 디아망 빌딩</p>
-			<p>
-				<div style="font-size: 1.5em;"><span>입실시간 15시부터</span></div>
-				<div style="font-size: 1.5em;"><span>퇴실시간 11시까지</span></div>
+			
+			<p style="font-size: 1.3em;color:black;">서울특별시 종로구 디아망 빌딩</p>
+			
+			<div style="font-size: 1em;"><span>입실시간 15시부터</span></div>
+			<div style="font-size: 1em;margin-bottom: 10px;"><span>퇴실시간 11시까지</span></div>
 
-			<br>
-			<p class="card" style="font-size: 1.2em;background-color: lightgray;min-height: 100px;padding:10px;">
+			<p class="card" style="font-size: 1.2em;min-height: 100px;padding:10px;">
 				<span>업소 소개좀 잘해봐 업소 소개좀 잘해봐 업소 소개좀 잘해봐 업소 소개좀 잘해봐업소 소개좀 잘해봐업소 소개좀 잘해봐업소 소개좀 잘해봐업소 소개좀 잘해봐
 				업소 소개좀 잘해봐 업소 소개좀 잘해봐 업소 소개좀 잘해봐 업소 소개좀 잘해봐 업소 소개좀 잘해봐업소 소개좀 잘해봐 업소 소개좀 잘해봐 업소 소개좀 잘해봐 업소 소개좀 잘해봐
 				업소 소개좀 잘해봐 업소 소개좀 잘해봐 업소 소개좀 잘해봐 업소 소개좀 잘해봐 업소 소개좀 잘해봐 업소 소개좀 잘해봐</span>
@@ -67,8 +66,8 @@
 		</div>
 		
 		<!-- 객실정보 -->
-	<div style="width:100%;min-height:1000px;background-color: pink;clear: both;">
-						
+	<div style="width:100%;min-height:1000px;clear: both;">
+		
 		<ul class="nav nav-tabs" id="myTab" role="tablist">
 			  <li class="nav-item">
 			    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">예약</a>
@@ -83,21 +82,22 @@
 		
 		<div class="tab-content" id="myTabContent">
 			  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-			  		
-			  <section id="div1" class="info" style="width:100%;min-height: 500px;background-color: red;">
-				
+			  
+			  <section id="div1" class="info" style="width:100%;min-height: 500px;">
+				<br>	
 				<div>
-					<input class="form-control" type="date" name="start_date" style="width: 400px;">
+					<input class="form-control" type="date" name="start_date" style="width: 300px;">
 				</div>
+				<br>
 					
-				<div style="border-radius: 10px 10px 10px 10px;background-color: gray;width:100%;min-height:300px;padding-top: 25px;padding-bottom:25px;margin-bottom: 20px;">
-					<div style="margin: auto;width:95%;background-color: white;min-height: 250px;">
+				<div class="card" style="border-radius: 10px 10px 10px 10px;width:100%;min-height:300px;padding-top: 25px;padding-bottom:25px;margin-bottom: 20px;">
+					<div style="margin: auto;width:95%;min-height: 250px;">
 						<!-- 객실 대표이미지 -->
-						<div style="width:50%;height:250px;background-color: purple;float: left;">
+						<div style="width:50%;height:250px;float: left;">
 							<img id="room-1" style="width:90%;height: 250px;cursor: pointer;" alt="객실사진" src="${pageContext.request.contextPath }/resources/images/banner_1.jpg">
 						</div>
 						<!-- 객실 정보 -->
-						<div style="width:50%;height:250px;background-color: green;float: left;margin-bottom: 20px;">
+						<div style="width:50%;height:250px;float: left;margin-bottom: 20px;">
 						
 							<h3>객실명</h3>
 							<p>객실가격</p>
@@ -110,7 +110,7 @@
 							
 						</div>
 						<!-- 객실 이미지 여러개 div -->
-						<div id="room-detail-1" style="clear:both;width:100%;height:500px;background-color: olive;padding: 50px 30px 30px 30px;display: none;">
+						<div id="room-detail-1" style="clear:both;width:100%;height:500px;padding: 50px 30px 30px 30px;display: none;">
 							
 							<button type="button" class="close" aria-label="Close" style="position: absolute;top:5px;right:5px;">
 							  	<span aria-hidden="true" style="font-size: 1.5em;">&times;</span>
@@ -143,14 +143,14 @@
 					
 				</div>
 				
-				<div style="border-radius: 10px 10px 10px 10px;background-color: gray;width:100%;min-height:300px;padding-top: 25px;padding-bottom:25px;margin-bottom: 20px;">
-					<div style="margin: auto;width:95%;background-color: white;min-height: 250px;">
+				<div class="card" style="border-radius: 10px 10px 10px 10px;width:100%;min-height:300px;padding-top: 25px;padding-bottom:25px;margin-bottom: 20px;">
+					<div style="margin: auto;width:95%;min-height: 250px;">
 						<!-- 객실 대표이미지 -->
-						<div style="width:50%;height:250px;background-color: purple;float: left;">
+						<div style="width:50%;height:250px;float: left;">
 							<img id="room-2" style="width:90%;height: 250px;cursor: pointer;" alt="객실사진" src="${pageContext.request.contextPath }/resources/images/banner_1.jpg">
 						</div>
 						<!-- 객실 정보 -->
-						<div style="width:50%;height:250px;background-color: green;float: left;margin-bottom: 20px;">
+						<div style="width:50%;height:250px;float: left;margin-bottom: 20px;">
 						
 							<h3>객실명</h3>
 							<p>객실가격</p>
@@ -163,7 +163,7 @@
 							
 						</div>
 						<!-- 객실 이미지 여러개 div -->
-						<div id="room-detail-2" style="clear:both;width:100%;height:500px;background-color: olive;padding: 50px 30px 30px 30px;display: none;">
+						<div id="room-detail-2" style="clear:both;width:100%;height:500px;padding: 50px 30px 30px 30px;display: none;">
 							
 							<button type="button" class="close" aria-label="Close" style="position: absolute;top:5px;right:5px;">
 							  	<span aria-hidden="true" style="font-size: 1.5em;">&times;</span>
@@ -200,7 +200,7 @@
 			</section>
 			  		
 			  </div>
-			  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab" style="width:100%;min-height: 500px;background-color: blue;">
+			  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab" style="width:100%;min-height: 500px;">
 			  		
 			  		<!-- 객실정보 -->
 <!-- 			<section id="div2" class="info" style="width:100%;min-height: 500px;display:none;background-color: blue;"> -->
