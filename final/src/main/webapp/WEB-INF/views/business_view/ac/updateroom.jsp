@@ -30,28 +30,35 @@
 <script type="text/javascript" src="${cp}/resources/admin/js/jquery-3.4.1.js"></script>
 <script type="text/javascript">
 
-        $(function() {
-            $("#imgIn").on('change', function(){
-            	$("#imgbox img").remove();
-            	$("#fimgbox img").remove();
-            	readURL(this);
-            });
-        });
-        var b=0;
-        function readURL(input) {
-        	for(var a=0;a<input.files.length;a++){
-           		var reader = new FileReader();
-           		
-            	reader.onload = function (e){                               		
-            		console.log(input.files[b].name);      		
-            		var aa=$("<img src='"+e.target.result+"'><br>").appendTo("#imgbox");           		
-            		aa.css("width","700px");
-            		aa.css("height","700px");
-            		console.log(b++);
-            		}
-            	reader.readAsDataURL(input.files[a]);
-            	}           
-        }
+$(function() {
+    $("#imgIn").on('change', function(){
+    	$("#fimgbox img").remove();
+    	$("#imgbox img").remove();
+    	readURL(this);
+    });
+});
+var b=0;
+function readURL(input) {
+	for(var a=0;a<input.files.length;a++){
+   		var reader = new FileReader();
+   		
+    	reader.onload = function (e){                               		
+    		console.log(input.files[b].name);
+    		if(b==5){
+    		var aa=$("<img src='"+e.target.result+"'><br>").appendTo("#imgbox");           		
+    		aa.css("width","590px");
+    		aa.css("height","590px");
+    		console.log(b++);
+    		}else{
+    			var aa=$("<img src='"+e.target.result+"'>").appendTo("#imgbox");           		
+        		aa.css("width","590px");
+        		aa.css("height","590px");
+        		console.log(b++);
+    		}
+    	}
+    	reader.readAsDataURL(input.files[a]);
+    	}           
+}
    
         function pplus(){
         	var ppp = $("#max").val();
@@ -71,17 +78,17 @@
 </head>
 <body class="bg-gradient-primary">
 
-	<div class="container">
+	<div class="container" style="margin-left: 10px; padding-right: 10px;">
 
-		<div class="card o-hidden border-0 shadow-lg my-5" style="padding-left: 10px; width: auto;">
+		<div class="card o-hidden border-0 shadow-lg my-5" style="padding-left: 10px; width: 1800px;">
 			<div class="card-body p-0">
 				<!-- Nested Row within Card Body -->
-				<div class="row" style="height: auto;">
+				<div class="row" style="height: auto; width: auto;">
 					<div class="col-lg-7" style="margin-left: 10px; margin-top: 20px; margin-bottom: 20px;">
 						<div class="text-center">
 							<h1 class="h4 text-gray-900 mb-4" style="text-align: left; font-size: 50px;">수정하기</h1>
 						</div>
-						<div class="user" style="width: 900px; height: 700px;">
+						<div class="user" style="width: 1800px; height: 700px;">
 							<form method="POST" action="${cp}/business_view/updateroomok" enctype="multipart/form-data">
 								<c:forEach  var="vo" items="${uproomlist}" varStatus="vs">	
 								<c:if test="${vs.index==0 }">
@@ -91,21 +98,27 @@
 									</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									가격:&nbsp;<input type="text" id="price" name="price" style="float:right; width: 100px;" value="${vo.ROOM_PRICE}">&nbsp;
 									최대인원:&nbsp;<input type="button" id="mm" onclick="mmanous()" value="-">&nbsp;<input type="text" id="max" name="max" readonly="readonly" style="float:right; width:20px;" value="${vo.MAX_PERSONNEL}" >&nbsp;<input type="button" id="pp" value="+" onclick="pplus()">
-								</div><hr style="width: 900px;">
+								</div><hr style="width: 1750px;">
 								<h2>소개</h2>
-								<input type="text" style="width: 900px; height: 500px;" name="rcontent" id="rcontent" value="${vo.ROOM_INFO}">
-								<hr style="width: 900px;">
+								<textarea style="width: 1750px; height: 500px; text-align: left;" name="rcontent" id="rcontent">${vo.ROOM_INFO}</textarea>
+								<hr style="width: 1750px;">
 								<h2>이미지</h2>													
-								<div id="imgbox"></div>					
-								</c:if>
+								<div id="imgbox"></div>
 								<div id="fimgbox">				
-								<img src="../resources/upload/${vo.ROOM_SAVE_NAME}" style="width: 700px; height: 700px;"><br>	
-								</div>
-								</c:forEach>					
+								</c:if>										
+								<c:choose>
+									<c:when test="${vs.index==5}">
+								<img src="../resources/upload/${vo.ROOM_SAVE_NAME}" style="width: 590px; height:590px;"><br>														
+									</c:when><c:otherwise>
+								<img src="../resources/upload/${vo.ROOM_SAVE_NAME}" style="width: 590px; height:590px;">
+									</c:otherwise>
+								</c:choose>			
+								</c:forEach>
+								</div>			
 								<hr style="width: 900px;">
 								<input multiple="multiple" type="file" id="imgIn" name="imgIn" class="btn btn-secondary btn-icon-split" >						
 								 <input type="submit" class="btn btn-primary btn-icon-split"
-									style="float: right" value="수정하기">
+									style="float: right;  margin-right:50px;" value="수정하기">
 							</form>
 						</div>
 						<hr>

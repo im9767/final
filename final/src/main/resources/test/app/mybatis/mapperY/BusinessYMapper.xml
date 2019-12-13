@@ -54,6 +54,10 @@
 	<update id="inupbjinfo" parameterType="map">
 		update business_join set business_email=#{bemail} where business_id=#{bid}
 	</update>
+	<!-- 업체 -->
+	<select id="selhnum"  parameterType="String" resultType="int">
+		select h.house_num from business_join j,house h where j.business_id=h.business_id and j.business_id=#{bid}
+	</select>
 </mapper>
 
 

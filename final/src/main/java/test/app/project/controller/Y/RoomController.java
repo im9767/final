@@ -9,6 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
 
+import javax.mail.Session;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,24 +34,25 @@ public class RoomController {
 	public void setService(BusinessYService service) {
 		this.service = service;
 	}
-	//�궗�뾽�옄 �벑濡앸맂 諛⑹쟾泥댁“�쉶
-	@RequestMapping(value = "/admin_view/roomsboard", method = RequestMethod.GET)
-	public String allroomlist(Model model) {
-		int house_num=10;
+
+	//방전체보기
+	@RequestMapping(value = "business_view/roomsboard", method = RequestMethod.GET)
+	public String allroomlist(Model model,HttpSession session) {
+		int house_num=(Integer)session.getAttribute("house_num");
 		List<HashMap<String,Object>> arlist = service.roomlistAll(house_num);
 		model.addAttribute("allroomlist", arlist);
-		return ".roomsboard";
+		return ".business_view.ac.roomsboard";
 	}
-	//諛⑸벑濡�
-	@RequestMapping(value = "/admin_view/writeroom", method = RequestMethod.GET)
+	//방 등록
+	@RequestMapping(value = "business_view/writeroom", method = RequestMethod.GET)
 	public String inroom(HttpSession session){
-		return "admin_view/writeroom";
+		return "/business_view/ac/writeroom";
 	}
 	//諛⑸벑濡� 泥댄겕
-	@RequestMapping(value="/admin_view/writeroomok",method=RequestMethod.POST)
+	@RequestMapping(value="business_view/writeroomok",method=RequestMethod.POST)
 	public String writeroomok(String rcontent,String rname,@RequestParam(required=false) List<MultipartFile> imgIn,int price,int max,HttpSession session) throws IOException{
 		HashMap<String, Object> irlist= new HashMap<String, Object>();
-		int house_num=10;
+		int house_num=(Integer)session.getAttribute("house_num");
 		irlist.put("rname", rname);
 		irlist.put("rcontent",rcontent);
 		irlist.put("price", price);
@@ -83,10 +85,10 @@ public class RoomController {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		return "redirect:/admin_view/roomsboard";		
+		return "redirect:/business_view/roomsboard";		
 	}
 	//諛� �궘�젣
-	@RequestMapping(value = "/admin_view/delroom", method = RequestMethod.GET)
+	@RequestMapping(value = "business_view/delroom", method = RequestMethod.GET)
 	public String delroom(int room_num, HttpSession session) {
 		String uploadPath=
 				session.getServletContext().getRealPath("/resources/upload");
@@ -97,34 +99,34 @@ public class RoomController {
 		String savefilename=s.get(a);
 		File f=new File(uploadPath +"\\" + savefilename);
 		if(!f.delete()) {
-			new Exception("�뙆�씪�궘�젣�떎�뙣!");
+			new Exception("삭제실패");
 			}
 		}
 		int n = service.roomdelete(room_num);
 		if (n > 0) {
-			return "redirect:/admin_view/roomsboard";
+			return "redirect:/business_view/roomsboard";
 		} else {
-			return "redirect:/admin_view/roomsboard";
+			return "redirect:/business_view/roomsboard";
 		}
 	}
 	//諛� �긽�꽭�젙蹂�
-		@RequestMapping(value = "/admin_view/selroominfo", method = RequestMethod.GET)
+		@RequestMapping(value = "business_view/selroominfo", method = RequestMethod.GET)
 		public ModelAndView selroominfo(int room_num,HttpSession session) {
 			List<HashMap<String, Object>> srlist = service.selroominfo(room_num);
-			ModelAndView mv = new ModelAndView("admin_view/selroom");
+			ModelAndView mv = new ModelAndView("business_view/ac/selroom");
 			mv.addObject("roominfolist", srlist);
 			return mv;
 		}
 	//諛⑹젙蹂� �닔�젙
-		@RequestMapping(value = "/admin_view/uproom", method = RequestMethod.GET)
+		@RequestMapping(value = "business_view/uproom", method = RequestMethod.GET)
 		public ModelAndView uproom(int room_num, HttpSession session) {
 			List<HashMap<String, Object>> nlist = service.selroominfo(room_num);
-			ModelAndView mv = new ModelAndView("admin_view/updateroom");	
+			ModelAndView mv = new ModelAndView("business_view/ac/updateroom");	
 			mv.addObject("uproomlist", nlist);
 			return mv;
 		}
 	//諛⑹젙蹂� �닔�젙泥댄겕
-		@RequestMapping(value="/admin_view/updateroomok",method=RequestMethod.POST)
+		@RequestMapping(value="business_view/updateroomok",method=RequestMethod.POST)
 		public String updateroomok(String rcontent,String rname,@RequestParam(required=false) List<MultipartFile> imgIn,int price,int max,int room_num,HttpSession session) throws IOException{
 			HashMap<String, Object> irlist= new HashMap<String, Object>();
 			irlist.put("rname", rname);
@@ -167,7 +169,7 @@ public class RoomController {
 			}catch(Exception e){
 				e.printStackTrace();
 			}
-			return "redirect:/admin_view/roomsboard";		
+			return "redirect:/business_view/roomsboard";		
 		}
 }
 	

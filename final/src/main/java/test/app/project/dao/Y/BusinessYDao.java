@@ -18,7 +18,7 @@ public class BusinessYDao {
 	public BusinessYDao(SqlSessionTemplate sqlSessionTemplate) {
 		this.sqlSessionTemplate=sqlSessionTemplate;
 	}
-	//?¸?˜?‹œ?„¤
+	//?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½
 	public int inamenities(AmenitiesVo vo){
 		return 
 		sqlSessionTemplate.insert("test.app.mybatis.mapperY.BusinessMapper.inamenities",vo);
@@ -58,7 +58,7 @@ public class BusinessYDao {
 		return 
 		sqlSessionTemplate.update("test.app.mybatis.mapperY.BusinessMapper.updateroom",vo);
 	}
-	//?‚¬?—…? ? •ë³´ì¡°?šŒ
+	//?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ?ï¿½ï¿½ë³´ì¡°?ï¿½ï¿½
 	public List<HashMap<String, Object>> biflist(String id){
 		return sqlSessionTemplate.selectList("test.app.mybatis.mapperY.BusinessMapper.biflist",id);
 	}
@@ -67,6 +67,11 @@ public class BusinessYDao {
 	}
 	public int inupbjinfo(HashMap<String,Object> map){
 		return sqlSessionTemplate.update("test.app.mybatis.mapperY.BusinessMapper.inupbjinfo",map);
+	}
+	//ì—…ì²´ë²ˆí˜¸
+	public int selhnum(String bid){
+		return 
+		sqlSessionTemplate.selectOne("test.app.mybatis.mapperY.BusinessMapper.selhnum",bid);
 	}
 }
 

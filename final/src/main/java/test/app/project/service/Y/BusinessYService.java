@@ -23,7 +23,7 @@ public class BusinessYService {
 		this.dao = dao;
 	}
 
-	// ?¸?˜?‹œ?„¤
+	// ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½
 	public int writeamenities(AmenitiesVo vo) {
 		return dao.inamenities(vo);
 	}
@@ -32,7 +32,7 @@ public class BusinessYService {
 		return dao.selamenities();
 	}
 
-	// ê°ì‹¤? •ë³?
+	// ê°ì‹¤?ï¿½ï¿½ï¿½?
 	public List<HashMap<String, Object>> roomlistAll(int house_num) {
 		return dao.roomlistAll(house_num);
 	}
@@ -81,8 +81,8 @@ public class BusinessYService {
 		}
 		return 1;
 	}
-
-	// ?‚¬?—…? ê°œì¸? •ë³´ì¡°?šŒ
+	
+	// ?ï¿½ï¿½?ï¿½ï¿½?ï¿½ï¿½ ê°œì¸?ï¿½ï¿½ë³´ì¡°?ï¿½ï¿½
 	public List<HashMap<String, Object>> biflist(String id) {
 		return dao.biflist(id);
 	}
@@ -92,6 +92,10 @@ public class BusinessYService {
 		dao.inupbjinfo(map);
 		dao.inupbinfo(map);
 		return 1;
+	}
+	//ì—…ì²´ë²ˆí˜¸
+	public int selhnum(String hnum) {
+		return dao.selhnum(hnum);
 	}
 
 }

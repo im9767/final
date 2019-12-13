@@ -42,12 +42,19 @@
            		var reader = new FileReader();
            		
             	reader.onload = function (e){                               		
-            		console.log(input.files[b].name);      		
+            		console.log(input.files[b].name);
+            		if(b==5){
             		var aa=$("<img src='"+e.target.result+"'><br>").appendTo("#imgbox");           		
-            		aa.css("width","700px");
-            		aa.css("height","700px");
+            		aa.css("width","590px");
+            		aa.css("height","590px");
             		console.log(b++);
+            		}else{
+            			var aa=$("<img src='"+e.target.result+"'>").appendTo("#imgbox");           		
+                		aa.css("width","590px");
+                		aa.css("height","590px");
+                		console.log(b++);
             		}
+            	}
             	reader.readAsDataURL(input.files[a]);
             	}           
         }
@@ -63,6 +70,7 @@
     			var y= $("#max").val(--ppp);
     		}
     	}
+  
     </script>
 </head>
 <body class="bg-gradient-primary">
@@ -72,14 +80,14 @@
 		<div class="card o-hidden border-0 shadow-lg my-5" style="padding-left: 10px; width: 1800px;">
 			<div class="card-body p-0" >
 				<!-- Nested Row within Card Body -->
-				<div class="row" style="height: auto; width: auto">
+				<div class="row" style="height: auto; width: auto;">
 					<div class="col-lg-7" style="margin-left: 10px; margin-top: 20px; margin-bottom: 20px; width: 1800px;">
 						<div class="text-center" >
 							<h1 class="h4 text-gray-900 mb-4" style="text-align: left; font-size: 50px;">방등록</h1>
 						</div>
 						<div class="user" style="width: 1800px; height: 700px;">
-							<form method="POST" action="${cp}/business_view/writeroomok" enctype="multipart/form-data">
-								<div class="form-group row" style="width: auto">
+							<form method="POST"  name="frm1" onsubmit="return validate();" action="${cp}/business_view/writeroomok" enctype="multipart/form-data">
+								<div class="form-group row" style="width: 1800">
 									<div class="col-sm-6 mb-3 mb-sm-0" style="width: 1750px;">
 									<input type="text" name="rname" id="rname" placeholder="방이름" style="width: 450px;">
 									</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -87,17 +95,16 @@
 									최대인원:&nbsp;<input type="button" id="mm" onclick="manous()" value="-">&nbsp;<input type="text" id="max" name="max" readonly="readonly" style="float:right; width:20px;" value="1" >&nbsp;<input type="button" id="pp" value="+" onclick="plus()">
 								</div><hr style="width: 1750px;">
 								<h2>소개</h2>
-								<div><textarea style="width: 900px; height: 500px;" name="rcontent" id="rcontent"></textarea><div style="padding-right: 650px; float: right;"><input type="text" value="1"></div>
+								<textarea style="width: 1750px; height: 500px;" name="rcontent" id="rcontent"></textarea>
 								<hr style="width: 1750px;">
 								<h2>이미지</h2>													
 								<div id="imgbox"></div>						
 								<hr style="width: 1750px;">
-								<input multiple="multiple" type="file" id="imgIn" name="imgIn" class="btn btn-secondary btn-icon-split" >						
+								<input multiple="multiple" type="file" id="imgIn" name="imgIn" class="btn btn-secondary btn-icon-split" ><div id="subitem"></div>						
 								 <input type="submit" class="btn btn-primary btn-icon-split"
-									style="float: right; margin-right:50px;" value="등록">
+									style="float: right; margin-right:50px;" value="등록" onclick="valiDate()">
 							</form>
 						</div>
-						<hr>
 					</div>
 				</div>
 			</div>

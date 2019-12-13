@@ -143,8 +143,8 @@ $(function(){
         <div id="collapsemember" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Utilities:</h6>
-            <a class="collapse-item" href="${cp}/business_view/roomsboards">객실등록</a>
-            <a class="collapse-item" href="#">객실정보</a>
+            <a class="collapse-item" href="${cp}/business_view/writeroom">객실등록</a>
+            <a class="collapse-item" href="${cp}/business_view/roomsboard">객실정보</a>
           </div>
         </div>
       </li>
