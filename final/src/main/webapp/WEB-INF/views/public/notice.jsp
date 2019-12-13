@@ -14,7 +14,7 @@
 		      <h2 class="mb-0">
 		        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse_${i.index }" aria-expanded="true" aria-controls="collapse_${i.index }">
 		      
-		          ${notice.ntitle }
+		          ${notice.ntitle } : aa : ${aa }
 		      
 		        </button>
 		      </h2>
