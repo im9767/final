@@ -7,8 +7,5 @@
       
     }
   },
-  "ecmaVersion": 5,
-  "libs": [
-    
-  ]
+  "ecmaVersion": 5
 }
