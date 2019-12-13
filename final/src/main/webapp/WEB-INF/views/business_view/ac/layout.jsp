@@ -210,6 +210,11 @@ $(function(){
           <i class="fas fa-fw fa-table"></i>
           <span>사업자 정보수정</span></a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="${cp}/business/view">
+          <i class="fas fa-fw fa-table"></i>
+          <span>사업자 홈버튼</span></a>
+      </li>
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 
