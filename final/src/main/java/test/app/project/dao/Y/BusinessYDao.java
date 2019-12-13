@@ -18,7 +18,7 @@ public class BusinessYDao {
 	public BusinessYDao(SqlSessionTemplate sqlSessionTemplate) {
 		this.sqlSessionTemplate=sqlSessionTemplate;
 	}
-	//?��?��?��?��
+	//편의시설등록
 	public int inamenities(AmenitiesVo vo){
 		return 
 		sqlSessionTemplate.insert("test.app.mybatis.mapperY.BusinessMapper.inamenities",vo);
@@ -58,7 +58,7 @@ public class BusinessYDao {
 		return 
 		sqlSessionTemplate.update("test.app.mybatis.mapperY.BusinessMapper.updateroom",vo);
 	}
-	//?��?��?�� ?��보조?��
+	//사업자
 	public List<HashMap<String, Object>> biflist(String id){
 		return sqlSessionTemplate.selectList("test.app.mybatis.mapperY.BusinessMapper.biflist",id);
 	}
@@ -68,7 +68,7 @@ public class BusinessYDao {
 	public int inupbjinfo(HashMap<String,Object> map){
 		return sqlSessionTemplate.update("test.app.mybatis.mapperY.BusinessMapper.inupbjinfo",map);
 	}
-	//업체번호
+	//업체
 	public int selhnum(String bid){
 		return 
 		sqlSessionTemplate.selectOne("test.app.mybatis.mapperY.BusinessMapper.selhnum",bid);

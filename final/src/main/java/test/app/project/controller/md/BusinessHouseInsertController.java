@@ -19,7 +19,7 @@ public class BusinessHouseInsertController {
 			this.service = service;
 		}
 	 
-	 @RequestMapping(value="/houseInformation_insert",method=RequestMethod.GET)
+	 @RequestMapping(value="business_view/houseInformation_insert",method=RequestMethod.GET)
 	 public String insertForm(){
 		 return "/business_view/ac/houseInformation_insert";
 	 }

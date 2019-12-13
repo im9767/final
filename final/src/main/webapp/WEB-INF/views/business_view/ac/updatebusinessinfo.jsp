@@ -45,7 +45,7 @@
 						</div>
 						<div class="user" style="width: 900px; height: 700px;">
 							<c:forEach var="vo" items="${businessinfolist}">
-								<form method="POST" action="${cp}/admin_view/updatebusinessinfook">									
+								<form method="POST" action="${cp}/business_view/updatebusinessinfook">									
 									<div class="input-group input-group-sm mb-3" style="width:600px;">
 											<div class="input-group-prepend">
 												<span class="input-group-text" id="inputGroup-sizing-sm">사업자명</span>

@@ -48,7 +48,7 @@ public class RoomController {
 	public String inroom(HttpSession session){
 		return "/business_view/ac/writeroom";
 	}
-	//諛⑸벑濡� 泥댄겕
+	//방등록체크
 	@RequestMapping(value="business_view/writeroomok",method=RequestMethod.POST)
 	public String writeroomok(String rcontent,String rname,@RequestParam(required=false) List<MultipartFile> imgIn,int price,int max,HttpSession session) throws IOException{
 		HashMap<String, Object> irlist= new HashMap<String, Object>();
@@ -57,25 +57,24 @@ public class RoomController {
 		irlist.put("rcontent",rcontent);
 		irlist.put("price", price);
 		irlist.put("max", max);
-		//�뾽濡쒕뱶�븷 �뤃�뜑�쓽 �젅��寃쎈줈 �뼸�뼱�삤湲�
 				String uploadPath=
 					session.getServletContext().getRealPath("/resources/upload");
 				System.out.println(uploadPath);
 	try{
 		
 	   for(int j = 0;j<imgIn.size();j++){
-		 //�쟾�넚�맂 �뙆�씪紐�
+		
 			String orgfilename=imgIn.get(j).getOriginalFilename();
 			irlist.put("orgfilename"+j+1,orgfilename);
-		//���옣�맆 �뙆�씪紐�(以묐났�릺吏� �븡�뒗 �씠由꾩쑝濡� 留뚮뱾湲�)
+		
 			String savefilename=UUID.randomUUID() +"_" + orgfilename;
 			irlist.put("savefilename"+j+1,savefilename);
-		//�쟾�넚�맂 �뙆�씪�쓣 �씫�뼱�삤湲� �쐞�븳 �뒪�듃由�
+		
 				InputStream fis=imgIn.get(j).getInputStream();
-		//�쟾�넚�맂 �뙆�씪�쓣 �꽌踰꾩뿉 異쒕젰�븯湲� �쐞�븳 �뒪�듃由�
+		
 				FileOutputStream fos=
 						new FileOutputStream(uploadPath+"\\" + savefilename);
-		//�뙆�씪蹂듭궗�븯湲�(�뾽濡쒕뱶�븯湲�)
+		
 				FileCopyUtils.copy(fis, fos);
 				fis.close();
 				fos.close();
@@ -87,7 +86,7 @@ public class RoomController {
 		}
 		return "redirect:/business_view/roomsboard";		
 	}
-	//諛� �궘�젣
+	//방 삭제
 	@RequestMapping(value = "business_view/delroom", method = RequestMethod.GET)
 	public String delroom(int room_num, HttpSession session) {
 		String uploadPath=
@@ -109,7 +108,7 @@ public class RoomController {
 			return "redirect:/business_view/roomsboard";
 		}
 	}
-	//諛� �긽�꽭�젙蹂�
+	//방 상세조회
 		@RequestMapping(value = "business_view/selroominfo", method = RequestMethod.GET)
 		public ModelAndView selroominfo(int room_num,HttpSession session) {
 			List<HashMap<String, Object>> srlist = service.selroominfo(room_num);
@@ -117,7 +116,7 @@ public class RoomController {
 			mv.addObject("roominfolist", srlist);
 			return mv;
 		}
-	//諛⑹젙蹂� �닔�젙
+	//방수정 이동
 		@RequestMapping(value = "business_view/uproom", method = RequestMethod.GET)
 		public ModelAndView uproom(int room_num, HttpSession session) {
 			List<HashMap<String, Object>> nlist = service.selroominfo(room_num);
@@ -125,7 +124,7 @@ public class RoomController {
 			mv.addObject("uproomlist", nlist);
 			return mv;
 		}
-	//諛⑹젙蹂� �닔�젙泥댄겕
+	//방 수정 체크	
 		@RequestMapping(value="business_view/updateroomok",method=RequestMethod.POST)
 		public String updateroomok(String rcontent,String rname,@RequestParam(required=false) List<MultipartFile> imgIn,int price,int max,int room_num,HttpSession session) throws IOException{
 			HashMap<String, Object> irlist= new HashMap<String, Object>();
@@ -139,7 +138,6 @@ public class RoomController {
 					session.getServletContext().getRealPath("/resources/upload");
 			System.out.println(uploadPath);
 			List<String> s=service.rimginfo(room_num);
-			
 			for(int a=0;a<s.size();a++){
 			String savefilename=s.get(a);
 			File f=new File(uploadPath +"\\" + savefilename);
@@ -148,18 +146,18 @@ public class RoomController {
 				}
 			}
 		   for(int j = 0;j<imgIn.size();j++){
-			 //�쟾�넚�맂 �뙆�씪紐�
+			 
 				String orgfilename=imgIn.get(j).getOriginalFilename();
 				irlist.put("orgfilename"+j+1,orgfilename);
-			//���옣�맆 �뙆�씪紐�(以묐났�릺吏� �븡�뒗 �씠由꾩쑝濡� 留뚮뱾湲�)
+			
 				String savefilename=UUID.randomUUID() +"_" + orgfilename;
 				irlist.put("savefilename"+j+1,savefilename);
-			//�쟾�넚�맂 �뙆�씪�쓣 �씫�뼱�삤湲� �쐞�븳 �뒪�듃由�
+			
 					InputStream fis=imgIn.get(j).getInputStream();
-			//�쟾�넚�맂 �뙆�씪�쓣 �꽌踰꾩뿉 異쒕젰�븯湲� �쐞�븳 �뒪�듃由�
+			
 					FileOutputStream fos=
 							new FileOutputStream(uploadPath+"\\" + savefilename);
-			//�뙆�씪蹂듭궗�븯湲�(�뾽濡쒕뱶�븯湲�)
+			
 					FileCopyUtils.copy(fis, fos);
 					fis.close();
 					fos.close();

@@ -22,19 +22,19 @@ public class BusinessYController {
 		this.service = service;
 	}
 	
-	@RequestMapping(value="/admin_view/updatebusinessinfo",method=RequestMethod.GET)
+	@RequestMapping(value="business_view/updatebusinessinfo",method=RequestMethod.GET)
 	public ModelAndView upinfo(HttpSession session){
-		String bid=(String)session.getAttribute("aid");
+		String bid=(String)session.getAttribute("bid");
 		List<HashMap<String,Object>> list = service.biflist(bid);
 		System.out.println(list);
-		ModelAndView mv = new ModelAndView("admin_view/updatebusinessinfo");
+		ModelAndView mv = new ModelAndView("business_view/ac/updatebusinessinfo");
 		mv.addObject("businessinfolist", list);
 		return mv;
 	
 	}
-	@RequestMapping(value="/admin_view/updatebusinessinfook",method=RequestMethod.POST)
+	@RequestMapping(value="business_view/updatebusinessinfook",method=RequestMethod.POST)
 	public String ubinfook(HttpSession session,String bname,String bcompany,String blicense,String bworkplace,String bcom_tel,String bemail){
-		String bid=(String)session.getAttribute("aid");
+		String bid=(String)session.getAttribute("bid");
 		HashMap<String, Object> map= new HashMap<String, Object>();
 		map.put("bname", bname);
 		map.put("bcompany", bcompany);
@@ -44,7 +44,7 @@ public class BusinessYController {
 		map.put("bemail", bemail);
 		map.put("bid", bid);
 		service.inupbinfo(map);
-		return ".admin";
+		return ".business";
 	}
 }
 	

@@ -23,7 +23,7 @@ public class BusinessYService {
 		this.dao = dao;
 	}
 
-	// ?��?��?��?��
+	//편의시설
 	public int writeamenities(AmenitiesVo vo) {
 		return dao.inamenities(vo);
 	}
@@ -32,7 +32,7 @@ public class BusinessYService {
 		return dao.selamenities();
 	}
 
-	// 객실?���?
+	//방
 	public List<HashMap<String, Object>> roomlistAll(int house_num) {
 		return dao.roomlistAll(house_num);
 	}
@@ -82,7 +82,7 @@ public class BusinessYService {
 		return 1;
 	}
 	
-	// ?��?��?�� 개인?��보조?��
+	// 사업자
 	public List<HashMap<String, Object>> biflist(String id) {
 		return dao.biflist(id);
 	}
