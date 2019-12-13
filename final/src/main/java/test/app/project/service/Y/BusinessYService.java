@@ -8,22 +8,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import test.app.project.dao.Y.BusinessDao;
+import test.app.project.dao.Y.BusinessYDao;
 import test.app.project.vo.AmenitiesVo;
 import test.app.project.vo.RoomsImgVo;
 import test.app.project.vo.RoomsVo;
 
 @Service
-public class BusinessService {
+public class BusinessYService {
 
 	@Autowired
-	private BusinessDao dao;
+	private BusinessYDao dao;
 
-	public BusinessService(BusinessDao dao) {
+	public BusinessYService(BusinessYDao dao) {
 		this.dao = dao;
 	}
 
-	// í¸ì˜ì‹œì„¤
+	// ?¸?˜?‹œ?„¤
 	public int writeamenities(AmenitiesVo vo) {
 		return dao.inamenities(vo);
 	}
@@ -32,7 +32,7 @@ public class BusinessService {
 		return dao.selamenities();
 	}
 
-	// ê°ì‹¤ì •ë³´
+	// ê°ì‹¤? •ë³?
 	public List<HashMap<String, Object>> roomlistAll(int house_num) {
 		return dao.roomlistAll(house_num);
 	}
@@ -82,7 +82,7 @@ public class BusinessService {
 		return 1;
 	}
 
-	// ì‚¬ì—…ì ê°œì¸ì •ë³´ì¡°íšŒ
+	// ?‚¬?—…? ê°œì¸? •ë³´ì¡°?šŒ
 	public List<HashMap<String, Object>> biflist(String id) {
 		return dao.biflist(id);
 	}

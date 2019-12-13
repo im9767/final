@@ -12,13 +12,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-import test.app.project.service.Y.BusinessService;
+import test.app.project.service.Y.BusinessYService;
 
 @Controller
-public class BusinessController {
+public class BusinessYController {
 	@Autowired
-	private BusinessService service;
-	public void setService(BusinessService service) {
+	private BusinessYService service;
+	public void setService(BusinessYService service) {
 		this.service = service;
 	}
 	

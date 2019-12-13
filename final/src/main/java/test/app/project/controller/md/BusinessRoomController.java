@@ -1,10 +1,8 @@
-package test.app.project.controller.Y;
+package test.app.project.controller.md;
 
-import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
@@ -21,33 +19,32 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import test.app.project.service.Y.AdminService;
-import test.app.project.service.Y.BusinessYService;
-import test.app.project.vo.HouseVo;
-import test.app.project.vo.NoticeVo;
+import test.app.project.service.md.BusinessService;
+
 
 @Controller
-public class RoomController {
+public class BusinessRoomController {
 	@Autowired
-	private BusinessYService service;
-	public void setService(BusinessYService service) {
+	private BusinessService service;
+	public void setService(BusinessService service) {
 		this.service = service;
 	}
-	//ï¿½ê¶—ï¿½ë¾½ï¿½ì˜„ ï¿½ë²‘æ¿¡ì•¸ë§‚ è«›â‘¹ìŸ¾ï§£ëŒâ€œï¿½ì‰¶
-	@RequestMapping(value = "/admin_view/roomsboard", method = RequestMethod.GET)
+	//»ç¾÷ÀÚ µî·ÏµÈ ¹æÀüÃ¼Á¶È¸
+	@RequestMapping(value = "business_view/roomsboards", method = RequestMethod.GET)
 	public String allroomlist(Model model) {
 		int house_num=10;
 		List<HashMap<String,Object>> arlist = service.roomlistAll(house_num);
 		model.addAttribute("allroomlist", arlist);
-		return ".roomsboard";
+	
+		return ".business_view.ac.roomsboard";
 	}
-	//è«›â‘¸ë²‘æ¿¡ï¿½
-	@RequestMapping(value = "/admin_view/writeroom", method = RequestMethod.GET)
-	public String inroom(HttpSession session){
-		return "admin_view/writeroom";
+	//¹æµî·Ï
+	@RequestMapping(value = "business_view/writeroom", method = RequestMethod.GET)
+	public String inroom(){
+		return ".business_view.ac.writeroom";
 	}
-	//è«›â‘¸ë²‘æ¿¡ï¿½ ï§£ëŒ„ê²•
-	@RequestMapping(value="/admin_view/writeroomok",method=RequestMethod.POST)
+	//¹æµî·Ï Ã¼Å©
+	@RequestMapping(value="business_view/writeroomok",method=RequestMethod.POST)
 	public String writeroomok(String rcontent,String rname,@RequestParam(required=false) List<MultipartFile> imgIn,int price,int max,HttpSession session) throws IOException{
 		HashMap<String, Object> irlist= new HashMap<String, Object>();
 		int house_num=10;
@@ -55,25 +52,25 @@ public class RoomController {
 		irlist.put("rcontent",rcontent);
 		irlist.put("price", price);
 		irlist.put("max", max);
-		//ï¿½ë¾½æ¿¡ì’•ë±¶ï¿½ë¸· ï¿½ë¤ƒï¿½ëœ‘ï¿½ì“½ ï¿½ì …ï¿½ï¿½å¯ƒìˆì¤ˆ ï¿½ë¼¸ï¿½ë¼±ï¿½ì‚¤æ¹²ï¿½
+		//¾÷·ÎµåÇÒ Æú´õÀÇ Àı´ë°æ·Î ¾ò¾î¿À±â
 				String uploadPath=
 					session.getServletContext().getRealPath("/resources/upload");
 				System.out.println(uploadPath);
 	try{
 		
 	   for(int j = 0;j<imgIn.size();j++){
-		 //ï¿½ìŸ¾ï¿½ë„šï¿½ë§‚ ï¿½ë™†ï¿½ì”ªï§ï¿½
+		   //Àü¼ÛµÈ ÆÄÀÏ¸í
 			String orgfilename=imgIn.get(j).getOriginalFilename();
 			irlist.put("orgfilename"+j+1,orgfilename);
-		//ï¿½ï¿½ï¿½ì˜£ï¿½ë§† ï¿½ë™†ï¿½ì”ªï§ï¿½(ä»¥ë¬ë‚¬ï¿½ë¦ºï§ï¿½ ï¿½ë¸¡ï¿½ë’— ï¿½ì” ç”±ê¾©ì‘æ¿¡ï¿½ ï§ëš®ë±¾æ¹²ï¿½)
+			//ÀúÀåµÉ ÆÄÀÏ¸í(Áßº¹µÇÁö ¾Ê´Â ÀÌ¸§À¸·Î ¸¸µé±â)
 			String savefilename=UUID.randomUUID() +"_" + orgfilename;
 			irlist.put("savefilename"+j+1,savefilename);
-		//ï¿½ìŸ¾ï¿½ë„šï¿½ë§‚ ï¿½ë™†ï¿½ì”ªï¿½ì“£ ï¿½ì”«ï¿½ë¼±ï¿½ì‚¤æ¹²ï¿½ ï¿½ìï¿½ë¸³ ï¿½ë’ªï¿½ë“ƒç”±ï¿½
+			//Àü¼ÛµÈ ÆÄÀÏÀ» ÀĞ¾î¿À±â À§ÇÑ ½ºÆ®¸²
 				InputStream fis=imgIn.get(j).getInputStream();
-		//ï¿½ìŸ¾ï¿½ë„šï¿½ë§‚ ï¿½ë™†ï¿½ì”ªï¿½ì“£ ï¿½ê½Œè¸°ê¾©ë¿‰ ç•°ì’•ì °ï¿½ë¸¯æ¹²ï¿½ ï¿½ìï¿½ë¸³ ï¿½ë’ªï¿½ë“ƒç”±ï¿½
+				//Àü¼ÛµÈ ÆÄÀÏÀ» ¼­¹ö¿¡ Ãâ·ÂÇÏ±â À§ÇÑ ½ºÆ®¸²
 				FileOutputStream fos=
 						new FileOutputStream(uploadPath+"\\" + savefilename);
-		//ï¿½ë™†ï¿½ì”ªè¹‚ë“­ê¶—ï¿½ë¸¯æ¹²ï¿½(ï¿½ë¾½æ¿¡ì’•ë±¶ï¿½ë¸¯æ¹²ï¿½)
+				//ÆÄÀÏº¹»çÇÏ±â(¾÷·ÎµåÇÏ±â)
 				FileCopyUtils.copy(fis, fos);
 				fis.close();
 				fos.close();
@@ -83,81 +80,61 @@ public class RoomController {
 		}catch(Exception e){
 			e.printStackTrace();
 		}
-		return "redirect:/admin_view/roomsboard";		
+		return "redirect:/business_view/ac/roomsboard";		
 	}
-	//è«›ï¿½ ï¿½ê¶˜ï¿½ì £
-	@RequestMapping(value = "/admin_view/delroom", method = RequestMethod.GET)
+	//¹æ »èÁ¦
+	@RequestMapping(value = "business_view/delroom", method = RequestMethod.GET)
 	public String delroom(int room_num, HttpSession session) {
-		String uploadPath=
-				session.getServletContext().getRealPath("/resources/upload");
-		System.out.println(uploadPath);
-		List<String> s=service.rimginfo(room_num);
-		
-		for(int a=0;a<s.size();a++){
-		String savefilename=s.get(a);
-		File f=new File(uploadPath +"\\" + savefilename);
-		if(!f.delete()) {
-			new Exception("ï¿½ë™†ï¿½ì”ªï¿½ê¶˜ï¿½ì £ï¿½ë–ï¿½ë™£!");
-			}
-		}
 		int n = service.roomdelete(room_num);
 		if (n > 0) {
-			return "redirect:/admin_view/roomsboard";
+			return "redirect:/business_view/ac/roomsboard";
 		} else {
-			return "redirect:/admin_view/roomsboard";
+			return "redirect:/business_view/ac/roomsboard";
 		}
 	}
-	//è«›ï¿½ ï¿½ê¸½ï¿½ê½­ï¿½ì ™è¹‚ï¿½
-		@RequestMapping(value = "/admin_view/selroominfo", method = RequestMethod.GET)
+	//¹æ »ó¼¼Á¤º¸
+		@RequestMapping(value = "business_view/selroominfo", method = RequestMethod.GET)
 		public ModelAndView selroominfo(int room_num,HttpSession session) {
 			List<HashMap<String, Object>> srlist = service.selroominfo(room_num);
-			ModelAndView mv = new ModelAndView("admin_view/selroom");
+			ModelAndView mv = new ModelAndView("business_view/ac/selroom");
 			mv.addObject("roominfolist", srlist);
 			return mv;
 		}
-	//è«›â‘¹ì ™è¹‚ï¿½ ï¿½ë‹”ï¿½ì ™
-		@RequestMapping(value = "/admin_view/uproom", method = RequestMethod.GET)
+		//¹æÁ¤º¸ ¼öÁ¤
+		@RequestMapping(value = "business_view/uproom", method = RequestMethod.GET)
 		public ModelAndView uproom(int room_num, HttpSession session) {
 			List<HashMap<String, Object>> nlist = service.selroominfo(room_num);
-			ModelAndView mv = new ModelAndView("admin_view/updateroom");	
+			ModelAndView mv = new ModelAndView("business_view/ac/updateroom");	
 			mv.addObject("uproomlist", nlist);
 			return mv;
 		}
-	//è«›â‘¹ì ™è¹‚ï¿½ ï¿½ë‹”ï¿½ì ™ï§£ëŒ„ê²•
-		@RequestMapping(value="/admin_view/updateroomok",method=RequestMethod.POST)
+		//¹æÁ¤º¸ ¼öÁ¤Ã¼Å©
+		@RequestMapping(value="business_view/updateroomok",method=RequestMethod.POST)
 		public String updateroomok(String rcontent,String rname,@RequestParam(required=false) List<MultipartFile> imgIn,int price,int max,int room_num,HttpSession session) throws IOException{
 			HashMap<String, Object> irlist= new HashMap<String, Object>();
 			irlist.put("rname", rname);
 			irlist.put("rcontent",rcontent);
 			irlist.put("price", price);
 			irlist.put("max", max);
-			
-		try{
-			String uploadPath=
-					session.getServletContext().getRealPath("/resources/upload");
-			System.out.println(uploadPath);
-			List<String> s=service.rimginfo(room_num);
-			
-			for(int a=0;a<s.size();a++){
-			String savefilename=s.get(a);
-			File f=new File(uploadPath +"\\" + savefilename);
-			if(!f.delete()) {
-				new Exception("ï¿½ë™†ï¿½ì”ªï¿½ê¶˜ï¿½ì £ï¿½ë–ï¿½ë™£!");
-				}
-			}
+			System.out.println(max);
+			//¾÷·ÎµåÇÒ Æú´õÀÇ Àı´ë°æ·Î ¾ò¾î¿À±â
+					String uploadPath=
+						session.getServletContext().getRealPath("/resources/upload");
+					System.out.println(uploadPath);
+		try{			
 		   for(int j = 0;j<imgIn.size();j++){
-			 //ï¿½ìŸ¾ï¿½ë„šï¿½ë§‚ ï¿½ë™†ï¿½ì”ªï§ï¿½
+			   //Àü¼ÛµÈ ÆÄÀÏ¸í
 				String orgfilename=imgIn.get(j).getOriginalFilename();
 				irlist.put("orgfilename"+j+1,orgfilename);
-			//ï¿½ï¿½ï¿½ì˜£ï¿½ë§† ï¿½ë™†ï¿½ì”ªï§ï¿½(ä»¥ë¬ë‚¬ï¿½ë¦ºï§ï¿½ ï¿½ë¸¡ï¿½ë’— ï¿½ì” ç”±ê¾©ì‘æ¿¡ï¿½ ï§ëš®ë±¾æ¹²ï¿½)
+				//ÀúÀåµÉ ÆÄÀÏ¸í(Áßº¹µÇÁö ¾Ê´Â ÀÌ¸§À¸·Î ¸¸µé±â)
 				String savefilename=UUID.randomUUID() +"_" + orgfilename;
 				irlist.put("savefilename"+j+1,savefilename);
-			//ï¿½ìŸ¾ï¿½ë„šï¿½ë§‚ ï¿½ë™†ï¿½ì”ªï¿½ì“£ ï¿½ì”«ï¿½ë¼±ï¿½ì‚¤æ¹²ï¿½ ï¿½ìï¿½ë¸³ ï¿½ë’ªï¿½ë“ƒç”±ï¿½
+				//Àü¼ÛµÈ ÆÄÀÏÀ» ÀĞ¾î¿À±â À§ÇÑ ½ºÆ®¸²
 					InputStream fis=imgIn.get(j).getInputStream();
-			//ï¿½ìŸ¾ï¿½ë„šï¿½ë§‚ ï¿½ë™†ï¿½ì”ªï¿½ì“£ ï¿½ê½Œè¸°ê¾©ë¿‰ ç•°ì’•ì °ï¿½ë¸¯æ¹²ï¿½ ï¿½ìï¿½ë¸³ ï¿½ë’ªï¿½ë“ƒç”±ï¿½
+					//Àü¼ÛµÈ ÆÄÀÏÀ» ¼­¹ö¿¡ Ãâ·ÂÇÏ±â À§ÇÑ ½ºÆ®¸²
 					FileOutputStream fos=
 							new FileOutputStream(uploadPath+"\\" + savefilename);
-			//ï¿½ë™†ï¿½ì”ªè¹‚ë“­ê¶—ï¿½ë¸¯æ¹²ï¿½(ï¿½ë¾½æ¿¡ì’•ë±¶ï¿½ë¸¯æ¹²ï¿½)
+					//ÆÄÀÏº¹»çÇÏ±â(¾÷·ÎµåÇÏ±â)
 					FileCopyUtils.copy(fis, fos);
 					fis.close();
 					fos.close();
@@ -167,7 +144,7 @@ public class RoomController {
 			}catch(Exception e){
 				e.printStackTrace();
 			}
-			return "redirect:/admin_view/roomsboard";		
+			return "redirect:business_view/ac/roomsboard";		
 		}
 }
 	
