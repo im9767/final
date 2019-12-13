@@ -55,8 +55,8 @@
 		WHERE 
 				r.house_num = #{house_num}
 				<![CDATA[AND b.room_num  (+) = r.room_num
-				AND b.start_date(+) < TO_DATE('${sdt}', 'yyyy/mm/dd')
-				AND b.end_date  (+) > TO_DATE('${edt}', 'yyyy/mm/dd')
+				AND b.start_date(+) < TO_DATE(#{edt}, 'yyyy/mm/dd')
+				AND b.end_date  (+) > TO_DATE(#{sdt}, 'yyyy/mm/dd')
 				AND b.end_date IS NULL]]>
 			
 	</select>
@@ -72,14 +72,15 @@
 				<if test="room_list.size != 0">
 				
 					room_num IN
-					<foreach collection="room_list" item="item" index="index" open="(" separator="," close=")">
+					<foreach collection="room_list" item="room_num" open="(" separator="," close=")">
 					
-						#{item}
+						#{room_num.value}
 					
 					</foreach>
 				</if>
 		ORDER BY
-				room_num ASC
+				room_num ASC,
+				room_save_name ASC
 	
 	</select>
 	
@@ -132,6 +133,45 @@
 		WHERE
 				house_num = #{house_num}
 	
+	</select>
+	
+	<!-- 객실정보와 객실 이미지 같이 얻어오기 -->
+	<resultMap type="test.app.project.vo.RoomsJoinVo" id="roomsJoin">
+	
+		<result property="room_num" column="room_num"/>
+		<result property="roomname" column="roomname"/>
+		<result property="room_price" column="room_price"/>
+		<result property="room_info" column="room_info"/>
+		<result property="max_Personnel" column="max_Personnel"/>
+		<collection property="rooms_img" ofType="roomsImg">
+		
+			<result property="rooms_img_num" column="rooms_img_num"/>
+			<result property="room_num" column="room_num"/>
+			<result property="room_org_name" column="room_org_name"/>
+			<result property="room_save_name" column="room_save_name"/>
+		
+		</collection>
+	
+	</resultMap>
+	
+	<select id="roomsJoinSelect" resultMap="roomsJoin" parameterType="hashmap">
+	
+		SELECT 
+				r.*,
+				rimg.*
+		
+		FROM 
+				rooms r,
+				booking_table b,
+				rooms_img rimg
+		WHERE 
+				r.house_num = #{house_num}
+				<![CDATA[AND b.room_num  (+) = r.room_num
+				AND r.room_num = rimg.room_num
+				AND b.start_date(+) < TO_DATE(#{edt}, 'yyyy/mm/dd')
+				AND b.end_date  (+) > TO_DATE(#{sdt}, 'yyyy/mm/dd')
+				AND b.end_date IS NULL]]>
+		
 	</select>
 	
 </mapper>

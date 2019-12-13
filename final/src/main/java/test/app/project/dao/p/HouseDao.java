@@ -6,6 +6,7 @@ import java.util.List;
 import test.app.project.vo.HouseVo;
 import test.app.project.vo.ReviewJoinVo;
 import test.app.project.vo.RoomsImgVo;
+import test.app.project.vo.RoomsJoinVo;
 import test.app.project.vo.RoomsVo;
 
 public interface HouseDao {
@@ -25,6 +26,7 @@ public interface HouseDao {
 	// 업체 정보 가져오기
 	public HouseVo houseInfo(int house_num);
 	
-	
+	// 객실 정보, 객실 이미지 조인
+	public List<RoomsJoinVo> roomsJoin(HashMap<String, Object> map);
 	
 }

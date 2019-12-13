@@ -11,6 +11,7 @@ import test.app.project.dao.p.HouseDao;
 import test.app.project.vo.HouseVo;
 import test.app.project.vo.ReviewJoinVo;
 import test.app.project.vo.RoomsImgVo;
+import test.app.project.vo.RoomsJoinVo;
 import test.app.project.vo.RoomsVo;
 @Repository
 public class HouseDaoImpl implements HouseDao {
@@ -48,6 +49,11 @@ public class HouseDaoImpl implements HouseDao {
 	@Override
 	public HouseVo houseInfo(int house_num) {
 		return sqlSessionTemplate.selectOne(NAMESPACE+".houseInfo", house_num);
+	}
+
+	@Override
+	public List<RoomsJoinVo> roomsJoin(HashMap<String, Object> map) {
+		return sqlSessionTemplate.selectList(NAMESPACE+".roomsJoinSelect", map);
 	}
 
 

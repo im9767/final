@@ -10,10 +10,12 @@
 
 <div style="width:65%;min-height: 1200px;margin: auto;padding: 40px;margin-top: 150px;">
 	
+	<input type="hidden" value="${sdt }" name="sdt">
+	<input type="hidden" value="${edt }" name="edt">
 	
 	<div style="width:90%;min-height:1100px;margin: auto;">
 		<!-- 큰 이미지 div  -->
-		<div style="width:50%;min-height:700px;float:left;" >
+		<div style="width:50%;min-height:500px;float:left;" >
 			
 			<div id="carouselExampleControls" class="carousel slide" data-ride="false" style="width:100%;padding:10px;margin: auto;">
 				<div class="carousel-inner">
@@ -40,7 +42,7 @@
 		</div>
 		
 		<!-- 업소 정보 및 소개 div -->
-		<div style="width:50%;min-height:700px;float:left;padding:10px;">
+		<div style="width:50%;min-height:500px;float:left;padding:10px;">
 		
 			<h2 style="font-weight: bold;">${houseinfo.company }</h2>
 			
@@ -82,56 +84,71 @@
 			  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 			  
 			  <section id="div1" class="info" style="width:100%;min-height: 500px;">
-				<br>	
-				<div>
-					<input class="form-control" type="date" name="start_date" style="width: 300px;">
-				</div>
+				
 				<br>
 				
-				<c:forEach var="rooms" items="${foundRoom }">
+				<c:forEach var="rooms" items="${roomsJoin }" varStatus="idx">
 					<div class="card" style="border-radius: 10px 10px 10px 10px;width:100%;min-height:300px;padding-top: 25px;padding-bottom:25px;margin-bottom: 20px;">
 						<div style="margin: auto;width:95%;min-height: 250px;">
 							<!-- 객실 대표이미지 -->
 							<div style="width:50%;height:250px;float: left;">
-								<img id="room-1" style="width:90%;height: 250px;cursor: pointer;" alt="객실사진" src="${pageContext.request.contextPath }/resources/images/banner_1.jpg">
+								<img id="room-${idx.index }" class="room" style="width:90%;height: 250px;cursor: pointer;" alt="객실사진" src="${pageContext.request.contextPath }/resources/images/banner_1.jpg">
 							</div>
 							<!-- 객실 정보 -->
 							<div style="width:50%;height:250px;float: left;margin-bottom: 20px;">
 							
 								<h3>${rooms.roomname }</h3>
-								<p>객실가격 : ${rooms.room_price }</p>
+								<p>객실가격 : ${dc.format(rooms.room_price) }</p>
 								<p>객실정보 : ${rooms.room_info }</p>
 								<p>최대인원 : ${rooms.max_Personnel }</p>
 								
-						
-								<a href="${cp }/members/payment" class="btn btn-danger btn-lg" role="button" style="width: 100%;position: absolute;bottom: 0px;color:white;">숙박 예약</a>
+								
+								<!-- 예약하기 버튼 -->
+								<a href="${cp }/members/payment?sdt=${sdt}&edt=${edt}&room_num=${rooms.room_num}&room_name=${rooms.roomname }&room_price=${rooms.room_price}&company=${house.company}" 
+								class="btn btn-danger btn-lg" role="button" style="width: 100%;position: absolute;bottom: 0px;color:white;">숙박 예약</a>
 								
 								
 							</div>
 							<!-- 객실 이미지 여러개 div -->
-							<div id="room-detail-1" style="clear:both;width:100%;height:500px;padding: 50px 30px 30px 30px;display: none;">
+							<div id="room-detail-${idx.index }" style="clear:both;width:100%;height:500px;padding: 50px 30px 30px 30px;display: none;background-color: #f9f9f9;">
 								
 								<button type="button" class="close" aria-label="Close" style="position: absolute;top:5px;right:5px;">
 								  	<span aria-hidden="true" style="font-size: 1.5em;">&times;</span>
 								</button>
 							    
-								<div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
+								<div id="carouselExampleFade_${idx.index }" class="carousel slide carousel-fade" data-ride="carousel">
 								  <div class="carousel-inner">
-								    <div class="carousel-item active">
-								      <img style="width:100%;height: 400px;" src="${cp }/resources/images/banner_1.jpg" class="d-block w-100" alt="...">
-								    </div>
-								    <div class="carousel-item">
-								      <img style="width:100%;height: 400px;" src="${cp }/resources/images/banner_2.jpg" class="d-block w-100" alt="...">
-								    </div>
-								    <div class="carousel-item">
-								      <img style="width:100%;height: 400px;" src="${cp }/resources/images/banner_3.jpg" class="d-block w-100" alt="...">
-								    </div>
+									
+									<c:forEach var="roomImg" items="${rooms.rooms_img }" varStatus="i">
+									
+									<c:if test="${i.index == 0 }">
+									
+									    <div class="carousel-item active">
+									      <img style="width:100%;height: 400px;" src="${cp }/resources/room_img/${roomImg.room_org_name}" class="d-block w-100" alt="...">
+									    </div>
+									
+									</c:if>
+									<c:if test="${i.index >0 }">
+										<div class="carousel-item">
+									      <img style="width:100%;height: 400px;" src="${cp }/resources/room_img/${roomImg.room_org_name}" class="d-block w-100" alt="...">
+									    </div>
+									
+									</c:if>    
+								    
+<!-- 								    <div class="carousel-item"> -->
+<%-- 								      <img style="width:100%;height: 400px;" src="${cp }/resources/images/banner_2.jpg" class="d-block w-100" alt="..."> --%>
+<!-- 								    </div> -->
+<!-- 								    <div class="carousel-item"> -->
+<%-- 								      <img style="width:100%;height: 400px;" src="${cp }/resources/images/banner_3.jpg" class="d-block w-100" alt="..."> --%>
+<!-- 								    </div> -->
+									</c:forEach>
+								 
 								  </div>
-								  <a class="carousel-control-prev" href="#carouselExampleFade" role="button" data-slide="prev">
+								  <a class="carousel-control-prev" href="#carouselExampleFade_${idx.index }" role="button" data-slide="prev">
 								    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
 								    <span class="sr-only">Previous</span>
 								  </a>
-								  <a class="carousel-control-next" href="#carouselExampleFade" role="button" data-slide="next">
+								  <a class="carousel-control-next" href="#carouselExampleFade_${idx.index }" role="button" data-slide="next">
 								    <span class="carousel-control-next-icon" aria-hidden="true"></span>
 								    <span class="sr-only">Next</span>
 								  </a>
@@ -162,34 +179,25 @@
 					   <div>
 					   		<ul>
 					   			<c:forEach var="amen" items="${houseAmen }">
-					   				<li style="display: inline-block;margin-right: 10px;"><img style="width:60px;height:60px;" src="${cp }/resources/a_icon/${amen.SAVEFILENAME}"></li>
+					   				<li style="display: inline-block;margin-right: 10px;">
+					   					<div>
+					   					<img style="width:60px;height:60px;" src="${cp }/resources/a_icon/${amen.SAVEFILENAME}"><br><span>${amen.AMENITIES_NAME }</span>
+					   					</div>
+					   				</li>
 								</c:forEach>
 					   		</ul>
 					   </div>
 					   
 					   <!-- 편의시설 설명 -->
 					   <div>
+						   <c:forEach var="amen" items="${houseAmen }">
 					   		<div>
-					   			<span>편의시설 설명 1</span>
+					   			<p>
+					   				<span>※ ${amen.AMENITIES_CONTENT }</span>
+					   			</p>
 					   		</div>
-					   		<div>
-					   			<span>편의시설 설명 2</span>
-					   		</div>
-					   		<div>
-					   			<span>편의시설 설명 3</span>
-					   		</div>
-					   		<div>
-					   			<span>편의시설 설명 4</span>
-					   		</div>
-					   		<div>
-					   			<span>편의시설 설명 5</span>
-					   		</div>
-					   		<div>
-					   			<span>편의시설 설명 6</span>
-					   		</div>
-					   		<div>
-					   			<span>편의시설 설명 7</span>
-					   		</div>
+
+					   		</c:forEach>
 					   </div>
 				   
 				  </div>
@@ -209,29 +217,29 @@
 			  		</div>
 			  		
 			  		<c:forEach var="review" items="${review }">
-					<div class="media" style="padding:20px;">
-					  <img src="${cp }/resources/review_icon/ico_15.png" class="mr-3" alt="..." style="width:56px;height:56px;">
-					  <div class="media-body">
-					  
-					    <h5 class="mt-0">${review.review_title } </h5>
-					    <div>
-					    	스위트룸 <span style="font-size: 1.0em;color:orange;">  친절도 : ★★★★★   청결도 : ★★★★  편의설 : ★★★</span>
-					    </div>
-					   
-					    	${review.review_content }
-						
-					  	<div style="margin-top:15px;">
-						  	<c:forEach var="image" items="${review.review_img }">
-						  		<c:if test="${review.review_num == image.review_num }"></c:if>
-						  		<img src="${cp }/resources/review_icon/${image.review_save_name}" class="mr-3" alt="..." style="width:100px;height:100px;">
-						  	</c:forEach>
-					  	</div>
-					  	<p style="margin-top: 15px;font-size: 1em;">
-					  		${review.review_date }
-					  	</p>
-					  </div>
-				
-					</div>
+						<div class="media" style="padding:20px;">
+						  <img src="${cp }/resources/review_icon/ico_15.png" class="mr-3" alt="..." style="width:56px;height:56px;">
+						  <div class="media-body">
+						  
+						    <h5 class="mt-0">${review.review_title } </h5>
+						    <div>
+						    	스위트룸 <span style="font-size: 1.0em;color:orange;">  친절도 : ★★★★★   청결도 : ★★★★  편의설 : ★★★</span>
+						    </div>
+						   
+						    	${review.review_content }
+							
+						  	<div style="margin-top:15px;">
+							  	<c:forEach var="image" items="${review.review_img }">
+							  		<c:if test="${review.review_num == image.review_num }"></c:if>
+							  		<img src="${cp }/resources/review_icon/${image.review_save_name}" class="mr-3" alt="..." style="width:100px;height:100px;">
+							  	</c:forEach>
+						  	</div>
+						  	<p style="margin-top: 15px;font-size: 1em;">
+						  		${review.review_date }
+						  	</p>
+						  </div>
+					
+						</div>
 					</c:forEach>
 					
 				
@@ -338,12 +346,11 @@
 			$("#div3").css("display","block");
 		});
 		*/
-		$("#room-1").click(function () {
-			$("#room-detail-1").css("display","block");
-		});
+		$(".room").click(function () {
+			
+			var num = parseInt($(this).prop("id").split("-")[1]);
 		
-		$("#room-2").click(function () {
-			$("#room-detail-2").css("display","block");
+			$("#room-detail-"+num).css("display","block");
 		});
 		
 		$(".close").click(function () {
