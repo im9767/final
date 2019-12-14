@@ -3,10 +3,15 @@
 "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
 	<definition name=".admin" template="/WEB-INF/views/admin_view/layout.jsp">
-		<put-attribute name="main" value="/WEB-INF/views/admin_view/main.jsp"/>
+		<put-attribute name="maincontent" value="/WEB-INF/views/admin_view/main.jsp"/>
 	</definition>
+	
+	<definition name=".admin.*" extends=".admin">
+		<put-attribute name="maincontent" value="/WEB-INF/views/{1}/{2}.jsp"/>
+	</definition>
+	
 	<definition name=".*" extends=".admin">
-		<put-attribute name="main" value="/WEB-INF/views/admin_view/{1}.jsp"/>
+		<put-attribute name="maincontent" value="/WEB-INF/views/admin_view/{1}.jsp"/>
 	</definition>
 </tiles-definitions>
 

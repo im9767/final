@@ -15,6 +15,5 @@ public class HomeController {
 		String cp=req.getContextPath();
 		req.getSession().getServletContext().setAttribute("cp",cp);
 		return ".main";
-		//asdasdasd
 	}
 }

@@ -15,7 +15,7 @@
 						<div class="top_nav_right">
 							<ul class="top_nav_menu">
 
-								<!-- Currency / Language / My Account -->
+								<!-- Currency hf/ Language / My Account -->
 
 								<li class="currency" style='background-color: red;border:none;'>
 									<a href="${pageContext.request.contextPath }/house/detail" style='color:white;'>예약내역</a>
@@ -43,7 +43,7 @@
 										</c:otherwise>
 									</c:choose>
 									<c:choose>
-										<c:when test="${code=='success' }">
+										<c:when test="${not empty aid}">
 											<li class="account" style='background-color: red;border:none;'>
 													<a href="${cp}/admin" style='color:white;'>
 														관리자페이지로이동
@@ -58,6 +58,23 @@
 											</li>
 											</c:otherwise>
 										</c:choose>	
+											<c:choose>
+										<c:when test="${code=='success' }">
+											<li class="account" style='background-color: red;border:none;'>
+													<a href="${cp}/business" style='color:white;'>
+														사업자페이지로이동
+													</a>
+											</li>
+											</c:when>
+											<c:otherwise>
+											<li class="account" style='background-color: red;border:none;'>
+													<a href="<c:url value='/business_view/login'/>" style='color:white;'>
+														사업자
+													</a>
+											</li>
+											</c:otherwise>
+										</c:choose>	
+								
 								</li>
 								<li class="account" style='background-color: red;border:none;'>
 									<a href="${pageContext.request.contextPath }/product/accommodationList" style='color:white;'>업소목록(임시)</a>

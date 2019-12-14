@@ -18,17 +18,22 @@ public class CouponController1 {
 	
 	@RequestMapping(value="/admin/coupon",produces="application/xml;charset=utf-8")
 	@ResponseBody
-	public String couponInfo(String gnum,String coupon_type,String coupon_name){
+	public String couponInfo(String gnum,String coupon_name){
 		HashMap<String, Object> map=new HashMap<String, Object>();
 		System.out.println("gnum: " + gnum);
 		map.put("gnum", gnum);
+		String coupon_rename=coupon_name.split(":")[0];
+		int coupon_saletype=Integer.parseInt(coupon_name.split(":")[1]);
+		int coupon_typenum=Integer.parseInt(coupon_name.split(":")[2]);
+		System.out.println("coupon_saletype: " + coupon_saletype);
+		System.out.println("coupon_typenum: " + coupon_typenum);
 		//등급에 해당하는 인원수 구함
 		int membersCnt=service.countMembers(map);
 		System.out.println("membersCnt: " + membersCnt);
 		List<MembersVo> mlist=service.membersId(map);
 		for(MembersVo vo:mlist){
 			System.out.println(vo.getMid());
-			CouponVo cvo=new CouponVo(0, vo.getMid(), coupon_name, coupon_type, null, null);
+			CouponVo cvo=new CouponVo(0, vo.getMid(), coupon_rename, coupon_saletype, null, null,coupon_typenum);
 			service.couponInsert(cvo);
 		}
 		StringBuffer sb=new StringBuffer();

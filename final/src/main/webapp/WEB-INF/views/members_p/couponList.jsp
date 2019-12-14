@@ -33,11 +33,18 @@
 			  		<tr>
 				      <th>${couponList.coupon_num }</th>
 				      <td>${couponList.coupon_name }</td>
-				      <td>${couponList.coupon_type }</td>
+				      <td>
+				      	<c:choose>
+				      		<c:when test="${couponList.coupon_typenum=='1'}">
+				      			퍼센트할인
+				      		</c:when>
+				      		<c:otherwise>
+				      			포인트할인
+				      		</c:otherwise>
+				      	</c:choose>
+				      </td>
 				      <td>${couponList.coupon_status }</td>
 				      <td>${couponList.making_date }</td>
-				     
-				      
 				    </tr>
 			  	</c:forEach>
 			  </tbody>

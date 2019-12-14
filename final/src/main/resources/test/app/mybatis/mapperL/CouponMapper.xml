@@ -5,7 +5,7 @@
 <mapper namespace="test.app.mybatis.mapperL.CouponMapper">
 	<!-- 쿠폰 등록하기 -->
 	<insert id="couponinsert" parameterType="coupon">
-		insert into coupon values(coupon_seq.nextval,#{mid},#{coupon_name},#{coupon_type},'사용안함',sysdate)
+		insert into coupon values(coupon_seq.nextval,#{mid},#{coupon_name},#{coupon_saletype},'사용안함',sysdate,#{coupon_typenum})
 	</insert>
 	<!-- 등급별(or 전체) 회원수 구하기 -->
 	<select id="countmembers" resultType="int" parameterType="hashmap">

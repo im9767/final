@@ -64,7 +64,7 @@ public class BoardController {
 		if (n > 0) {
 			return "redirect:/admin_view/noticeboard";
 		} else {
-			return "redirect:/admin_view/login";
+			return "redirect:/admin_view/noticeboard";
 		}
 	}
 	//공지사항 삭제

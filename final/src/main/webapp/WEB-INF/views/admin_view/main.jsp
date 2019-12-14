@@ -201,7 +201,7 @@
             <a href="${cp}/admin_view/gohome" class="btn btn-primary btn-icon-split">
                     <span class="text">메인페이지 이동</span>
                   </a>    
-             <a href="${cp}/admin_view/login" class="btn btn-danger btn-icon-split">
+             <a href="${cp}/admin/logout" class="btn btn-danger btn-icon-split">
                     <span class="text">로그아웃</span>
                   </a>
                  </div>
