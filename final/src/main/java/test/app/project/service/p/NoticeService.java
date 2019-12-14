@@ -24,4 +24,5 @@ public class NoticeService {
 	public int noticeCount(){
 		return noticeDaoImpl.noticeCount();
 	}
+	
 }
