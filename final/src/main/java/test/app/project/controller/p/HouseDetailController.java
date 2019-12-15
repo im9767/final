@@ -26,10 +26,10 @@ public class HouseDetailController {
 	
 	// 업소 상세페이지 이동
 	@RequestMapping(value="/house/detail")
-	public String product_detail(@RequestParam(value="house_num",defaultValue="82")int house_num,String sdt,String edt,Model model){
+	public String product_detail(@RequestParam(value="house_num",defaultValue="83")int house_num,String sdt,String edt,Model model){
 
-		sdt = "2019/12/01";
-		edt = "2019/12/10";
+		sdt = "2019.12.01";
+		edt = "2019.12.10";
 		
 		HashMap<String , Object> roomMap = new HashMap<String, Object>();
 		roomMap.put("house_num", house_num);
@@ -76,13 +76,6 @@ public class HouseDetailController {
 		model.addAttribute("dc", dc);
 		
 		model.addAttribute("roomsJoin", roomsJoin);
-		
-		for(RoomsJoinVo vo : roomsJoin){
-			for(int i = 0; i<vo.getRooms_img().size(); i++){
-				
-				System.out.println(vo.getRooms_img().get(i).getRoom_org_name());
-			}
-		}
 		
 		return ".house_p.detail";
 	}

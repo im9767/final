@@ -97,14 +97,19 @@
 							<!-- 객실 정보 -->
 							<div style="width:50%;height:250px;float: left;margin-bottom: 20px;">
 							
-								<h3>${rooms.roomname }</h3>
-								<p>객실가격 : ${dc.format(rooms.room_price) }</p>
-								<p>객실정보 : ${rooms.room_info }</p>
-								<p>최대인원 : ${rooms.max_Personnel }</p>
+								<h3>
+									<span>${rooms.roomname }</span>
+									<span style="font-size: 0.7em;">${rooms.max_Personnel }인</span>
+								</h3>
+								<div style="font-size:1.2em;">숙박</div>
+								<div style="text-align: right;font-size: 1.3em;font-weight: bold;">${dc.format(rooms.room_price) }원</div>
+								<div style="font-size:1.2em;">객실정보</div>
+								<div style="text-align: right;">${rooms.room_info }</div>
+								<p></p>
 								
 								
 								<!-- 예약하기 버튼 -->
-								<a href="${cp }/members/payment?sdt=${sdt}&edt=${edt}&room_num=${rooms.room_num}&room_name=${rooms.roomname }&room_price=${rooms.room_price}&company=${house.company}" 
+								<a href="${cp }/members/payment?sdt=${sdt}&edt=${edt}&room_num=${rooms.room_num}&room_name=${rooms.roomname }&room_price=${rooms.room_price}&company=${houseinfo.company}" 
 								class="btn btn-danger btn-lg" role="button" style="width: 100%;position: absolute;bottom: 0px;color:white;">숙박 예약</a>
 								
 								
@@ -181,7 +186,7 @@
 					   			<c:forEach var="amen" items="${houseAmen }">
 					   				<li style="display: inline-block;margin-right: 10px;">
 					   					<div>
-					   					<img style="width:60px;height:60px;" src="${cp }/resources/a_icon/${amen.SAVEFILENAME}"><br><span>${amen.AMENITIES_NAME }</span>
+					   					<img style="width:60px;height:60px;" src="${cp }/resources/a_icon/${amen.ORGFILENAME}"><br><span>${amen.AMENITIES_NAME }</span>
 					   					</div>
 					   				</li>
 								</c:forEach>
@@ -221,9 +226,64 @@
 						  <img src="${cp }/resources/review_icon/ico_15.png" class="mr-3" alt="..." style="width:56px;height:56px;">
 						  <div class="media-body">
 						  
-						    <h5 class="mt-0">${review.review_title } </h5>
+						    <h5 class="mt-0" style="font-weight: bold;">${review.review_title } </h5>
 						    <div>
-						    	스위트룸 <span style="font-size: 1.0em;color:orange;">  친절도 : ★★★★★   청결도 : ★★★★  편의설 : ★★★</span>
+						    	<span style="font-size: 1.1em;color:gray;">스위트룸</span> <span style="font-size: 0.9em;color:orange;">
+						    	친절도 :
+						    	<c:choose>
+						    		<c:when test="${review.kindness == 5 }">
+						    			★★★★★
+						    		</c:when>
+						    		<c:when test="${review.kindness == 4 }">
+						    			★★★★
+						    		</c:when>
+						    		<c:when test="${review.kindness == 3 }">
+						    			★★★
+						    		</c:when>
+						    		<c:when test="${review.kindness == 2 }">
+						    			★★
+						    		</c:when>
+						    		<c:when test="${review.kindness == 1 }">
+						    			★
+						    		</c:when>
+						    	</c:choose>
+						    	청결도 :
+						    	<c:choose>
+						    		<c:when test="${review.clean == 5 }">
+						    			★★★★★
+						    		</c:when>
+						    		<c:when test="${review.clean == 4 }">
+						    			★★★★
+						    		</c:when>
+						    		<c:when test="${review.clean == 3 }">
+						    			★★★
+						    		</c:when>
+						    		<c:when test="${review.clean == 2 }">
+						    			★★
+						    		</c:when>
+						    		<c:when test="${review.clean == 1 }">
+						    			★
+						    		</c:when>
+						    	</c:choose>
+						    	편의성 :
+						    	<c:choose>
+						    		<c:when test="${review.convenience == 5 }">
+						    			★★★★★
+						    		</c:when>
+						    		<c:when test="${review.convenience == 4 }">
+						    			★★★★
+						    		</c:when>
+						    		<c:when test="${review.convenience == 3 }">
+						    			★★★
+						    		</c:when>
+						    		<c:when test="${review.convenience == 2 }">
+						    			★★
+						    		</c:when>
+						    		<c:when test="${review.convenience == 1 }">
+						    			★
+						    		</c:when>
+						    	</c:choose>
+						    	</span>
 						    </div>
 						   
 						    	${review.review_content }
@@ -374,7 +434,7 @@
 	var geocoder = new kakao.maps.services.Geocoder();
 	
 	// 주소로 좌표를 검색합니다
-	geocoder.addressSearch('서울 강남구 역삼동 719-20', function(result, status) {
+	geocoder.addressSearch('${houseinfo.workplace }', function(result, status) {
 	
 	    // 정상적으로 검색이 완료됐으면 
 	     if (status === kakao.maps.services.Status.OK) {
@@ -389,7 +449,7 @@
 	
 	        // 인포윈도우로 장소에 대한 설명을 표시합니다
 	        var infowindow = new kakao.maps.InfoWindow({
-	            content: '<div style="width:150px;text-align:center;padding:6px 0;">위치</div>'
+	            content: '<div style="width:150px;text-align:center;padding:6px 0;">${houseinfo.company }</div>'
 	        });
 	        infowindow.open(map, marker);
 	

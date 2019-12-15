@@ -11,6 +11,7 @@
 		        distinct 
 		        amen.amenities_name,
 		        amen.amenities_content,
+		        amen.orgfilename,
 		        amen.savefilename
 		FROM
 		        house h,
