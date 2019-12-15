@@ -128,7 +128,7 @@
             <section class="info" style="border-bottom: 1px solid lightgray;margin: 30px 20px 0px 20px;">
             
                 <p class="name" style="font-size: 1.2em;"><strong>숙소이름</strong><br><span style="color:black;">${company }</span></p>
-                <p style="font-size: 1.2em;"><strong>객실타입/기간</strong><br><span style="color:black;">${room_name } / 1박</span></p>
+                <p style="font-size: 1.2em;"><strong>객실타입/기간</strong><br><span style="color:black;">${room_name } / ${days }박</span></p>
 
                 <p style="font-size: 1.2em;"><strong>체크인</strong><br><span style="color:black;">${sdt }</span></p>
                 <p style="font-size: 1.2em;"><strong>체크아웃</strong><br><span style="color:black;">${edt }</span></p>

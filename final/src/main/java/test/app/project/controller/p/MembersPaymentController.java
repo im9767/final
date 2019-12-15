@@ -40,6 +40,12 @@ public class MembersPaymentController {
 		System.out.println("room_price:"+room_price);
 		System.out.println("company:"+company);
 		
+		String[] s = sdt.split("-");
+		String[] e = edt.split("-");
+		int days = Integer.parseInt(e[2])-Integer.parseInt(s[2]);
+		
+		model.addAttribute("days",days);
+		
 		DecimalFormat dc = new DecimalFormat("###,###,###,###");
 		
 		model.addAttribute("dc",dc);

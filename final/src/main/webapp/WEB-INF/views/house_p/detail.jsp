@@ -10,8 +10,8 @@
 
 <div style="width:65%;min-height: 1200px;margin: auto;padding: 40px;margin-top: 150px;">
 	
-	<input type="hidden" value="${sdt }" name="sdt">
-	<input type="hidden" value="${edt }" name="edt">
+	<input type="hidden" value="${sdt }" name="sdt" id="sdt">
+	<input type="hidden" value="${edt }" name="edt" id="edt">
 	
 	<div style="width:90%;min-height:1100px;margin: auto;">
 		<!-- 큰 이미지 div  -->
@@ -84,6 +84,9 @@
 			  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 			  
 			  <section id="div1" class="info" style="width:100%;min-height: 500px;">
+				<br>
+				<!-- 날짜 선택 -->
+				<p>숙박 기간 선택<br><input type="text" id="datepicker1" placeholder="시작일" value="${sdt }"> - <input value="${edt }" type="text" id="datepicker2" placeholder="종료일"></p>
 				
 				<br>
 				
@@ -107,10 +110,16 @@
 								<div style="text-align: right;">${rooms.room_info }</div>
 								<p></p>
 								
-								
+								<c:choose>
+									<c:when test="${empty sessionScope.id }">
+										<a href="${cp }/members/login" class="btn btn-danger btn-lg" role="button" style="width: 100%;position: absolute;bottom: 0px;color:white;">숙박 예약</a>
+									</c:when>
+									<c:otherwise>
+										<a href="${cp }/members/payment?sdt=${sdt}&edt=${edt}&room_num=${rooms.room_num}&room_name=${rooms.roomname }&room_price=${rooms.room_price}&company=${houseinfo.company}" 
+										class="btn btn-danger btn-lg" role="button" style="width: 100%;position: absolute;bottom: 0px;color:white;">숙박 예약</a>
+									</c:otherwise>
+								</c:choose>
 								<!-- 예약하기 버튼 -->
-								<a href="${cp }/members/payment?sdt=${sdt}&edt=${edt}&room_num=${rooms.room_num}&room_name=${rooms.roomname }&room_price=${rooms.room_price}&company=${houseinfo.company}" 
-								class="btn btn-danger btn-lg" role="button" style="width: 100%;position: absolute;bottom: 0px;color:white;">숙박 예약</a>
 								
 								
 							</div>
@@ -392,6 +401,7 @@
 
 <script>
 	$(function(){
+		
 		/*
 		$("#id1").click(function(){
 			$(".info").css("display","none");
@@ -417,6 +427,57 @@
 			
 			$(this).parent().css("display","none");
 		});
+
+		$("#datepicker1").datepicker({
+			dateFormat: 'yy-mm-dd' //Input Display Format 변경
+		        ,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
+		        ,showMonthAfterYear:true //년도 먼저 나오고, 뒤에 월 표시
+		        ,changeYear: true //콤보박스에서 년 선택 가능
+		        ,changeMonth: true //콤보박스에서 월 선택 가능                
+		        ,showOn: "both" //button:버튼을 표시하고,버튼을 눌러야만 달력 표시 ^ both:버튼을 표시하고,버튼을 누르거나 input을 클릭하면 달력 표시  
+		        ,buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif" //버튼 이미지 경로
+		        ,buttonImageOnly: true //기본 버튼의 회색 부분을 없애고, 이미지만 보이게 함
+		        ,buttonText: "선택" //버튼에 마우스 갖다 댔을 때 표시되는 텍스트                
+		        ,yearSuffix: "년" //달력의 년도 부분 뒤에 붙는 텍스트
+		        ,monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'] //달력의 월 부분 텍스트
+		        ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 Tooltip 텍스트
+		        ,dayNamesMin: ['일','월','화','수','목','금','토'] //달력의 요일 부분 텍스트
+		        ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 부분 Tooltip 텍스트
+		        ,minDate: 0 //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
+		        ,maxDate: "+7D" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후) 
+				,onSelect: function (date) {
+					var endDate = $('#datepicker2');
+					var startDate = $(this).datepicker('getDate');
+					var minDate = $(this).datepicker('getDate');
+					endDate.datepicker('setDate', minDate);
+					startDate.setDate(startDate.getDate() + 30);
+					endDate.datepicker('option', 'maxDate', startDate);
+					endDate.datepicker('option', 'minDate', minDate);
+				}
+		});
+		$('#datepicker2').datepicker("option", "minDate", $("#datepicker1").val());
+		$("#datepicker2").datepicker({
+			dateFormat: 'yy-mm-dd' //Input Display Format 변경
+		        ,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
+		        ,showMonthAfterYear:true //년도 먼저 나오고, 뒤에 월 표시
+		        ,changeYear: true //콤보박스에서 년 선택 가능
+		        ,changeMonth: true //콤보박스에서 월 선택 가능                
+		        ,showOn: "both" //button:버튼을 표시하고,버튼을 눌러야만 달력 표시 ^ both:버튼을 표시하고,버튼을 누르거나 input을 클릭하면 달력 표시  
+		        ,buttonImage: "http://jqueryui.com/resources/demos/datepicker/images/calendar.gif" //버튼 이미지 경로
+		        ,buttonImageOnly: true //기본 버튼의 회색 부분을 없애고, 이미지만 보이게 함
+		        ,buttonText: "선택" //버튼에 마우스 갖다 댔을 때 표시되는 텍스트                
+		        ,yearSuffix: "년" //달력의 년도 부분 뒤에 붙는 텍스트
+		        ,monthNamesShort: ['1','2','3','4','5','6','7','8','9','10','11','12'] //달력의 월 부분 텍스트
+		        ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 Tooltip 텍스트
+		        ,dayNamesMin: ['일','월','화','수','목','금','토'] //달력의 요일 부분 텍스트
+		        ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 부분 Tooltip 텍스트
+		        ,onSelect: function(dateText){
+					var sdt = $("#datepicker1").val();
+					var edt = $("#datepicker2").val();
+		        	location.href="${cp}/house/detail?house_num=${param.house_num}&sdt="+sdt+"&edt="+edt;
+		        }
+		});
+		
 	});
 </script>
 <!-- 지도 api javascript 코드 -->
@@ -457,4 +518,5 @@
 	        map.setCenter(coords);
 	    } 
 	});    
+
 </script>
