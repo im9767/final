@@ -15,7 +15,7 @@
 	
 	<div style="width:90%;min-height:1100px;margin: auto;">
 		<!-- 큰 이미지 div  -->
-		<div style="width:50%;min-height:500px;float:left;" >
+		<div style="width:50%;min-height:400px;float:left;" >
 			
 			<div id="carouselExampleControls" class="carousel slide" data-ride="false" style="width:100%;padding:10px;margin: auto;">
 				<div class="carousel-inner">
@@ -42,25 +42,58 @@
 		</div>
 		
 		<!-- 업소 정보 및 소개 div -->
-		<div style="width:50%;min-height:500px;float:left;padding:10px;">
+		<div style="width:50%;min-height:400px;float:left;padding:10px;">
 		
 			<h2 style="font-weight: bold;">${houseinfo.company }</h2>
 			
 			<p>
-				<span style="color:orange;font-size: 2.0em;">★★★★★</span>&nbsp;&nbsp;&nbsp;
-				<span style="font-size: 1.3em;color:gray;">리뷰 개수 1,100개</span>
+				<span style="color:orange;font-size: 2.0em;">
+					<!-- 평균점수에 따른 별점 -->
+					<c:choose>
+						<c:when test="${reviewScore >= 4.5 }">
+							★★★★★
+						</c:when>
+						<c:when test="${reviewScore >= 3.5 }">
+							★★★★★
+						</c:when>
+						<c:when test="${reviewScore >= 2.5 }">
+							★★★
+						</c:when>
+						<c:when test="${reviewScore >= 1.5 }">
+							★★
+						</c:when>
+						<c:otherwise>
+							★
+						</c:otherwise>
+					</c:choose>
+					
+				</span>
+				<span style="color:orange;">${reviewScore }</span>
+				&nbsp;&nbsp;&nbsp;
+				<span style="font-size: 1.3em;color:gray;">
+					<!-- 평균 점수에 따른 문구  -->
+					<c:choose>
+						<c:when test="${reviewScore >= 4 }">
+							추천해요
+						</c:when>
+						<c:when test="${reviewScore >= 3 }">
+							무난해요
+						</c:when>
+						<c:otherwise>
+							별로예요
+						</c:otherwise>
+					</c:choose>
+				</span>
 			</p>
-			
+			<!-- 주소 -->
 			<p style="font-size: 1.3em;color:black;">${houseinfo.workplace }</p>
-			
+			<!-- 체크인 시간 -->
 			<div style="font-size: 1em;"><span>입실 시간 : ${houseinfo.checkintime }</span></div>
+			<!-- 체크 아웃 시간 -->
 			<div style="font-size: 1em;margin-bottom: 10px;"><span>퇴실 시간 : ${houseinfo.checkouttime }</span></div>
-
+			<!-- 업체 소개 -->
 			<p class="card" style="font-size: 1.2em;min-height: 100px;padding:10px;">
 				<span>${houseinfo.intro }</span>
-			</p>
-			<p style="text-align: right;">
-				<a type="button" class="btn btn-success" href="${cp }/members/payment">찜목록 추가</a>
 			</p>
 			
 		</div>
@@ -183,9 +216,9 @@
 			  		
 			  		<!-- 객실정보 -->
 <!-- 			<section id="div2" class="info" style="width:100%;min-height: 500px;display:none;background-color: blue;"> -->
-				
+				<br>
 				<div class="card">
-				
+				  
 				  <div class="card-body" style="margin: 10px;">
 				   
 					   <h4>편의 시설</h4>
@@ -223,13 +256,47 @@
 			  </div>
 			  
 			  <!-- 리뷰 탭 -->
-			  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab" style="padding:20px;">
+			  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab" style="padding-top: 20px;padding-bottom: 10px;">
 			  	
 			  		<div style="margin-bottom: 10px;">
-			  			<h2 style="text-align: center;">추천해요</h2>
-			  			<h2 style="text-align: center;color:orange;">★★★★★</h2>
+			  			<h2 style="text-align: center;">
+			  				<!-- 평균 점수에 따른 문구 -->
+							<c:choose>
+								<c:when test="${reviewScore >= 4 }">
+									추천해요
+								</c:when>
+								<c:when test="${reviewScore >= 3 }">
+									무난해요
+								</c:when>
+								<c:otherwise>
+									별로예요
+								</c:otherwise>
+							</c:choose>	
+						</h2>
+			  			<h2 style="text-align: center;color:orange;">
+							<!-- 평균점수에 따른 별점 -->
+							<c:choose>
+								<c:when test="${reviewScore >= 4.5 }">
+									★★★★★
+								</c:when>
+								<c:when test="${reviewScore >= 3.5 }">
+									★★★★★
+								</c:when>
+								<c:when test="${reviewScore >= 2.5 }">
+									★★★
+								</c:when>
+								<c:when test="${reviewScore >= 1.5 }">
+									★★
+								</c:when>
+								<c:otherwise>
+									★
+								</c:otherwise>
+							</c:choose>
+							<span style="color:orange;font-size: 0.7em;">${reviewScore }</span>
+						</h2>
+						<h6 style="text-align: center;">전체 리뷰 ${reviewCount }</h6>
 			  		</div>
-			  		
+			  		<hr>
 			  		<c:forEach var="review" items="${review }">
 						<div class="media" style="padding:20px;">
 						  <img src="${cp }/resources/review_icon/ico_15.png" class="mr-3" alt="..." style="width:56px;height:56px;">
@@ -299,8 +366,9 @@
 							
 						  	<div style="margin-top:15px;">
 							  	<c:forEach var="image" items="${review.review_img }">
-							  		<c:if test="${review.review_num == image.review_num }"></c:if>
-							  		<img src="${cp }/resources/review_icon/${image.review_save_name}" class="mr-3" alt="..." style="width:100px;height:100px;">
+							  		<c:if test="${review.review_num == image.review_num && not empty image.review_save_name }">
+							  			<img src="${cp }/resources/review_icon/${image.review_save_name}" class="mr-3" alt="..." style="width:100px;height:100px;">
+							  		</c:if>
 							  	</c:forEach>
 						  	</div>
 						  	<p style="margin-top: 15px;font-size: 1em;">
@@ -309,6 +377,7 @@
 						  </div>
 					
 						</div>
+						<hr>
 					</c:forEach>
 					
 				
@@ -402,20 +471,6 @@
 <script>
 	$(function(){
 		
-		/*
-		$("#id1").click(function(){
-			$(".info").css("display","none");
-			$("#div1").css("display","block");
-		});
-		$("#id2").click(function(){
-			$(".info").css("display","none");
-			$("#div2").css("display","block");
-		});
-		$("#id3").click(function(){
-			$(".info").css("display","none");
-			$("#div3").css("display","block");
-		});
-		*/
 		$(".room").click(function () {
 			
 			var num = parseInt($(this).prop("id").split("-")[1]);

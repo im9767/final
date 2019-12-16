@@ -56,6 +56,16 @@ public class HouseDaoImpl implements HouseDao {
 		return sqlSessionTemplate.selectList(NAMESPACE+".roomsJoinSelect", map);
 	}
 
+	@Override
+	public double reviewScore(int house_num) {
+		return sqlSessionTemplate.selectOne(NAMESPACE+".reviewScore", house_num);
+	}
+
+	@Override
+	public int reviewCount(int house_num) {
+		return sqlSessionTemplate.selectOne(NAMESPACE+".reviewCount", house_num);
+	}
+
 
 
 

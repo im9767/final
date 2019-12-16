@@ -111,17 +111,20 @@
 	<select id="houseReview" parameterType="int" resultMap="reviewList">
 		
 		SELECT
-		        *
+		        re.*,
+        		reimg.*
 		FROM
 		        house h,
 		        rooms r,
 		        review re,
 		        review_img reimg
 		WHERE
-		        h.house_num = #{house_num}
-		        AND h.house_num = r.house_num
-		        AND re.review_num = reimg.review_num
+		        h.house_num = r.house_num
 		        AND r.room_num = re.room_num
+		        AND re.review_num = reimg.review_num(+)
+		        AND h.house_num = #{house_num}
+		ORDER BY 
+        		re.review_num DESC
 			
 	</select>
 	
@@ -154,7 +157,7 @@
 		</collection>
 	
 	</resultMap>
-	
+	<!-- 예약 가능한 방 목록 얻어오기 -->
 	<select id="roomsJoinSelect" resultMap="roomsJoin" parameterType="hashmap">
 	
 		SELECT 
@@ -173,6 +176,37 @@
 				AND b.end_date  (+) > TO_DATE(#{sdt}, 'yyyy/mm/dd')
 				AND b.end_date IS NULL]]>
 		
+	</select>
+	
+	<!-- 업체 평균 리뷰점수 얻어오기 -->
+	<select id="reviewScore" parameterType="int" resultType="double">
+	
+		SELECT
+		        TRUNC((AVG(KINDNESS)+AVG(CLEAN)+AVG(CONVENIENCE))/3,1)
+		FROM
+		        house h,
+		        rooms r,
+		        review re
+		WHERE 
+		        h.house_num = r.house_num
+		        AND r.room_num = re.room_num
+		        AND h.house_num = #{house_num}
+	
+	</select>
+	
+	<select id="reviewCount" parameterType="int" resultType="int">
+	
+		SELECT
+		        COUNT(*)
+		FROM
+		        house h,
+		        rooms r,
+		        review re
+		WHERE 
+		        h.house_num = r.house_num
+		        AND r.room_num = re.room_num
+		        AND h.house_num = #{house_num}
+			
 	</select>
 	
 </mapper>

@@ -47,5 +47,14 @@ public class HouseService {
 	public List<RoomsJoinVo> roomsJoin(HashMap<String, Object> map){
 		return houseDaoImpl.roomsJoin(map);
 	}
-
+	
+	// 리뷰 평균 점수
+	public double reviewScore(int house_num){
+		return houseDaoImpl.reviewScore(house_num);
+	}
+	
+	// 리뷰 갯수
+	public int reviewCount(int house_num){
+		return houseDaoImpl.reviewCount(house_num);
+	}
 }

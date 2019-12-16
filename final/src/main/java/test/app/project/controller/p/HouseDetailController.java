@@ -80,6 +80,14 @@ public class HouseDetailController {
 		
 		model.addAttribute("roomsJoin", roomsJoin);
 		
+		double reviewScore = houseService.reviewScore(house_num);
+		
+		model.addAttribute("reviewScore",reviewScore);
+		
+		int reviewCount = houseService.reviewCount(house_num);
+		
+		model.addAttribute("reviewCount", reviewCount);
+		
 		return ".house_p.detail";
 	}
 	
