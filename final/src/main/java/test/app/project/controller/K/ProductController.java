@@ -30,26 +30,7 @@ public class ProductController {
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(today);
 		cal.add(Calendar.DATE, 1);
-		/*
-		if(startday != null && endday !=null){
-			map.put("sort", sort);
-			map.put("date", date);
-			map.put("startday", sdf.format(startday));
-			map.put("endday", sdf.format(endday));
-			System.out.println(sort);
-		}
 		
-		if(start_date !=null && end_date != null){
-			map.put("sort", sort);
-			map.put("date", date);
-			map.put("start_date", sdf.format(start_date));
-			map.put("end_date",  sdf.format(end_date));
-			System.out.println(sdf.format(start_date));
-			System.out.println(sdf.format(end_date));
-			System.out.println(sort);
-		}
-		
-*/
 		if(date!=null && startday==null){
 			
 			map.put("sort", sort);
@@ -58,12 +39,14 @@ public class ProductController {
 			map.put("end_date",  sdf.format(end_date));
 			System.out.println("sort"+sort);
 			System.out.println("date"+date);
+			System.out.println("1");
 			model.addAttribute("start_date",sdf.format(start_date));
 			model.addAttribute("end_date",sdf.format(end_date));
 			System.out.println("1");
 		}else if(date==null && startday!=null){
 			map.put("sort", sort);
 			map.put("date", date);
+			System.out.println("2");
 			model.addAttribute("start_date",sdf.format(today));
 			model.addAttribute("end_date", sdf.format(cal.getTime()));
 			System.out.println("2");
@@ -73,6 +56,7 @@ public class ProductController {
 			map.put("date", date);
 			model.addAttribute("start_date",sdf.format(today));
 			model.addAttribute("end_date", sdf.format(cal.getTime()));
+			System.out.println();
 		}
 		List<RoomsVo> list=service.list(map);
 		System.out.println("list:" + list);
