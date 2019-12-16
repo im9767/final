@@ -15,8 +15,8 @@ public class ProductImpl implements ProductDao {
 	@Autowired private SqlSessionTemplate sqlSessionTemplate;
 	private final String NAMESPACE="test.app.mybatis.mapper.k.productMapper";
 	@Override
-	public List<RoomsVo> roomsList() {
-		return sqlSessionTemplate.selectList(NAMESPACE+".roomsList");
+	public List<RoomsVo> roomsList(HashMap<String, Object> map) {
+		return sqlSessionTemplate.selectList(NAMESPACE+".roomsList", map);
 	}
 
 }

@@ -12,7 +12,8 @@ import test.app.project.vo.RoomsVo;
 public class ProductService {
 	@Autowired private ProductImpl dao;
 	
-	public List<RoomsVo> list(){
-		return dao.roomsList();
+	public List<RoomsVo> list(HashMap<String, Object> map){
+		System.out.println("hhh:" + map);
+		return dao.roomsList(map);
 	}
 }
