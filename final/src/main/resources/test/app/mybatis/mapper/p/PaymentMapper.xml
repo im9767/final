@@ -3,7 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="test.app.mybatis.mapper.p.PaymentMapper">
-
+	<!-- 예약 테이블 insert -->
 	<insert id="bookingInsert" parameterType="payment">
 	
 		INSERT INTO booking_table VALUES(booking_seq.nextval,
@@ -23,17 +23,18 @@
 		</selectKey>
 
 	</insert>
-	
+	<!-- 결제테이블 insert -->
 	<insert id="paymentInsert" parameterType="hashmap">
 	
 		INSERT INTO payment VALUES(payment_seq.nextval,#{booking_num},null,#{pay},sysdate,#{payment_type})
 		
 	</insert>
 	
+	<!-- 쿠폰 목록 가져오기 -->
 	<select id="couponSelect" resultType="coupon" parameterType="String">
 	
 		SELECT * FROM coupon WHERE mid=#{mid}
 	
 	</select>
-
+	
 </mapper>

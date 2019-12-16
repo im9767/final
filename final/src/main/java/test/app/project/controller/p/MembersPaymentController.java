@@ -61,6 +61,7 @@ public class MembersPaymentController {
 		
 		return ".members_p.payment";
 	}
+	
 	@RequestMapping(value="/members/paymentOk", produces="application/json;charset=utf-8")
 	@ResponseBody
 	public String payment(int room_price,int room_num,int pay_money,String start_date,String end_date,String name,String payment_type,HttpSession session){

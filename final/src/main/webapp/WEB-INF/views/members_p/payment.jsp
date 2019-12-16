@@ -5,7 +5,7 @@
 <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 
 <script>
-	
+
 	
 	$(function(){
 		$("#payment").click(payment);
@@ -23,6 +23,7 @@
 				$("#price").text(payment_money.toLocaleString()+"원");
 				
 				using = true;
+				
 			}
 		
 			$("#couponUse").attr("disabled", using);
@@ -42,6 +43,7 @@
 				
 				$("#price").text(payment_money.toLocaleString()+"원");
 				
+				
 			}else if(coupon[0] == "2"){
 				
 				$("#pay_money").val(parseInt(parseInt("${room_price}")) - parseInt(coupon[1]));
@@ -49,6 +51,7 @@
 				var payment_money = parseInt($("#pay_money").val());
 				
 				$("#price").text(payment_money.toLocaleString()+"원");
+
 			}
 			
 		});
@@ -91,6 +94,7 @@
 		        msg += '상점 거래ID : ' + rsp.merchant_uid;
 		        msg += '결제 금액 : ' + rsp.paid_amount;
 		        msg += '카드 승인번호 : ' + rsp.apply_num;
+		        
 		        
 		        $.ajax({
 		        	url : "${cp}/members/paymentOk",

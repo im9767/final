@@ -14,5 +14,4 @@ public interface MembersPaymentDao {
 	
 	public List<CouponVo> couponSelect(String mid);
 	
-	
 }
