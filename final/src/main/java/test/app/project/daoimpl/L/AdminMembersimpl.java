@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 
 import test.app.project.dao.L.AdminMembersDao;
 import test.app.project.vo.CouponVo;
+import test.app.project.vo.HouseImgVo;
+import test.app.project.vo.HouseVo;
 import test.app.project.vo.MembersVo;
 import test.app.project.vo.RoomsVo;
 
@@ -40,6 +42,14 @@ public class AdminMembersimpl implements AdminMembersDao{
 	@Override
 	public List<RoomsVo> roomsList(HashMap<String, Object> map) {
 		return SqlSessionTemplate.selectList(NAMESPACE2+".adminrooms",map);
+	}
+	@Override
+	public HouseVo getBnum(HashMap<String, Object> map) {
+		return SqlSessionTemplate.selectOne(NAMESPACE2+".getBnum",map);
+	}
+	@Override
+	public int houseImgInsert(HouseImgVo vo) {
+		return SqlSessionTemplate.insert(NAMESPACE2+".houseimgInsert",vo);
 	}
 	
 }

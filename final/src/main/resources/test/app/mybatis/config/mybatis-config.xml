@@ -21,6 +21,7 @@
 		<typeAlias type="test.app.project.vo.NoticeVo" alias="notice"/>
 		<typeAlias type="test.app.project.vo.AmenitiesVo" alias="AmenitiesVo"/>
 		<typeAlias type="test.app.project.vo.BusinessVo" alias="Business"/>
+		<typeAlias type="test.app.project.vo.HouseImgVo" alias="houseimg"/>
 	</typeAliases>
 
 	<mappers>

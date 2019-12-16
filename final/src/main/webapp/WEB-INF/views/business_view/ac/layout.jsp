@@ -215,6 +215,12 @@ $(function(){
           <i class="fas fa-fw fa-table"></i>
           <span>사업자 홈버튼</span></a>
       </li>
+      
+      <li class="nav-item">
+        <a class="nav-link" href="${cp}/house/image">
+          <i class="fas fa-fw fa-table"></i>
+          <span>업소이미지 샘플</span></a>
+      </li>
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 
