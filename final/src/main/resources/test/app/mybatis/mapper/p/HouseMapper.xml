@@ -24,25 +24,25 @@
 			
 	</select>
 	
-	<!-- 상세 페이지 객실 정보 얻어오기  -->
-	<select id="roomList" parameterType="int" resultType="rooms">
+<!-- 	 상세 페이지 객실 정보 얻어오기  -->
+<!-- 	<select id="roomList" parameterType="int" resultType="rooms"> -->
 	
-		SELECT 
-		         rooms.room_num,
-		         rooms.house_num,
-		         rooms.roomname,
-		         rooms.room_price,
-		         rooms.room_info,
-		         rooms.max_personnel
+<!-- 		SELECT  -->
+<!-- 		         rooms.room_num, -->
+<!-- 		         rooms.house_num, -->
+<!-- 		         rooms.roomname, -->
+<!-- 		         rooms.room_price, -->
+<!-- 		         rooms.room_info, -->
+<!-- 		         rooms.max_personnel -->
 		         
-		FROM
-		        house h,
-		        rooms rooms
-		WHERE
-		        h.house_num = rooms.house_num
-		        AND rooms.house_num = #{house_num};
+<!-- 		FROM -->
+<!-- 		        house h, -->
+<!-- 		        rooms rooms -->
+<!-- 		WHERE -->
+<!-- 		        h.house_num = rooms.house_num -->
+<!-- 		        AND rooms.house_num = #{house_num} -->
 		
-	</select>
+<!-- 	</select> -->
 	
 	<!-- 상세페이지 얘약 가능한 객실 조회 -->
 	<select id="foundRoom" parameterType="hashmap" resultType="rooms">
@@ -171,7 +171,7 @@
 		WHERE 
 				r.house_num = #{house_num}
 				<![CDATA[AND b.room_num  (+) = r.room_num
-				AND r.room_num = rimg.room_num
+				AND r.room_num = rimg.room_num(+)
 				AND b.start_date(+) < TO_DATE(#{edt}, 'yyyy/mm/dd')
 				AND b.end_date  (+) > TO_DATE(#{sdt}, 'yyyy/mm/dd')
 				AND b.end_date IS NULL]]>

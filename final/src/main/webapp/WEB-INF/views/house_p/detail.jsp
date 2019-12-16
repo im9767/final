@@ -499,7 +499,7 @@
 		        ,dayNamesMin: ['일','월','화','수','목','금','토'] //달력의 요일 부분 텍스트
 		        ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 부분 Tooltip 텍스트
 		        ,minDate: 0 //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
-		        ,maxDate: "+7D" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후) 
+		        ,maxDate: "+30D" //최대 선택일자(+1D:하루후, -1M:한달후, -1Y:일년후) 
 				,onSelect: function (date) {
 					var endDate = $('#datepicker2');
 					var startDate = $(this).datepicker('getDate');

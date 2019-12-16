@@ -28,12 +28,11 @@ public class HouseDetailController {
 	@RequestMapping(value="/house/detail")
 	public String product_detail(@RequestParam(value="house_num",defaultValue="82")int house_num,String sdt,String edt,Model model){
 		
+		
 		if(sdt == null){
 			sdt = "2019/12/01";
 			edt = "2019/12/10";
 		}
-		
-		
 		HashMap<String , Object> roomMap = new HashMap<String, Object>();
 		roomMap.put("house_num", house_num);
 		roomMap.put("sdt", sdt);
@@ -62,6 +61,8 @@ public class HouseDetailController {
 		//System.out.println("room_images.size:"+room_images.size());
 		
 		List<RoomsJoinVo> roomsJoin = houseService.roomsJoin(roomMap);
+		
+		System.out.println("roomJoin.size():"+roomsJoin.size());
 		
 		List<ReviewJoinVo> review = houseService.reviewList(house_num);
 		

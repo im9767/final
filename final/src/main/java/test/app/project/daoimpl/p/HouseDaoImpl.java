@@ -58,7 +58,10 @@ public class HouseDaoImpl implements HouseDao {
 
 	@Override
 	public double reviewScore(int house_num) {
-		return sqlSessionTemplate.selectOne(NAMESPACE+".reviewScore", house_num);
+		
+		return (Double) ((sqlSessionTemplate.selectOne(NAMESPACE+".reviewScore", house_num) == null) ? 0.0 : sqlSessionTemplate.selectOne(NAMESPACE+".reviewScore", house_num)) ;
+		
+		
 	}
 
 	@Override

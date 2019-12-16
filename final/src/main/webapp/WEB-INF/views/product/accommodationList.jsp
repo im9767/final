@@ -260,7 +260,7 @@
   
 	$('.house').click(function(){
 		var house_num = $(this).find('.house_num').val()
-		location.href="${pageContext.request.contextPath }/house/detail?house_num="+house_num+"&sdt=${start_date}&edt=${end_date}"
+		location.href="${pageContext.request.contextPath }/house/detail?house_num="+house_num+"&sdt=${start_date}&edt=${end_date}";
 	});
      
 
