@@ -20,7 +20,7 @@
 			<div id="carouselExampleControls" class="carousel slide" data-ride="false" style="width:100%;padding:10px;margin: auto;">
 				<div class="carousel-inner">
 					<div class="carousel-item active">
-			      		<img src="${pageContext.request.contextPath }/resources/images/banner_1.jpg" class="d-block w-100" alt="...">
+			      		<img src="${pageContext.request.contextPath }/resources/h_img/${houseImg.house_save_name}" class="d-block w-100" alt="...">
 			    	</div>
 			    <div class="carousel-item">
 			      		<img src="${pageContext.request.contextPath }/resources/images/banner_2.jpg" class="d-block w-100" alt="...">
