@@ -26,7 +26,8 @@ public class HouseDetailController {
 	
 	// 업소 상세페이지 이동
 	@RequestMapping(value="/house/detail")
-	public String product_detail(@RequestParam(value="house_num",defaultValue="83")int house_num,String sdt,String edt,Model model){
+	public String product_detail(@RequestParam(value="house_num",defaultValue="82")int house_num,String sdt,String edt,Model model){
+		
 		if(sdt == null){
 			sdt = "2019-12-01";
 			edt = "2019-12-10";

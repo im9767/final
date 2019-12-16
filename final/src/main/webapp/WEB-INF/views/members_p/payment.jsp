@@ -17,6 +17,11 @@
 	
 	function payment(){
 		
+		if($("#name").val() == ""){
+			alert("예약자 이름을 입력해주세요");
+			return;
+		}
+		
 		var payment_type = $("#payment_type_select").val();
 		var pay_money = $("#pay_money").val();
 		var start_date = $("#start_date").val();

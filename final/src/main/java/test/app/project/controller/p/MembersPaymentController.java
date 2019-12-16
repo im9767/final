@@ -26,12 +26,12 @@ public class MembersPaymentController {
 	@RequestMapping(value="/members/payment")
 	public String payment(String sdt, String edt, int room_num, String room_name,int room_price,String company,Model model){
 		
-		model.addAttribute("sdt",sdt);
-		model.addAttribute("edt",edt);
-		model.addAttribute("room_num",room_num);
-		model.addAttribute("room_name",room_name);
-		model.addAttribute("room_price",room_price);
-		model.addAttribute("company",company);
+		model.addAttribute("sdt",sdt); // 숙박 시작일
+		model.addAttribute("edt",edt); // 숙박 종료일
+		model.addAttribute("room_num",room_num); // 룸 식별번호
+		model.addAttribute("room_name",room_name); // 룸 이름
+		model.addAttribute("room_price",room_price); // 룸 가격
+		model.addAttribute("company",company); // 업체 이름
 		
 		System.out.println("sdt:"+sdt);
 		System.out.println("edt:"+edt);
@@ -39,12 +39,13 @@ public class MembersPaymentController {
 		System.out.println("room_name:"+room_name);
 		System.out.println("room_price:"+room_price);
 		System.out.println("company:"+company);
+		System.out.println();
 		
-		String[] s = sdt.split("-");
-		String[] e = edt.split("-");
+		String[] s = sdt.split("-"); // 박수 계산
+		String[] e = edt.split("-"); // 박수 계산
 		int days = Integer.parseInt(e[2])-Integer.parseInt(s[2]);
 		
-		model.addAttribute("days",days);
+		model.addAttribute("days",days); // 숙박 일 수
 		
 		DecimalFormat dc = new DecimalFormat("###,###,###,###");
 		
@@ -63,6 +64,7 @@ public class MembersPaymentController {
 		System.out.println("end_date:"+end_date);
 		System.out.println("name:"+name);
 		System.out.println("payment_type:"+payment_type);
+		System.out.println();
 		
 		String mid = (String) session.getAttribute("id");
 		
@@ -85,6 +87,8 @@ public class MembersPaymentController {
 		JSONObject json = new JSONObject();
 		if(n>0){
 			json.put("code", true);
+		}else{
+			json.put("code", false);
 		}
 		return json.toString();
 		

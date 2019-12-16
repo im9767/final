@@ -5,7 +5,7 @@
 
 <div style="width:80%;min-height: 1200px;margin: auto;padding: 40px;margin-top: 150px;">
 
-	<div class="accordion" id="accordionExample">
+	<div class="accordion" id="accordionExample" style="min-height: 800px;">
 	
 	<c:forEach var="notice" items="${notice }" varStatus="i">
 	
@@ -14,7 +14,7 @@
 		      <h2 class="mb-0">
 		        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse_${i.index }" aria-expanded="true" aria-controls="collapse_${i.index }">
 		      
-		          ${notice.ntitle } : aa : ${aa }
+		          ${notice.ntitle }
 		      
 		        </button>
 		      </h2>
@@ -31,7 +31,9 @@
 		  </div>
 	
 	</c:forEach>
-
+	<c:if test="${empty notice }">
+		<h2 style="text-align: center;">공지사항이 없습니다.</h2>
+	</c:if>
 	</div>
 
 	<br>

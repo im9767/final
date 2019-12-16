@@ -225,7 +225,7 @@
 			  <!-- 리뷰 탭 -->
 			  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab" style="padding:20px;">
 			  	
-			  		<div style="border-bottom: 2px;">
+			  		<div style="margin-bottom: 10px;">
 			  			<h2 style="text-align: center;">추천해요</h2>
 			  			<h2 style="text-align: center;color:orange;">★★★★★</h2>
 			  		</div>
