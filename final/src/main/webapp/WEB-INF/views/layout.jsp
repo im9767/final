@@ -25,10 +25,6 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/plugins/OwlCarousel2-2.2.1/animate.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/styles/main_styles.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/styles/responsive.css">
-	
-	<!-- datepicker -->
-	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
@@ -49,6 +45,20 @@
 	}
 </style>
 
+
+
+	<!-- 수량박스 css 추가 -->
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/styles/counter.css">
+	<!-- 체크박스 css -->
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/styles/checkbox.css">
+	<!-- 사이드바 마진, 데이트피커 주말 색 변경 css -->
+	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/styles/accomm.css">
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+
+	<!-- ezone템플릿 css -->
+	<!-- Favicon -->
+	<link rel="shortcut icon" type="image/x-icon" href="${pageContext.request.contextPath }/resources/assets/img/favicon.png">	
 
 	<!-- 부트스트랩 기본 css -->
 
@@ -75,5 +85,13 @@
 <script src="${pageContext.request.contextPath}/resources/plugins/Isotope/isotope.pkgd.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
 <script src="${pageContext.request.contextPath}/resources/plugins/easing/easing.js"></script>
+<<<<<<< HEAD
 <script src="${pageContext.request.contextPath}/resources/js/custom.js"></script>
+=======
+<!-- 기존 템플릿 스크립트 추가 -->
+<script src="${pageContext.request.contextPath}/resources/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/custom.js"></script>
+
+
+>>>>>>> branch 'master' of https://github.com/im9767/final.git
 </html>

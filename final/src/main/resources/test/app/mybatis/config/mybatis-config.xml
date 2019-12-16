@@ -18,12 +18,14 @@
 		<typeAlias type="test.app.project.vo.PaymentVo" alias="pay"/>
 		<typeAlias type="test.app.project.vo.HouseVo" alias="house"/>
 		<typeAlias type="test.app.project.vo.RoomsVo" alias="rooms"/>
+
 		<typeAlias type="test.app.project.vo.NoticeVo" alias="notice"/>
 		<typeAlias type="test.app.project.vo.BusinessVo" alias="Business"/>
 		<typeAlias type="test.app.project.vo.AmenitiesVo" alias="amenities"/>
 		<typeAlias type="test.app.project.vo.HouseintroVo" alias="houseintro"/>
 		<typeAlias type="test.app.project.vo.RoomsImgVo" alias="roomsImg"/>
 		<typeAlias type="test.app.project.vo.PaymentVo" alias="payment"/>
+
 		
 	</typeAliases>
 
