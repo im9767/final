@@ -31,6 +31,10 @@ public class MembersPaymentService {
 		int n = paymentDaoImpl.paymentInsert(map);
 		System.out.println("n:"+n);
 		
+		if(map.get("coupon_num") != null){
+			paymentDaoImpl.couponUpdate(map);	
+		}
+		
 		return 1;
 		
 	}

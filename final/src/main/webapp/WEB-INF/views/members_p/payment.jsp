@@ -6,6 +6,7 @@
 
 <script>
 
+	var coupon_num = 0;
 	
 	$(function(){
 		$("#payment").click(payment);
@@ -23,6 +24,8 @@
 				$("#price").text(payment_money.toLocaleString()+"원");
 				
 				using = true;
+				
+				coupon_num = 0;
 				
 			}
 		
@@ -43,6 +46,8 @@
 				
 				$("#price").text(payment_money.toLocaleString()+"원");
 				
+				coupon_num = parseInt(coupon[2]);
+				
 				
 			}else if(coupon[0] == "2"){
 				
@@ -51,6 +56,8 @@
 				var payment_money = parseInt($("#pay_money").val());
 				
 				$("#price").text(payment_money.toLocaleString()+"원");
+				
+				coupon_num = parseInt(coupon[2]);
 
 			}
 			
@@ -105,7 +112,8 @@
 		        			 end_date:end_date,
 		        			 name:name,
 		        			 payment_type:payment_type,
-		        			 room_price:pay_money}
+		        			 room_price:pay_money,
+		        			 coupon_num:coupon_num}
 		        	}).done(function(data){
 		        		alert(data.code);
 		        		if(data.code){
@@ -153,7 +161,7 @@
 			  <select id="coupon" name="coupon" class="custom-select col-4" id="coupon_select">
 		        <option selected value="0">쿠폰 선택</option>
 		        <c:forEach var="coupon" items="${coupon }">
-		        	<option value="${coupon.coupon_typenum }/${coupon.coupon_saletype }">${coupon.coupon_name }</option>
+		        	<option value="${coupon.coupon_typenum }/${coupon.coupon_saletype }/${coupon.coupon_num }">${coupon.coupon_name }</option>
 		        </c:forEach>
 		      </select>
 		      <button type="button" class="btn btn-info" id="couponUse" disabled="disabled">적용</button>

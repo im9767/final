@@ -25,16 +25,28 @@
 	</insert>
 	<!-- 결제테이블 insert -->
 	<insert id="paymentInsert" parameterType="hashmap">
-	
-		INSERT INTO payment VALUES(payment_seq.nextval,#{booking_num},null,#{pay},sysdate,#{payment_type})
+		<choose>
+			<when test="coupon_num == null">
+				INSERT INTO payment VALUES(payment_seq.nextval,#{booking_num},null,#{pay},sysdate,#{payment_type})
+			</when>
+			<otherwise>
+				INSERT INTO payment VALUES(payment_seq.nextval,#{booking_num},#{coupon_num},#{pay},sysdate,#{payment_type})
+			</otherwise>
+		</choose>
 		
 	</insert>
 	
 	<!-- 쿠폰 목록 가져오기 -->
 	<select id="couponSelect" resultType="coupon" parameterType="String">
 	
-		SELECT * FROM coupon WHERE mid=#{mid}
+		SELECT * FROM coupon WHERE mid=#{mid} AND coupon_status = '사용안함'
 	
 	</select>
+	
+	<update id="couponUpdate" parameterType="hashmap">
+	
+		UPDATE coupon SET coupon_status = '사용함' WHERE coupon_num = #{coupon_num}
+	
+	</update>
 	
 </mapper>

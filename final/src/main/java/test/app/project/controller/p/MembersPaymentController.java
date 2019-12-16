@@ -64,7 +64,7 @@ public class MembersPaymentController {
 	
 	@RequestMapping(value="/members/paymentOk", produces="application/json;charset=utf-8")
 	@ResponseBody
-	public String payment(int room_price,int room_num,int pay_money,String start_date,String end_date,String name,String payment_type,HttpSession session){
+	public String payment(int room_price,int room_num,int pay_money,String start_date,String end_date,String name,String payment_type,int coupon_num,HttpSession session){
 		
 		System.out.println("room_price:"+room_price);
 		System.out.println("room_num:"+room_num);
@@ -73,6 +73,7 @@ public class MembersPaymentController {
 		System.out.println("end_date:"+end_date);
 		System.out.println("name:"+name);
 		System.out.println("payment_type:"+payment_type);
+		System.out.println("coupon_num:"+coupon_num);
 		System.out.println();
 		
 		String mid = (String) session.getAttribute("id");
@@ -87,7 +88,11 @@ public class MembersPaymentController {
 		HashMap<String , Object> map = new HashMap<String, Object>();
 		
 		map.put("pay", vo.getPay_money());
-		map.put("coupon_num", 0);
+		if(coupon_num > 0){
+			map.put("coupon_num", coupon_num);
+		}else{
+			map.put("coupon_num", null);
+		}
 		map.put("payment_type", payment_type);
 		
 		int n = paymentService.bookingInsert(vo, map);

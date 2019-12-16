@@ -39,6 +39,11 @@ public class MembersPaymentDaoImpl implements MembersPaymentDao{
 		return sqlSessionTemplate.selectList(NAMESPACE+".couponSelect", mid);
 	}
 
+	@Override
+	public int couponUpdate(HashMap<String, Object> map) {
+		return sqlSessionTemplate.delete(NAMESPACE+".couponUpdate", map);
+	}
+
 	
 	
 }
