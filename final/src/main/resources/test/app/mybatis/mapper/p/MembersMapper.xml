@@ -163,4 +163,44 @@
 				qna_date DESC
 		
 	</select>
+	
+	<!-- 회원 본인 예약 내역 조회하기 -->
+	<select id="bookingList" parameterType="hashmap" resultType="hashmap">
+	
+		SELECT * FROM
+		(
+			SELECT AA.*,rownum rnum FROM
+			(
+				SELECT 
+				        b.booking_num,
+				        TO_CHAR(b.start_date,'YYYY.MM.DD') start_date,
+				        TO_CHAR(b.end_date,'YYYY.MM.DD') end_date,
+				        b.book_status,
+				        h.house_num,
+	                    h.company,
+				        himg.house_save_name,
+				        r.roomname
+				FROM
+				        house h,
+				        house_img himg,
+				        rooms r,
+				        booking_table b
+				WHERE
+				        h.house_num = himg.house_num
+				        AND h.house_num = r.house_num
+				        AND r.room_num = b.room_num
+				        AND b.mid = 'parkm422'
+				ORDER BY
+				        b.books_date DESC
+			)AA
+		)<![CDATA[WHERE rnum>=#{startRow} AND rnum<=#{endRow}]]>
+		        
+	</select>
+	
+	<select id="bookingCount" parameterType="String" resultType="int">
+	
+		SELECT COUNT(*) FROM booking_table WHERE mid=#{mid}
+	
+	</select>
+	
 </mapper>

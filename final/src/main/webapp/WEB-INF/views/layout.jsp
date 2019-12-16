@@ -70,13 +70,8 @@
 <script src="${pageContext.request.contextPath}/resources/plugins/Isotope/isotope.pkgd.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
 <script src="${pageContext.request.contextPath}/resources/plugins/easing/easing.js"></script>
-<<<<<<< HEAD
-<script src="${pageContext.request.contextPath}/resources/js/custom.js"></script>
-=======
+
 <!-- 기존 템플릿 스크립트 추가 -->
 <script src="${pageContext.request.contextPath}/resources/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
 <script src="${pageContext.request.contextPath}/resources/js/custom.js"></script>
-
-
->>>>>>> branch 'master' of https://github.com/im9767/final.git
 </html>

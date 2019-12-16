@@ -62,13 +62,21 @@
 						<c:when test="${reviewScore >= 1.5 }">
 							★★
 						</c:when>
-						<c:otherwise>
-							★
-						</c:otherwise>
+						<c:when test="${reviewScore < 1.5 && reviewScore > 0 }">
+							★★
+						</c:when>
 					</c:choose>
 					
 				</span>
-				<span style="color:orange;">${reviewScore }</span>
+				<c:choose>
+					<c:when test="${reviewScore > 0 }">
+						<span style="color:orange;">${reviewScore }</span>
+					</c:when>
+					<c:otherwise>
+						<span style="color:lightgray;">작성된 리뷰가 없습니다</span>
+					</c:otherwise>
+				</c:choose>
+				
 				&nbsp;&nbsp;&nbsp;
 				<span style="font-size: 1.3em;color:gray;">
 					<!-- 평균 점수에 따른 문구  -->
@@ -79,9 +87,9 @@
 						<c:when test="${reviewScore >= 3 }">
 							무난해요
 						</c:when>
-						<c:otherwise>
+						<c:when test="${reviewScore < 3 && reviewScore > 0 }">
 							별로예요
-						</c:otherwise>
+						</c:when>
 					</c:choose>
 				</span>
 			</p>
