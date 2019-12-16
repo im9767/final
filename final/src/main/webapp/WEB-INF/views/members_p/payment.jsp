@@ -11,15 +11,47 @@
 		$("#payment").click(payment);
 		
 		$("#coupon").change(function(){
-			alert("gd");
-			var using = true;
+			
+			var using = false;
 			
 			if($("#coupon").val() == "0"){
-				using = false;
+				
+				var payment_money = parseInt("${room_price}");
+				
+				$("#pay_money").val(payment_money);
+				
+				$("#price").text(payment_money.toLocaleString()+"원");
+				
+				using = true;
 			}
 		
-			$("#couponUse").attr("disabled", true);
-		})
+			$("#couponUse").attr("disabled", using);
+		});
+		
+		$("#couponUse").click(function(){
+			
+			var coupon = $("#coupon").val().split("/");
+
+			if(coupon[0] == "1"){
+				
+				var sale = parseInt(coupon[1])/100.0;
+
+				$("#pay_money").val(parseInt("${room_price}")-(parseInt("${room_price}")*sale));
+				
+				var payment_money = parseInt($("#pay_money").val());
+				
+				$("#price").text(payment_money.toLocaleString()+"원");
+				
+			}else if(coupon[0] == "2"){
+				
+				$("#pay_money").val(parseInt(parseInt("${room_price}")) - parseInt(coupon[1]));
+				
+				var payment_money = parseInt($("#pay_money").val());
+				
+				$("#price").text(payment_money.toLocaleString()+"원");
+			}
+			
+		});
 	});
 	
 	var IMP = window.IMP; // 생략가능
@@ -115,14 +147,14 @@
 		  <div class="form-group">
 		      <label for="coupon_select">사용가능한 쿠폰</label><br>
 			  <select id="coupon" name="coupon" class="custom-select col-4" id="coupon_select">
-		        <option selected value="0">Choose...</option>
+		        <option selected value="0">쿠폰 선택</option>
 		        <c:forEach var="coupon" items="${coupon }">
 		        	<option value="${coupon.coupon_typenum }/${coupon.coupon_saletype }">${coupon.coupon_name }</option>
 		        </c:forEach>
 		      </select>
-		      <button class="btn btn-info" id="couponUse" disabled="disabled">적용</button>
+		      <button type="button" class="btn btn-info" id="couponUse" disabled="disabled">적용</button>
 		  </div>
-		  payment_type_select
+		 
 <!-- 		  결제방식선택 -->
 		  <div class="form-group">
 		  	  <label for="payment_type_select">결제수단 선택</label><br>
@@ -152,7 +184,7 @@
                 
             </section>
             <section class="total_price_pc" style="margin: 20px 20px 30px 20px;">
-                <p style="font-size: 1.2em;"><strong><b>총 결제 금액</b>(VAT포함)</strong><br><span class="in_price" style="color:red;font-size: 1.5em;">${dc.format(room_price) }원</span>
+                <p style="font-size: 1.2em;"><strong><b>총 결제 금액</b>(VAT포함)</strong><br><span id="price" class="in_price" style="color:red;font-size: 1.5em;">${dc.format(room_price) }원</span>
                 </p>
                 <ul>
                     <li>※ 해당 객실가는 세금, 봉사료가 포함된 금액입니다</li>
