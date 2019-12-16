@@ -36,7 +36,7 @@ public class RoomsVo{
 	private String house_save_name;
 	private String workplace;
 	private double avg;
-	
+	private String bb;
 	/**
 	 * �깮�꽦�옄.
 	 */
@@ -57,8 +57,11 @@ public class RoomsVo{
 	}
 
 
+	
+
+	
 	public RoomsVo(int room_num, int house_num, String roomname, int room_price, String room_info, int room_check,
-			int max_Personnel, String company, String house_save_name, String workplace, double avg) {
+			int max_Personnel, String company, String house_save_name, String workplace, double avg, String bb) {
 		super();
 		this.room_num = room_num;
 		this.house_num = house_num;
@@ -71,9 +74,20 @@ public class RoomsVo{
 		this.house_save_name = house_save_name;
 		this.workplace = workplace;
 		this.avg = avg;
+		this.bb = bb;
 	}
 
 	
+	public String getBb() {
+		return bb;
+	}
+
+
+	public void setBb(String bb) {
+		this.bb = bb;
+	}
+
+
 	public double getAvg() {
 		return avg;
 	}
@@ -181,6 +195,15 @@ public class RoomsVo{
 
 	public void setMax_Personnel(int max_Personnel) {
 		this.max_Personnel = max_Personnel;
+	}
+
+
+	@Override
+	public String toString() {
+		return "RoomsVo [room_num=" + room_num + ", house_num=" + house_num + ", roomname=" + roomname + ", room_price="
+				+ room_price + ", room_info=" + room_info + ", room_check=" + room_check + ", max_Personnel="
+				+ max_Personnel + ", company=" + company + ", house_save_name=" + house_save_name + ", workplace="
+				+ workplace + ", avg=" + avg + ", bb=" + bb + "]";
 	}
 
 

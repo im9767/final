@@ -4,22 +4,79 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="test.app.mybatis.mapper.k.productMapper">
 	<select id="roomsList" parameterType="hashmap" resultType="rooms">
-			select 
-				trunc(hh.avg,1) avg,hh.room_price, h.company, h.workplace, hi.house_save_name 
-			from 
-				house h, house_img hi,
-			    	(select 
-			    		h.house_num, nvl(avg((kindness+clean+convenience)/3),0) avg,min(r.room_price) room_price
-			    	from 
-			    		house h, rooms r, review rv, house_img hi
-			   		where 
-			   			h.house_num=r.house_num(+) and r.room_num=rv.room_num(+) and not r.room_price is null
-			    	group by 
-			    		h.house_num) hh
+			select
+			    h.avg, h.room_price, h.company, h.workplace, h.house_save_name, b.bb
+			from
+			    (
+			        select 
+							trunc(hh.avg,1) avg,hh.room_price, h.company, h.workplace, hi.house_save_name, h.house_num
+						from 
+							house h, house_img hi,
+						    	(select 
+						    		h.house_num, nvl(avg((kindness+clean+convenience)/3),0) avg,min(r.room_price) room_price
+						    	from 
+						    		house h, rooms r, review rv, house_img hi
+						   		where 
+						   			h.house_num=r.house_num(+) and r.room_num=rv.room_num(+) and not r.room_price is null
+						    	group by 
+						    		h.house_num) hh
+						where 
+							hh.house_num=h.house_num and h.house_num=hi.house_num(+)
+			        ) h,
+			        (
+			            select 
+			                *
+			            from(
+			                select 
+			                    rr.bb,row_number() over(partition by rr.house_num order by bb) num, house_num
+			                from
+			                    (
+			                    select 
+			                        decode(r.start_date,null, '1', start_date) bb, r.house_num
+			                    from
+			                        (
+			                            select 
+			                                b.start_date,r.house_num
+			                            from 
+			                                rooms r, booking_table b, house h
+			                            where 
+			                            <choose>
+			                            	<when test="date!=null and sort==null">
+			                            		b.room_num(+)=r.room_num 
+ 											  and  to_date(#{start_date}, 'yyyy/mm/dd') between b.start_date(+) and b.end_date(+)
+											</when>
+											<when test="date!=null and sort!=null">
+			                            		b.room_num(+)=r.room_num 
+ 											  and  to_date(#{start_date}, 'yyyy/mm/dd') between b.start_date(+) and b.end_date(+)
+											</when>
+											<when test="date==null">
+			                            		b.room_num(+)=r.room_num 
+			                            		and to_date(sysdate, 'yyyy/mm/dd') between to_date(sysdate, 'yyyy/mm/dd') and b.end_date(+)
+			                            	</when>
+			                            </choose>   
+			                        )r
+			                    ) rr
+			                where 
+			                    bb = '1'
+			                )
+			            where
+			                  bb='1' and num='1'
+			    )b
 			where 
-				hh.house_num=h.house_num and h.house_num=hi.house_num(+)
+			    h.house_num = b.house_num
+		  <choose>		
+   			<when test="sort!=null and sort.equals('recomm')">
+				order by avg desc
+			</when>
+			<when test="sort!=null and sort.equals('rowPrice')">
+				order by room_price
+			</when>
+			<when test="sort!=null and sort.equals('highPrice')">
+				order by room_price desc
+			</when>
+			</choose>
 	</select>
-	
+
 </mapper>
 
 

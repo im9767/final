@@ -13,12 +13,12 @@
 
 			<div class="sidebar-widget mb-50" style="margin-top: 50px;">
 
-				<h5 style="font-style: bold;" >날짜</h5>
+				<h5 style="font-style: bold;" >날짜1</h5>
 				<div class="form-row" style="padding-top: 18px;">
 					<input type="text" class="form-control" id="startDate"
-						style="width: 130px; " readonly>&nbsp 
+						style="width: 130px; " value="${start_date }" readonly>&nbsp 
 					<input type="text"
-						class="form-control" id="endDate" style="width: 130px;" readonly>
+						class="form-control" id="endDate" style="width: 130px;" value="${end_date }" readonly>
 				</div>
 			</div>
 			<br> <br>
@@ -26,7 +26,7 @@
 			<div class="sidebar-widget mb-60" style="margin-top: 20px;">
 				<h5 class="sidebar-title " style="padding-bottom: 15px;">상세조건</h5>
 				<button type="button" class="btn btn-outline-primary rounded"
-					style="width: 90px; height: 40px;">초기화1</button>
+					style="width: 90px; height: 40px;">초기화</button>
 				&nbsp
 				<button type="button" class="btn btn-danger rounded"
 					style="width: 90px; height: 40px;">적용</button>
@@ -59,17 +59,17 @@
 							class="arrivals_grid_sorting clearfix button-group filters-button-group"
 							style="float: left">
 							<li
-								class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center active is-checked"
+								class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center"
 								data-filter="*" style="width: 200px;" id="recomm">추천 순</li>
 							<li
 								class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center"
-								style="width: 200px;">거리 순</li>
+								style="width: 200px;" id="">거리 순</li>
 							<li
 								class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center"
-								style="width: 200px;">높은 가격 순</li>
+								style="width: 200px;" id="highPrice">높은 가격 순</li>
 							<li
 								class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center"
-								style="width: 200px;">낮은 가격 순</li>
+								style="width: 200px;"id="rowPrice">낮은 가격 순</li>
 						</ul>
 						<ul
 							class="arrivals_grid_sorting clearfix button-group filters-button-group"
@@ -93,7 +93,7 @@
 							</div>
 							<div class="card-img-overlay" style="padding: 10px; width: 85%;">
 								<h5 class="card-title"
-									style="color: white; padding-top: 240px; padding-left: 780px; font: bold">${vo.room_price }원
+									style="color: white; padding-top: 240px; float:right; padding-right:20px; font: bold">${vo.room_price }원
 									~</h5>
 							</div>
 							<div class="card-img-overlay" style="padding: 20px; width: 85%;">
@@ -140,6 +140,7 @@
 
 
 <script type="text/javascript">
+	
 
  $("#startDate").datepicker({
 		dateFormat: "yy/mm/dd", // 날짜의 형식
@@ -166,6 +167,7 @@
 		}
 	});
 
+	
 	$('#endDate').datepicker({
 		dateFormat: "yy/mm/dd", // 날짜의 형식
 		nextText: ">",
@@ -176,9 +178,21 @@
 		gotoCurrent: true,
 		showMonthAfterYear: true,
 		onClose: function(){
-			
+			dateSelect();
 		}
 	});
+	
+	
+	function dateSelect(){
+		var start_date = $("#startDate").val();
+		var end_date = $("#endDate").val();
+		alert(start_date)
+		alert(end_date)
+		location.href="${pageContext.request.contextPath}/product/accommodationList?date=select&start_date="+start_date+"&end_date="+end_date;
+		
+	}
+		
+
 	//수량상자
 	var quantitiy=0;
    $('.plus').click(function(e){
@@ -194,29 +208,57 @@
             $('#quantity').val(quantity - 1);
             }
     });
-     $('#recomm').click(function(){
-    	var date = new Date();
-     	var year = date.getFullYear();
-     	var month = date.getMonth()+1;
-     	var day = date.getDate();
-     	if(month < 10){
-     		month = "0"+month;
-     	}
-     	var today = year + "/" + month + "/" + day;
+     //날짜 구하기
+     var nextday = null;
+     var today = null;
 
-     	var nextDate = new Date();
-     	nextDate.setDate(nextDate.getDate()+1);
-     	
-     	var nYear = nextDate.getFullYear();
-     	var nMonth = nextDate.getMonth()+1;
-     	var nDay = nextDate.getDate();
-     	
-     	var nextday = nYear + "/" + nMonth + "/" + nDay;
-		location.href="${pageContext.request.contextPath}/product/accommodationList?sort=price&startday="+today+"&endday="+nextday;
+    	var date = new Date();
+      	var year = date.getFullYear();
+      	var month = date.getMonth()+1;
+      	var day = date.getDate();
+      	if(month < 10){
+      		month = "0"+month;
+      	}
+      	today = year + "/" + month + "/" + day;
+
+      	var nextDate = new Date();
+      	nextDate.setDate(nextDate.getDate()+1);
+      	
+      	var nYear = nextDate.getFullYear();
+      	var nMonth = nextDate.getMonth()+1;
+      	var nDay = nextDate.getDate();
+      	
+      	nextday = nYear + "/" + nMonth + "/" + nDay;
+     
+      	var start_date = $("#startDate").val();
+		var end_date = $("#endDate").val();
+     $('#recomm').click(function(){
+    	 if(start_date != today){
+    		 location.href="${pageContext.request.contextPath}/product/accommodationList?date=select&start_date="+start_date+"&end_date="+end_date+"&sort=recomm";
+    	 }else{
+    		 location.href="${pageContext.request.contextPath}/product/accommodationList?sort=recomm&startday="+today+"&endday="+nextday;
+    	 }
+		
     	 
      });
-
+	$('#highPrice').click(function(){
+		if(start_date!=today){
+			location.href="${pageContext.request.contextPath}/product/accommodationList?date=select&start_date="+start_date+"&end_date="+end_date+"&sort=highPrice";
+		}else{
+			location.href="${pageContext.request.contextPath}/product/accommodationList?sort=highPrice&startday="+today+"&endday="+nextday;
+		}
+		
+	});
+	$('#rowPrice').click(function(){
+		if(start_date!=today){
+			location.href="${pageContext.request.contextPath}/product/accommodationList?date=select&start_date="+start_date+"&end_date="+end_date+"&sort=rowPeice";
+		}else{
+			location.href="${pageContext.request.contextPath}/product/accommodationList?sort=rowPrice&startday="+today+"&endday="+nextday;
+		}
+		
+	});
   
+	
 
      
 

@@ -29,7 +29,8 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/styles/checkbox.css">
 	<!-- 사이드바 마진, 데이트피커 주말 색 변경 css -->
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/styles/accomm.css">
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 	<!-- ezone템플릿 css -->
 	<!-- Favicon -->
