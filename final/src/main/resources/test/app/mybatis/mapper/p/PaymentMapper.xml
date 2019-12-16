@@ -29,5 +29,11 @@
 		INSERT INTO payment VALUES(payment_seq.nextval,#{booking_num},null,#{pay},sysdate,#{payment_type})
 		
 	</insert>
+	
+	<select id="couponSelect" resultType="coupon" parameterType="String">
+	
+		SELECT * FROM coupon WHERE mid=#{mid}
+	
+	</select>
 
 </mapper>

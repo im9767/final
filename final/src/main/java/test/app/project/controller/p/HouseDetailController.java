@@ -29,8 +29,8 @@ public class HouseDetailController {
 	public String product_detail(@RequestParam(value="house_num",defaultValue="82")int house_num,String sdt,String edt,Model model){
 		
 		if(sdt == null){
-			sdt = "2019-12-01";
-			edt = "2019-12-10";
+			sdt = "2019/12/01";
+			edt = "2019/12/10";
 		}
 		
 		

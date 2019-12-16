@@ -86,7 +86,7 @@
 			  <section id="div1" class="info" style="width:100%;min-height: 500px;">
 				<br>
 				<!-- 날짜 선택 -->
-				<p>숙박 기간 선택<br><input type="text" id="datepicker1" placeholder="시작일" value="${sdt }"> - <input value="${edt }" type="text" id="datepicker2" placeholder="종료일"></p>
+				<p>숙박 기간 선택<br><input style="width:150px;" type="text" id="datepicker1" placeholder="시작일" value="${sdt }"> - <input style="width:150px;" value="${edt }" type="text" id="datepicker2" placeholder="종료일"></p>
 				
 				<br>
 				
@@ -429,7 +429,7 @@
 		});
 
 		$("#datepicker1").datepicker({
-			dateFormat: 'yy-mm-dd' //Input Display Format 변경
+			dateFormat: 'yy/mm/dd' //Input Display Format 변경
 		        ,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
 		        ,showMonthAfterYear:true //년도 먼저 나오고, 뒤에 월 표시
 		        ,changeYear: true //콤보박스에서 년 선택 가능
@@ -457,7 +457,7 @@
 		});
 		$('#datepicker2').datepicker("option", "minDate", $("#datepicker1").val());
 		$("#datepicker2").datepicker({
-			dateFormat: 'yy-mm-dd' //Input Display Format 변경
+			dateFormat: 'yy/mm/dd' //Input Display Format 변경
 		        ,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
 		        ,showMonthAfterYear:true //년도 먼저 나오고, 뒤에 월 표시
 		        ,changeYear: true //콤보박스에서 년 선택 가능

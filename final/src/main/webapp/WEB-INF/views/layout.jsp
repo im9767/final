@@ -28,23 +28,8 @@
 
 <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-<!-- 결제 연동 api -->
-<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
-
-<style>
-		
-	.ui-datepicker-week-end{color:#f00;}
-	.ui-datepicker-current-day
-	{
-	    background: #83C948
-	}
-	/* today's background color */
-	.ui-datepicker-today 
-	{
-	    background: #83C948
-	}
-</style>
-
+	<!-- 결제 연동 api -->
+	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 
 
 	<!-- 수량박스 css 추가 -->
