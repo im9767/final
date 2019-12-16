@@ -219,6 +219,7 @@
                       <th>최대인원</th>
                       <th>수정</th>
                       <th>삭제</th>
+                      <th>예약상태</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -232,6 +233,7 @@
                       <td>${vo.MAX_PERSONNEL}</td>
                      <td><a href="${cp}/business_view/uproom?room_num=${vo.ROOM_NUM}">수정</a></td>
                       <td><a href="${cp}/business_view/delroom?room_num=${vo.ROOM_NUM}">삭제</a></td>
+                      <td>${vo.BOOK_STATUS}</td>
                     </tr>
                     </c:forEach>
                   </tbody> 					

@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="test.app.mybatis.mapper.p.HouseMapper">
+	
+	<!-- 상세 페이지 편의시설 정보 -->
+	<select id="houseAmen" parameterType="int" resultType="hashmap">
+	
+		SELECT
+		        distinct 
+		        amen.amenities_name,
+		        amen.amenities_content,
+		        amen.orgfilename,
+		        amen.savefilename
+		FROM
+		        house h,
+		        houseintro intro,
+		        amenities amen
+		WHERE
+		        h.house_num = intro.house_num
+		        AND amen.amenities_num = intro.amenities_num
+		        AND h.house_num = #{house_num}
+			
+	</select>
+	
+	<!-- 상세 페이지 객실 정보 얻어오기  -->
+	<select id="roomList" parameterType="int" resultType="rooms">
+	
+		SELECT 
+		         rooms.room_num,
+		         rooms.house_num,
+		         rooms.roomname,
+		         rooms.room_price,
+		         rooms.room_info,
+		         rooms.max_personnel
+		         
+		FROM
+		        house h,
+		        rooms rooms
+		WHERE
+		        h.house_num = rooms.house_num
+		        AND rooms.house_num = #{house_num};
+		
+	</select>
+	
+	<!-- 상세페이지 얘약 가능한 객실 조회 -->
+	<select id="foundRoom" parameterType="hashmap" resultType="rooms">
+		
+		SELECT 
+				r.*
+		
+		FROM 
+				rooms r,
+				booking_table b
+		WHERE 
+				r.house_num = #{house_num}
+				<![CDATA[AND b.room_num  (+) = r.room_num
+				AND b.start_date(+) < TO_DATE(#{edt}, 'yyyy/mm/dd')
+				AND b.end_date  (+) > TO_DATE(#{sdt}, 'yyyy/mm/dd')
+				AND b.end_date IS NULL]]>
+			
+	</select>
+	
+	<!-- 객실 이미지 가져오기 -->
+	<select id="room_images" resultType="roomsImg" parameterType="hashmap">
+	
+		SELECT
+				*
+		FROM
+				rooms_img
+		WHERE
+				<if test="room_list.size != 0">
+				
+					room_num IN
+					<foreach collection="room_list" item="room_num" open="(" separator="," close=")">
+					
+						#{room_num.value}
+					
+					</foreach>
+				</if>
+		ORDER BY
+				room_num ASC,
+				room_save_name ASC
+	
+	</select>
+	
+	<!-- 리뷰 정보 가져오기 -->
+	<resultMap type="test.app.project.vo.ReviewJoinVo" id="reviewList">
+	
+		<result property="review_num" column="review_num"/>
+		<result property="room_num" column="room_num"/>
+		<result property="mid" column="mid"/>
+		<result property="review_title" column="review_title"/>
+		<result property="review_content" column="review_content"/>
+		<result property="review_date" column="review_date"/>
+		<result property="kindness" column="kindness"/>
+		<result property="clean" column="clean"/>
+		<result property="convenience" column="convenience"/>
+		<collection property="review_img" ofType="test.app.project.vo.ReiewImgVo">
+		
+			<result property="review_img_num" column="review_img_num"/>
+			<result property="review_num" column="review_num"/>
+			<result property="review_org_name" column="review_org_name"/>
+			<result property="review_save_name" column="review_save_name"/>
+		
+		</collection>
+	
+	</resultMap>
+	<!-- 리뷰정보 resultMap사용 -->
+	<select id="houseReview" parameterType="int" resultMap="reviewList">
+		
+		SELECT
+		        *
+		FROM
+		        house h,
+		        rooms r,
+		        review re,
+		        review_img reimg
+		WHERE
+		        h.house_num = #{house_num}
+		        AND h.house_num = r.house_num
+		        AND re.review_num = reimg.review_num
+		        AND r.room_num = re.room_num
+			
+	</select>
+	
+	<select id="houseInfo" parameterType="int" resultType="house">
+	
+		SELECT
+				*
+		FROM
+				house
+		WHERE
+				house_num = #{house_num}
+	
+	</select>
+	
+	<!-- 객실정보와 객실 이미지 같이 얻어오기 -->
+	<resultMap type="test.app.project.vo.RoomsJoinVo" id="roomsJoin">
+	
+		<result property="room_num" column="room_num"/>
+		<result property="roomname" column="roomname"/>
+		<result property="room_price" column="room_price"/>
+		<result property="room_info" column="room_info"/>
+		<result property="max_Personnel" column="max_Personnel"/>
+		<collection property="rooms_img" ofType="roomsImg">
+		
+			<result property="rooms_img_num" column="rooms_img_num"/>
+			<result property="room_num" column="room_num"/>
+			<result property="room_org_name" column="room_org_name"/>
+			<result property="room_save_name" column="room_save_name"/>
+		
+		</collection>
+	
+	</resultMap>
+	
+	<select id="roomsJoinSelect" resultMap="roomsJoin" parameterType="hashmap">
+	
+		SELECT 
+				r.*,
+				rimg.*
+		
+		FROM 
+				rooms r,
+				booking_table b,
+				rooms_img rimg
+		WHERE 
+				r.house_num = #{house_num}
+				<![CDATA[AND b.room_num  (+) = r.room_num
+				AND r.room_num = rimg.room_num
+				AND b.start_date(+) < TO_DATE(#{edt}, 'yyyy/mm/dd')
+				AND b.end_date  (+) > TO_DATE(#{sdt}, 'yyyy/mm/dd')
+				AND b.end_date IS NULL]]>
+		
+	</select>
+	
+</mapper>

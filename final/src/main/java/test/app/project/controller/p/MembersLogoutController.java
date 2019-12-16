@@ -14,8 +14,4 @@ public class MembersLogoutController {
 		return "redirect:/";
 	}
 	
-	@RequestMapping(value="/members/payment")
-	public String payment(){
-		return ".members_p.payment";
-	}
 }

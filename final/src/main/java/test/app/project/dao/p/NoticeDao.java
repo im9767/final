@@ -12,4 +12,5 @@ public interface NoticeDao {
 	
 	// 전체 공지사항 갯수 리턴
 	public int noticeCount();
+	
 }

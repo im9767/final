@@ -21,19 +21,21 @@ public class BookingTableVo {
 	private String mid;
 
 	/** 결제금액. */
-	private int pay_Money;
+	private int pay_money;
 
 	/** 예약신청날짜. */
-	private java.sql.Date booksDate;
+	private java.sql.Date books_date;
 
 	/** 숙박시작일. */
-	private java.sql.Date startDate;
+	private String start_date;
 
 	/** 숙박종료일. */
-	private java.sql.Date endDate;
+	private String end_date;
 
 	/** 예약상태. */
 	private String bookStatus;
+	
+	private String name;
 
 
 	/**
@@ -43,17 +45,18 @@ public class BookingTableVo {
 	}
 
 
-	public BookingTableVo(int booking_num, int room_num, String mid, int pay_Money, Date booksDate, Date startDate,
-			Date endDate, String bookStatus) {
+	public BookingTableVo(int booking_num, int room_num, String mid, int pay_money, Date books_date, String start_date,
+			String end_date, String bookStatus, String name) {
 		super();
 		this.booking_num = booking_num;
 		this.room_num = room_num;
 		this.mid = mid;
-		this.pay_Money = pay_Money;
-		this.booksDate = booksDate;
-		this.startDate = startDate;
-		this.endDate = endDate;
+		this.pay_money = pay_money;
+		this.books_date = books_date;
+		this.start_date = start_date;
+		this.end_date = end_date;
 		this.bookStatus = bookStatus;
+		this.name = name;
 	}
 
 
@@ -87,43 +90,43 @@ public class BookingTableVo {
 	}
 
 
-	public int getPay_Money() {
-		return pay_Money;
+	public int getPay_money() {
+		return pay_money;
 	}
 
 
-	public void setPay_Money(int pay_Money) {
-		this.pay_Money = pay_Money;
+	public void setPay_money(int pay_money) {
+		this.pay_money = pay_money;
 	}
 
 
-	public java.sql.Date getBooksDate() {
-		return booksDate;
+	public java.sql.Date getBooks_date() {
+		return books_date;
 	}
 
 
-	public void setBooksDate(java.sql.Date booksDate) {
-		this.booksDate = booksDate;
+	public void setBooks_date(java.sql.Date books_date) {
+		this.books_date = books_date;
 	}
 
 
-	public java.sql.Date getStartDate() {
-		return startDate;
+	public String getStart_date() {
+		return start_date;
 	}
 
 
-	public void setStartDate(java.sql.Date startDate) {
-		this.startDate = startDate;
+	public void setStart_date(String start_date) {
+		this.start_date = start_date;
 	}
 
 
-	public java.sql.Date getEndDate() {
-		return endDate;
+	public String getEnd_date() {
+		return end_date;
 	}
 
 
-	public void setEndDate(java.sql.Date endDate) {
-		this.endDate = endDate;
+	public void setEnd_date(String end_date) {
+		this.end_date = end_date;
 	}
 
 
@@ -135,5 +138,17 @@ public class BookingTableVo {
 	public void setBookStatus(String bookStatus) {
 		this.bookStatus = bookStatus;
 	}
+
+
+	public String getName() {
+		return name;
+	}
+
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
 
 }
