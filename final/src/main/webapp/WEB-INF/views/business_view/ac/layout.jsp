@@ -215,6 +215,11 @@ $(function(){
           <i class="fas fa-fw fa-table"></i>
           <span>사업자 홈버튼</span></a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="${cp}/business_view/updatehouseamenities">
+          <i class="fas fa-fw fa-table"></i>
+          <span>사업자 편의시설 수정</span></a>
+      </li>
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 

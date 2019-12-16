@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import test.app.project.vo.AmenitiesVo;
+import test.app.project.vo.HouseintroVo;
 import test.app.project.vo.RoomsImgVo;
 import test.app.project.vo.RoomsVo;
 
@@ -25,6 +26,17 @@ public class BusinessYDao {
 	}
 	public List<HashMap<String, Object>> selamenities(){
 		return sqlSessionTemplate.selectList("test.app.mybatis.mapperY.BusinessMapper.allamenities");
+	}
+	public int delha(int hnum){
+		return sqlSessionTemplate.delete("test.app.mybatis.mapperY.BusinessMapper.delha",hnum);
+	}
+	public int selanum(String baname){
+		return 
+		sqlSessionTemplate.selectOne("test.app.mybatis.mapperY.BusinessMapper.selanum",baname);
+	}
+	public int inha(HouseintroVo vo){
+		return 
+		sqlSessionTemplate.insert("test.app.mybatis.mapperY.BusinessMapper.inserthouseintro",vo);
 	}
 	//객실
 	public List<HashMap<String, Object>> roomlistAll(int house_num){

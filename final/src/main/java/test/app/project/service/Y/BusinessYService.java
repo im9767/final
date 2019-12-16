@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import test.app.project.dao.Y.BusinessYDao;
 import test.app.project.vo.AmenitiesVo;
+import test.app.project.vo.HouseintroVo;
 import test.app.project.vo.RoomsImgVo;
 import test.app.project.vo.RoomsVo;
 
@@ -88,9 +89,19 @@ public class BusinessYService {
 	}
 
 	@Transactional(rollbackFor = Exception.class)
-	public int inupbinfo(HashMap<String, Object> map) {
+	public int inupbinfo(HashMap<String, Object> map)throws Exception {
 		dao.inupbjinfo(map);
 		dao.inupbinfo(map);
+		return 1;
+	}
+	@Transactional(rollbackFor = Exception.class)
+	public int upba(HashMap<String,Object> map,int hnum) throws Exception{
+		dao.delha(hnum);
+		for(int i=0;i<map.size();i++){
+		int a=dao.selanum((String)map.get("baname"+i));
+		HouseintroVo vo=new HouseintroVo(0,hnum,a);
+		dao.inha(vo);
+		}
 		return 1;
 	}
 	//업체번호

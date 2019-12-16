@@ -11,11 +11,14 @@
 		select *  from amenities
 	</select>
 	<select id="selanum" parameterType="String" resultType="int">
-		select amenities_num from amenities where amenities_name=#{aname}
+		select amenities_num from amenities where amenities_name=#{baname}
 	</select>
 	<insert id="inserthouseintro" parameterType="test.app.project.vo.HouseintroVo" >
 		insert into houseintro values(houseintro_seq.nextval,#{house_num},#{amenities_num})
 	</insert>
+	<delete id="delha" parameterType="int" >
+		delete houseintro where house_num=#{hnum}
+	</delete>
 	<!-- 객실-->
 	<select id="roomlistAll" parameterType="int"   resultType="hashmap">
 		select *  from rooms r,house h where h.house_num=r.house_num and h.approval=1 and h.house_num=#{house_num}
