@@ -38,15 +38,11 @@ public class HouseImgController {
 		map.put("bid", bid);
 		//업체식별키 얻어오기
 		int house_num=service.getBnum(map).getHouse_Num();
-		
 		//업체이미지 원본명
 		String house_org_name=file.getOriginalFilename();
 		//업체이미지 저장명
 		String house_save_name=UUID.randomUUID() +"_" + house_org_name;
-		System.out.println(house_org_name);
-		System.out.println(house_save_name);
 		HouseImgVo hvo=new HouseImgVo(0, house_num, house_org_name, house_save_name);
-		
 		try{
 			InputStream is=file.getInputStream();
 			FileOutputStream fos=new FileOutputStream(uploadPath+"\\"+house_save_name);

@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -29,24 +30,42 @@ public class BusinessLoginController {
 		return "business_view/ac/login";
 	}
 	@RequestMapping(value="business_view/loginok",method=RequestMethod.POST)
-	public String loginOk(String bid,String bpwd,HttpSession session){
+	public String loginOk(String bid,String bpwd,HttpSession session,Model model){
 		HashMap<String,Object> map=new HashMap<String, Object>();
+		HashMap<String,Object> housemap=new HashMap<String, Object>();
 		map.put("bid",bid);
 		map.put("bpwd",bpwd);
-	
+		housemap.put("bbid", bid);
+		//사업자 아이디로 조회한 업체수
+		int houseCnt=service.houseCnt(housemap);
+		System.out.println("등록된 업체 수: " + houseCnt);
+		
 		HashMap<String,Object> business=service.login(map);
 	
 		if(business!=null){
 			session.setAttribute("bid",bid);
 			session.setAttribute("bpwd",bpwd);
-			int a=servicey.selhnum(bid);
-			session.setAttribute("house_num", a);
-			return ".business";
+			//int a=servicey.selhnum(bid);
+			//session.setAttribute("house_num", a);
+			model.addAttribute("houseCnt",houseCnt);
+			if(houseCnt>0){
+				return ".business";
+			}else{
+				return ".business_view.ac.main_sub";
+			}
 		}else{
 			return "business_view/ac/login";
 		}
 	}
-	
+	@RequestMapping(value="business/loginok",method=RequestMethod.GET)
+	public String gomyBesiness(){
+		return ".business_view.ac.main_sub";
+	}
 }
+
+
+
+
+
 
 

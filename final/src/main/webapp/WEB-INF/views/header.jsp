@@ -59,9 +59,9 @@
 											</c:otherwise>
 										</c:choose>	
 											<c:choose>
-										<c:when test="${code=='success' }">
+										<c:when test="${not empty bid }">
 											<li class="account" style='background-color: red;border:none;'>
-													<a href="${cp}/business" style='color:white;'>
+													<a href="${cp}/business/loginok" style='color:white;'>
 														사업자페이지로이동
 													</a>
 											</li>

@@ -9,8 +9,8 @@
 		where house_num=#{house_num}
 	</select>
 	<!-- 사업자 아이디를 조회하여 업체식별키 가져오기 -->
-	<select id="getBnum" parameterType="hashmap" resultType="houseimg">
-		select bnum
+	<select id="getBnum" parameterType="hashmap" resultType="house">
+		select house_num
 		from house
 		where business_id=#{bid}
 	</select>
