@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import test.app.project.dao.p.HouseDao;
+import test.app.project.vo.HouseImgVo;
 import test.app.project.vo.HouseVo;
 import test.app.project.vo.ReviewJoinVo;
 import test.app.project.vo.RoomsImgVo;
@@ -67,6 +68,11 @@ public class HouseDaoImpl implements HouseDao {
 	@Override
 	public int reviewCount(int house_num) {
 		return sqlSessionTemplate.selectOne(NAMESPACE+".reviewCount", house_num);
+	}
+
+	@Override
+	public HouseImgVo houseImg(int house_num) {
+		return sqlSessionTemplate.selectOne(NAMESPACE+".houseImg", house_num);
 	}
 
 

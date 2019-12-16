@@ -3,6 +3,7 @@ package test.app.project.dao.p;
 import java.util.HashMap;
 import java.util.List;
 
+import test.app.project.vo.HouseImgVo;
 import test.app.project.vo.HouseVo;
 import test.app.project.vo.ReviewJoinVo;
 import test.app.project.vo.RoomsImgVo;
@@ -35,4 +36,6 @@ public interface HouseDao {
 	// 업체 리뷰 갯수 구하기
 	public int reviewCount(int house_num);
 	
+	// 업체 이미지 가져오기
+	public HouseImgVo houseImg(int house_num);
 }

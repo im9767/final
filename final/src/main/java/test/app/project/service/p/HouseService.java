@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import test.app.project.daoimpl.p.HouseDaoImpl;
+import test.app.project.vo.HouseImgVo;
 import test.app.project.vo.HouseVo;
 import test.app.project.vo.ReviewJoinVo;
 import test.app.project.vo.RoomsImgVo;
@@ -56,5 +57,10 @@ public class HouseService {
 	// 리뷰 갯수
 	public int reviewCount(int house_num){
 		return houseDaoImpl.reviewCount(house_num);
+	}
+	
+	// 업체 이미지 가져오기
+	public HouseImgVo houseImg(int house_num){
+		return houseDaoImpl.houseImg(house_num);
 	}
 }

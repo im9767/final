@@ -86,8 +86,17 @@ public class MembersService {
 	public int qnaListCount(String mid){
 		return membersDaoImpl.qnaListCount(mid);
 	}
-	
+	// 회원 문의 내역 조회
 	public List<HashMap<String, Object>> qnaListAll(){
 		return membersDaoImpl.qnaListAll();
+	}
+	// 회원 예약내역 조회
+	public List<HashMap<String, Object>> bookingList(HashMap<String, Object> map){
+		return membersDaoImpl.bookingList(map);
+	}
+	
+	// 회원 예약내역 갯수
+	public int bookingCount(String mid){
+		return membersDaoImpl.bookingCount(mid);
 	}
 }

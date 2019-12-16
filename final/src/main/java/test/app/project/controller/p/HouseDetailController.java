@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import test.app.project.service.p.HouseService;
+import test.app.project.vo.HouseImgVo;
 import test.app.project.vo.HouseVo;
 import test.app.project.vo.ReviewJoinVo;
 import test.app.project.vo.RoomsImgVo;
@@ -88,6 +89,10 @@ public class HouseDetailController {
 		int reviewCount = houseService.reviewCount(house_num);
 		
 		model.addAttribute("reviewCount", reviewCount);
+		
+		HouseImgVo houseImg = houseService.houseImg(house_num);
+		
+		model.addAttribute("houseImg", houseImg);
 		
 		return ".house_p.detail";
 	}
