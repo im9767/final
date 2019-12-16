@@ -65,14 +65,27 @@ $(function(){
 <div id="wrapper">
 <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-      <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="${cp}/business/loginok">
-        <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laugh-wink"></i>
-        </div>
-        <div class="sidebar-brand-text mx-3" style="background-color:red">요기어때 사업자</div>
-      </a>
+	  
+	  <c:choose>
+	  	<c:when test="${houseCnt > 0 }">
+	  		<!-- Sidebar - Brand -->
+		      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="${cp}/business/loginok">
+		        <div class="sidebar-brand-icon rotate-n-15">
+		          <i class="fas fa-laugh-wink"></i>
+		        </div>
+		        <div class="sidebar-brand-text mx-3" style="background-color:red">요기어때 사업자</div>
+		      </a>
+	  	</c:when>
+	  	<c:otherwise>
+	  		<!-- Sidebar - Brand -->
+		      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="${cp}/business1/loginok">
+		        <div class="sidebar-brand-icon rotate-n-15">
+		          <i class="fas fa-laugh-wink"></i>
+		        </div>
+		        <div class="sidebar-brand-text mx-3" style="background-color:red">요기어때 사업자</div>
+		      </a>
+	  	</c:otherwise>
+	  </c:choose>
 
       <!-- Divider -->
       <hr class="sidebar-divider my-0">

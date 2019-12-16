@@ -47,7 +47,7 @@ public class BusinessLoginController {
 			session.setAttribute("bpwd",bpwd);
 			//int a=servicey.selhnum(bid);
 			//session.setAttribute("house_num", a);
-			model.addAttribute("houseCnt",houseCnt);
+			session.setAttribute("houseCnt", houseCnt);
 			if(houseCnt>0){
 				return ".business";
 			}else{
@@ -58,7 +58,17 @@ public class BusinessLoginController {
 		}
 	}
 	@RequestMapping(value="business/loginok",method=RequestMethod.GET)
-	public String gomyBesiness(){
+	public String gomyBesiness(HttpSession session){
+		int houseCnt=(Integer)session.getAttribute("houseCnt");
+		if(houseCnt>0){
+			return ".business";
+		}else{
+			return ".business_view.ac.main_sub";
+		}
+	}
+	
+	@RequestMapping(value="business1/loginok",method=RequestMethod.GET)
+	public String gomyBesiness1(){
 		return ".business_view.ac.main_sub";
 	}
 }
