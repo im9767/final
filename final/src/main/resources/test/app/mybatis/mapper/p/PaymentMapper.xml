@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="test.app.mybatis.mapper.p.PaymentMapper">
+
+	<insert id="bookingInsert" parameterType="payment">
+	
+		INSERT INTO booking_table VALUES(booking_seq.nextval,
+									#{room_num},
+									#{mid},
+									#{pay_money},
+									sysdate,
+									TO_DATE(#{start_date},'yyyy/mm/dd'),
+									TO_DATE(#{end_date},'yyyy/mm/dd'),
+									'예약완료',
+									#{name})
+		
+		<selectKey keyProperty="booking_num" resultType="int" order="AFTER"> 
+		
+			SELECT booking_seq.currval FROM dual 
+		
+		</selectKey>
+
+	</insert>
+	
+	<insert id="paymentInsert" parameterType="hashmap">
+	
+		INSERT INTO payment VALUES(payment_seq.nextval,#{booking_num},null,#{pay},sysdate,#{payment_type})
+		
+	</insert>
+	
+	<select id="couponSelect" resultType="coupon" parameterType="String">
+	
+		SELECT * FROM coupon WHERE mid=#{mid}
+	
+	</select>
+
+</mapper>
