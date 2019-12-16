@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import test.app.project.vo.AmenitiesVo;
+import test.app.project.vo.BusinessVo;
 import test.app.project.vo.HouseintroVo;
 import test.app.project.vo.RoomsImgVo;
 import test.app.project.vo.RoomsVo;
@@ -85,6 +86,16 @@ public class BusinessYDao {
 		return 
 		sqlSessionTemplate.selectOne("test.app.mybatis.mapperY.BusinessMapper.selhnum",bid);
 	}
+	//사업자 가입 아이디체크
+	public String bidCheck(String bid){
+		return 
+		sqlSessionTemplate.selectOne("test.app.mybatis.mapperY.BusinessMapper.selbid",bid);
+	}
+	//사업자 가입 체크
+		public int joinbusiness(HashMap<String,Object> map){
+			return 
+			sqlSessionTemplate.insert("test.app.mybatis.mapperY.BusinessMapper.joinbusiness",map);
+		}
 }
 
 

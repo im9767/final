@@ -61,6 +61,14 @@
 	<select id="selhnum"  parameterType="String" resultType="int">
 		select h.house_num from business_join j,house h where j.business_id=h.business_id and j.business_id=#{bid}
 	</select>
+	<!-- 사업자 아이디 체크 -->
+	<select id="selbid"  parameterType="String" resultType="String">
+		select business_id from business_join where business_id=#{bid}
+	</select>
+	<!-- 사업자 가입 체크 -->
+	<insert id="joinbusiness"  parameterType="hashmap">
+		insert into business_join values(#{bid},#{bpwd},#{bemail})
+	</insert>
 </mapper>
 
 

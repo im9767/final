@@ -10,7 +10,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import test.app.project.dao.Y.BusinessYDao;
 import test.app.project.vo.AmenitiesVo;
+import test.app.project.vo.BusinessVo;
 import test.app.project.vo.HouseintroVo;
+import test.app.project.vo.MembersVo;
 import test.app.project.vo.RoomsImgVo;
 import test.app.project.vo.RoomsVo;
 
@@ -108,5 +110,15 @@ public class BusinessYService {
 	public int selhnum(String hnum) {
 		return dao.selhnum(hnum);
 	}
-
+	//사업자 가입 아이디체크
+	public String bidCheck(String bid){
+		return dao.bidCheck(bid);
+		
+	}
+	
+	//사업자 가입체크
+		public int joinbusiness(HashMap<String,Object> map){
+			return dao.joinbusiness(map);
+			
+		}
 }

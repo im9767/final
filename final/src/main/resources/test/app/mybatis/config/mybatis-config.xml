@@ -24,6 +24,7 @@
 		<typeAlias type="test.app.project.vo.HouseintroVo" alias="houseintro"/>
 		<typeAlias type="test.app.project.vo.RoomsImgVo" alias="roomsImg"/>
 		<typeAlias type="test.app.project.vo.PaymentVo" alias="payment"/>
+
 		
 	</typeAliases>
 

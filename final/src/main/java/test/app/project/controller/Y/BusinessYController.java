@@ -5,14 +5,18 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import test.app.project.service.Y.BusinessYService;
+import test.app.project.vo.BusinessVo;
+import test.app.project.vo.MembersVo;
 import test.app.project.vo.NoticeVo;
 
 @Controller
@@ -77,6 +81,47 @@ public class BusinessYController {
 			}
 			return ".business";
 		}
+		//사업자 회원가입 id,pwd,email
+		@RequestMapping(value = "business_view/insertbusiness", method = RequestMethod.GET)
+		public String inbusiness() {
+			return "business_view/ac/insertbusiness";
+		}
+		//사업자 회원가입 체크
+				@RequestMapping(value = "business_view/insertbusinessok", method = RequestMethod.POST)
+				public String inbusinessok(String bid,String bpwd,String bemail) {
+					HashMap<String, Object> map= new HashMap<String, Object>();
+					map.put("bid", bid);
+					map.put("bpwd", bpwd);
+					map.put("bemail", bemail);
+					int a=service.joinbusiness(map);
+					if(a>0){
+					return "business_view/ac/login";
+							}else{
+								return "business_view/ac/insertbusiness";
+							}
+				}
+		//사업자 아이디체크
+		@RequestMapping(value="business_view/idCheck",produces="application/json;charset=utf-8")
+		@ResponseBody
+		public String bidCheck(String bid){	
+			String using = service.bidCheck(bid);
+			JSONObject json = new JSONObject();
+			
+			if(using!=null){
+				json.put("using",true);
+			}else{
+				json.put("using", false);
+			}
+			return json.toString();		
+		}
+		//업체등록
+				@RequestMapping(value = "business_view/inserthouse", method = RequestMethod.GET)
+					public ModelAndView inhouse() {
+						List<HashMap<String,Object>> list = service.selamenities();
+						ModelAndView mv = new ModelAndView("business_view/ac/inserthouse");
+						mv.addObject("selam", list);
+						return mv;
+				}
 		
 }
 	

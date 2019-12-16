@@ -6,5 +6,5 @@ import java.util.List;
 import test.app.project.vo.RoomsVo;
 
 public interface ProductDao {
-	List<RoomsVo> roomsList();
+	List<RoomsVo> roomsList(HashMap<String, Object> map);
 }
