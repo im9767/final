@@ -119,4 +119,16 @@ public class MembersDaoImpl implements MembersDao{
 		return sqlSessionTemplate.selectList(NAMESPACE+".qnaListAll");
 	}
 	
+	// 회원 예약내역 조회
+	@Override
+	public List<HashMap<String, Object>> bookingList(HashMap<String, Object> map) {
+		return sqlSessionTemplate.selectList(NAMESPACE+".bookingList", map);
+	}
+	
+	// 회원의 예약 내역 개수
+	@Override
+	public int bookingCount(String mid) {
+		return sqlSessionTemplate.selectOne(NAMESPACE+".bookingCount", mid);
+	}
+	
 }

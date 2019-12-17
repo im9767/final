@@ -38,4 +38,8 @@ public interface MembersDao {
 	
 	public List<HashMap<String, Object>> qnaListAll();
 	
+	public List<HashMap<String, Object>> bookingList(HashMap<String, Object> map);
+	
+	public int bookingCount(String mid);
+	
 }

@@ -1,16 +1,20 @@
 package test.app.project.controller.p;
 
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import test.app.project.service.p.MembersService;
+import test.app.project.util.PageUtil;
 import test.app.project.vo.MembersVo;
 
 @Controller
@@ -64,5 +68,36 @@ public class MembersMypageController {
 		int n = membersService.myinfoupdate(vo);
 		
 		return "redirect:/members/mypage";
+	}
+	
+	// 회원 예약내역 조회
+	@RequestMapping(value="/members/bookingList",method=RequestMethod.GET)
+	public String bookingList(@RequestParam(value="pageNum",defaultValue="1")int pageNum, Model model,HttpSession session){
+		
+		String mid = (String) session.getAttribute("id");
+		
+		int totalRowCount = membersService.bookingCount(mid);
+		
+		PageUtil pagination = new PageUtil(pageNum, totalRowCount, 5, 5);
+		
+		HashMap<String, Object> parameter = new HashMap<String, Object>();
+		parameter.put("mid", mid);
+		parameter.put("startRow", pagination.getStartRow());
+		parameter.put("endRow", pagination.getEndRow());
+		
+		List<HashMap<String, Object>> bookingList = membersService.bookingList(parameter);
+		
+		model.addAttribute("bookingList", bookingList);
+		model.addAttribute("pagination", pagination);
+		
+		int cntCoupon = membersService.cntCoupon(mid);
+		model.addAttribute("cntCoupon",cntCoupon);
+		
+		HashMap<String, Object> map = membersService.myinfo(mid);
+		
+		model.addAttribute("map",map);
+		
+		return ".members_p.bookingList";
+		
 	}
 }

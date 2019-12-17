@@ -76,6 +76,7 @@
 <script src="${pageContext.request.contextPath}/resources/plugins/easing/easing.js"></script>
 <!-- 기존 템플릿 스크립트 추가 -->
 <script src="${pageContext.request.contextPath}/resources/plugins/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+
 <script src="${pageContext.request.contextPath}/resources/js/custom.js"></script>
 
 </html>

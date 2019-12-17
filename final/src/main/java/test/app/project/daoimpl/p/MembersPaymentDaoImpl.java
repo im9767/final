@@ -19,23 +19,31 @@ public class MembersPaymentDaoImpl implements MembersPaymentDao{
 
 	private final String NAMESPACE = "test.app.mybatis.mapper.p.PaymentMapper";
 	
+	// 예약 테이블 insert
 	@Override
 	public int bookingInsert(BookingTableVo vo) {
 		
 		return sqlSessionTemplate.insert(NAMESPACE+".bookingInsert", vo);
 		
 	}
-
+	
+	// 결제 테이블 insert
 	@Override
 	public int paymentInsert(HashMap<String, Object> map) {
 		return sqlSessionTemplate.insert(NAMESPACE+".paymentInsert", map);
 	}
 
+	// 쿠폰 목록 가져오기
 	@Override
 	public List<CouponVo> couponSelect(String mid) {
 		return sqlSessionTemplate.selectList(NAMESPACE+".couponSelect", mid);
 	}
-	
+
+	@Override
+	public int couponUpdate(HashMap<String, Object> map) {
+		return sqlSessionTemplate.delete(NAMESPACE+".couponUpdate", map);
+	}
+
 	
 	
 }
