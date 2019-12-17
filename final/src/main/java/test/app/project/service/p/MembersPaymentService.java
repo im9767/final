@@ -17,6 +17,7 @@ public class MembersPaymentService {
 	@Autowired
 	private MembersPaymentDaoImpl paymentDaoImpl;
 	
+	// 예약,결제 테이블 insert / 쿠폰 사용시 쿠폰 삭제 트랜잭션
 	@Transactional
 	public int bookingInsert(BookingTableVo vo,HashMap<String, Object> map){
 		
@@ -29,6 +30,11 @@ public class MembersPaymentService {
 		
 		int n = paymentDaoImpl.paymentInsert(map);
 		System.out.println("n:"+n);
+		
+		if(map.get("coupon_num") != null){
+			paymentDaoImpl.couponUpdate(map);	
+		}
+		
 		return 1;
 		
 	}

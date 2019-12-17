@@ -128,6 +128,7 @@
 			
 	</select>
 	
+	<!-- 업체 정보 가져오기 -->
 	<select id="houseInfo" parameterType="int" resultType="house">
 	
 		SELECT
@@ -207,6 +208,18 @@
 		        AND r.room_num = re.room_num
 		        AND h.house_num = #{house_num}
 			
+	</select>
+	
+	<!-- 업체 이미지 가져오기 -->
+	<select id="houseImg" parameterType="int" resultType="houseImg">
+	
+		SELECT 
+				*
+		FROM
+				house_img
+		WHERE
+				house_num = #{house_num}
+	
 	</select>
 	
 </mapper>
