@@ -6,18 +6,21 @@
 
 <script>
 
-	var coupon_num = 0;
+	var coupon_num = 0; // 쿠폰 번호(0 = 사용하지 않음)
 	
 	$(function(){
+		
+		//결제버튼 클릭시 이벤트 발생
 		$("#payment").click(payment);
 		
+		// 쿠폰 선택 셀렉트 변경시 이벤트 발생
 		$("#coupon").change(function(){
 			
-			var using = false;
+			var using = false; // 쿠폰 사용버튼 활성화 비활성화 제어
 			
-			if($("#coupon").val() == "0"){
+			if($("#coupon").val() == "0"){ // 쿠폰을 선택하지 않았을 때
 				
-				var payment_money = parseInt("${room_price}");
+				var payment_money = parseInt("${room_price}"); // 룸 가격 할인 미적용 가격 가져오기
 				
 				$("#pay_money").val(payment_money);
 				
@@ -32,32 +35,34 @@
 			$("#couponUse").attr("disabled", using);
 		});
 		
+		// 쿠폰 적용 버튼 클릭시 이벤트 발생
 		$("#couponUse").click(function(){
 			
-			var coupon = $("#coupon").val().split("/");
-
+			var coupon = $("#coupon").val().split("/"); // /를 기준으로 값 쪼개기
+			
+			// 쿠폰 타입이 1(퍼센트할인)
 			if(coupon[0] == "1"){
 				
-				var sale = parseInt(coupon[1])/100.0;
+				var sale = parseInt(coupon[1])/100.0; // 할인율 구하기
 
-				$("#pay_money").val(parseInt("${room_price}")-(parseInt("${room_price}")*sale));
+				$("#pay_money").val(parseInt("${room_price}")-(parseInt("${room_price}")*sale)); // 결제 금액에 룸 가격에서 할인율을 뺀 가격 적용
 				
-				var payment_money = parseInt($("#pay_money").val());
+				var payment_money = parseInt($("#pay_money").val()); // 할인 적용된 금액 대입
 				
-				$("#price").text(payment_money.toLocaleString()+"원");
+				$("#price").text(payment_money.toLocaleString()+"원"); // 수정된 값 화면에 콤마 적용해서 보여주기
 				
-				coupon_num = parseInt(coupon[2]);
+				coupon_num = parseInt(coupon[2]); // 사용한 쿠폰번호 대입
 				
-				
+			// 쿠폰 타입이 2(차감할인)
 			}else if(coupon[0] == "2"){
 				
-				$("#pay_money").val(parseInt(parseInt("${room_price}")) - parseInt(coupon[1]));
+				$("#pay_money").val(parseInt(parseInt("${room_price}")) - parseInt(coupon[1])); // 결제 금액에 룸가격에서  차감금액 뺀 가격 적용
 				
-				var payment_money = parseInt($("#pay_money").val());
+				var payment_money = parseInt($("#pay_money").val()); // 할인 적용된 금액 대입
 				
-				$("#price").text(payment_money.toLocaleString()+"원");
+				$("#price").text(payment_money.toLocaleString()+"원"); // 수정된 값 화면에 콤마 적용해서 보여주기
 				
-				coupon_num = parseInt(coupon[2]);
+				coupon_num = parseInt(coupon[2]); // 사용한 쿠폰번호 대입
 
 			}
 			
@@ -106,16 +111,17 @@
 		        $.ajax({
 		        	url : "${cp}/members/paymentOk",
 		        	method : "POST",
-		        	data : { room_num:room_num, 
-		        			 pay_money:pay_money,
-		        			 start_date:start_date,
-		        			 end_date:end_date,
-		        			 name:name,
-		        			 payment_type:payment_type,
-		        			 room_price:pay_money,
-		        			 coupon_num:coupon_num}
+		        	data : { room_num:room_num,  // 룸 번호
+		        			 pay_money:pay_money, // 결제금액
+		        			 start_date:start_date, // 숙박 시작일
+		        			 end_date:end_date, // 숙박 종료일
+		        			 name:name, // 예약자 이름
+		        			 payment_type:payment_type, // 결제 유형
+		        			 room_price:pay_money, // 할인 적용된 룸 가격
+		        			 coupon_num:coupon_num // 쿠폰번호
+		        			 } 
 		        	}).done(function(data){
-		        		alert(data.code);
+		        		//alert(data.code);
 		        		if(data.code){
 		        			alert("서버에 데이터 저장 완료!");
 		        			location.href="${cp}/";
