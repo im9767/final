@@ -318,7 +318,11 @@ $(function(){
           <i class="fas fa-fw fa-table"></i>
           <span>사업자 홈버튼</span></a>
       </li>
-      
+      <li class="nav-item">
+        <a class="nav-link" href="${cp}/business_view/updatehouseamenities">
+          <i class="fas fa-fw fa-table"></i>
+          <span>사업자 편의시설 수정</span></a>
+      </li>
       <li class="nav-item">
         <a class="nav-link" href="${cp}/house/image">
           <i class="fas fa-fw fa-table"></i>
@@ -326,14 +330,13 @@ $(function(){
       </li>
       	</c:when>
       	<c:otherwise>
-      		<li class="nav-item">
-        		<a class="nav-link" href="${cp}/house/image">
-          		<i class="fas fa-fw fa-table"></i>
-          		<span>업체등록요청</span></a>
-    		</li>
+      		 <li class="nav-item">
+        <a class="nav-link" href="${cp}/business_view/inserthouse">
+          <i class="fas fa-fw fa-table"></i>
+          <span>업체등록</span></a>
+      </li>
       	</c:otherwise>
       </c:choose>
-      
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 

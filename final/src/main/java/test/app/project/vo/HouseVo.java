@@ -44,7 +44,7 @@ public class HouseVo {
 	private String com_Tel;
 
 	/** 승인여부. */
-	private String approval;
+	private int approval;
 
 	private String business_id;
 	public HouseVo() {
@@ -54,7 +54,7 @@ public class HouseVo {
 
 	public HouseVo(int house_Num, int bnum, String intro, String checkintime, String checkouttime,
 			String company, String license, String ceo, String orgaddr, String workplace, String com_Tel,
-			String approval,String business_id) {
+			int approval,String business_id) {
 		super();
 		this.house_Num = house_Num;
 		this.bnum = bnum;
@@ -192,12 +192,12 @@ public class HouseVo {
 	}
 
 
-	public String getApproval() {
+	public int getApproval() {
 		return approval;
 	}
 
 
-	public void setApproval(String approval) {
+	public void setApproval(int approval) {
 		this.approval = approval;
 	}
 	
