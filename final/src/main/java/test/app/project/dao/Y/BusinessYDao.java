@@ -21,6 +21,11 @@ public class BusinessYDao {
 	public BusinessYDao(SqlSessionTemplate sqlSessionTemplate) {
 		this.sqlSessionTemplate=sqlSessionTemplate;
 	}
+	//업체 이미지 저장이름
+	public String himgsavename(int house_num){
+		return 
+		sqlSessionTemplate.selectOne("test.app.mybatis.mapperY.BusinessMapper.himgsavename",house_num);
+	}
 	//편의시설등록
 	public int inamenities(AmenitiesVo vo){
 		return 
@@ -82,6 +87,9 @@ public class BusinessYDao {
 	public int inupbjinfo(HashMap<String,Object> map){
 		return sqlSessionTemplate.update("test.app.mybatis.mapperY.BusinessMapper.inupbjinfo",map);
 	}
+	public int inupbimg(HashMap<String,Object> map){
+		return sqlSessionTemplate.update("test.app.mybatis.mapperY.BusinessMapper.inupbimg",map);
+	}
 	//업체
 	public int selhnum(String bid){
 		return 
@@ -101,6 +109,13 @@ public class BusinessYDao {
 		public int inh(HouseVo vo){
 			return 
 			sqlSessionTemplate.insert("test.app.mybatis.mapperY.BusinessMapper.inh",vo);
+		}
+		//사업자 비밀번호 찾기
+		public BusinessVo findpwdy(HashMap<String,String> map){
+			return sqlSessionTemplate.selectOne("test.app.mybatis.mapperY.BusinessMapper.findpwdy",map);
+		}
+		public int changepwdy(BusinessVo vo){
+			return sqlSessionTemplate.update("test.app.mybatis.mapperY.BusinessMapper.changepwdy",vo);
 		}
 }
 

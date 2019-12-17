@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import test.app.project.dao.L.AdminMembersDao;
 import test.app.project.dao.Y.BusinessYDao;
 import test.app.project.vo.AmenitiesVo;
+import test.app.project.vo.BusinessVo;
 import test.app.project.vo.HouseImgVo;
 import test.app.project.vo.HouseVo;
 import test.app.project.vo.HouseintroVo;
@@ -83,7 +84,10 @@ public class BusinessYService {
 		}
 		return 1;
 	}
-	
+	//업체이미지 세이브명 불러오기
+		public String himgsavename(int house_num) {
+			return dao.himgsavename(house_num);
+		}
 	// 사업자
 	public List<HashMap<String, Object>> biflist(String id) {
 		return dao.biflist(id);
@@ -91,10 +95,12 @@ public class BusinessYService {
 
 	@Transactional(rollbackFor = Exception.class)
 	public int inupbinfo(HashMap<String, Object> map)throws Exception {
+		dao.inupbimg(map);
 		dao.inupbjinfo(map);
 		dao.inupbinfo(map);
 		return 1;
 	}
+	
 	@Transactional(rollbackFor = Exception.class)
 	public int upba(HashMap<String,Object> map,int hnum) throws Exception{
 		dao.delha(hnum);
@@ -141,5 +147,14 @@ public class BusinessYService {
 			int d=dao1.houseImgInsert(vo3);
 			System.out.println(d);
 			return 1;
+		}
+		//사업자 비밀번호찾기 
+		public BusinessVo findpwdy(HashMap<String,String> map){
+			return dao.findpwdy(map);
+			
+		}
+		public int changepwdy(BusinessVo vo){
+			return dao.changepwdy(vo);
+			
 		}
 }

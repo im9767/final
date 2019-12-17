@@ -52,11 +52,18 @@
 		select * from house h,business_join j where h.business_id=j.business_id and j.business_id=#{id}
 	</select>
 	<update id="inupbinfo" parameterType="hashmap">
-		update house set ceo=#{bname},company=#{bcompany},license=#{blicense},workplace=#{bworkplace},com_tel=#{bcom_tel} where business_id=#{bid}
+		update house set ceo=#{bname},company=#{bcompany},license=#{blicense},workplace=#{bworkplace},com_tel=#{bcom_tel},intro=#{intro} where business_id=#{bid}
 	</update>
-	<update id="inupbjinfo" parameterType="map">
-		update business_join set business_email=#{bemail} where business_id=#{bid}
+	<update id="inupbjinfo" parameterType="hashmap">
+		update business_join set business_email=#{bemail},business_pwd=#{bpwd} where business_id=#{bid}
 	</update>
+	<update id="inupbimg" parameterType="hashmap">
+		update house_img set house_org_name=#{house_org_name},house_save_name=#{house_save_name} where house_num=#{house_num}
+	</update>
+	<!-- 업체 이미지 저장이름 -->
+	<select id="himgsavename"  parameterType="int" resultType="String">
+		select house_save_name from house_img where house_num=#{house_num} 
+	</select>
 	<!-- 업체 -->
 	<select id="selhnum"  parameterType="String" resultType="int">
 		select h.house_num from business_join j,house h where j.business_id=h.business_id and j.business_id=#{bid}
@@ -73,6 +80,13 @@
 	<insert id="inh"  parameterType="test.app.project.vo.HouseVo">
 		insert into house values(house_seq.nextval,#{bnum},#{intro},#{checkintime},#{checkouttime},#{company},#{license},#{ceo},#{orgaddr},#{workplace},#{com_Tel},0,#{business_id})
 	</insert>
+	<!-- 사업자 비번찾기 -->
+	<select id="findpwdy"  parameterType="hashmap" resultType="test.app.project.vo.BusinessVo">
+		select * from business_join where business_id=#{bid} and business_email=#{bemail}
+	</select>
+	<update id="changepwdy"  parameterType="test.app.project.vo.BusinessVo" >
+		update business_join set business_pwd=#{bpwd} where business_email=#{bemail} and business_id=#{bid}
+	</update>
 </mapper>
 
 

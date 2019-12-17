@@ -1,5 +1,6 @@
 package test.app.project.controller.Y;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.util.HashMap;
@@ -40,7 +41,9 @@ public class BusinessYController {
 	}
 	//사업자 정보 수정 체크
 	@RequestMapping(value="business_view/updatebusinessinfook",method=RequestMethod.POST)
-	public String ubinfook(HttpSession session,String bname,String bcompany,String blicense,String bworkplace,String bcom_tel,String bemail){
+	public String ubinfook(HttpSession session,String bname,String bcompany,String blicense,String bworkplace,String bcom_tel,String bemail,
+			String intro,String bpwd,MultipartFile file){
+		try {
 		String bid=(String)session.getAttribute("bid");
 		HashMap<String, Object> map= new HashMap<String, Object>();
 		map.put("bname", bname);
@@ -50,7 +53,32 @@ public class BusinessYController {
 		map.put("bcom_tel", bcom_tel);
 		map.put("bemail", bemail);
 		map.put("bid", bid);
-		try {
+		map.put("intro", intro);
+		map.put("bpwd", bpwd);
+		int house_num=(Integer)session.getAttribute("house_num");
+		map.put("house_num", house_num);
+
+			String uploadPath=
+					session.getServletContext().getRealPath("/resources/upload");
+			System.out.println(uploadPath);		
+			String savefilename=service.himgsavename(house_num);
+			
+			File f=new File(uploadPath +"\\" + savefilename);
+			if(!f.delete()) {
+				new Exception("삭제실패");
+				}		
+			//업체이미지 원본명
+			String house_org_name=file.getOriginalFilename();
+			map.put("house_org_name", house_org_name);
+			//업체이미지 저장명
+			String house_save_name=UUID.randomUUID() +"_" + house_org_name;
+			map.put("house_save_name", house_save_name);
+			InputStream is=file.getInputStream();
+			FileOutputStream fos=new FileOutputStream(uploadPath+"\\"+house_save_name);
+			FileCopyUtils.copy(is, fos);
+			is.close();
+			fos.close();
+			
 			service.inupbinfo(map);
 		} catch (Exception e) {
 			e.printStackTrace();

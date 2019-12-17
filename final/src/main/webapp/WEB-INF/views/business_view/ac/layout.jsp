@@ -194,11 +194,6 @@ $(function(){
           <i class="fas fa-fw fa-table"></i>
           <span>사업자 편의시설 수정</span></a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="${cp}/house/image">
-          <i class="fas fa-fw fa-table"></i>
-          <span>업소이미지 샘플</span></a>
-      </li>
       	</c:when>
       	<c:otherwise>
       		 <li class="nav-item">
