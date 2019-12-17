@@ -103,21 +103,7 @@ $(function(){
           </div>
         </div>
       </li>
-      
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsemember" aria-expanded="true" aria-controls="collapsemember">
-          <i class="fas fa-fw fa-folder"></i>
-          <span>업소시설등록</span>
-        </a>
-        <div id="collapsemember" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Utilities:</h6>
-             <a class="collapse-item" href="${cp}/business_view/writeamenities">편의시설 등록</a>
-             <a class="collapse-item" href="#">편의시설 수정 및삭제</a>
-          </div>
-        </div>
-      </li>
-	
+    
       
 
       <!-- Nav Item - Utilities Collapse Menu -->

@@ -36,10 +36,8 @@
 		<mapper resource="test/app/mybatis/mapperL/RoomlistMapper.xml"/>
 		<mapper resource="test/app/mybatis/mapper/k/productMapper.xml"/>
 		<mapper resource="test/app/mybatis/mapper/p/NoticeMapper.xml"/>
-
 		<mapper resource="test/app/mybatis/mapper/MD/BusinessMapper.xml"/>
 		<mapper resource="test/app/mybatis/mapperY/BusinessYMapper.xml"/>
-
 		<mapper resource="test/app/mybatis/mapper/p/HouseMapper.xml"/>
 		<mapper resource="test/app/mybatis/mapper/p/PaymentMapper.xml"/>
 
