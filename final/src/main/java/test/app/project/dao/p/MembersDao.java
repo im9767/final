@@ -42,4 +42,8 @@ public interface MembersDao {
 	
 	public int bookingCount(String mid);
 	
+	public List<HashMap<String, Object>> paymentList(HashMap<String, Object> map);
+	
+	public int paymentCount(String mid);
+	
 }

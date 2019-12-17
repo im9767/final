@@ -24,26 +24,24 @@
 			<table class="table">
 			  <thead>
 			    <tr style="text-align: center;">
-			      <th scope="col">예약 번호</th>
+			      <th scope="col">결제 번호</th>
 			      <th scope="col">이미지</th>
 			      <th scope="col">숙소명</th>
-			      <th scope="col">객실명</th>
-			      <th scope="col">숙박 시작일</th>
-			      <th scope="col">숙박 종료일</th>
-			      <th scope="col">예약 상태</th>
+			      <th scope="col">결제 금액</th>
+			      <th scope="col">결제일</th>
+			      <th scope="col">결제 유형</th>
 			    </tr>
 			  </thead>
 			  <tbody>
-			  	<c:forEach var="bookingList" items="${bookingList }" varStatus="i">
-			  		<tr style="text-align: center;">
-				      <th style="vertical-align:middle;" scope="row">${bookingList.BOOKING_NUM }</th>
-				      <td style="vertical-align:middle;"><img style="width:200px;height:100px;" src="${cp }/upload/${bookingList.HOUSE_SAVE_NAME }"></td>
-				      <td style="vertical-align:middle;"><a href="${pageContext.request.contextPath }/house/detail?house_num=${bookingList.HOUSE_NUM }">${bookingList.COMPANY }</a></td>
-				      <td style="vertical-align:middle;">${bookingList.ROOMNAME }</td>
-				      <td style="vertical-align:middle;" scope="row">${bookingList.START_DATE }</td>
-				      <td style="vertical-align:middle;" scope="row">${bookingList.END_DATE }</td>
-				      <td style="vertical-align:middle;" scope="row">${bookingList.BOOK_STATUS }</td>
-				    </tr>
+			  	<c:forEach var="paymentList" items="${paymentList }">
+				  	<tr style="text-align: center;">
+				  		<th style="vertical-align:middle;">${paymentList.PAY_NUM }</th>
+				  		<td style="vertical-align:middle;"><a style="text-decoration: none;" href="${cp }/house/detail?house_num=${paymentList.HOUSE_NUM}"><img style="width:200px;height:100px;" src="${cp }/upload/${paymentList.HOUSE_SAVE_NAME }"></a></td>
+				  		<td style="vertical-align:middle;"><a style="text-decoration: none;" href="${cp }/house/detail?house_num=${paymentList.HOUSE_NUM}">${paymentList.COMPANY }</a></td>
+				  		<td style="vertical-align:middle;">${dc.format(paymentList.PAY) }원</td>
+				  		<td style="vertical-align:middle;">${paymentList.PAY_DAY }</td>
+				  		<td style="vertical-align:middle;">${paymentList.PAYMENT_TYPE }</td>
+				  	</tr>
 			  	</c:forEach>
 			  </tbody>
 			</table>
@@ -55,7 +53,7 @@
 			    <c:choose>
 			  		<c:when test="${pagination.startPageNum > pagination.pageBlockCount }">
 				    	<li class="page-item">
-				    		<a class="page-link" href="${cp }/members/bookingList?pageNum=${pagination.startPageNum-1 }">이전</a>
+				    		<a class="page-link" href="${cp }/members/paymentList?pageNum=${pagination.startPageNum-1 }">이전</a>
 				    	</li>
 					</c:when>
 					 <c:otherwise>
@@ -70,13 +68,13 @@
 			   		<c:choose>
 			   			<c:when test="${pagination.pageNum == i }">
 				   			<li class="page-item active">
-				   				<a class="page-link" href="${cp }/members/bookingList?pageNum=${i }">${i }</a>
+				   				<a class="page-link" href="${cp }/members/paymentList?pageNum=${i }">${i }</a>
 				   				<span class="sr-only">(current)</span>
 				   			</li>
 			   			</c:when>
 			   			<c:otherwise>
 				   			<li class="page-item">
-				   				<a class="page-link" href="${cp }/members/bookingList?pageNum=${i }">${i }</a>
+				   				<a class="page-link" href="${cp }/members/paymentList?pageNum=${i }">${i }</a>
 				   			</li>
 			   			</c:otherwise>
 			   		</c:choose>
@@ -86,7 +84,7 @@
 			   <c:choose>
 				 <c:when test="${pagination.endPageNum<pagination.totalPageCount }">
 					    <li class="page-item">
-					   	  <a class="page-link" href="${cp }/members/bookingList?pageNum=${pagination.endPageNum+1 }">다음</a>
+					   	  <a class="page-link" href="${cp }/members/paymentList?pageNum=${pagination.endPageNum+1 }">다음</a>
 					   	</li>
 				 </c:when>
 				 <c:otherwise>

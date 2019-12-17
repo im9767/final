@@ -131,4 +131,16 @@ public class MembersDaoImpl implements MembersDao{
 		return sqlSessionTemplate.selectOne(NAMESPACE+".bookingCount", mid);
 	}
 	
+	// 회원의 결제내역 조회
+	@Override
+	public List<HashMap<String, Object>> paymentList(HashMap<String, Object> map) {
+		return sqlSessionTemplate.selectList(NAMESPACE+".paymentList", map);
+	}
+	
+	// 회원 결제내역 개수
+	@Override
+	public int paymentCount(String mid) {
+		return sqlSessionTemplate.selectOne(NAMESPACE+".paymentCount", mid);
+	}
+	
 }

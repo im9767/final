@@ -99,4 +99,14 @@ public class MembersService {
 	public int bookingCount(String mid){
 		return membersDaoImpl.bookingCount(mid);
 	}
+	
+	// 회원 결제내역 조회
+	public List<HashMap<String, Object>> paymentList(HashMap<String, Object> map){
+		return membersDaoImpl.paymentList(map);
+	}
+	
+	// 회원 결제내역 개수
+	public int paymentCount(String mid){
+		return membersDaoImpl.paymentCount(mid);
+	}
 }

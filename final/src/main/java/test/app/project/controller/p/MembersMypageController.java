@@ -1,5 +1,6 @@
 package test.app.project.controller.p;
 
+import java.text.DecimalFormat;
 import java.util.HashMap;
 import java.util.List;
 
@@ -100,4 +101,40 @@ public class MembersMypageController {
 		return ".members_p.bookingList";
 		
 	}
+	
+	// 회원 결제내역 조회
+	@RequestMapping(value="/members/paymentList",method=RequestMethod.GET)
+	public String paymentList(@RequestParam(value="pageNum",defaultValue="1")int pageNum,Model model, HttpSession session){
+		
+		HashMap<String, Object> parameter = new HashMap<String, Object>();
+		
+		String mid = (String) session.getAttribute("id");
+		
+		int totalRowCount = membersService.paymentCount(mid);
+		
+		PageUtil pagination = new PageUtil(pageNum, totalRowCount, 5, 5);
+		
+		parameter.put("mid", mid);
+		parameter.put("startRow", pagination.getStartRow());
+		parameter.put("endRow", pagination.getEndRow());
+		
+		List<HashMap<String, Object>> paymentList = membersService.paymentList(parameter);
+		
+		model.addAttribute("paymentList", paymentList);
+		model.addAttribute("pagination", pagination);
+		
+		int cntCoupon = membersService.cntCoupon(mid);
+		model.addAttribute("cntCoupon",cntCoupon);
+		
+		HashMap<String, Object> map = membersService.myinfo(mid);
+		
+		model.addAttribute("map",map);
+		
+		DecimalFormat dc = new DecimalFormat("###,###,###,###");
+		
+		model.addAttribute("dc", dc);
+		
+		return ".members_p.paymentList";
+	}
+	
 }

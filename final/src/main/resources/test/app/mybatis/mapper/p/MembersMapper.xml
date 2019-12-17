@@ -196,11 +196,57 @@
 		)<![CDATA[WHERE rnum>=#{startRow} AND rnum<=#{endRow}]]>
 		        
 	</select>
-	
+	<!-- 회원 본인 예약 갯수 얻어오기 -->
 	<select id="bookingCount" parameterType="String" resultType="int">
 	
 		SELECT COUNT(*) FROM booking_table WHERE mid=#{mid}
 	
 	</select>
+	<!-- 회원 결제내역 조회 -->
+	<select id="paymentList" parameterType="hashmap" resultType="hashmap">
+		SELECT * FROM
+		(
+			SELECT AA.*,rownum rnum FROM
+			(
+				SELECT 
+				        h.house_num,
+	                    h.company,
+				        himg.house_save_name,
+				        r.roomname,
+	                    p.pay_num,
+	                    p.pay,
+	                    TO_CHAR(p.pay_day,'yyyy.mm.dd') pay_day,
+	                    p.payment_type
+				FROM
+				        house h,
+				        house_img himg,
+				        rooms r,
+				        booking_table b,
+	                    payment p
+				WHERE
+				        h.house_num = himg.house_num(+)
+				        AND h.house_num = r.house_num
+				        AND r.room_num = b.room_num
+	                    AND p.booking_num = b.booking_num
+				        AND b.mid = #{mid}
+				ORDER BY
+				        p.pay_num DESC
+			)AA
+		)<![CDATA[WHERE rnum>=#{startRow} AND rnum<=#{endRow}]]>
 	
+	</select>
+	
+	<!-- 회원 결제내역 갯수 얻어오기 -->
+	<select id="paymentCount" parameterType="String" resultType="int">
+	
+		SELECT 
+				COUNT(*) 
+		FROM 
+				booking_table b,
+				payment p 
+		WHERE 
+				b.booking_num = p.booking_num 
+				AND b.mid=#{mid}
+	
+	</select>
 </mapper>
