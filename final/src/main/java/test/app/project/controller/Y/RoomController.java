@@ -41,6 +41,8 @@ public class RoomController {
 		int house_num=(Integer)session.getAttribute("house_num");
 		List<HashMap<String,Object>> arlist = service.roomlistAll(house_num);
 		model.addAttribute("allroomlist", arlist);
+		int houseCnt=(Integer)session.getAttribute("houseCnt");
+		System.out.println("housecnt: " + houseCnt);
 		return ".business_view.ac.roomsboard";
 	}
 	//방 등록

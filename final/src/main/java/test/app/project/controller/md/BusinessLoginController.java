@@ -47,7 +47,7 @@ public class BusinessLoginController {
 			session.setAttribute("bpwd",bpwd);
 			//int a=servicey.selhnum(bid);
 			//session.setAttribute("house_num", a);
-			model.addAttribute("houseCnt",houseCnt);
+			session.setAttribute("houseCnt", houseCnt);
 			if(houseCnt>0){
 				int a=servicey.selhnum(bid);
 				session.setAttribute("house_num", a);
