@@ -39,19 +39,24 @@ public class BusinessLoginController {
 		//사업자 아이디로 조회한 업체수
 		int houseCnt=service.houseCnt(housemap);
 		System.out.println("등록된 업체 수: " + houseCnt);
-		
 		HashMap<String,Object> business=service.login(map);
-	
 		if(business!=null){
 			session.setAttribute("bid",bid);
 			session.setAttribute("bpwd",bpwd);
-			//int a=servicey.selhnum(bid);
-			//session.setAttribute("house_num", a);
 			session.setAttribute("houseCnt", houseCnt);
-			if(houseCnt>0){
+			if(houseCnt>0)
+			{		
 				int a=servicey.selhnum(bid);
 				session.setAttribute("house_num", a);
+				int approval=service.approval(housemap);
+				session.setAttribute("approval", approval);
+				if(approval==2){
+					return ".business_view.ac.main_sub2";
+				}else if(approval==1){
 				return ".business";
+				}else{
+					return ".business_view.ac.main_sub";
+				}
 			}else{
 				return ".business_view.ac.main_sub";
 			}
@@ -60,7 +65,17 @@ public class BusinessLoginController {
 		}
 	}
 	@RequestMapping(value="business/loginok",method=RequestMethod.GET)
-	public String gomyBesiness(){
+	public String gomyBesiness(HttpSession session){
+		int houseCnt=(Integer)session.getAttribute("houseCnt");
+		if(houseCnt>0){
+			return ".business";
+		}else{
+			return ".business_view.ac.main_sub";
+		}
+	}
+	
+	@RequestMapping(value="business1/loginok",method=RequestMethod.GET)
+	public String gomyBesiness1(){
 		return ".business_view.ac.main_sub";
 	}
 }

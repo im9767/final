@@ -4,12 +4,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.UUID;
-
-import javax.mail.Session;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,11 +18,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-
-import test.app.project.service.Y.AdminService;
 import test.app.project.service.Y.BusinessYService;
-import test.app.project.vo.HouseVo;
-import test.app.project.vo.NoticeVo;
+
 
 @Controller
 public class RoomController {
@@ -62,21 +56,15 @@ public class RoomController {
 				String uploadPath=
 					session.getServletContext().getRealPath("/resources/upload");
 				System.out.println(uploadPath);
-	try{
-		
-	   for(int j = 0;j<imgIn.size();j++){
-		
+	try{		
+	   for(int j = 0;j<imgIn.size();j++){		
 			String orgfilename=imgIn.get(j).getOriginalFilename();
-			irlist.put("orgfilename"+j+1,orgfilename);
-		
+			irlist.put("orgfilename"+j+1,orgfilename);		
 			String savefilename=UUID.randomUUID() +"_" + orgfilename;
-			irlist.put("savefilename"+j+1,savefilename);
-		
-				InputStream fis=imgIn.get(j).getInputStream();
-		
+			irlist.put("savefilename"+j+1,savefilename);		
+				InputStream fis=imgIn.get(j).getInputStream();		
 				FileOutputStream fos=
-						new FileOutputStream(uploadPath+"\\" + savefilename);
-		
+						new FileOutputStream(uploadPath+"\\" + savefilename);		
 				FileCopyUtils.copy(fis, fos);
 				fis.close();
 				fos.close();

@@ -32,6 +32,30 @@ public class PaymentService {
 	public List<HashMap<String, Object>> statics(HashMap<String, Object> map){
 		return dao.statics(map);
 	}
+	//사업자 월별 매출 구하기
+	public int businessMonthsale(HashMap<String, Object> map){
+		return dao.businessMonthsale(map);
+	}
+	//사업자 기간별 매출 구하기
+	public int businessPeriodSale(HashMap<String, Object> map){
+		return dao.businessPeriodsale(map);
+	}
+	//사업자 업종별 갯수 구하기
+	public int businesscount(HashMap<String, Object> map){
+		return dao.businesscount(map);
+	}
+	//사업자 년,월에 대한 매출액 구하기
+	public List<HashMap<String, Object>> businessStatics(HashMap<String, Object> map){
+		return dao.businessStatics(map);
+	}
 }
+
+
+
+
+
+
+
+
 
 

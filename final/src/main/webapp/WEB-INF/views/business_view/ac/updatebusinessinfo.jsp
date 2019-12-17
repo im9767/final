@@ -112,7 +112,7 @@
 											</div>										
 											<div class="input-group-prepend">
 												<span class="input-group-text" id="inputGroup-sizing-sm">업소 이미지 변경</span>&nbsp;
-											<input type="file" name="file" id="file" style="height: 30px;">	
+											<input type="file" name="file" id="file" style="height: 30px;"><span style="color: red">*이미지 필수</span>	
 											</div>						
 									<hr style="width: 900px;">								
 									<div style="float: right">

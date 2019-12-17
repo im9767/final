@@ -1,6 +1,7 @@
 package test.app.project.controller.Y;
 
 
+import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import javax.servlet.http.HttpSession;
@@ -10,16 +11,16 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.servlet.ModelAndView;
-
 import test.app.project.service.Y.AdminService;
-import test.app.project.vo.HouseVo;
+import test.app.project.service.Y.BusinessYService;
+
 
 @Controller
 public class HouseListController {
 	@Autowired
 	private AdminService service;
-
+	@Autowired
+	private BusinessYService service1;
 	public void setService(AdminService service) {
 		this.service = service;
 	}
@@ -54,8 +55,18 @@ public class HouseListController {
 	}
 	//승인대기중인 업체 삭제
 		@RequestMapping(value = "/admin_view/delhouse", method = RequestMethod.GET)
-		public String delhouse(int house_Num, HttpSession session) {
+		public String delhouse(int house_Num, HttpSession session) throws Exception {
+			
 			int n = service.appdelete(house_Num);
+			String uploadPath=
+					session.getServletContext().getRealPath("/resources/upload");
+			System.out.println(uploadPath);		
+			String savefilename=service1.himgsavename(house_Num);
+			
+			File f=new File(uploadPath +"\\" + savefilename);
+			if(!f.delete()) {
+				new Exception("삭제실패");
+				}		
 			if (n > 0) {
 				return "redirect:/admin_view/apphouse";
 			} else {
@@ -72,5 +83,15 @@ public class HouseListController {
 			return "admin_view/apphouse";
 		}
 	}
+	//거절하기
+		@RequestMapping(value = "/admin_view/daegihouse", method = RequestMethod.GET)
+		public String daegihouse(int house_Num, HttpSession session) {
+			int n = service.appfail(house_Num);
+			if (n > 0) {
+				return "redirect:/admin_view/apphouse";
+			} else {
+				return "admin_view/apphouse";
+			}
+		}
 	
 }

@@ -156,6 +156,68 @@ public class BusinessYController {
 				public String inhouseok2(int bnum,String intro,String checkintime,String checkouttime,String company,String license,String ceo,String orgaddr,
 						String workplace,String com_tel,String[] sublist,MultipartFile file,HttpSession session) {
 					HashMap<String, Object> map=new HashMap<String, Object>();
+					int house_num=(Integer) session.getAttribute("house_num");
+					map.put("bnum", bnum);
+					map.put("intro", intro);
+					map.put("checkintime", checkintime);
+					map.put("checkouttime", checkouttime);
+					map.put("company", company);
+					map.put("license", license);
+					map.put("ceo", ceo);
+					map.put("orgaddr", orgaddr);
+					map.put("workplace", workplace);
+					map.put("com_tel", com_tel);
+					String bid=(String) session.getAttribute("bid");
+					map.put("bid", bid);
+					int anum=sublist.length;
+					map.put("anum", anum);
+					for(int a=0;a<sublist.length;a++){
+						map.put("sl"+a,sublist[a]);
+						System.out.println(sublist[a]);
+					}
+					//이미지 재업로드
+					try {
+					String uploadPath=
+							session.getServletContext().getRealPath("/resources/upload");
+					System.out.println(uploadPath);		
+					String savefilename=service.himgsavename(house_num);
+					
+					File f=new File(uploadPath +"\\" + savefilename);
+					if(!f.delete()) {
+						new Exception("삭제실패");
+						}		
+					map.put("bid", bid);
+					//업체이미지 원본명
+					String house_org_name=file.getOriginalFilename();
+					map.put("house_org_name", house_org_name);
+					//업체이미지 저장명
+					String house_save_name=UUID.randomUUID() +"_" + house_org_name;
+					map.put("house_save_name", house_save_name);
+					InputStream is=file.getInputStream();
+					FileOutputStream fos=new FileOutputStream(uploadPath+"\\"+house_save_name);
+					FileCopyUtils.copy(is, fos);
+					is.close();
+					fos.close();
+					//업체등록+편의시설
+						service.inhouse(map);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}														
+					return ".business_view.ac.main_sub";
+			}
+				//업체재등록
+				@RequestMapping(value = "business_view/updatehouse", method = RequestMethod.GET)
+					public ModelAndView uphouse() {
+						List<HashMap<String,Object>> list = service.selamenities();
+						ModelAndView mv = new ModelAndView("business_view/ac/inserthouse2");
+						mv.addObject("selam2", list);
+						return mv;
+				}
+				//업체 재등록체크
+				@RequestMapping(value = "business_view/updatehouseok", method = RequestMethod.POST)
+				public String uphouseok2(int bnum,String intro,String checkintime,String checkouttime,String company,String license,String ceo,String orgaddr,
+						String workplace,String com_tel,String[] sublist,MultipartFile file,HttpSession session) {
+					HashMap<String, Object> map=new HashMap<String, Object>();
 					map.put("bnum", bnum);
 					map.put("intro", intro);
 					map.put("checkintime", checkintime);
@@ -193,11 +255,11 @@ public class BusinessYController {
 					is.close();
 					fos.close();
 					//업체등록+편의시설
-						service.inhouse(map);
+						service.rehouse(map);
 					} catch (Exception e) {
 						e.printStackTrace();
 					}														
-					return ".business";
+					return ".business_view.ac.main_sub";
 			}
 }
 	

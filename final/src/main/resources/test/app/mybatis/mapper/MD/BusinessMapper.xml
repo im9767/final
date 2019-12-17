@@ -49,6 +49,11 @@
 		select nvl(count(*),0) from house
 		where business_id=#{bbid}
 	</select>
+	<!-- 사업자 아이디로 상태구하기-->
+	<select id="selapp" parameterType="hashmap" resultType="int">
+		select approval from house
+		where business_id=#{bbid}
+	</select>
 	
 </mapper>
 

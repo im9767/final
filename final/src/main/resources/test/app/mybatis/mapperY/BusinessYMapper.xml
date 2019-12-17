@@ -64,6 +64,10 @@
 	<select id="himgsavename"  parameterType="int" resultType="String">
 		select house_save_name from house_img where house_num=#{house_num} 
 	</select>
+	<!-- 업체 이미지 삭제 -->
+	<delete id="houseImgdelete"  parameterType="int" >
+		delete house_img where house_num=#{house_num} 
+	</delete>
 	<!-- 업체 -->
 	<select id="selhnum"  parameterType="String" resultType="int">
 		select h.house_num from business_join j,house h where j.business_id=h.business_id and j.business_id=#{bid}
@@ -80,6 +84,10 @@
 	<insert id="inh"  parameterType="test.app.project.vo.HouseVo">
 		insert into house values(house_seq.nextval,#{bnum},#{intro},#{checkintime},#{checkouttime},#{company},#{license},#{ceo},#{orgaddr},#{workplace},#{com_Tel},0,#{business_id})
 	</insert>
+	<!-- 업체 재등록 -->
+	<update id="uph"  parameterType="test.app.project.vo.HouseVo">
+		update house set bnum=#{bnum},intro=#{intro},checkintime=#{checkintime},checkouttime=#{checkouttime},company=#{company},license=#{license},ceo=#{ceo},orgaddr=#{orgaddr},workplace=#{workplace},com_tel=#{com_Tel},approval=0 where business_id=#{business_id}
+	</update>
 	<!-- 사업자 비번찾기 -->
 	<select id="findpwdy"  parameterType="hashmap" resultType="test.app.project.vo.BusinessVo">
 		select * from business_join where business_id=#{bid} and business_email=#{bemail}

@@ -1,82 +1,72 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
-    <!-- Content Wrapper -->
-    <div id="content-wrapper" class="d-flex flex-column" style="width:1680px;">
+<!-- Content Wrapper -->
+    <div id="content-wrapper" class="d-flex flex-column">
 
       <!-- Main Content -->
       <div id="content">
 
         <!-- Topbar -->
         <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-			<div class="d-sm-flex align-items-center justify-content-between mb-4" style="padding-left:1400px">
+			
+		  <div class="d-sm-flex align-items-center justify-content-between mb-4" style="padding-left:1400px">
             <div>
             	<a href="${cp}/admin_view/gohome" class="btn btn-primary btn-icon-split">
                     <span class="text">메인페이지 이동</span>
                 </a>    
-             	<a href="${cp}/admin/logout" class="btn btn-danger btn-icon-split">
+             	<a href="${cp}/business/logout" class="btn btn-danger btn-icon-split">
                     <span class="text">로그아웃</span>
                 </a>
              </div>
           </div>
+		  
+          <!-- Sidebar Toggle (Topbar) -->
+          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+            <i class="fa fa-bars"></i>
+          </button>
+		
         </nav>
         <!-- End of Topbar -->
-
+		
         <!-- Begin Page Content -->
-        <div class="container-fluid">
+        <div class="container-fluid" style="width: 1630px;height:1000px;">
 
-          <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">객실현황(${company})</h1>
-
-          <!-- DataTales Example -->
-          <div class="card shadow mb-4">
-            <div class="card-header py-3">
-              <h6 class="m-0 font-weight-bold text-primary">객실정보(${company})</h6>
-            </div>
-            <div class="card-body">
-              <div class="table-responsive">
-                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                  <thead>
-                    <tr>
-                      <th>객실명</th>
-                      <th>객실가격</th>
-                      <th>객실정보</th>
-                      <th>룸체크인(상태)</th>
-                      <th>수용인원</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                  	<c:forEach var="vo" items="${rlist}">
-                    <tr>
-                      <td>${vo.roomname}</td>
-                      <td>${dc.format(vo.room_price)}원</td>
-                      <td>${vo.room_info}</td>
-                      <td>
-                      	<c:choose>
-                      		<c:when test="${vo.room_check=='1'}">
-                      			<b><span style="color:red">체크인</span></b>
-                      		</c:when>
-                      		<c:otherwise>
-                      			<b><span style="color:blue">체크아웃</span></b>
-                      		</c:otherwise>
-                      	</c:choose>
-                      </td>
-                      <td>${vo.max_Personnel}명</td>
-                    </tr>
-                    </c:forEach>
-                  </tbody>
-                </table>
+          <!-- Content Row -->
+          <div class="row">
+			
+			<!-- Border Left Utilities -->
+            <div class="col-lg-6">
+              <div class="card mb-4 py-3 border-left-danger" id="mymsg" style="width:900px;">
+                <div class="card-body">
+                  <a href="#" class="btn btn-warning btn-circle btn-lg">
+                    <i class="fas fa-exclamation-triangle"></i>
+                  </a>
+                  <a href="#">
+                  &nbsp;<span id="mmsg" style="font-size:30px;color:red;font-family: 고딕;font-weight: bold">
+                  	업체등록 및 요청을 다시 해주세요!!!
+                  </span><span style="font-size:25px;font-family: 궁서체;font-weight: bold">(ㅠㅠ...거절당함)</span>
+                  </a>
+                </div>
               </div>
+              
+              <div class="card mb-4 py-3 border-left-primary" style="width:900px;">
+                <div class="card-body">
+                  <a href="#" class="btn btn-success btn-circle btn-lg">
+                    <i class="fas fa-check"></i>
+                  </a>
+                  &nbsp;<span id="mmsg" style="font-size:30px;color:black;font-family: 고딕;font-weight: bold">
+                  	요청상태 ==> 거절됨
+                  </span>
+                </div>
+              </div>
+              
             </div>
-          </div>
-
-        </div>
+          </div>                    
         <!-- /.container-fluid -->
-
       </div>
-      <!-- End of Main Content -->
-
+	</div>
+	
       <!-- Footer -->
       <footer class="sticky-footer bg-white">
         <div class="container my-auto">

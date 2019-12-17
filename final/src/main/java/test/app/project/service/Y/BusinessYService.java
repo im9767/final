@@ -134,20 +134,37 @@ public class BusinessYService {
 					(String) map.get("checkouttime"),(String) map.get("company"),(String) map.get("license"),
 					(String) map.get("ceo"),(String) map.get("orgaddr"),(String) map.get("workplace"),
 					(String) map.get("com_tel"),0,(String) map.get("bid"));
-			int b=dao.inh(vo);
-			System.out.println(b);
+			dao.inh(vo);
 			int house_num=selhnum((String)map.get("bid"));
 			for (int i = 0; i < (Integer)map.get("anum"); i++) {
 				int amenities_num=dao.selanum((String)map.get("sl"+i));
 				HouseintroVo vo1 = new HouseintroVo(0,house_num,amenities_num );
-				int c= dao.inha(vo1);
-				System.out.println(c);
+				dao.inha(vo1);
 			}
 			HouseImgVo vo3=new HouseImgVo(0, house_num,(String) map.get("house_org_name"),(String) map.get("house_save_name"));
-			int d=dao1.houseImgInsert(vo3);
-			System.out.println(d);
+			dao1.houseImgInsert(vo3);;
 			return 1;
 		}
+	//업체재등록
+				@Transactional(rollbackFor = Exception.class)
+				public int rehouse(HashMap<String, Object> map) throws Exception {			
+					HouseVo vo = new HouseVo(0, (Integer)map.get("bnum"), (String)map.get("intro"), (String)map.get("checkintime"),
+							(String) map.get("checkouttime"),(String) map.get("company"),(String) map.get("license"),
+							(String) map.get("ceo"),(String) map.get("orgaddr"),(String) map.get("workplace"),
+							(String) map.get("com_tel"),0,(String) map.get("bid"));
+					dao.uph(vo);
+					int house_num=selhnum((String)map.get("bid"));
+					dao.delha(house_num);
+					for (int i = 0; i < (Integer)map.get("anum"); i++) {
+						int amenities_num=dao.selanum((String)map.get("sl"+i));
+						HouseintroVo vo1 = new HouseintroVo(0,house_num,amenities_num );				
+						dao.inha(vo1);
+					}
+					HouseImgVo vo3=new HouseImgVo(0, house_num,(String) map.get("house_org_name"),(String) map.get("house_save_name"));
+					dao.houseImgdelete(house_num);
+					dao1.houseImgInsert(vo3);;
+					return 1;
+				}
 		//사업자 비밀번호찾기 
 		public BusinessVo findpwdy(HashMap<String,String> map){
 			return dao.findpwdy(map);

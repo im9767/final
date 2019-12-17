@@ -20,8 +20,17 @@
 	<update id="appupdate" parameterType="int" >
 		update house set approval=1 where house_Num=#{house_Num}
 	</update>
+	<update id="appfail" parameterType="int" >
+		update house set approval=2 where house_Num=#{house_Num}
+	</update>
 	<delete id="appdelete" parameterType="int" >
 		delete house where house_Num=#{house_Num}
+	</delete>
+	<delete id="himgdelete" parameterType="int" >
+		delete house_img where house_Num=#{house_Num}
+	</delete>
+	<delete id="hintrodelete" parameterType="int" >
+		delete houseintro where house_Num=#{house_Num}
 	</delete>
 	<!-- 공지사항 -->
 	<select id="nlistAll"  resultType="test.app.project.vo.NoticeVo">

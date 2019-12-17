@@ -26,6 +26,11 @@ public class BusinessYDao {
 		return 
 		sqlSessionTemplate.selectOne("test.app.mybatis.mapperY.BusinessMapper.himgsavename",house_num);
 	}
+	//업체 이미지 삭제
+		public int houseImgdelete(int house_num){
+			return 
+			sqlSessionTemplate.delete("test.app.mybatis.mapperY.BusinessMapper.houseImgdelete",house_num);
+		}
 	//편의시설등록
 	public int inamenities(AmenitiesVo vo){
 		return 
@@ -109,6 +114,11 @@ public class BusinessYDao {
 		public int inh(HouseVo vo){
 			return 
 			sqlSessionTemplate.insert("test.app.mybatis.mapperY.BusinessMapper.inh",vo);
+		}
+	//업채재등록
+		public int uph(HouseVo vo){
+			return 
+			sqlSessionTemplate.update("test.app.mybatis.mapperY.BusinessMapper.uph",vo);
 		}
 		//사업자 비밀번호 찾기
 		public BusinessVo findpwdy(HashMap<String,String> map){
