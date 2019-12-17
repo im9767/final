@@ -52,11 +52,13 @@ public class HouseDaoImpl implements HouseDao {
 		return sqlSessionTemplate.selectOne(NAMESPACE+".houseInfo", house_num);
 	}
 
+	// 객실 정보와 객실 이미지 정보 얻어오기
 	@Override
 	public List<RoomsJoinVo> roomsJoin(HashMap<String, Object> map) {
 		return sqlSessionTemplate.selectList(NAMESPACE+".roomsJoinSelect", map);
 	}
-
+	
+	// 리뷰 점수구해오기
 	@Override
 	public double reviewScore(int house_num) {
 		
@@ -64,15 +66,23 @@ public class HouseDaoImpl implements HouseDao {
 		
 		
 	}
-
+	
+	// 리뷰 갯수 구해오기
 	@Override
 	public int reviewCount(int house_num) {
 		return sqlSessionTemplate.selectOne(NAMESPACE+".reviewCount", house_num);
 	}
-
+	
+	// 업체 이미지 구해오기
 	@Override
 	public HouseImgVo houseImg(int house_num) {
 		return sqlSessionTemplate.selectOne(NAMESPACE+".houseImg", house_num);
+	}
+	
+	// 날짜 null일때 날짜 구해오기
+	@Override
+	public HashMap<String, Object> getDate() {
+		return sqlSessionTemplate.selectOne(NAMESPACE+".getDate");
 	}
 
 

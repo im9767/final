@@ -38,4 +38,7 @@ public interface HouseDao {
 	
 	// 업체 이미지 가져오기
 	public HouseImgVo houseImg(int house_num);
+	
+	// 날짜 null일때 날짜 구해오기
+	public HashMap<String, Object> getDate();
 }

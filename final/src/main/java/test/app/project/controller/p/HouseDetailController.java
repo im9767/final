@@ -2,6 +2,7 @@ package test.app.project.controller.p;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.HashMap;
 import java.util.List;
 
@@ -29,11 +30,12 @@ public class HouseDetailController {
 	@RequestMapping(value="/house/detail")
 	public String product_detail(@RequestParam(value="house_num",defaultValue="83")int house_num,String sdt,String edt,Model model){
 		
-		
 		if(sdt == null){
-			sdt = "2019/12/01";
-			edt = "2019/12/10";
+			HashMap<String, Object> date = houseService.getDate();
+			sdt = (String)date.get("SDT");
+			edt = (String)date.get("EDT");
 		}
+		
 		HashMap<String , Object> roomMap = new HashMap<String, Object>();
 		roomMap.put("house_num", house_num);
 		roomMap.put("sdt", sdt);
@@ -41,25 +43,8 @@ public class HouseDetailController {
 		
 		List<HashMap<String, Object>> houseAmen = houseService.houseAmen(house_num);
 		
-		//List<RoomsVo> foundRoom = houseService.foundRoom(roomMap);
-		
-		//System.out.println("foundRoom:"+foundRoom.toString());
 		
 		HashMap<String, Object> room_img_map = new HashMap<String, Object>();
-		
-		/*
-		List<Integer> i = new ArrayList<Integer>();
-		
-		for(RoomsVo vo : foundRoom){
-			i.add(vo.getRoom_num());
-			System.out.println("vo.getnum:"+vo.getRoom_num());
-		}
-		room_img_map.put("room_list", i);
-		
-		List<RoomsImgVo> room_images = houseService.room_images(room_img_map);
-		*/
-		//System.out.println("room_images:"+room_images.toString());
-		//System.out.println("room_images.size:"+room_images.size());
 		
 		List<RoomsJoinVo> roomsJoin = houseService.roomsJoin(roomMap);
 		
@@ -72,8 +57,7 @@ public class HouseDetailController {
 		DecimalFormat dc = new DecimalFormat("###,###,###,###");
 		
 		model.addAttribute("houseAmen", houseAmen);
-		//model.addAttribute("foundRoom", foundRoom);
-		//model.addAttribute("room_images", room_images);
+
 		model.addAttribute("review", review);
 		model.addAttribute("houseinfo", houseinfo);
 		model.addAttribute("sdt", sdt);

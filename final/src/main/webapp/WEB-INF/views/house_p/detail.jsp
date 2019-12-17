@@ -127,7 +127,10 @@
 			  <section id="div1" class="info" style="width:100%;min-height: 500px;">
 				<br>
 				<!-- 날짜 선택 -->
-				<p>숙박 기간 선택<br><input style="width:150px;" type="text" id="datepicker1" placeholder="시작일" value="${sdt }"> - <input style="width:150px;" value="${edt }" type="text" id="datepicker2" placeholder="종료일"></p>
+				<p>숙박 기간 선택<br>
+					<input style="width:150px;" type="text" id="datepicker1" placeholder="시작일" value="${sdt }"> - 
+					<input style="width:150px;" value="${edt }" type="text" id="datepicker2" placeholder="종료일">
+				</p>
 				
 				<br>
 				
@@ -534,6 +537,7 @@
 		        ,monthNames: ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'] //달력의 월 부분 Tooltip 텍스트
 		        ,dayNamesMin: ['일','월','화','수','목','금','토'] //달력의 요일 부분 텍스트
 		        ,dayNames: ['일요일','월요일','화요일','수요일','목요일','금요일','토요일'] //달력의 요일 부분 Tooltip 텍스트
+		        ,minDate: 0 //최소 선택일자(-1D:하루전, -1M:한달전, -1Y:일년전)
 		        ,onSelect: function(dateText){
 					var sdt = $("#datepicker1").val();
 					var edt = $("#datepicker2").val();
