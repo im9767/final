@@ -57,8 +57,7 @@
 								</form>
 								<div class="text-center">
                				 <a class="small" href="${cp}/business_view/findpassword">비밀번호 찾기</a>
-             			 </div>
-								<hr>			
+             			 </div>			
 								 <div class="text-center">
                				 <a class="small" href="${cp}/business_view/insertbusiness">사업자 가입</a>
              			 </div>
