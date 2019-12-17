@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.multipart.MultipartFile;
 
 import test.app.project.service.md.BusinessService;
 
@@ -26,7 +27,7 @@ public class BusinessHouseInsertController {
 	
 	 @RequestMapping(value="/business_view/houseInformation_insertok",method=RequestMethod.POST)
 	public String insertOk(int house_num,int bnum,String intro,String checkintime,String checkouttime,String company,String license,String ceo,String orgaddr,
-			String workplace,String com_tel,HttpSession session){
+			String workplace,String com_tel,MultipartFile file,HttpSession session){
 		 
 	
 		 HashMap<String, Object> map=new HashMap<String, Object>();

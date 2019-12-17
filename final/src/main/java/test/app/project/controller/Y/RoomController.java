@@ -142,14 +142,13 @@ public class RoomController {
 			String savefilename=s.get(a);
 			File f=new File(uploadPath +"\\" + savefilename);
 			if(!f.delete()) {
-				new Exception("�뙆�씪�궘�젣�떎�뙣!");
+				new Exception("파일삭제!");
 				}
 			}
 		   for(int j = 0;j<imgIn.size();j++){
 			 
 				String orgfilename=imgIn.get(j).getOriginalFilename();
 				irlist.put("orgfilename"+j+1,orgfilename);
-			
 				String savefilename=UUID.randomUUID() +"_" + orgfilename;
 				irlist.put("savefilename"+j+1,savefilename);
 			

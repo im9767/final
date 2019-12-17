@@ -49,6 +49,8 @@ public class BusinessLoginController {
 			//session.setAttribute("house_num", a);
 			model.addAttribute("houseCnt",houseCnt);
 			if(houseCnt>0){
+				int a=servicey.selhnum(bid);
+				session.setAttribute("house_num", a);
 				return ".business";
 			}else{
 				return ".business_view.ac.main_sub";

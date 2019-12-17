@@ -11,11 +11,14 @@
 		select *  from amenities
 	</select>
 	<select id="selanum" parameterType="String" resultType="int">
-		select amenities_num from amenities where amenities_name=#{aname}
+		select amenities_num from amenities where amenities_name=#{baname}
 	</select>
 	<insert id="inserthouseintro" parameterType="test.app.project.vo.HouseintroVo" >
 		insert into houseintro values(houseintro_seq.nextval,#{house_num},#{amenities_num})
 	</insert>
+	<delete id="delha" parameterType="int" >
+		delete houseintro where house_num=#{hnum}
+	</delete>
 	<!-- 객실-->
 	<select id="roomlistAll" parameterType="int"   resultType="hashmap">
 		select *  from rooms r,house h where h.house_num=r.house_num and h.approval=1 and h.house_num=#{house_num}
@@ -58,6 +61,18 @@
 	<select id="selhnum"  parameterType="String" resultType="int">
 		select h.house_num from business_join j,house h where j.business_id=h.business_id and j.business_id=#{bid}
 	</select>
+	<!-- 사업자 아이디 체크 -->
+	<select id="selbid"  parameterType="String" resultType="String">
+		select business_id from business_join where business_id=#{bid}
+	</select>
+	<!-- 사업자 가입 체크 -->
+	<insert id="joinbusiness"  parameterType="hashmap">
+		insert into business_join values(#{bid},#{bpwd},#{bemail})
+	</insert>
+	<!-- 업체등록 -->
+	<insert id="inh"  parameterType="test.app.project.vo.HouseVo">
+		insert into house values(house_seq.nextval,#{bnum},#{intro},#{checkintime},#{checkouttime},#{company},#{license},#{ceo},#{orgaddr},#{workplace},#{com_Tel},0,#{business_id})
+	</insert>
 </mapper>
 
 

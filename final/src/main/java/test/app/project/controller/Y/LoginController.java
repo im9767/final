@@ -79,7 +79,6 @@ public class LoginController {
 	public String adminLogout(HttpSession session){
 		session.removeAttribute("aid");
 		session.removeAttribute("apwd");
-		session.removeAttribute("house_num");
 		return ".main";
 	}
 	//사업자 홈
