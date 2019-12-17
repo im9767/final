@@ -67,7 +67,11 @@ $(function(){
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
+<<<<<<< HEAD
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="${cp}/business/loginok">
+=======
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="${cp}/business/main">
+>>>>>>> refs/heads/cho123
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
@@ -98,12 +102,12 @@ $(function(){
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Components:</h6>
             <a class="collapse-item" href="${cp}/business_view/houseInformation_insert">업소 등록 신청</a>
-            <a class="collapse-item" href="${cp}/business_view/">업소 등록 확인</a>
+            <a class="collapse-item" href="#">업소 등록 확인</a>
             <a class="collapse-item" href="#">등록 내용 수정</a>
           </div>
         </div>
       </li>
-    
+
       
 
       <!-- Nav Item - Utilities Collapse Menu -->
