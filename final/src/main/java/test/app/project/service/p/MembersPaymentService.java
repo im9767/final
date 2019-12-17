@@ -1,6 +1,7 @@
 package test.app.project.service.p;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import test.app.project.daoimpl.p.MembersPaymentDaoImpl;
 import test.app.project.vo.BookingTableVo;
+import test.app.project.vo.CouponVo;
 
 @Service
 public class MembersPaymentService {
@@ -29,6 +31,10 @@ public class MembersPaymentService {
 		System.out.println("n:"+n);
 		return 1;
 		
+	}
+	
+	public List<CouponVo> couponSelect(String mid){
+		return paymentDaoImpl.couponSelect(mid);
 	}
 	
 	

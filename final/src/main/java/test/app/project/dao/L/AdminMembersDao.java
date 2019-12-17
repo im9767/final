@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 
 import test.app.project.vo.CouponVo;
+import test.app.project.vo.HouseImgVo;
+import test.app.project.vo.HouseVo;
 import test.app.project.vo.MembersVo;
 import test.app.project.vo.RoomsVo;
 
@@ -18,4 +20,9 @@ public interface AdminMembersDao {
 	List<MembersVo> membersId(HashMap<String, Object> map);
 	//선택한 업체의 모든 객실정보 얻어오는 메소드
 	List<RoomsVo> roomsList(HashMap<String, Object> map);
+	
+	//사업자 아이디를 통해 해당 업체식별키 얻어오는 메소드
+	HouseVo getBnum(HashMap<String, Object> map);
+	//업체이미지 추가하는 메소드
+	int houseImgInsert(HouseImgVo vo);
 }

@@ -5,7 +5,7 @@
 <mapper namespace="test.app.mybatis.mapper.k.productMapper">
 	<select id="roomsList" parameterType="hashmap" resultType="rooms">
 			select
-			    h.avg, h.room_price, h.company, h.workplace, h.house_save_name, b.bb
+			    h.avg, h.room_price, h.company, h.workplace, h.house_save_name, b.bb, h.house_num
 			from
 			    (
 			        select 

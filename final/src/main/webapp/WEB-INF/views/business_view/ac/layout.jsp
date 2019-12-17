@@ -52,7 +52,12 @@ $(function(){
 		showMonthAfterYear: true,
 		showAnim: "slideDown"
 	});
-	
+	var index=0;
+	var cols=["orange","green","pink"];
+	setInterval(() => {
+		$("#mmsg").css("color",cols[index++]);
+		if(index==3) index=0;
+	}, 700);
 });
 </script>
 </head>
@@ -62,7 +67,7 @@ $(function(){
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="${cp}/business">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="${cp}/business/loginok">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
@@ -71,13 +76,6 @@ $(function(){
 
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
-
-      <!-- Nav Item - Dashboard -->
-      <li class="nav-item active">
-        <a class="nav-link" href="${cp}/business_view/main">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Dashboard</span></a>
-      </li>
 
       <!-- Divider -->
       <hr class="sidebar-divider">
@@ -88,11 +86,14 @@ $(function(){
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
+      
+      <c:choose>
+      	<c:when test="${houseCnt>0}">
+      		<li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
           <i class="fas fa-fw fa-cog"></i>
           <span>업소등록신청</span>
-        </a>`
+        </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Components:</h6>
@@ -136,11 +137,11 @@ $(function(){
       
       
 	  <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsemember" aria-expanded="true" aria-controls="collapsemember">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapserooms" aria-expanded="true" aria-controls="collapserooms">
           <i class="fas fa-fw fa-folder"></i>
           <span>객실정보등록</span>
         </a>
-        <div id="collapsemember" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+        <div id="collapserooms" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Utilities:</h6>
             <a class="collapse-item" href="${cp}/business_view/writeroom">객실등록</a>
@@ -150,11 +151,11 @@ $(function(){
       </li>
 	
 	  <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsemember" aria-expanded="true" aria-controls="collapsemember">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsebooks" aria-expanded="true" aria-controls="collapsebooks">
           <i class="fas fa-fw fa-folder"></i>
           <span>예약회원</span>
         </a>
-        <div id="collapsemember" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+        <div id="collapsebooks" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">Custom Utilities:</h6>
             <a class="collapse-item" href="#">예약회원조회</a>
@@ -168,35 +169,8 @@ $(function(){
 
       <!-- Heading -->
       <div class="sidebar-heading">
-        Addons
+          기타
       </div>
-
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-          <i class="fas fa-fw fa-folder"></i>
-          <span>Pages</span>
-        </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Login Screens:</h6>
-            <a class="collapse-item" href="login.html">Login</a>
-            <a class="collapse-item" href="register.html">Register</a>
-            <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-            <div class="collapse-divider"></div>
-            <h6 class="collapse-header">Other Pages:</h6>
-            <a class="collapse-item" href="404.html">404 Page</a>
-            <a class="collapse-item" href="blank.html">Blank Page</a>
-          </div>
-        </div>
-      </li>
-
-      <!-- Nav Item - Charts -->
-      <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>Charts</span></a>
-      </li>
 
       <!-- Nav Item - Tables -->
       
@@ -221,10 +195,19 @@ $(function(){
           <span>사업자 편의시설 수정</span></a>
       </li>
       <li class="nav-item">
+        <a class="nav-link" href="${cp}/house/image">
+          <i class="fas fa-fw fa-table"></i>
+          <span>업소이미지 샘플</span></a>
+      </li>
+      	</c:when>
+      	<c:otherwise>
+      		 <li class="nav-item">
         <a class="nav-link" href="${cp}/business_view/inserthouse">
           <i class="fas fa-fw fa-table"></i>
           <span>업체등록</span></a>
       </li>
+      	</c:otherwise>
+      </c:choose>
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 

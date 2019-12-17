@@ -36,7 +36,7 @@ public class RoomController {
 	}
 
 	//방전체보기
-	@RequestMapping(value = "business_view/roomsboard", method = RequestMethod.GET)
+	@RequestMapping(value = "/business_view/roomsboard", method = RequestMethod.GET)
 	public String allroomlist(Model model,HttpSession session) {
 		int house_num=(Integer)session.getAttribute("house_num");
 		List<HashMap<String,Object>> arlist = service.roomlistAll(house_num);
@@ -44,12 +44,12 @@ public class RoomController {
 		return ".business_view.ac.roomsboard";
 	}
 	//방 등록
-	@RequestMapping(value = "business_view/writeroom", method = RequestMethod.GET)
+	@RequestMapping(value = "/business_view/writeroom", method = RequestMethod.GET)
 	public String inroom(HttpSession session){
 		return "/business_view/ac/writeroom";
 	}
 	//방등록체크
-	@RequestMapping(value="business_view/writeroomok",method=RequestMethod.POST)
+	@RequestMapping(value="/business_view/writeroomok",method=RequestMethod.POST)
 	public String writeroomok(String rcontent,String rname,@RequestParam(required=false) List<MultipartFile> imgIn,int price,int max,HttpSession session) throws IOException{
 		HashMap<String, Object> irlist= new HashMap<String, Object>();
 		int house_num=(Integer)session.getAttribute("house_num");
@@ -87,7 +87,7 @@ public class RoomController {
 		return "redirect:/business_view/roomsboard";		
 	}
 	//방 삭제
-	@RequestMapping(value = "business_view/delroom", method = RequestMethod.GET)
+	@RequestMapping(value = "/business_view/delroom", method = RequestMethod.GET)
 	public String delroom(int room_num, HttpSession session) {
 		String uploadPath=
 				session.getServletContext().getRealPath("/resources/upload");
@@ -109,7 +109,7 @@ public class RoomController {
 		}
 	}
 	//방 상세조회
-		@RequestMapping(value = "business_view/selroominfo", method = RequestMethod.GET)
+		@RequestMapping(value = "/business_view/selroominfo", method = RequestMethod.GET)
 		public ModelAndView selroominfo(int room_num,HttpSession session) {
 			List<HashMap<String, Object>> srlist = service.selroominfo(room_num);
 			ModelAndView mv = new ModelAndView("business_view/ac/selroom");
@@ -117,7 +117,7 @@ public class RoomController {
 			return mv;
 		}
 	//방수정 이동
-		@RequestMapping(value = "business_view/uproom", method = RequestMethod.GET)
+		@RequestMapping(value = "/business_view/uproom", method = RequestMethod.GET)
 		public ModelAndView uproom(int room_num, HttpSession session) {
 			List<HashMap<String, Object>> nlist = service.selroominfo(room_num);
 			ModelAndView mv = new ModelAndView("business_view/ac/updateroom");	
@@ -125,7 +125,7 @@ public class RoomController {
 			return mv;
 		}
 	//방 수정 체크	
-		@RequestMapping(value="business_view/updateroomok",method=RequestMethod.POST)
+		@RequestMapping(value="/business_view/updateroomok",method=RequestMethod.POST)
 		public String updateroomok(String rcontent,String rname,@RequestParam(required=false) List<MultipartFile> imgIn,int price,int max,int room_num,HttpSession session) throws IOException{
 			HashMap<String, Object> irlist= new HashMap<String, Object>();
 			irlist.put("rname", rname);

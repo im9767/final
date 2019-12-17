@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import test.app.project.vo.AmenitiesVo;
 import test.app.project.vo.BusinessVo;
+import test.app.project.vo.HouseVo;
 import test.app.project.vo.HouseintroVo;
 import test.app.project.vo.RoomsImgVo;
 import test.app.project.vo.RoomsVo;
@@ -95,6 +96,11 @@ public class BusinessYDao {
 		public int joinbusiness(HashMap<String,Object> map){
 			return 
 			sqlSessionTemplate.insert("test.app.mybatis.mapperY.BusinessMapper.joinbusiness",map);
+		}
+	//업체등록
+		public int inh(HouseVo vo){
+			return 
+			sqlSessionTemplate.insert("test.app.mybatis.mapperY.BusinessMapper.inh",vo);
 		}
 }
 

@@ -1,23 +1,24 @@
 package test.app.project.controller.Y;
 
+import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpSession;
 
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
-
 import test.app.project.service.Y.BusinessYService;
-import test.app.project.vo.BusinessVo;
-import test.app.project.vo.MembersVo;
-import test.app.project.vo.NoticeVo;
+
 
 @Controller
 public class BusinessYController {
@@ -119,10 +120,57 @@ public class BusinessYController {
 					public ModelAndView inhouse() {
 						List<HashMap<String,Object>> list = service.selamenities();
 						ModelAndView mv = new ModelAndView("business_view/ac/inserthouse");
-						mv.addObject("selam", list);
+						mv.addObject("selam2", list);
 						return mv;
 				}
-		
+		//업체등록체크
+				@RequestMapping(value = "business_view/inserthouseok", method = RequestMethod.POST)
+				public String inhouseok2(int bnum,String intro,String checkintime,String checkouttime,String company,String license,String ceo,String orgaddr,
+						String workplace,String com_tel,String[] sublist,MultipartFile file,HttpSession session) {
+					HashMap<String, Object> map=new HashMap<String, Object>();
+					map.put("bnum", bnum);
+					map.put("intro", intro);
+					map.put("checkintime", checkintime);
+					map.put("checkouttime", checkouttime);
+					map.put("company", company);
+					map.put("license", license);
+					map.put("ceo", ceo);
+					map.put("orgaddr", orgaddr);
+					map.put("workplace", workplace);
+					map.put("com_tel", com_tel);
+					String bid=(String) session.getAttribute("bid");
+					map.put("bid", bid);
+					int anum=sublist.length;
+					map.put("anum", anum);
+					for(int a=0;a<sublist.length;a++){
+						map.put("sl"+a,sublist[a]);
+						System.out.println(sublist[a]);
+					}
+					//이미지업로드
+					try {
+					String uploadPath=
+							session.getServletContext().getRealPath("/resources/upload");
+					System.out.println(uploadPath);
+
+					map.put("bid", bid);
+					//업체이미지 원본명
+					String house_org_name=file.getOriginalFilename();
+					map.put("house_org_name", house_org_name);
+					//업체이미지 저장명
+					String house_save_name=UUID.randomUUID() +"_" + house_org_name;
+					map.put("house_save_name", house_save_name);
+					InputStream is=file.getInputStream();
+					FileOutputStream fos=new FileOutputStream(uploadPath+"\\"+house_save_name);
+					FileCopyUtils.copy(is, fos);
+					is.close();
+					fos.close();
+					//업체등록+편의시설
+						service.inhouse(map);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}														
+					return ".business";
+			}
 }
 	
 	

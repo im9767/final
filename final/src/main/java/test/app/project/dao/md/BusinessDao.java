@@ -11,9 +11,6 @@ import test.app.project.vo.AmenitiesVo;
 import test.app.project.vo.RoomsImgVo;
 import test.app.project.vo.RoomsVo;
 
-
-
-
 @Repository
 public class BusinessDao {
 
@@ -30,12 +27,12 @@ public class BusinessDao {
 		return sqlSessionTemplate.selectOne(NAMESPACE+".insert",map);
 	}
 
-	//ÆÄÀÏ ¾÷·Îµå¿ë 
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½ï¿½ 
 	public int insert(AmenitiesVo vo){
 		return sqlSessionTemplate.insert(NAMESPACE +".Amenitiesinsert",vo);
 	}
 	
-	//°´½Ç °ü·Ã ¾÷·Îµå
+	//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Îµï¿½
 	public int inroom(RoomsVo vo){
 		return 
 		sqlSessionTemplate.insert(NAMESPACE+".inroom",vo);
@@ -72,7 +69,15 @@ public class BusinessDao {
 		return sqlSessionTemplate.selectList(NAMESPACE+".roomlistAll",house_num);
 	}
 	
-	
-	
+	//ì‚¬ì—…ì ì•„ì´ë””ë¡œ í•´ë‹¹ ì—…ì²´ì˜ ìˆ˜ êµ¬í•˜ê¸°
+	public int houseCount(HashMap<String, Object> map){
+		return sqlSessionTemplate.selectOne(NAMESPACE+".housecnt",map);
+	}
 	
 }
+
+
+
+
+
+

@@ -3,8 +3,19 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="test.app.mybatis.mapperL.RoomlistMapper">
+	<!-- 업체가 가지고 있는 객실조회  -->
 	<select id="adminrooms" resultType="rooms" parameterType="hashmap">
 		select * from rooms 
 		where house_num=#{house_num}
 	</select>
+	<!-- 사업자 아이디를 조회하여 업체식별키 가져오기 -->
+	<select id="getBnum" parameterType="hashmap" resultType="house">
+		select house_num
+		from house
+		where business_id=#{bid}
+	</select>
+	<!-- 업소이미지테이블 데이터 추가 -->
+	<insert id="houseimgInsert" parameterType="houseimg">
+		insert into	house_img values(house_img_seq.nextval,#{house_num},#{house_org_name},#{house_save_name})
+	</insert>
 </mapper>

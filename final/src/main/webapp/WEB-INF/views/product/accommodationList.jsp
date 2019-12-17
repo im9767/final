@@ -81,15 +81,15 @@
 					</div>
 				
 					<c:forEach var="vo" items="${list }">
-						<div class="card bg-white text-white"
+						<div class="card bg-white text-white house"
 							style="border: none; padding: 10px; background: balck;">
+							<input type="hidden" value="${vo.house_num }" class="house_num">
 							<img
 								src="${pageContext.request.contextPath }/resources/h_img/${vo.house_save_name}"
 								alt=""
 								style="border-radius: 15px; height: 300px; width: 85%; background: black;">
 							<div class="card-img-overlay"
 								style="margin-top: 10px; margin-left: 10px; background: black; width: 83.4%; height: 94.5%; opacity: 0.5; border-radius: 15px;">
-
 							</div>
 							<div class="card-img-overlay" style="padding: 10px; width: 85%;">
 								<h5 class="card-title"
@@ -258,8 +258,10 @@
 		
 	});
   
-	
-
+	$('.house').click(function(){
+		var house_num = $(this).find('.house_num').val()
+		location.href="${pageContext.request.contextPath }/house/detail?house_num="+house_num+"&sdt=${start_date}&edt=${end_date}";
+	});
      
 
 </script>

@@ -3,16 +3,16 @@ package test.app.project.service.Y;
 import java.util.HashMap;
 import java.util.List;
 
-import org.apache.taglibs.standard.lang.jstl.test.beans.PublicInterface2;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import test.app.project.dao.L.AdminMembersDao;
 import test.app.project.dao.Y.BusinessYDao;
 import test.app.project.vo.AmenitiesVo;
-import test.app.project.vo.BusinessVo;
+import test.app.project.vo.HouseImgVo;
+import test.app.project.vo.HouseVo;
 import test.app.project.vo.HouseintroVo;
-import test.app.project.vo.MembersVo;
 import test.app.project.vo.RoomsImgVo;
 import test.app.project.vo.RoomsVo;
 
@@ -22,10 +22,9 @@ public class BusinessYService {
 	@Autowired
 	private BusinessYDao dao;
 
-	public BusinessYService(BusinessYDao dao) {
-		this.dao = dao;
-	}
-
+	@Autowired
+	private AdminMembersDao dao1;
+	
 	//편의시설
 	public int writeamenities(AmenitiesVo vo) {
 		return dao.inamenities(vo);
@@ -120,5 +119,27 @@ public class BusinessYService {
 		public int joinbusiness(HashMap<String,Object> map){
 			return dao.joinbusiness(map);
 			
+		}
+	//업체등록
+		
+		@Transactional(rollbackFor = Exception.class)
+		public int inhouse(HashMap<String, Object> map) throws Exception {			
+			HouseVo vo = new HouseVo(0, (Integer)map.get("bnum"), (String)map.get("intro"), (String)map.get("checkintime"),
+					(String) map.get("checkouttime"),(String) map.get("company"),(String) map.get("license"),
+					(String) map.get("ceo"),(String) map.get("orgaddr"),(String) map.get("workplace"),
+					(String) map.get("com_tel"),0,(String) map.get("bid"));
+			int b=dao.inh(vo);
+			System.out.println(b);
+			int house_num=selhnum((String)map.get("bid"));
+			for (int i = 0; i < (Integer)map.get("anum"); i++) {
+				int amenities_num=dao.selanum((String)map.get("sl"+i));
+				HouseintroVo vo1 = new HouseintroVo(0,house_num,amenities_num );
+				int c= dao.inha(vo1);
+				System.out.println(c);
+			}
+			HouseImgVo vo3=new HouseImgVo(0, house_num,(String) map.get("house_org_name"),(String) map.get("house_save_name"));
+			int d=dao1.houseImgInsert(vo3);
+			System.out.println(d);
+			return 1;
 		}
 }

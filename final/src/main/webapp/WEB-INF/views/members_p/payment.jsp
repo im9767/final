@@ -9,6 +9,49 @@
 	
 	$(function(){
 		$("#payment").click(payment);
+		
+		$("#coupon").change(function(){
+			
+			var using = false;
+			
+			if($("#coupon").val() == "0"){
+				
+				var payment_money = parseInt("${room_price}");
+				
+				$("#pay_money").val(payment_money);
+				
+				$("#price").text(payment_money.toLocaleString()+"원");
+				
+				using = true;
+			}
+		
+			$("#couponUse").attr("disabled", using);
+		});
+		
+		$("#couponUse").click(function(){
+			
+			var coupon = $("#coupon").val().split("/");
+
+			if(coupon[0] == "1"){
+				
+				var sale = parseInt(coupon[1])/100.0;
+
+				$("#pay_money").val(parseInt("${room_price}")-(parseInt("${room_price}")*sale));
+				
+				var payment_money = parseInt($("#pay_money").val());
+				
+				$("#price").text(payment_money.toLocaleString()+"원");
+				
+			}else if(coupon[0] == "2"){
+				
+				$("#pay_money").val(parseInt(parseInt("${room_price}")) - parseInt(coupon[1]));
+				
+				var payment_money = parseInt($("#pay_money").val());
+				
+				$("#price").text(payment_money.toLocaleString()+"원");
+			}
+			
+		});
 	});
 	
 	var IMP = window.IMP; // 생략가능
@@ -83,7 +126,7 @@
 
 
 
-<div style="width:65%;min-height: 1000px;margin: auto;padding: 40px;margin-top: 150px;background-color:lightgray;">
+<div style="width:65%;min-height: 1000px;margin: auto;padding: 40px;margin-top: 150px;">
 	
 	<input type="hidden" id="pay_money" name="pay_money" value="${room_price }">
 	<input type="hidden" id="start_date" name="start_date" value="${sdt }">
@@ -96,24 +139,25 @@
 		<form>
 		  <div class="form-group">
 		    <label for="exampleInputEmail1">예약자 이름</label>
-		    <input name="name" type="text" class="form-control col-10" placeholder="체크인시 필요한 정보입니다." id="name">
+		    <input style="text-align: left;" name="name" type="text" class="form-control col-10" placeholder="체크인시 필요한 정보입니다." id="name">
 <!-- 		    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
 		  </div>
 		  
 		  <!-- 쿠폰선택 -->
 		  <div class="form-group">
-		      <label for="payment_type_select">사용가능한 쿠폰</label><br>
-			  <select name="coupon" class="custom-select col-4" id="coupon_select">
-		        <option selected>Choose...</option>
-		        <option value="1">One</option>
-		        <option value="2">Two</option>
-		        <option value="3">Three</option>
+		      <label for="coupon_select">사용가능한 쿠폰</label><br>
+			  <select id="coupon" name="coupon" class="custom-select col-4" id="coupon_select">
+		        <option selected value="0">쿠폰 선택</option>
+		        <c:forEach var="coupon" items="${coupon }">
+		        	<option value="${coupon.coupon_typenum }/${coupon.coupon_saletype }">${coupon.coupon_name }</option>
+		        </c:forEach>
 		      </select>
+		      <button type="button" class="btn btn-info" id="couponUse" disabled="disabled">적용</button>
 		  </div>
-		  
+		 
 <!-- 		  결제방식선택 -->
 		  <div class="form-group">
-		  	  <label for="coupon_select">결제수단 선택</label><br>
+		  	  <label for="payment_type_select">결제수단 선택</label><br>
 			  <select name="payment_type" class="custom-select col-4" id="payment_type_select">
 		        <option value="kakaopay" selected>카카오페이</option>
 		        <option value="1">카드결제 (신용,체크)</option>
@@ -140,7 +184,7 @@
                 
             </section>
             <section class="total_price_pc" style="margin: 20px 20px 30px 20px;">
-                <p style="font-size: 1.2em;"><strong><b>총 결제 금액</b>(VAT포함)</strong><br><span class="in_price" style="color:red;font-size: 1.5em;">${dc.format(room_price) }원</span>
+                <p style="font-size: 1.2em;"><strong><b>총 결제 금액</b>(VAT포함)</strong><br><span id="price" class="in_price" style="color:red;font-size: 1.5em;">${dc.format(room_price) }원</span>
                 </p>
                 <ul>
                     <li>※ 해당 객실가는 세금, 봉사료가 포함된 금액입니다</li>

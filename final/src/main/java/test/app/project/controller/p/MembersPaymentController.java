@@ -3,6 +3,7 @@ package test.app.project.controller.p;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import test.app.project.service.p.MembersPaymentService;
 import test.app.project.vo.BookingTableVo;
+import test.app.project.vo.CouponVo;
 
 @Controller
 public class MembersPaymentController {
@@ -24,7 +26,13 @@ public class MembersPaymentController {
 	
 	
 	@RequestMapping(value="/members/payment")
-	public String payment(String sdt, String edt, int room_num, String room_name,int room_price,String company,Model model){
+	public String payment(String sdt, String edt, int room_num, String room_name,int room_price,String company,Model model,HttpSession session){
+		
+		String mid = (String) session.getAttribute("id");
+		
+		List<CouponVo> coupon = paymentService.couponSelect(mid);
+		
+		model.addAttribute("coupon", coupon);
 		
 		model.addAttribute("sdt",sdt); // 숙박 시작일
 		model.addAttribute("edt",edt); // 숙박 종료일
@@ -41,8 +49,8 @@ public class MembersPaymentController {
 		System.out.println("company:"+company);
 		System.out.println();
 		
-		String[] s = sdt.split("-"); // 박수 계산
-		String[] e = edt.split("-"); // 박수 계산
+		String[] s = sdt.split("/"); // 박수 계산
+		String[] e = edt.split("/"); // 박수 계산
 		int days = Integer.parseInt(e[2])-Integer.parseInt(s[2]);
 		
 		model.addAttribute("days",days); // 숙박 일 수

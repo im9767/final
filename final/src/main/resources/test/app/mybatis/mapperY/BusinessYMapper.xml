@@ -69,6 +69,10 @@
 	<insert id="joinbusiness"  parameterType="hashmap">
 		insert into business_join values(#{bid},#{bpwd},#{bemail})
 	</insert>
+	<!-- 업체등록 -->
+	<insert id="inh"  parameterType="test.app.project.vo.HouseVo">
+		insert into house values(house_seq.nextval,#{bnum},#{intro},#{checkintime},#{checkouttime},#{company},#{license},#{ceo},#{orgaddr},#{workplace},#{com_Tel},0,#{business_id})
+	</insert>
 </mapper>
 
 

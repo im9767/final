@@ -29,4 +29,10 @@ public interface HouseDao {
 	// 객실 정보, 객실 이미지 조인
 	public List<RoomsJoinVo> roomsJoin(HashMap<String, Object> map);
 	
+	// 업체 리뷰 평균 점수 얻어오기
+	public double reviewScore(int house_num);
+	
+	// 업체 리뷰 갯수 구하기
+	public int reviewCount(int house_num);
+	
 }

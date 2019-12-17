@@ -1,56 +1,31 @@
 package test.app.project.vo;
 
-
-
 public class BusinessVo {
-	/*사업자 아이디*/
-	private String bId;
-	/*사업자 비밀번호*/
-	private String bPwd;
-	/*사업자 이메일*/
-	private String bEmail;
-	
-	
-	public BusinessVo(){}
-
-
-	public BusinessVo(String bId, String bPwd, String bEmail) {
+	private String bid;
+	private String bpwd;
+	private String bemail;
+	public BusinessVo(String bid, String bpwd, String bemail) {
 		super();
-		this.bId = bId;
-		this.bPwd = bPwd;
-		this.bEmail = bEmail;
+		this.bid = bid;
+		this.bpwd = bpwd;
+		this.bemail = bemail;
 	}
-
-
-	public String getbId() {
-		return bId;
+	public String getBid() {
+		return bid;
 	}
-
-
-	public void setbId(String bId) {
-		this.bId = bId;
+	public void setBid(String bid) {
+		this.bid = bid;
 	}
-
-
-	public String getbPwd() {
-		return bPwd;
+	public String getBpwd() {
+		return bpwd;
 	}
-
-
-	public void setbPwd(String bPwd) {
-		this.bPwd = bPwd;
+	public void setBpwd(String bpwd) {
+		this.bpwd = bpwd;
 	}
-
-
-	public String getbEmail() {
-		return bEmail;
+	public String getBemail() {
+		return bemail;
 	}
-
-
-	public void setbEmail(String bEmail) {
-		this.bEmail = bEmail;
+	public void setBemail(String bemail) {
+		this.bemail = bemail;
 	}
-
-
-	
 }

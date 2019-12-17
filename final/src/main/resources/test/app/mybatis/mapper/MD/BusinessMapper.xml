@@ -10,13 +10,11 @@
 </select>
 
 <!-- 맨처음 등록은 업태테이블  -->
-<insert id="insert" parameterType="hashmap" >
-insert into house VALUES(#{house_num},#{bnum},#{intro},#{checkintime},#{checkouttime},
- #{company},#{license},#{ceo},#{orgaddr},#{workplace},#{com_tel},'1',null)
+	<insert id="insert" parameterType="hashmap" >
+	insert into house VALUES(#{house_num},#{bnum},#{intro},#{checkintime},#{checkouttime},
+	 #{company},#{license},#{ceo},#{orgaddr},#{workplace},#{com_tel},'1',#{bid})
+	</insert>
 
-</insert>
-	
-	
 	<insert id="inamenities" parameterType="test.app.project.vo.AmenitiesVo" >
 		insert into amenities values(amenities_seq.nextval,#{amenities_name},#{amenities_content},#{orgfilename},#{savefilename})
 	</insert>
@@ -46,4 +44,19 @@ insert into house VALUES(#{house_num},#{bnum},#{intro},#{checkintime},#{checkout
 		select *  from rooms r,house h where h.house_num=r.house_num and h.approval=1 and h.house_num=#{house_num}
 	</select>
 	
+	<!-- 사업자 아이디로 검색한 업체수 얻기 -->
+	<select id="housecnt" parameterType="hashmap" resultType="int">
+		select nvl(count(*),0) from house
+		where business_id=#{bbid}
+	</select>
+	
 </mapper>
+
+
+
+
+
+
+
+
+

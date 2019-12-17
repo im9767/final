@@ -197,7 +197,14 @@
           <!-- Page Heading -->
           <div class="d-sm-flex align-items-center justify-content-between mb-4">
             <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+            <div>
+            <a href="${cp}/admin_view/gohome" class="btn btn-primary btn-icon-split">
+                    <span class="text">메인페이지 이동</span>
+                  </a>    
+             <a href="${cp}/business/logout" class="btn btn-danger btn-icon-split">
+                    <span class="text">로그아웃</span>
+                  </a>
+                 </div>
           </div>
 
           <!-- Content Row -->

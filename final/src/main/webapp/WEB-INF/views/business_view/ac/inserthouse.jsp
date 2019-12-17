@@ -4,32 +4,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<style type="text/css">
- .checkbox-lg .custom-control-label::before, 
-.checkbox-lg .custom-control-label::after {
-  top: .8rem;
-  width: 1.55rem;
-  height: 1.55rem;
-}
-
-.checkbox-lg .custom-control-label {
-  padding-top: 13px;
-  padding-left: 6px;
-}
-
-
-.checkbox-xl .custom-control-label::before, 
-.checkbox-xl .custom-control-label::after {
-  top: 1.2rem;
-  width: 1.85rem;
-  height: 1.85rem;
-}
-
-.checkbox-xl .custom-control-label {
-  padding-top: 23px;
-  padding-left: 10px;
-}
-</style>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport"
@@ -50,22 +24,15 @@
 <!-- Custom styles for this template-->
 <link href="${cp}/resources/admin/admin-boot/css/sb-admin-2.min.css"
 	rel="stylesheet">
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<script type="text/javascript"
-	src="${cp}/resources/admin/js/jquery-3.2.1.min.js"></script>
+
 <script type="text/javascript"
 	src="${cp}/resources/admin/js/jquery-3.4.1.js"></script>
 <script type="text/javascript">
-	function validate() {
+	function validate1() {
+		console.log('a');
 		var am = document.frm1.am;
 		var am2 = document.getElementsByName("am");
 		var cnt = 0;
-		for (var i = 0; i < am.length; i++) {
-			if (am[i].checked) {
-				cnt++;
-			}
-		}
 		for (var j = 0; j < am2.length; j++) {
 			if (am2[j].checked) {
 				var aa = $(
@@ -74,41 +41,16 @@ integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9If
 				console.log(am[j].value)
 			}
 		}
+		for (var i = 0; i < am.length; i++) {
+			if (am[i].checked) {
+				cnt++;
+			}
+		}
 		if (cnt < 1) {
 			alert("편의시설은 무조건 하나이상 고르세요.");
 			return false;
 		}
 		return true;
-	}
-	$(function() {
-		$("#imgIn").on('change', function() {
-			$("#imgbox img").remove();
-			readURL(this);
-		});
-	});
-	var b = 0;
-	function readURL(input) {
-		for (var a = 0; a < input.files.length; a++) {
-			var reader = new FileReader();
-
-			reader.onload = function(e) {
-				console.log(input.files[b].name);
-				if (b == 5) {
-					var aa = $("<img src='"+e.target.result+"'><br>").appendTo(
-							"#imgbox");
-					aa.css("width", "590px");
-					aa.css("height", "590px");
-					console.log(b++);
-				} else {
-					var aa = $("<img src='"+e.target.result+"'>").appendTo(
-							"#imgbox");
-					aa.css("width", "590px");
-					aa.css("height", "590px");
-					console.log(b++);
-				}
-			}
-			reader.readAsDataURL(input.files[a]);
-		}
 	}
 </script>
 </head>
@@ -129,17 +71,17 @@ integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9If
 						</div>
 						<div class="user"
 							style="width: 1800px; height: 1000px; margin-right: 100px;">
-							<form method="POST" name="frm1" onsubmit="return validate();"
-								action="${cp}/business_view/inserthouse"
+							<form method="POST" name="frm1" onsubmit="return validate1();"
+								action="${cp}/business_view/inserthouseok"
 								enctype="multipart/form-data">
 								<!-- 이 아래는 업소테이블 입력하는곳 -->
-								<select name="btype" class="form-control form-control-user"
+								<select name="bnum" class="form-control form-control-user"
 									style="width: 230px;">
-									<option value="호텔">호텔</option>
-									<option value="모텔">모텔</option>
-									<option value="펜션">펜션</option>
-									<option value="리조트">리조트</option>
-								</select><br> <select name="sname"
+									<option value="22">호텔</option>
+									<option value="21">모텔</option>
+									<option value="24">펜션</option>
+									<option value="23">리조트</option>
+								</select><br> <select name="snum"
 									class="form-control form-control-user" style="width: 230px;">
 									<option value="22">숙박</option>
 								</select><br>
@@ -185,18 +127,22 @@ integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9If
 										name="com_tel" id="com_tel" placeholder="사업장전화번호(문자)"
 										style="width: 220px;">
 								</div>
-
-								<c:forEach var="vo" items="${selam}" varStatus="vs">
-											<div class="custom-control custom-switch checkbox-switch-lg" ">
-												<input type="checkbox" class="custom-control-input"
-													id="customSwitch1+${vs.index}" name="am" value="${vo.AMENITIES_NAME}" > <label
-													class="checkbox-lg custom-control-label"
-													for="customSwitch1+${vs.index}">${vo.AMENITIES_NAME}</label>
-											</div>
+								
+								<c:forEach var="vo" items="${selam2}" varStatus="vs">
+									<div class="custom-control custom-switch">
+										<input type="checkbox" class="custom-control-input"
+											id="customSwitch+${vo.AMENITIES_NAME}"
+											value="${vo.AMENITIES_NAME}" name="am"> <label
+											class="custom-control-label"
+											for="customSwitch+${vo.AMENITIES_NAME}">${vo.AMENITIES_NAME}</label>
+									</div>
 								</c:forEach>
-								<input type="submit" class="btn btn-primary btn-user btn-block"
+								 
+								<input type="file" name="file"><br>
+								 <input	type="submit" class="btn btn-primary btn-user btn-block"
 									style="width: 1700px;" value="등록신청" onclick="validate()">
 								<hr>
+								<div id="subitem"></div>
 							</form>
 						</div>
 					</div>
@@ -205,10 +151,6 @@ integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9If
 		</div>
 	</div>
 	<!-- Bootstrap core JavaScript-->
-	<script
-		src="${cp}/resources/admin/admin-boot/vendor/jquery/jquery.min.js"></script>
-	<script
-		src="${cp}/resources/admin/admin-boot/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
 	<!-- Core plugin JavaScript-->
 	<script

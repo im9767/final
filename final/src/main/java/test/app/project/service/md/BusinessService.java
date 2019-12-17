@@ -15,9 +15,6 @@ import test.app.project.vo.EventimagesVo;
 import test.app.project.vo.RoomsImgVo;
 import test.app.project.vo.RoomsVo;
 
-
-
-
 @Service
 public class BusinessService {
 
@@ -90,7 +87,22 @@ public class BusinessService {
 	return 1;
 	}
 	
-	
-	
-	
+	// 사업자 아이디로 조회해서 업체수 구하기
+	public int houseCnt(HashMap<String, Object> map){
+		return dao.houseCount(map);
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
