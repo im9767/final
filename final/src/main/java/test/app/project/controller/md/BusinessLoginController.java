@@ -45,10 +45,10 @@ public class BusinessLoginController {
 		if(business!=null){
 			session.setAttribute("bid",bid);
 			session.setAttribute("bpwd",bpwd);
-			//int a=servicey.selhnum(bid);
-			//session.setAttribute("house_num", a);
 			session.setAttribute("houseCnt", houseCnt);
 			if(houseCnt>0){
+				int a=servicey.selhnum(bid);
+				session.setAttribute("house_num", a);
 				return ".business";
 			}else{
 				return ".business_view.ac.main_sub";
