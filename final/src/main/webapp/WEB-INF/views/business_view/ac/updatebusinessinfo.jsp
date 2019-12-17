@@ -96,7 +96,7 @@
 											</div>									
 									<hr style="width: 900px;">								
 									<div style="float: right">
-										<a href="${cp}/admin_view/noticeboard"
+										<a href="${cp}/business"
 											class="btn btn-secondary btn-icon-split"><span>뒤로가기</span>
 										</a> <input type="submit" class="btn btn-primary btn-icon-split"
 											value="수정하기">
