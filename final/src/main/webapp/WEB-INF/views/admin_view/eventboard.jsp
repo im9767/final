@@ -54,9 +54,9 @@
                     </tr>
                   </thead>
                   <tbody>
-                  	<c:forEach var="vo" items="${alleventlist}">
+                  	<c:forEach var="vo" items="${alleventlist}" varStatus="vs">
                     <tr>
-                      <td>${vo.event_Num}</td>
+                      <td>${vs.index+1}</td>
                       <td><a href="${cp}/admin_view/seleventinfo?event_Num=${vo.event_Num}">${vo.etitle}</a></td>
                       <td><a href="${cp}/admin_view/upevent?event_Num=${vo.event_Num}">수정</a></td>
                       <td><a href="${cp}/admin_view/delevent?event_Num=${vo.event_Num}">삭제</a></td>

@@ -95,6 +95,11 @@ public class LoginController {
 					session.setAttribute("approval", 1);
 					return ".business";
 				}
+				//사업자 홈
+				@RequestMapping(value="business_view/kakaotalk")
+				public String talk(HttpSession session){		
+					return "/business_view/ac/kakaotalk";
+				}
 }
 	
 	

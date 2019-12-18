@@ -49,9 +49,9 @@
                     </tr>
                   </thead>
                   <tbody>
-                  	<c:forEach var="vo" items="${allnoticelist}">
+                  	<c:forEach var="vo" items="${allnoticelist}" varStatus="vs">
                     <tr>
-                      <td>${vo.nnum}</td>
+                      <td>${vs.index+1}</td>
                       <td><a href="${cp}/admin_view/selnotice?nnum=${vo.nnum}">${vo.ntitle}</a></td>
                       <td><a href="${cp}/admin_view/upnotice?nnum=${vo.nnum}">수정</a></td>
                       <td><a href="${cp}/admin_view/delnotice?nnum=${vo.nnum}">삭제</a></td>

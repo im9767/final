@@ -131,6 +131,10 @@ public class BusinessYDao {
 		public List<HashMap<String, Object>> selhnumlist(String bid){
 			return sqlSessionTemplate.selectList("test.app.mybatis.mapperY.BusinessMapper.selhnumlist",bid);
 		}
+		//예약회원조회
+		public List<HashMap<String, Object>> allbooking(int house_num){
+			return sqlSessionTemplate.selectList("test.app.mybatis.mapperY.BusinessMapper.allbooking",house_num);
+		}
 }
 
 

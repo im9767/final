@@ -383,15 +383,10 @@ $(function(){
           <i class="fas fa-fw fa-table"></i>
           <span>편의시설 등록</span></a>
       </li>
-       <li class="nav-item">
-        <a class="nav-link" href="${cp}/admin_view/roomsboard">
+	<li class="nav-item">
+        <a class="nav-link" href="${cp}/business_view/kakaotalk">
           <i class="fas fa-fw fa-table"></i>
-          <span>객실정보</span></a>
-      </li>
-       <li class="nav-item">
-        <a class="nav-link" href="${cp}/admin_view/updatebusinessinfo">
-          <i class="fas fa-fw fa-table"></i>
-          <span>사업자정보수정</span></a>
+          <span>카카오톡 상담</span></a>
       </li>
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">

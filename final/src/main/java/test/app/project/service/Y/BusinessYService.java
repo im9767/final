@@ -179,4 +179,8 @@ public class BusinessYService {
 			return dao.selhnumlist(bid);
 			
 		}
+		//예약회원 조회
+		public List<HashMap<String, Object>> allbooking(int house_num) {
+			return dao.allbooking(house_num);
+		}
 }

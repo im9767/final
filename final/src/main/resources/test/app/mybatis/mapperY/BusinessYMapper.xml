@@ -99,6 +99,11 @@
 	<select id="selhnumlist"  parameterType="String" resultType="hashmap">
 		select house_num,company from house where business_id=#{bid}
 	</select>
+	<!-- 예약회원조회-->
+	<select id="allbooking" parameterType="int"   resultType="hashmap">
+		select b.booking_num,r.roomname,m.mid,m.mname,b.name,m.mphone,TO_CHAR(b.start_date,'YYYY-MM-DD') start_date,TO_CHAR(b.end_date,'YYYY-MM-DD') end_date from house h,rooms r,booking_table b,members m
+where h.house_num=r.house_num and r.room_num=b.room_num and m.mid=b.mid and h.house_num=#{house_num} order by b.books_date desc
+	</select>
 </mapper>
 
 

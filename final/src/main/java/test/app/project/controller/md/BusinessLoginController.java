@@ -34,7 +34,6 @@ public class BusinessLoginController {
 		housemap.put("bbid", bid);
 		//사업자 아이디로 조회한 업체수
 		int houseCnt=service.houseCnt(housemap);
-		System.out.println("등록된 업체 수: " + houseCnt);
 		HashMap<String,Object> business=service.login(map);
 		if(business!=null){
 			session.setAttribute("bid",bid);

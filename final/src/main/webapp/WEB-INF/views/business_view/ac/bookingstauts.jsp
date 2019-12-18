@@ -6,9 +6,7 @@
 	style="width: 1680px;">
 
 	<!-- Main Content -->
-	<div id="content">
-
-		<!-- Topbar -->
+	<div id="content">	
 		<div class="d-sm-flex align-items-center justify-content-between mb-4" style="padding-left:1400px;padding-top:15px">
             <div>
 	            <a href="${cp}/admin_view/gohome" class="btn btn-primary btn-icon-split">
@@ -35,10 +33,6 @@
 			<div class="card shadow mb-4">
 
 				<div class="card-header py-3">
-					<a href="${cp}/business_view/writeroom"
-						class="btn btn-primary btn-icon-split" style="float: right"> <span
-						class="text">작성하기</span>
-					</a>
 					<h6 class="m-0 font-weight-bold text-primary">DataTables
 						Example</h6>
 				</div>
@@ -48,28 +42,34 @@
 							cellspacing="0">
 							<thead>
 								<tr>
-									<th>번호</th>
-									<th>업체명</th>
+									<th>순서</th>
 									<th>방이름</th>
-									<th>가격</th>
-									<th>최대인원</th>
-									<th>수정</th>
-									<th>삭제</th>
-
+									<th>회원 아이디</th>
+									<th>회원 이름</th>
+									<th>예약자</th>
+									<th>회원 전화번호</th>
+									<th>입실날짜</th>
+									<th>퇴실날짜</th>
 								</tr>
 							</thead>
 							<tbody>
-								<c:forEach var="vo" items="${allroomlist}" varStatus="vs">
+								<c:forEach var="vo" items="${allbooking}" varStatus="vs">
 									<tr>
 										<td>${vs.index+1}</td>
-										<td>${vo.COMPANY}</td>
-										<td><a href="${cp}/business_view/selroominfo?room_num=${vo.ROOM_NUM}">${vo.ROOMNAME}</a></td>
-										<td>${vo.ROOM_PRICE}<span>원</span></td>						
-										<td>${vo.MAX_PERSONNEL}</td>
-										<td><a
-											href="${cp}/business_view/uproom?room_num=${vo.ROOM_NUM}">수정</a></td>
-										<td><a
-											href="${cp}/business_view/delroom?room_num=${vo.ROOM_NUM}">삭제</a></td>
+										<td>${vo.ROOMNAME}</td>
+										<td>${vo.MID }</td>
+										<td>${vo.MNAME}</td>
+										<c:choose>
+										<c:when test="${empty vo.NAME}">
+										<td>${vo.MNAME}</td>
+										</c:when>
+										<c:otherwise>
+										<td>${vo.NAME}</td>
+										</c:otherwise>
+										</c:choose>
+										<td>${vo.MPHONE}</td>
+										<td>${vo.START_DATE}</td>						
+										<td>${vo.END_DATE}</td>
 
 									</tr>
 								</c:forEach>

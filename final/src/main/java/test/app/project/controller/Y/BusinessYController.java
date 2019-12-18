@@ -262,6 +262,15 @@ public class BusinessYController {
 					}														
 					return ".business_view.ac.main_sub";
 			}
+				//예약 확인 페이지이동
+				@RequestMapping(value = "business_view/bookingstauts", method = RequestMethod.GET)
+				public ModelAndView gobooking(HttpSession session) {
+					int house_num=(Integer)session.getAttribute("house_num");
+					List<HashMap<String,Object>> list = service.allbooking(house_num);
+					ModelAndView mv = new ModelAndView(".business_view.ac.bookingstauts");
+					mv.addObject("allbooking", list);
+					return mv;
+			}
 }
 	
 	
