@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<title>Q&A 문의</title>
+
 <div class="mypage-wrap" style="min-height: 1200px;">
 		
 	<!-- mypage header -->
@@ -21,7 +23,7 @@
 			<form action="${pageContext.request.contextPath }/members/qna" method="post" onsubmit="return validation()" style="margin-left:10px;">
 			  <div class="form-group">
 			    <label for="exampleInputEmail1" style="font-size: 22px;">제목</label>
-			    <input type="text" class="form-control" id="qna_title" name="qna_title">
+			    <input type="text" class="form-control col-8" id="qna_title" name="qna_title">
 <!-- 			    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
 			  </div>
 			  
@@ -38,11 +40,9 @@
 			  <label class="custom-control-label" for="customRadioInline3">기타</label>
 			</div>
 			
-			
-			
 			  <div class="form-group">
 				  <label for="comment" style="font-size: 22px;">내용</label>
-				  <textarea class="form-control" rows="10" id="qna_content" name="qna_content"></textarea>
+				  <textarea class="form-control col-8" rows="10" id="qna_content" name="qna_content"></textarea>
 			  </div>  
 			  
 			  <button type="submit" class="btn btn-primary" style="width:70px;height:40px;font-size: 20px;">작성</button>

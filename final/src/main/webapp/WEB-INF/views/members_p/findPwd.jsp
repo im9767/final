@@ -49,7 +49,7 @@
     <link rel="shortcut icon" href="//image.goodchoice.kr/images/web_v3/favicon_170822.ico" type="image/x-icon">
 
 	<!-- CSS -->
-    <title>비밀번호 재설정 | 여기어때</title>
+    <title>비밀번호 재설정 | 요기어때</title>
     <link rel="stylesheet" href="https://www.goodchoice.kr/css/common.css?rand=1574413652">
     <link rel="canonical" href="https://www.goodchoice.kr/user/passwdResetStart">
 </head>

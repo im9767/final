@@ -178,7 +178,16 @@ public class MembersMypageController {
 	
 	// 회원 리뷰작성 페이지 이동
 	@RequestMapping(value="/members/reviewWrite",method=RequestMethod.GET)
-	public String reviewForm(String house_save_name,int room_num,String roomname,String company,Model model){
+	public String reviewForm(String house_save_name,int room_num,String roomname,String company,Model model,HttpSession session){
+		
+		String mid = (String) session.getAttribute("id");
+		
+		int cntCoupon = membersService.cntCoupon(mid);
+		model.addAttribute("cntCoupon",cntCoupon);
+		
+		HashMap<String, Object> map = membersService.myinfo(mid);
+		
+		model.addAttribute("map",map);
 		
 		model.addAttribute("house_save_name", house_save_name);
 		model.addAttribute("room_num", room_num);
