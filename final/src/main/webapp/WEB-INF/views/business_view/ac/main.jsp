@@ -7,206 +7,21 @@
 
       <!-- Main Content -->
       <div id="content">
-
-        <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-
-          <!-- Sidebar Toggle (Topbar) -->
-          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-            <i class="fa fa-bars"></i>
-          </button>
-
-          <!-- Topbar Search -->
-          <form class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-            <div class="input-group">
-              <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-              <div class="input-group-append">
-                <button class="btn btn-primary" type="button">
-                  <i class="fas fa-search fa-sm"></i>
-                </button>
-              </div>
+		<div class="d-sm-flex align-items-center justify-content-between mb-4" style="padding-left:1400px;padding-top:15px">
+            <div>
+	            <a href="${cp}/admin_view/gohome" class="btn btn-primary btn-icon-split">
+	               <span class="text">메인페이지 이동</span>
+	            </a>    
+	            <a href="${cp}/business/logout" class="btn btn-danger btn-icon-split">
+	               <span class="text">로그아웃</span>
+	            </a>
             </div>
-          </form>
-
-          <!-- Topbar Navbar -->
-          <ul class="navbar-nav ml-auto">
-
-            <!-- Nav Item - Search Dropdown (Visible Only XS) -->
-            <li class="nav-item dropdown no-arrow d-sm-none">
-              <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-search fa-fw"></i>
-              </a>
-              <!-- Dropdown - Messages -->
-              <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
-                <form class="form-inline mr-auto w-100 navbar-search">
-                  <div class="input-group">
-                    <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                    <div class="input-group-append">
-                      <button class="btn btn-primary" type="button">
-                        <i class="fas fa-search fa-sm"></i>
-                      </button>
-                    </div>
-                  </div>
-                </form>
-              </div>
-            </li>
-
-            <!-- Nav Item - Alerts -->
-            <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-bell fa-fw"></i>
-                <!-- Counter - Alerts -->
-                <span class="badge badge-danger badge-counter">3+</span>
-              </a>
-              <!-- Dropdown - Alerts -->
-              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
-                <h6 class="dropdown-header">
-                  Alerts Center
-                </h6>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-primary">
-                      <i class="fas fa-file-alt text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500">December 12, 2019</div>
-                    <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-success">
-                      <i class="fas fa-donate text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500">December 7, 2019</div>
-                    $290.29 has been deposited into your account!
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-warning">
-                      <i class="fas fa-exclamation-triangle text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500">December 2, 2019</div>
-                    Spending Alert: We've noticed unusually high spending for your account.
-                  </div>
-                </a>
-                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-              </div>
-            </li>
-
-            <!-- Nav Item - Messages -->
-            <li class="nav-item dropdown no-arrow mx-1">
-              <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <i class="fas fa-envelope fa-fw"></i>
-                <!-- Counter - Messages -->
-                <span class="badge badge-danger badge-counter">7</span>
-              </a>
-              <!-- Dropdown - Messages -->
-              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="messagesDropdown">
-                <h6 class="dropdown-header">
-                  Message Center
-                </h6>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="https://source.unsplash.com/fn_BT9fwg_E/60x60" alt="">
-                    <div class="status-indicator bg-success"></div>
-                  </div>
-                  <div class="font-weight-bold">
-                    <div class="text-truncate">Hi there! I am wondering if you can help me with a problem I've been having.</div>
-                    <div class="small text-gray-500">Emily Fowler · 58m</div>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="https://source.unsplash.com/AU4VPcFN4LE/60x60" alt="">
-                    <div class="status-indicator"></div>
-                  </div>
-                  <div>
-                    <div class="text-truncate">I have the photos that you ordered last month, how would you like them sent to you?</div>
-                    <div class="small text-gray-500">Jae Chun · 1d</div>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="https://source.unsplash.com/CS2uCrpNzJY/60x60" alt="">
-                    <div class="status-indicator bg-warning"></div>
-                  </div>
-                  <div>
-                    <div class="text-truncate">Last month's report looks great, I am very happy with the progress so far, keep up the good work!</div>
-                    <div class="small text-gray-500">Morgan Alvarez · 2d</div>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="dropdown-list-image mr-3">
-                    <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="">
-                    <div class="status-indicator bg-success"></div>
-                  </div>
-                  <div>
-                    <div class="text-truncate">Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</div>
-                    <div class="small text-gray-500">Chicken the Dog · 2w</div>
-                  </div>
-                </a>
-                <a class="dropdown-item text-center small text-gray-500" href="#">Read More Messages</a>
-              </div>
-            </li>
-
-            <div class="topbar-divider d-none d-sm-block"></div>
-
-            <!-- Nav Item - User Information -->
-            <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
-              </a>
-              <!-- Dropdown - User Information -->
-              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Profile
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Settings
-                </a>
-                <a class="dropdown-item" href="#">
-                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Activity Log
-                </a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Logout
-                </a>
-              </div>
-            </li>
-
-          </ul>
-
-        </nav>
+          </div>
+        
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
-
-          <!-- Page Heading -->
-          <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Dashboard</h1>
-            <div>
-            <a href="${cp}/admin_view/gohome" class="btn btn-primary btn-icon-split">
-                    <span class="text">메인페이지 이동</span>
-                  </a>    
-             <a href="${cp}/business/logout" class="btn btn-danger btn-icon-split">
-                    <span class="text">로그아웃</span>
-                  </a>
-                 </div>
-          </div>
-
           <!-- Content Row -->
           <div class="row">
 
@@ -221,29 +36,29 @@
                       	연도&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                       	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;월
                       	<br>
-                      	<form action="${cp}/admin/month" method="post">
+                      	<form action="${cp}/business/month" method="post">
                       	<select name="year" id="year" class="form-control form-control-user" style="width:100px;display: inline-block;">
-                      		<option value="19" selected="selected">2019</option>
-                      		<option value="18">2018</option>
-                      		<option value="17">2017</option>
-                      		<option value="16">2016</option>
-                      		<option value="15">2015</option>
-                      		<option value="14">2014</option>
-                      		<option value="13">2013</option>
+                      		<option value="19" <c:if test="${year=='19'}">selected</c:if>>2019</option>
+                      		<option value="18" <c:if test="${year=='18'}">selected</c:if>>2018</option>
+                      		<option value="17" <c:if test="${year=='17'}">selected</c:if>>2017</option>
+                      		<option value="16" <c:if test="${year=='16'}">selected</c:if>>2016</option>
+                      		<option value="15" <c:if test="${year=='15'}">selected</c:if>>2015</option>
+                      		<option value="14" <c:if test="${year=='14'}">selected</c:if>>2014</option>
+                      		<option value="13" <c:if test="${year=='13'}">selected</c:if>>2013</option>
                       	</select>&nbsp;&nbsp;&nbsp;&nbsp;
                       	<select name="month" id="month" class="form-control form-control-user" style="width:80px;display: inline-block;">
-                      		<option value="01">1월</option>
-                      		<option value="02">2월</option>
-                      		<option value="03">3월</option>
-                      		<option value="04">4월</option>
-                      		<option value="05">5월</option>
-                      		<option value="06">6월</option>
-                      		<option value="07">7월</option>
-                      		<option value="08">8월</option>
-                      		<option value="09">9월</option>
-                      		<option value="10">10월</option>
-                      		<option value="11">11월</option>
-                      		<option value="12" selected="selected">12월</option>
+                      		<option value="01" <c:if test="${month=='01'}">selected</c:if>>1월</option>
+                      		<option value="02" <c:if test="${month=='02'}">selected</c:if>>2월</option>
+                      		<option value="03" <c:if test="${month=='03'}">selected</c:if>>3월</option>
+                      		<option value="04" <c:if test="${month=='04'}">selected</c:if>>4월</option>
+                      		<option value="05" <c:if test="${month=='05'}">selected</c:if>>5월</option>
+                      		<option value="06" <c:if test="${month=='06'}">selected</c:if>>6월</option>
+                      		<option value="07" <c:if test="${month=='07'}">selected</c:if>>7월</option>
+                      		<option value="08" <c:if test="${month=='08'}">selected</c:if>>8월</option>
+                      		<option value="09" <c:if test="${month=='09'}">selected</c:if>>9월</option>
+                      		<option value="10" <c:if test="${month=='10'}">selected</c:if>>10월</option>
+                      		<option value="11" <c:if test="${month=='11'}">selected</c:if>>11월</option>
+                      		<option value="12" <c:if test="${month=='12'}">selected</c:if>>12월</option>
                       	</select>&nbsp;&nbsp;&nbsp;&nbsp;
                       	<!--  <input type="submit" value="조회">-->
                       	<button id="search" class="btn btn-success btn-circle">
@@ -252,7 +67,7 @@
                       	</form>
                       </div>
                       <br>
-                      <div class="h3 mb-0 font-weight-bold text-gray-800">${coma}원</div>
+                      <div class="h3 mb-0 font-weight-bold text-gray-800">${monthSum}원</div>
                     </div>
                   </div>
                 </div>
@@ -267,7 +82,7 @@
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-success text-uppercase mb-1" style="font-size:15px;">기간별 매출액 (Period)</div>
                       <div style="display: inline-block;">
-                      <form action="${cp}/admin/period" method="post">
+                      <form action="${cp}/business/period" method="post">
                       	<!--  <input type="text" id="cal2">&nbsp;&nbsp;-->
                       	<input type="text" name="startday" value="${startday}" class="form-control form-control-user" id="cal2" placeholder="시작일" style="width:240px;display: inline-block;">&nbsp;&nbsp;
                       	<!--  <input type="text" id="cal3">&nbsp;&nbsp;&nbsp;&nbsp;--><br><br>
@@ -322,14 +137,18 @@
                     <div class="col mr-2">
                       <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">등록된 업체수</div>
                       <div>
-                      	<select name="company" class="form-control form-control-user" style="width:230px;">
-                      		<option value="호텔">호텔</option>
-                      		<option value="모텔">모텔</option>
-                      		<option value="리조트">리조트</option>
+                      	<form action="${cp}/business/register" method="post">
+                      	<select onchange="this.form.submit()" name="company" class="form-control form-control-user" style="width:230px;">
+                      		<option value="20" <c:if test="${company=='20'}">selected</c:if>>전체</option>
+                      		<option value="22" <c:if test="${company=='22'}">selected</c:if>>호텔</option>
+                      		<option value="21" <c:if test="${company=='21'}">selected</c:if>>모텔</option>
+                      		<option value="24" <c:if test="${company=='24'}">selected</c:if>>펜션</option>
+                      		<option value="23" <c:if test="${company=='23'}">selected</c:if>>리조트</option>
                       	</select>
+                      </form>
                       </div>
                       <br>
-                      <div class="h3 mb-0 font-weight-bold text-gray-800">18</div>
+                      <div class="h3 mb-0 font-weight-bold text-gray-800">${companycount}곳</div>
                     </div>
                     <div class="col-auto">
                       <i class="fas fa-comments fa-2x text-gray-300"></i>
@@ -349,7 +168,7 @@
               <div class="card shadow mb-4">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                  <h6 class="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">년도/월별 매출 통계</h6>
                   <div class="dropdown no-arrow">
                     <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                       <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
@@ -363,10 +182,23 @@
                     </div>
                   </div>
                 </div>
+                <div>
+                	<form action="${cp}/business/statics" method="post">
+                	<select onchange="this.form.submit()" name="year" id="year" class="form-control form-control-user" style="width:100px;display: inline-block;">
+                      	<option value="2019" <c:if test="${year=='2019'}">selected</c:if>>2019</option>
+                      	<option value="2018" <c:if test="${year=='2018'}">selected</c:if>>2018</option>
+                      	<option value="2017" <c:if test="${year=='2017'}">selected</c:if>>2017</option>
+                      	<option value="2016" <c:if test="${year=='2016'}">selected</c:if>>2016</option>
+                      	<option value="2015" <c:if test="${year=='2015'}">selected</c:if>>2015</option>
+                      	<option value="2014" <c:if test="${year=='2014'}">selected</c:if>>2014</option>
+                      	<option value="2013" <c:if test="${year=='2013'}">selected</c:if>>2013</option>
+                   </select>&nbsp;&nbsp;&nbsp;&nbsp;
+                   </form>
+                </div> 
                 <!-- Card Body -->
                 <div class="card-body">
                   <div class="chart-area">
-                    <canvas id="myAreaChart"></canvas>
+                    <canvas id="myBarChart"></canvas>
                   </div>
                 </div>
               </div>

@@ -1,6 +1,7 @@
 package test.app.project.controller.md;
 
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -19,12 +20,7 @@ public class BusinessLoginController {
 	private BusinessService service;
 	@Autowired
 	private BusinessYService servicey;
-	public void setServcie(BusinessService service){
-		this.service = service;
-	}
-	public void setServcieY(BusinessYService servicey){
-		this.servicey = servicey;
-	}
+	
 	@RequestMapping(value="business_view/login",method=RequestMethod.GET)
 	public String loginForm(){
 		return "business_view/ac/login";
@@ -38,29 +34,47 @@ public class BusinessLoginController {
 		housemap.put("bbid", bid);
 		//사업자 아이디로 조회한 업체수
 		int houseCnt=service.houseCnt(housemap);
-		System.out.println("등록된 업체 수: " + houseCnt);
-		
 		HashMap<String,Object> business=service.login(map);
-	
 		if(business!=null){
 			session.setAttribute("bid",bid);
 			session.setAttribute("bpwd",bpwd);
-			//int a=servicey.selhnum(bid);
-			//session.setAttribute("house_num", a);
-			model.addAttribute("houseCnt",houseCnt);
-			if(houseCnt>0){
+			session.setAttribute("houseCnt", houseCnt);
+			if(houseCnt==1)
+			{		
 				int a=servicey.selhnum(bid);
 				session.setAttribute("house_num", a);
+				int approval=service.approval(housemap);
+				session.setAttribute("approval", approval);
+				if(approval==2){
+					return ".business_view.ac.main_sub2";
+				}else if(approval==1){
 				return ".business";
-			}else{
+				}else{
+					return ".business_view.ac.main_sub";
+				}
+			}else if(houseCnt==0){
 				return ".business_view.ac.main_sub";
+			}else{
+				List<HashMap<String, Object>> comlist=servicey.selhnumlist(bid);
+				model.addAttribute("comlist",comlist);
+				return ".business";
 			}
 		}else{
 			return "business_view/ac/login";
 		}
 	}
 	@RequestMapping(value="business/loginok",method=RequestMethod.GET)
-	public String gomyBesiness(){
+	public String gomyBesiness(HttpSession session){
+		int houseCnt=(Integer)session.getAttribute("houseCnt");
+		if(houseCnt>0){
+			return ".business";
+		}else{
+			return ".business_view.ac.main_sub";
+		}
+	}
+	
+	@RequestMapping(value="business1/loginok",method=RequestMethod.GET)
+	public String gomyBesiness1(){
 		return ".business_view.ac.main_sub";
 	}
 }

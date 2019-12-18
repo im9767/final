@@ -73,6 +73,10 @@ public class BusinessDao {
 	public int houseCount(HashMap<String, Object> map){
 		return sqlSessionTemplate.selectOne(NAMESPACE+".housecnt",map);
 	}
+	//사업자 아이디로 승인상태구하기
+		public int selapp(HashMap<String, Object> map){
+			return sqlSessionTemplate.selectOne(NAMESPACE+".selapp",map);
+		}
 	
 }
 

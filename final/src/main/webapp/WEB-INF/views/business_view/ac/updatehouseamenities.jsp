@@ -68,7 +68,10 @@ function validate() {
 								<input type="checkbox"  style="width: 100px; height: 100px;" value="${vo.AMENITIES_NAME}" name="am"><span style="font-size: 2em;">${vo.AMENITIES_NAME}</span><br>
 								</c:forEach>
 								<hr style="width: 900px;">
-								<div id="subitem"></div>						
+								<div id="subitem"></div>
+								<a href="${cp}/business/view"
+											class="btn btn-secondary btn-icon-split"><span>뒤로가기</span>
+										</a>					
 								 <input type="submit" class="btn btn-primary btn-icon-split"
 									style="float: right; margin-right:50px;" value="수정" onclick="valiDate()">
 							</form>

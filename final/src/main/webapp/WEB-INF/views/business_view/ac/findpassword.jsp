@@ -38,29 +38,23 @@
 							<div class="p-5">
 								<div class="text-center">
 									<!-- 여기가 로그인창 위쪽 글씨 나오게 하는곳 -->
-									<h1 class="h4 text-gray-900 mb-4">사장님 로그인!</h1>
+									<h1 class="h4 text-gray-900 mb-4">비밀번호찾기</h1>
 								</div>
 
 								<form method="post"
-									action="${pageContext.request.contextPath }/business_view/loginok">
+									action="${pageContext.request.contextPath }/business_view/sendemail">
 									<div class="form-group">
 										<input type="text" class="form-control form-control-user"
 											name="bid" id="bid" placeholder="아이디 입력">
 									</div>
 									<div class="form-group">
-										<input type="password" class="form-control form-control-user"
-											name="bpwd" id="bpwd" placeholder="비밀번호 입력">
+										<input type="text" class="form-control form-control-user"
+											name="bemail" id="bemail" placeholder="이메일 입력">
 									</div>
 									<input type="submit" class="btn btn-primary btn-user btn-block"
 										value="로그인">
 									<hr>
 								</form>
-								<div class="text-center">
-               				 <a class="small" href="${cp}/business_view/findpassword">비밀번호 찾기</a>
-             			 </div>			
-								 <div class="text-center">
-               				 <a class="small" href="${cp}/business_view/insertbusiness">사업자 가입</a>
-             			 </div>
 							</div>
 						</div>
 					</div>

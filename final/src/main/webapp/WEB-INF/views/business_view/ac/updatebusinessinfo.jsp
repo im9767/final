@@ -38,14 +38,14 @@
 		<div class="card o-hidden border-0 shadow-lg my-5">
 			<div class="card-body p-0">
 				<!-- Nested Row within Card Body -->
-				<div class="row" style="height: 500px">
+				<div class="row" style="height: 600px">
 					<div class="col-lg-7" style="margin-left: 100px; margin-top: 20px;">
 						<div class="text-center">
 							<h1 class="h4 text-gray-900 mb-4" style="text-align: left;">사업자 정보 수정</h1>
 						</div>
-						<div class="user" style="width: 900px; height: 700px;">
+						<div class="user" style="width: 900px; height: 800px;">
 							<c:forEach var="vo" items="${businessinfolist}">
-								<form method="POST" action="${cp}/business_view/updatebusinessinfook">									
+								<form method="POST" action="${cp}/business_view/updatebusinessinfook" enctype="multipart/form-data">									
 									<div class="input-group input-group-sm mb-3" style="width:600px;">
 											<div class="input-group-prepend">
 												<span class="input-group-text" id="inputGroup-sizing-sm">사업자명</span>
@@ -93,10 +93,30 @@
 											<input type="text" name="bemail" id="bemail" class="form-control"
 												aria-label="Sizing example input"
 												aria-describedby="inputGroup-sizing-sm" value="${vo.BUSINESS_EMAIL}">
-											</div>									
+											</div>
+											<div class="input-group input-group-sm mb-3" style="width:600px;">
+											<div class="input-group-prepend">
+												<span class="input-group-text" id="inputGroup-sizing-sm">소개</span>
+											</div>
+											<input type="text" name="intro" id="intro" class="form-control"
+												aria-label="Sizing example input"
+												aria-describedby="inputGroup-sizing-sm" value="${vo.INTRO}">
+											</div>
+											<div class="input-group input-group-sm mb-3" style="width:600px;">
+											<div class="input-group-prepend">
+												<span class="input-group-text" id="inputGroup-sizing-sm">비밀번호</span>
+											</div>
+											<input type="text" name="bpwd" id="bpwd" class="form-control"
+												aria-label="Sizing example input"
+												aria-describedby="inputGroup-sizing-sm" value="${vo.BUSINESS_PWD}">
+											</div>										
+											<div class="input-group-prepend">
+												<span class="input-group-text" id="inputGroup-sizing-sm">업소 이미지 변경</span>&nbsp;
+											<input type="file" name="file" id="file" style="height: 30px;"><span style="color: red">*이미지 필수</span>	
+											</div>						
 									<hr style="width: 900px;">								
 									<div style="float: right">
-										<a href="${cp}/admin_view/noticeboard"
+										<a href="${cp}/business/view"
 											class="btn btn-secondary btn-icon-split"><span>뒤로가기</span>
 										</a> <input type="submit" class="btn btn-primary btn-icon-split"
 											value="수정하기">

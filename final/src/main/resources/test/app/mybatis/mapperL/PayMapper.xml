@@ -3,12 +3,36 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="test.app.mybatis.mapperL.PayMapper">
+	<!-- 관리자모드에서의 월매출 구하기  -->
 	<select id="monthsale" resultType="int" parameterType="hashmap">
 		select NVL(sum(pay),0) from payment where substr(pay_day,1,2)=#{year} and substr(pay_day,4,2)=#{month}
 	</select>
+	<!-- 사업자모드에서의 월매출 구하기(사업자아이디 필요) -->
+	<select id="businessMonthSale" resultType="int" parameterType="hashmap">
+		select NVL(sum(p.pay),0) as 합계
+		from payment p, booking_table b,rooms r, house h
+		where p.booking_num=b.booking_num
+		and b.room_num=r.room_num
+		and r.house_num=h.house_num
+		and substr(p.pay_day,1,2)=#{year}
+		and substr(p.pay_day,4,2)=#{month}
+		and h.business_id=#{bid}
+	</select>
+	<!-- 관리자모드에서 기간별 매출액 구하기 -->
 	<select id="periodsale" resultType="int" parameterType="hashmap">
 		select NVL(sum(pay),0) from payment 
 		<![CDATA[where pay_day >= #{startday} and pay_day <= #{endday}]]>
+	</select>
+	<!-- 사업자모드에서 기간별 매출액 구하기 -->
+	<select id="businessPeriod" resultType="int" parameterType="hashmap">
+		select NVL(sum(p.pay),0) as 합계
+		from payment p, booking_table b,rooms r, house h
+		where p.booking_num=b.booking_num
+		and b.room_num=r.room_num
+		and r.house_num=h.house_num
+		and h.business_id=#{bid}
+		<![CDATA[and pay_day >= #{startday}
+		and pay_day <= #{endday}]]>
 	</select>
 	<select id="memberslist" resultType="hashmap">
 		select 
@@ -25,11 +49,21 @@
 		where
 			m.gnum=g.gnum
 	</select>
-	
+	<!-- 관리자모드 업종별 갯수 구하기 -->
 	<select id="companycount" resultType="int" parameterType="hashmap">
 		select NVL(count(*),0) from house
 		<if test="company!='20' and company!=null">
 			where bnum=#{company}
+		</if>
+	</select>
+	<!-- 사업자모드 업종별 갯수 구하기 -->
+	<select id="businesscount" resultType="int" parameterType="hashmap">
+		select nvl(count(*),0)
+		from b_event b, house h
+		where b.bnum=h.bnum
+		and h.business_id=#{bid}
+		<if test="company!='20' and company!=null">
+			and b.bnum=#{company}
 		</if>
 	</select>
 	<select id="chartcount" resultType="hashmap">
@@ -37,10 +71,24 @@
 		group by bnum 
 		order by bnum
 	</select>
+	<!-- 관리자모드에서 년,월에 대한 통계 -->
 	<select id="statics" parameterType="hashmap" resultType="hashmap">
 		select nvl(sum(pay),0) as pay, to_char(pay_day,'YYYY/MM') as pay_day, LTRIM(substr(to_char(pay_day,'YYYY/MM'),6,2),'0') as month
 		from payment 
 		<![CDATA[where pay_day>=#{year}||'-01-01' and pay_day<#{years}||'-01-01']]>
+		group by to_char(pay_day,'YYYY/MM')
+		order by pay_day
+	</select>
+	<!-- 사업자모드에서 년,월에 대한 통계 -->
+	<select id="businessStatics" parameterType="hashmap" resultType="hashmap">
+		select nvl(sum(pay),0) as pay, to_char(p.pay_day,'YYYY/MM') as pay_day
+		, LTRIM(substr(to_char(pay_day,'YYYY/MM'),6,2),'0') as month
+		from payment p, booking_table b, rooms r, house h
+		where p.booking_num=b.booking_num
+		and b.room_num=r.room_num
+		and r.house_num=h.house_num
+		and <![CDATA[p.pay_day>=#{year}||'-01-01' and p.pay_day<#{years}||'-01-01']]>
+		and h.business_id=#{bid}
 		group by to_char(pay_day,'YYYY/MM')
 		order by pay_day
 	</select>

@@ -91,6 +91,10 @@ public class BusinessService {
 	public int houseCnt(HashMap<String, Object> map){
 		return dao.houseCount(map);
 	}
+	//사업자 아이디로 승인상태 구하기		
+	public int approval(HashMap<String, Object> map){
+			return dao.selapp(map);
+		}
 }
 
 

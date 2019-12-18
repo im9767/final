@@ -41,8 +41,17 @@ public class AdminDao {
 	public int appupdate(int house_Num){
 		return sqlSessionTemplate.update("test.app.mybatis.mapperY.AdminMapper.appupdate",house_Num);
 	}
+	public int appfail(int house_Num){
+		return sqlSessionTemplate.update("test.app.mybatis.mapperY.AdminMapper.appfail",house_Num);
+	}
 	public int appdelete(int house_Num){
 		return sqlSessionTemplate.delete("test.app.mybatis.mapperY.AdminMapper.appdelete",house_Num);
+	}
+	public int himgdelete(int house_Num){
+		return sqlSessionTemplate.delete("test.app.mybatis.mapperY.AdminMapper.himgdelete",house_Num);
+	}
+	public int hintrodelete(int house_Num){
+		return sqlSessionTemplate.delete("test.app.mybatis.mapperY.AdminMapper.hintrodelete",house_Num);
 	}
 	//공지사항
 	public List<NoticeVo> nlistAll(){
