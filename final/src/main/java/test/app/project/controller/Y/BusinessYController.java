@@ -31,8 +31,8 @@ public class BusinessYController {
 	//사업자정보 수정페이지 이동
 	@RequestMapping(value="business_view/updatebusinessinfo",method=RequestMethod.GET)
 	public ModelAndView upinfo(HttpSession session){
-		String bid=(String)session.getAttribute("bid");
-		List<HashMap<String,Object>> list = service.biflist(bid);
+		int house_num=(Integer)session.getAttribute("house_num");
+		List<HashMap<String,Object>> list = service.biflist(house_num);
 		System.out.println(list);
 		ModelAndView mv = new ModelAndView("business_view/ac/updatebusinessinfo");
 		mv.addObject("businessinfolist", list);
@@ -50,9 +50,9 @@ public class BusinessYController {
 		map.put("bcompany", bcompany);
 		map.put("blicense", blicense);
 		map.put("bworkplace", bworkplace);
+		map.put("bid", bid);
 		map.put("bcom_tel", bcom_tel);
 		map.put("bemail", bemail);
-		map.put("bid", bid);
 		map.put("intro", intro);
 		map.put("bpwd", bpwd);
 		int house_num=(Integer)session.getAttribute("house_num");
@@ -213,6 +213,7 @@ public class BusinessYController {
 						mv.addObject("selam2", list);
 						return mv;
 				}
+				
 				//업체 재등록체크
 				@RequestMapping(value = "business_view/updatehouseok", method = RequestMethod.POST)
 				public String uphouseok2(int bnum,String intro,String checkintime,String checkouttime,String company,String license,String ceo,String orgaddr,

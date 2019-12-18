@@ -48,11 +48,11 @@
 		update rooms set roomname=#{roomname},room_price=#{room_price},room_info=#{room_info},max_personnel=#{max_Personnel} where room_num=#{room_num}
 	</update>
 	<!-- 사업자 개인정보 조회 -->
-	<select id="biflist"  parameterType="String" resultType="hashmap">
-		select * from house h,business_join j where h.business_id=j.business_id and j.business_id=#{id}
+	<select id="biflist"  parameterType="int" resultType="hashmap">
+		select * from house h,business_join j where h.business_id=j.business_id and h.house_num=#{house_num}
 	</select>
 	<update id="inupbinfo" parameterType="hashmap">
-		update house set ceo=#{bname},company=#{bcompany},license=#{blicense},workplace=#{bworkplace},com_tel=#{bcom_tel},intro=#{intro} where business_id=#{bid}
+		update house set ceo=#{bname},company=#{bcompany},license=#{blicense},workplace=#{bworkplace},com_tel=#{bcom_tel},intro=#{intro} where house_num=#{house_num}
 	</update>
 	<update id="inupbjinfo" parameterType="hashmap">
 		update business_join set business_email=#{bemail},business_pwd=#{bpwd} where business_id=#{bid}
@@ -95,6 +95,10 @@
 	<update id="changepwdy"  parameterType="test.app.project.vo.BusinessVo" >
 		update business_join set business_pwd=#{bpwd} where business_email=#{bemail} and business_id=#{bid}
 	</update>
+	<!-- 사업자 여러업체 번호 조회 -->
+	<select id="selhnumlist"  parameterType="String" resultType="hashmap">
+		select house_num,company from house where business_id=#{bid}
+	</select>
 </mapper>
 
 

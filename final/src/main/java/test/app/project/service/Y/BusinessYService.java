@@ -89,8 +89,8 @@ public class BusinessYService {
 			return dao.himgsavename(house_num);
 		}
 	// 사업자
-	public List<HashMap<String, Object>> biflist(String id) {
-		return dao.biflist(id);
+	public List<HashMap<String, Object>> biflist(int house_num) {
+		return dao.biflist(house_num);
 	}
 
 	@Transactional(rollbackFor = Exception.class)
@@ -172,6 +172,11 @@ public class BusinessYService {
 		}
 		public int changepwdy(BusinessVo vo){
 			return dao.changepwdy(vo);
+			
+		}
+		//사업자 여러업체 번호 가져오기
+		public List<HashMap<String, Object>> selhnumlist(String bid){
+			return dao.selhnumlist(bid);
 			
 		}
 }

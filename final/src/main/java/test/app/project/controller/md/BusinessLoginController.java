@@ -1,6 +1,7 @@
 package test.app.project.controller.md;
 
 import java.util.HashMap;
+import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -19,12 +20,7 @@ public class BusinessLoginController {
 	private BusinessService service;
 	@Autowired
 	private BusinessYService servicey;
-	public void setServcie(BusinessService service){
-		this.service = service;
-	}
-	public void setServcieY(BusinessYService servicey){
-		this.servicey = servicey;
-	}
+	
 	@RequestMapping(value="business_view/login",method=RequestMethod.GET)
 	public String loginForm(){
 		return "business_view/ac/login";
@@ -44,7 +40,7 @@ public class BusinessLoginController {
 			session.setAttribute("bid",bid);
 			session.setAttribute("bpwd",bpwd);
 			session.setAttribute("houseCnt", houseCnt);
-			if(houseCnt>0)
+			if(houseCnt==1)
 			{		
 				int a=servicey.selhnum(bid);
 				session.setAttribute("house_num", a);
@@ -57,8 +53,12 @@ public class BusinessLoginController {
 				}else{
 					return ".business_view.ac.main_sub";
 				}
-			}else{
+			}else if(houseCnt==0){
 				return ".business_view.ac.main_sub";
+			}else{
+				List<HashMap<String, Object>> comlist=servicey.selhnumlist(bid);
+				model.addAttribute("comlist",comlist);
+				return ".business";
 			}
 		}else{
 			return "business_view/ac/login";

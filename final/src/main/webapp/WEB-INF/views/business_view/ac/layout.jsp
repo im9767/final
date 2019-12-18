@@ -217,7 +217,7 @@ $(function(){
       <!-- Nav Item - Pages Collapse Menu -->
       
       <c:choose>
-      	<c:when test="${houseCnt>0 && approval==1}">      
+      	<c:when test="${houseCnt==1 && approval==1}">      
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsemember" aria-expanded="true" aria-controls="collapsemember">
           <i class="fas fa-fw fa-folder"></i>
@@ -283,9 +283,33 @@ $(function(){
       <!-- Nav Item - Tables -->
   
       	</c:when>
-      	<c:when test="${approval==2 && houseCnt>0}">
+      	<c:when test="${houseCnt>1}">      
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsemember" aria-expanded="true" aria-controls="collapsemember">
+          <i class="fas fa-fw fa-folder"></i>
+          <span>업체선택</span>
+        </a>
+        <div id="collapsemember" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Custom Utilities:</h6>
+            
+            <c:forEach var="vo" items="${comlist}">
+             <a class="collapse-item" href="${cp}/business_view/view?house_num=${vo.HOUSE_NUM}">${vo.COMPANY}</a>
+          	</c:forEach>
+          </div>
+        </div>
+      </li>       
+      	</c:when>
+      	<c:when test="${approval==2 && houseCnt==1}">
       		 <li class="nav-item">
         <a class="nav-link" href="${cp}/business_view/updatehouse">
+          <i class="fas fa-fw fa-table"></i>
+          <span>업체등록</span></a>
+      </li>
+      	</c:when>
+      	<c:when test="${approval==0 && houseCnt==1 }">
+      		 <li class="nav-item">
+        <a class="nav-link" href="${cp}/business_view/inserthouse">
           <i class="fas fa-fw fa-table"></i>
           <span>업체등록</span></a>
       </li>
