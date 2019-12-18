@@ -57,6 +57,7 @@ $(function(){
 	setInterval(() => {
 		$("#mmsg").css("color",cols[index++]);
 		if(index==3) index=0;
+		
 	}, 700);
 });
 </script>
@@ -67,11 +68,8 @@ $(function(){
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-<<<<<<< HEAD
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="${cp}/business/loginok">
-=======
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="${cp}/business/main">
->>>>>>> refs/heads/cho123
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laugh-wink"></i>
         </div>
