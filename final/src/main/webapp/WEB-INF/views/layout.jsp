@@ -36,7 +36,6 @@
 	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 
 
-
 	<!-- 수량박스 css 추가 -->
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/styles/counter.css">
 	<!-- 체크박스 css -->
@@ -46,13 +45,11 @@
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-
-	<!-- 결제 연동 api -->
-	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
-
 	<!-- 부트스트랩 기본 css -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+	
+	
 	
 	<link rel="icon" type="image/png" sizes="16x16" href="${cp }/resources/favicon/favicon-16x16.png">
 	
