@@ -7,6 +7,7 @@ import java.util.List;
 import test.app.project.vo.CouponVo;
 import test.app.project.vo.MembersVo;
 import test.app.project.vo.QnaboardVo;
+import test.app.project.vo.ReviewVo;
 
 public interface MembersDao {
 	
@@ -41,5 +42,13 @@ public interface MembersDao {
 	public List<HashMap<String, Object>> bookingList(HashMap<String, Object> map);
 	
 	public int bookingCount(String mid);
+	
+	public List<HashMap<String, Object>> paymentList(HashMap<String, Object> map);
+	
+	public int paymentCount(String mid);
+	
+	public int reviewInsert(ReviewVo vo,HashMap<String, Object> map);
+	
+	public int reviewImgInsert(HashMap<String, Object> map);
 	
 }

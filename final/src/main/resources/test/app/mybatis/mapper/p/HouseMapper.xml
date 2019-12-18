@@ -59,6 +59,8 @@
 				AND b.start_date(+) < TO_DATE(#{edt}, 'yyyy/mm/dd')
 				AND b.end_date  (+) > TO_DATE(#{sdt}, 'yyyy/mm/dd')
 				AND b.end_date IS NULL]]>
+
+				
 			
 	</select>
 	
@@ -176,6 +178,7 @@
 				AND b.start_date(+) < TO_DATE(#{edt}, 'yyyy/mm/dd')
 				AND b.end_date  (+) > TO_DATE(#{sdt}, 'yyyy/mm/dd')
 				AND b.end_date IS NULL]]>
+
 		
 	</select>
 	
@@ -219,6 +222,13 @@
 				house_img
 		WHERE
 				house_num = #{house_num}
+	
+	</select>
+	
+	<!-- 날짜 null일때 날짜 구해오기 -->
+	<select id="getDate" resultType="hashmap">
+	
+		SELECT TO_CHAR(sysdate,'yyyy/mm/dd') sdt,TO_CHAR(sysdate+1,'yyyy/mm/dd') edt FROM DUAL
 	
 	</select>
 	
