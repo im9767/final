@@ -30,6 +30,7 @@
 			      <th scope="col">결제 금액</th>
 			      <th scope="col">결제일</th>
 			      <th scope="col">결제 유형</th>
+			      <th scope="col">리뷰 작성</th>
 			    </tr>
 			  </thead>
 			  <tbody>
@@ -41,6 +42,23 @@
 				  		<td style="vertical-align:middle;">${dc.format(paymentList.PAY) }원</td>
 				  		<td style="vertical-align:middle;">${paymentList.PAY_DAY }</td>
 				  		<td style="vertical-align:middle;">${paymentList.PAYMENT_TYPE }</td>
+				  		<c:choose>
+				  			<c:when test="${paymentList.compare >= 0 }">
+				  			
+				  				<td style="vertical-align:middle;">
+				  					<a class="btn btn-danger" href="${cp }/members/reviewWrite?house_save_name=${paymentList.HOUSE_SAVE_NAME }&room_num=${paymentList.ROOM_NUM}&roomname=${paymentList.ROOMNAME}&company=${paymentList.COMPANY}">
+				  						리뷰 작성
+				  					</a>
+				  				</td>		
+				  			
+				  			</c:when>
+				  			<c:otherwise>
+				  			
+				  				<td style="vertical-align:middle;"><button type="button" class="btn btn-light" disabled >리뷰 작성</button></td>		
+				  							  			
+				  			</c:otherwise>
+				  		</c:choose>
+				  		
 				  	</tr>
 			  	</c:forEach>
 			  </tbody>

@@ -5,11 +5,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import test.app.project.daoimpl.p.MembersDaoImpl;
 import test.app.project.vo.CouponVo;
 import test.app.project.vo.MembersVo;
 import test.app.project.vo.QnaboardVo;
+import test.app.project.vo.ReviewVo;
 
 @Service
 public class MembersService {
@@ -108,5 +110,23 @@ public class MembersService {
 	// 회원 결제내역 개수
 	public int paymentCount(String mid){
 		return membersDaoImpl.paymentCount(mid);
+	}
+	
+	// 리뷰 등록하기
+	@Transactional
+	public int reviewInsert(ReviewVo vo, HashMap<String,  Object> map){
+		
+		membersDaoImpl.reviewInsert(vo, map);
+		
+		System.out.println("review_num:"+vo.getReview_num());
+		
+		map.put("review_num", vo.getReview_num());
+		
+		if(map.size() > 1){
+			int n = membersDaoImpl.reviewImgInsert(map);
+			System.out.println("n:"+n);
+		}
+		return 1;
+		
 	}
 }

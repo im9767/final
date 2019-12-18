@@ -213,10 +213,13 @@
 	                    h.company,
 				        himg.house_save_name,
 				        r.roomname,
+				        r.room_num,
 	                    p.pay_num,
 	                    p.pay,
 	                    TO_CHAR(p.pay_day,'yyyy.mm.dd') pay_day,
-	                    p.payment_type
+	                    p.payment_type,
+	                    TO_CHAR(b.end_date,'yyyy/mm/dd') end_date,
+	                    TO_CHAR(sysdate,'yyyy/mm/dd') sdate
 				FROM
 				        house h,
 				        house_img himg,
@@ -249,4 +252,38 @@
 				AND b.mid=#{mid}
 	
 	</select>
+	
+	<insert id="reviewInsert" parameterType="review">
+	
+		INSERT INTO review VALUES(review_seq.nextval,#{room_num},#{mid},#{review_title},#{review_content},sysdate,#{kindness},#{clean},#{convenience})
+		<selectKey keyProperty="review_num" resultType="int" order="AFTER"> 
+		
+			SELECT review_seq.currval FROM dual 
+		
+		</selectKey>
+	
+	</insert>
+	
+	<insert id="reviewImgInsert" parameterType="hashmap">
+				<!-- 다중insert max값 얻어와서 적용 방법 sequence사용 시 값 중복으로 오류 -->
+<!-- 			<foreach collection="img" item="item" index="index" open="INSERT ALL" separator=" " close="SELECT * FROM DUAL"> -->
+<!-- 				 INTO review_img(review_img_num, review_num, review_org_name, review_save_name) -->
+<!-- 				VALUES -->
+<!-- 				((SELECT NVL(MAX(review_img_num)+1) FROM review_img)+#{index}, #{review_num}, #{item.review_org_name}, #{item.review_save_name}) -->
+<!-- 			</foreach> -->
+			
+			<!-- 다중 insert에서 시퀀스 사용하는 방법 -->
+			insert into review_img(review_img_num, review_num, review_org_name, review_save_name)
+			select review_img_seq.nextval, A.* from(
+			 <foreach item="item" collection="img" separator="UNION ALL " >
+			   select #{review_num} as review_num,
+			          #{item.review_org_name} as review_org_name,
+			          #{item.review_save_name} as review_save_name
+			   from dual
+			 </foreach>) A
+
+		
+
+	</insert>
+
 </mapper>

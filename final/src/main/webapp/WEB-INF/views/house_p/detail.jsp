@@ -378,7 +378,7 @@
 						  	<div style="margin-top:15px;">
 							  	<c:forEach var="image" items="${review.review_img }">
 							  		<c:if test="${review.review_num == image.review_num && not empty image.review_save_name }">
-							  			<img src="${cp }/resources/review_icon/${image.review_save_name}" class="mr-3" alt="..." style="width:100px;height:100px;">
+							  			<img src="${cp }/resources/upload/${image.review_save_name}" class="mr-3" alt="..." style="width:100px;height:100px;">
 							  		</c:if>
 							  	</c:forEach>
 						  	</div>

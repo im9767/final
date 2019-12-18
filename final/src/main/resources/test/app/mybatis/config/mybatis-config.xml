@@ -26,6 +26,8 @@
 		<typeAlias type="test.app.project.vo.HouseintroVo" alias="houseintro"/>
 		<typeAlias type="test.app.project.vo.RoomsImgVo" alias="roomsImg"/>
 		<typeAlias type="test.app.project.vo.PaymentVo" alias="payment"/>
+		<typeAlias type="test.app.project.vo.ReviewVo" alias="review"/>
+		<typeAlias type="test.app.project.vo.ReiewImgVo" alias="reviewImg"/>
 	</typeAliases>
 
 	<mappers>
