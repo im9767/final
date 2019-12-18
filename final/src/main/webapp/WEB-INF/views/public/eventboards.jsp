@@ -15,18 +15,18 @@
 		        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse_${i.index }" aria-expanded="true" aria-controls="collapse_${i.index }">
 		      
 		          ${event.etitle }<br>
-		      	<img src="../resources/upload/${event.savefilename}" style="width: 1024px; height:297px;"><br>
+		      	
 		        </button>
 		      </h2>
 		    </div>
-		.
+		
 		    <div id="collapse_${i.index }" class="collapse" aria-labelledby="heading_${i.index }" data-parent="#accordionExample">
 		      <div class="card-body">
 		      
 		      		
 		      		<p>${event.eregdate }</p>
 		      		<p>${event.etitle }</p>
-		      
+		      <img src="../resources/upload/${event.savefilename}" style="width: 1024px; height:297px;"><br>
 		      </div>
 		    </div>
 		  </div>
