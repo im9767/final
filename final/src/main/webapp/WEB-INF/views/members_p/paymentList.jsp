@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<title>결제 내역</title>
+
 <div class="mypage-wrap">
 		
 	<!-- 마이페이지 헤더 -->

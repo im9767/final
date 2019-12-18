@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
+<title>마이페이지</title>
+
 <div class="mypage-wrap">
 		
 	<!-- mypage header -->
