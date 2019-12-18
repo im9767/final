@@ -12,6 +12,7 @@ import test.app.project.dao.p.MembersDao;
 import test.app.project.vo.CouponVo;
 import test.app.project.vo.MembersVo;
 import test.app.project.vo.QnaboardVo;
+import test.app.project.vo.ReviewVo;
 
 @Repository
 public class MembersDaoImpl implements MembersDao{
@@ -130,5 +131,31 @@ public class MembersDaoImpl implements MembersDao{
 	public int bookingCount(String mid) {
 		return sqlSessionTemplate.selectOne(NAMESPACE+".bookingCount", mid);
 	}
+	
+	// 회원의 결제내역 조회
+	@Override
+	public List<HashMap<String, Object>> paymentList(HashMap<String, Object> map) {
+		return sqlSessionTemplate.selectList(NAMESPACE+".paymentList", map);
+	}
+	
+	// 회원 결제내역 개수
+	@Override
+	public int paymentCount(String mid) {
+		return sqlSessionTemplate.selectOne(NAMESPACE+".paymentCount", mid);
+	}
+	
+	
+	// 리뷰 등록하기
+	@Override
+	public int reviewInsert(ReviewVo vo, HashMap<String, Object> map) {
+		return sqlSessionTemplate.insert(NAMESPACE+".reviewInsert", vo);
+	}
+
+	// 리뷰 이미지 등록하기
+	@Override
+	public int reviewImgInsert(HashMap<String, Object> map) {
+		return sqlSessionTemplate.insert(NAMESPACE+".reviewImgInsert", map);
+	}
+	
 	
 }
