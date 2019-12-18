@@ -48,15 +48,26 @@
 		update rooms set roomname=#{roomname},room_price=#{room_price},room_info=#{room_info},max_personnel=#{max_Personnel} where room_num=#{room_num}
 	</update>
 	<!-- 사업자 개인정보 조회 -->
-	<select id="biflist"  parameterType="String" resultType="hashmap">
-		select * from house h,business_join j where h.business_id=j.business_id and j.business_id=#{id}
+	<select id="biflist"  parameterType="int" resultType="hashmap">
+		select * from house h,business_join j where h.business_id=j.business_id and h.house_num=#{house_num}
 	</select>
 	<update id="inupbinfo" parameterType="hashmap">
-		update house set ceo=#{bname},company=#{bcompany},license=#{blicense},workplace=#{bworkplace},com_tel=#{bcom_tel} where business_id=#{bid}
+		update house set ceo=#{bname},company=#{bcompany},license=#{blicense},workplace=#{bworkplace},com_tel=#{bcom_tel},intro=#{intro} where house_num=#{house_num}
 	</update>
-	<update id="inupbjinfo" parameterType="map">
-		update business_join set business_email=#{bemail} where business_id=#{bid}
+	<update id="inupbjinfo" parameterType="hashmap">
+		update business_join set business_email=#{bemail},business_pwd=#{bpwd} where business_id=#{bid}
 	</update>
+	<update id="inupbimg" parameterType="hashmap">
+		update house_img set house_org_name=#{house_org_name},house_save_name=#{house_save_name} where house_num=#{house_num}
+	</update>
+	<!-- 업체 이미지 저장이름 -->
+	<select id="himgsavename"  parameterType="int" resultType="String">
+		select house_save_name from house_img where house_num=#{house_num} 
+	</select>
+	<!-- 업체 이미지 삭제 -->
+	<delete id="houseImgdelete"  parameterType="int" >
+		delete house_img where house_num=#{house_num} 
+	</delete>
 	<!-- 업체 -->
 	<select id="selhnum"  parameterType="String" resultType="int">
 		select h.house_num from business_join j,house h where j.business_id=h.business_id and j.business_id=#{bid}
@@ -73,6 +84,26 @@
 	<insert id="inh"  parameterType="test.app.project.vo.HouseVo">
 		insert into house values(house_seq.nextval,#{bnum},#{intro},#{checkintime},#{checkouttime},#{company},#{license},#{ceo},#{orgaddr},#{workplace},#{com_Tel},0,#{business_id})
 	</insert>
+	<!-- 업체 재등록 -->
+	<update id="uph"  parameterType="test.app.project.vo.HouseVo">
+		update house set bnum=#{bnum},intro=#{intro},checkintime=#{checkintime},checkouttime=#{checkouttime},company=#{company},license=#{license},ceo=#{ceo},orgaddr=#{orgaddr},workplace=#{workplace},com_tel=#{com_Tel},approval=0 where business_id=#{business_id}
+	</update>
+	<!-- 사업자 비번찾기 -->
+	<select id="findpwdy"  parameterType="hashmap" resultType="test.app.project.vo.BusinessVo">
+		select * from business_join where business_id=#{bid} and business_email=#{bemail}
+	</select>
+	<update id="changepwdy"  parameterType="test.app.project.vo.BusinessVo" >
+		update business_join set business_pwd=#{bpwd} where business_email=#{bemail} and business_id=#{bid}
+	</update>
+	<!-- 사업자 여러업체 번호 조회 -->
+	<select id="selhnumlist"  parameterType="String" resultType="hashmap">
+		select house_num,company from house where business_id=#{bid}
+	</select>
+	<!-- 예약회원조회-->
+	<select id="allbooking" parameterType="int"   resultType="hashmap">
+		select b.booking_num,r.roomname,m.mid,m.mname,b.name,m.mphone,TO_CHAR(b.start_date,'YYYY-MM-DD') start_date,TO_CHAR(b.end_date,'YYYY-MM-DD') end_date from house h,rooms r,booking_table b,members m
+where h.house_num=r.house_num and r.room_num=b.room_num and m.mid=b.mid and h.house_num=#{house_num} order by b.books_date desc
+	</select>
 </mapper>
 
 

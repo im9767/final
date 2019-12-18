@@ -28,7 +28,9 @@
 		<typeAlias type="test.app.project.vo.PaymentVo" alias="payment"/>
 		<typeAlias type="test.app.project.vo.EventVo" alias="event"/>
 		<typeAlias type="test.app.project.vo.EventImgVo" alias="EventImgVo"/>
-		
+		<typeAlias type="test.app.project.vo.ReviewVo" alias="review"/>
+		<typeAlias type="test.app.project.vo.ReiewImgVo" alias="reviewImg"/>
+
 	</typeAliases>
 
 	<mappers>

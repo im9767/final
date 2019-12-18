@@ -21,31 +21,31 @@
 			<form action="${pageContext.request.contextPath }/members/infoupdate" method="post" onsubmit="return validation()" style="margin-left:10px;">
 			  <div class="form-group">
 			    <label for="exampleInputEmail1">이름</label>
-			    <input value="${vo.mname }" type="text" class="form-control" id="mname" name="mname" aria-describedby="emailHelp" style="width:500px;" readonly>
-			    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+			    <input value="${vo.mname }" type="text" class="form-control" id="mname" name="mname" aria-describedby="emailHelp" style="width:500px;text-align: left;" readonly>
+			    <small id="emailHelp" class="form-text text-muted">이름은 변경 할 수 없습니다.</small>
 			  </div>
 			  
 			  <div class="form-group">
 			    <label for="exampleInputEmail1">아이디</label>
-			    <input value="${vo.mid }" type="text" class="form-control" id="mid" name="mid" aria-describedby="emailHelp" style="width:500px;" readonly>
-			    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+			    <input value="${vo.mid }" type="text" class="form-control" id="mid" name="mid" aria-describedby="emailHelp" style="width:500px;text-align: left;" readonly>
+			    <small id="emailHelp" class="form-text text-muted">아이디는 변경 할 수 없습니다.</small>
 			  </div>
 			  
 			  <div class="form-group">
 			    <label for="exampleInputPassword1">비밀번호</label>
-			    <input value="${vo.mpwd }" type="password" class="form-control" id="mpwd" name="mpwd" style="width:500px;">
+			    <input value="${vo.mpwd }" type="password" class="form-control" id="mpwd" name="mpwd" style="width:500px;text-align: left;">
+			    <small id="emailHelp" class="form-text text-muted">비밀번호는 영문/숫자/특수 문자를 포함한 8자이상 입력</small>
 			  </div>
 			  
 			  
 			  <div class="form-group">
 			    <label for="exampleInputEmail1">이메일</label>
-			    <input value="${vo.memail }" type="email" class="form-control" id="memail" name="memail" aria-describedby="emailHelp" style="width:500px;">
-			    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+			    <input value="${vo.memail }" type="email" class="form-control" id="memail" name="memail" aria-describedby="emailHelp" style="width:500px;text-align: left;">
 			  </div>
 			  
 			  <div class="form-group">
 			    <label for="exampleInputPassword1">전화번호</label>
-			    <input value="${vo.mphone }" type="text" class="form-control" id="mphone" name="mphone" style="width:500px;">
+			    <input value="${vo.mphone }" type="text" class="form-control" id="mphone" name="mphone" style="width:500px;text-align: left;">
 			  </div>
 			  
 			  

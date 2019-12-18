@@ -38,4 +38,28 @@ public class Paymentimpl implements PaymentDao{
 	public List<HashMap<String, Object>> statics(HashMap<String, Object> map) {
 		return sqlSessionTemplate.selectList(NAMESPACE+".statics",map);
 	}
+	@Override
+	public int businessMonthsale(HashMap<String, Object> map) {
+		return sqlSessionTemplate.selectOne(NAMESPACE+".businessMonthSale",map);
+	}
+	@Override
+	public int businessPeriodsale(HashMap<String, Object> map) {
+		return sqlSessionTemplate.selectOne(NAMESPACE+".businessPeriod",map);
+	}
+	@Override
+	public int businesscount(HashMap<String, Object> map) {
+		return sqlSessionTemplate.selectOne(NAMESPACE+".businesscount",map);
+	}
+	@Override
+	public List<HashMap<String, Object>> businessStatics(HashMap<String, Object> map) {
+		return sqlSessionTemplate.selectList(NAMESPACE+".businessStatics",map);
+	}
+	
 }
+
+
+
+
+
+
+

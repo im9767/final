@@ -37,6 +37,7 @@ public class RoomsVo{
 	private String workplace;
 	private double avg;
 	private String bb;
+	private int cnt;
 	/**
 	 * �깮�꽦�옄.
 	 */
@@ -61,7 +62,8 @@ public class RoomsVo{
 
 	
 	public RoomsVo(int room_num, int house_num, String roomname, int room_price, String room_info, int room_check,
-			int max_Personnel, String company, String house_save_name, String workplace, double avg, String bb) {
+			int max_Personnel, String company, String house_save_name, String workplace, double avg, String bb,
+			int cnt) {
 		super();
 		this.room_num = room_num;
 		this.house_num = house_num;
@@ -75,9 +77,20 @@ public class RoomsVo{
 		this.workplace = workplace;
 		this.avg = avg;
 		this.bb = bb;
+		this.cnt = cnt;
+	}
+	
+
+	public int getCnt() {
+		return cnt;
 	}
 
-	
+
+	public void setCnt(int cnt) {
+		this.cnt = cnt;
+	}
+
+
 	public String getBb() {
 		return bb;
 	}

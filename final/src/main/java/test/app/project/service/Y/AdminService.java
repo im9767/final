@@ -25,9 +25,7 @@ public class AdminService {
 	
 	@Autowired 
 	private AdminDao dao;
-	public AdminService(AdminDao dao) {
-		this.dao = dao;
-	}
+	
 	//관리자 로그인
 	public HashMap<String,Object> login(HashMap<String,Object> map){
 		return dao.login(map);
@@ -45,8 +43,15 @@ public class AdminService {
 	public int appupdate(int house_Num){
 		return dao.appupdate(house_Num);
 	}
-	public int appdelete(int house_Num){
-		return dao.appdelete(house_Num);
+	public int appfail(int house_Num){
+		return dao.appfail(house_Num);
+	}
+	@Transactional(rollbackFor=Exception.class)
+	public int appdelete(int house_Num) throws Exception{
+		dao.himgdelete(house_Num);
+		dao.hintrodelete(house_Num);
+		dao.appdelete(house_Num);
+		 return 1;
 	}
 	//공지사항
 	public List<NoticeVo> nlistAll(){

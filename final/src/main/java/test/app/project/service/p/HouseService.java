@@ -63,4 +63,9 @@ public class HouseService {
 	public HouseImgVo houseImg(int house_num){
 		return houseDaoImpl.houseImg(house_num);
 	}
+	
+	// null일때 날짜 얻어오기
+	public HashMap<String, Object> getDate(){
+		return houseDaoImpl.getDate();
+	}
 }

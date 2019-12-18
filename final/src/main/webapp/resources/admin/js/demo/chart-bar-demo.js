@@ -28,17 +28,18 @@ function number_format(number, decimals, dec_point, thousands_sep) {
 }
 
 // Bar Chart Example
-var ctx = document.getElementById("myBarChart");
-var myBarChart = new Chart(ctx, {
+var bctx = document.getElementById("myBarChart");
+var bstr= [0,0,0,0,0,0,0,0,0,0,0,0];
+var myBarChart = new Chart(bctx, {
   type: 'bar',
   data: {
-    labels: ["January", "February", "March", "April", "May", "June"],
+    labels: ["1월", "2월", "3월", "4월", "5월", "6월","7월", "8월", "9월", "10월", "11월", "12월"],
     datasets: [{
       label: "Revenue",
       backgroundColor: "#4e73df",
       hoverBackgroundColor: "#2e59d9",
       borderColor: "#4e73df",
-      data: [4215, 5312, 6251, 7841, 9821, 14984],
+      data: [1111,2222,1111,2222,1111,2222,1111,2222,1111,2222,1111,2222],
     }],
   },
   options: {
@@ -73,13 +74,13 @@ var myBarChart = new Chart(ctx, {
           padding: 10,
           // Include a dollar sign in the ticks
           callback: function(value, index, values) {
-            return '$' + number_format(value);
+            return number_format(value) + '원';
           }
         },
         gridLines: {
           color: "rgb(234, 236, 244)",
           zeroLineColor: "rgb(234, 236, 244)",
-          drawBorder: false,
+          drawBorder: true,
           borderDash: [2],
           zeroLineBorderDash: [2]
         }

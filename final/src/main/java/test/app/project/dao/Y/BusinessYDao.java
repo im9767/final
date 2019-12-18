@@ -21,6 +21,16 @@ public class BusinessYDao {
 	public BusinessYDao(SqlSessionTemplate sqlSessionTemplate) {
 		this.sqlSessionTemplate=sqlSessionTemplate;
 	}
+	//업체 이미지 저장이름
+	public String himgsavename(int house_num){
+		return 
+		sqlSessionTemplate.selectOne("test.app.mybatis.mapperY.BusinessMapper.himgsavename",house_num);
+	}
+	//업체 이미지 삭제
+		public int houseImgdelete(int house_num){
+			return 
+			sqlSessionTemplate.delete("test.app.mybatis.mapperY.BusinessMapper.houseImgdelete",house_num);
+		}
 	//편의시설등록
 	public int inamenities(AmenitiesVo vo){
 		return 
@@ -73,14 +83,17 @@ public class BusinessYDao {
 		sqlSessionTemplate.update("test.app.mybatis.mapperY.BusinessMapper.updateroom",vo);
 	}
 	//사업자
-	public List<HashMap<String, Object>> biflist(String id){
-		return sqlSessionTemplate.selectList("test.app.mybatis.mapperY.BusinessMapper.biflist",id);
+	public List<HashMap<String, Object>> biflist(int house_num){
+		return sqlSessionTemplate.selectList("test.app.mybatis.mapperY.BusinessMapper.biflist",house_num);
 	}
 	public int inupbinfo(HashMap<String,Object> map){
 		return sqlSessionTemplate.update("test.app.mybatis.mapperY.BusinessMapper.inupbinfo",map);
 	}
 	public int inupbjinfo(HashMap<String,Object> map){
 		return sqlSessionTemplate.update("test.app.mybatis.mapperY.BusinessMapper.inupbjinfo",map);
+	}
+	public int inupbimg(HashMap<String,Object> map){
+		return sqlSessionTemplate.update("test.app.mybatis.mapperY.BusinessMapper.inupbimg",map);
 	}
 	//업체
 	public int selhnum(String bid){
@@ -101,6 +114,26 @@ public class BusinessYDao {
 		public int inh(HouseVo vo){
 			return 
 			sqlSessionTemplate.insert("test.app.mybatis.mapperY.BusinessMapper.inh",vo);
+		}
+	//업채재등록
+		public int uph(HouseVo vo){
+			return 
+			sqlSessionTemplate.update("test.app.mybatis.mapperY.BusinessMapper.uph",vo);
+		}
+		//사업자 비밀번호 찾기
+		public BusinessVo findpwdy(HashMap<String,String> map){
+			return sqlSessionTemplate.selectOne("test.app.mybatis.mapperY.BusinessMapper.findpwdy",map);
+		}
+		public int changepwdy(BusinessVo vo){
+			return sqlSessionTemplate.update("test.app.mybatis.mapperY.BusinessMapper.changepwdy",vo);
+		}
+		//사업자 여러 업체번호 조회
+		public List<HashMap<String, Object>> selhnumlist(String bid){
+			return sqlSessionTemplate.selectList("test.app.mybatis.mapperY.BusinessMapper.selhnumlist",bid);
+		}
+		//예약회원조회
+		public List<HashMap<String, Object>> allbooking(int house_num){
+			return sqlSessionTemplate.selectList("test.app.mybatis.mapperY.BusinessMapper.allbooking",house_num);
 		}
 }
 

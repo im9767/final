@@ -26,8 +26,8 @@
 	<!-- xml 파일을 여러개 정의할 수 있음 -->
 	<beans:bean class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
 		<beans:property name="definitions">
-			<beans:list>
-			 	<beans:value>/WEB-INF/businessTiles.xml</beans:value>
+			<beans:list>	
+				<beans:value>/WEB-INF/businessTiles.xml</beans:value>
 				<beans:value>/WEB-INF/tiles.xml</beans:value>
 				<beans:value>/WEB-INF/adminTiles.xml</beans:value>
 			</beans:list>

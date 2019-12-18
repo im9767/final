@@ -5,7 +5,7 @@
 <mapper namespace="test.app.mybatis.mapper.k.productMapper">
 	<select id="roomsList" parameterType="hashmap" resultType="rooms">
 			select
-			    h.avg, h.room_price, h.company, h.workplace, h.house_save_name, b.bb, h.house_num
+			    h.avg, h.room_price, h.company, h.workplace, h.house_save_name, b.bb, h.house_num, nvl(c.cnt,0) cnt
 			from
 			    (
 			        select 
@@ -61,9 +61,197 @@
 			                )
 			            where
 			                  bb='1' and num='1'
-			    )b
+			    )b,
+			    (
+                select 
+                    count(re.kindness)as cnt,r.house_num
+                from
+                    review re, rooms r
+                where
+                    r.room_num(+) = re.room_num and re.kindness is not null
+                group by
+                    r.house_num
+                order by
+                    r.house_num
+                ) c
 			where 
-			    h.house_num = b.house_num
+			    h.house_num(+) = b.house_num and c.house_num(+) = h.house_num
+<!-- 		서울 지역choose문 -->
+		<choose>
+		  <when test="p!=null and p.equals('01')">
+			   and  workplace like '서울%'
+		  </when>
+		  <when test="p!=null and p.equals('02')">
+			   and (workplace like '%강남%' or workplace like '%역삼%' or workplace like '%삼성%' or workplace like '%신사%' or workplace like '%청담%')
+		  </when>
+		  <when test="p!=null and p.equals('03')">
+			   and (workplace like '%서초%' or workplace like '%교대%')
+		  </when>
+		  <when test="p!=null and p.equals('04')">
+			   and (workplace like '%잠실%' or workplace like '%송파%' or workplace like '%왕십리%' or workplace like '%강동%')
+		  </when>
+		  <when test="p!=null and p.equals('05')">
+			   and (workplace like '%을지로%' or workplace like '%시청%' or workplace like '%명동%')
+		  </when>
+		   <when test="p!=null and p.equals('06')">
+			   and (workplace like '%종로%' or workplace like '%인사동%' or workplace like '%동대문%' or workplace like '%강북%')
+		  </when>
+		  <when test="p!=null and p.equals('07')">
+			   and (workplace like '%서울역%' or workplace like '%이태원%' or workplace like '%용산%')
+		  </when>
+		  <when test="p!=null and p.equals('08')">
+			   and (workplace like '%마포%' or workplace like '%홍대%' or workplace like '%신촌%' or workplace like '%서대문%')
+		  </when>
+		  <when test="p!=null and p.equals('09')">
+			   and (workplace like '%영등포%' or workplace like '%여의도%' or workplace like '%김포공항%')
+		  </when>
+		  <when test="p!=null and p.equals('10')">
+			   and (workplace like '%구로%' or workplace like '%금천%' or workplace like '%관악%' or workplace like '%동작%')
+		  </when>
+<!-- 		부산지역 choose문 -->
+		  <when test="p!=null and p.equals('11')">
+			   and  workplace like '부산%'
+		  </when>
+		  <when test="p!=null and p.equals('12')">
+			   and (workplace like '%강남%' or workplace like '%해운대%')
+		  </when>
+		  <when test="p!=null and p.equals('13')">
+			   and (workplace like '%광안리%' or workplace like '%기장%')
+		  </when>
+		  <when test="p!=null and p.equals('14')">
+			   and (workplace like '%부산역%' or workplace like '%남포%' or workplace like '%자갈치%' or workplace like '%영도%')
+		  </when>
+		  <when test="p!=null and p.equals('15')">
+			   and (workplace like '%서면%' or workplace like '%동래%' or workplace like '%연제%' or workplace like '%남구%')
+		  </when>
+		  <!-- 제주 if문 -->
+		  <when test="p!=null and p.equals('21')">
+			   and  workplace like '제주%'
+		  </when>
+		  <when test="p!=null and p.equals('22')">
+			   and (workplace like '%제주공항%' or workplace like '%애월%' or workplace like '%함덕%')
+		  </when>
+		  <when test="p!=null and p.equals('23')">
+			   and (workplace like '%광안리%' or workplace like '%기장%')
+		  </when>
+		  <!-- 강원 전체 -->
+		   <when test="p!=null and p.equals('31')">
+			   and  workplace like '강원%'
+		  </when>
+		  <when test="p!=null and p.equals('32')">
+			   and (workplace like '%강릉%' or workplace like '%속초%')
+		  </when>
+		  <when test="p!=null and p.equals('33')">
+			   and (workplace like '%양양%' or workplace like '%고성%' or workplace like '%동해%' or workplace like '%삼척%')
+		  </when>
+		  <when test="p!=null and p.equals('34')">
+			   and (workplace like '%춘천%' or workplace like '%홍천%' or workplace like '%인제%' or workplace like '%철원%')
+		  </when>
+		  <when test="p!=null and p.equals('35')">
+			   and (workplace like '%평창%' or workplace like '%정선%' or workplace like '%횡성%')
+		  </when>
+		   <when test="p!=null and p.equals('36')">
+			   and (workplace like '%영월%' or workplace like '%원주%' or workplace like '%태백%')
+		  </when>
+		  <!-- 경기 전체 -->
+		  <when test="p!=null and p.equals('41')">
+			   and  workplace like '경기%'
+		  </when>
+		  <when test="p!=null and p.equals('42')">
+			   and (workplace like '%수원%' or workplace like '%성남%')
+		  </when>
+		  <when test="p!=null and p.equals('43')">
+			   and (workplace like '%용인%' or workplace like '%평택%')
+		  </when>
+		  <when test="p!=null and p.equals('44')">
+			   and (workplace like '%화성%' or workplace like '%안산%' or workplace like '%부천%' or workplace like '%안양%')
+		  </when>
+		  <when test="p!=null and p.equals('45')">
+			   and (workplace like '%고양%' or workplace like '%의정부%' or workplace like '%파주%' or workplace like '%김포%')
+		  </when>
+		   <when test="p!=null and p.equals('46')">
+			   and (workplace like '%시흥%' or workplace like '%군포%' or workplace like '%광명%')
+		  </when>
+		  <when test="p!=null and p.equals('47')">
+			   and (workplace like '%남양주%' or workplace like '%구리%' or workplace like '%하남%')
+		  </when>
+		  <when test="p!=null and p.equals('48')">
+			   and (workplace like '%가평%' or workplace like '%양평%')
+		  </when>
+		  <!-- 인천 if문 -->
+		   <when test="p!=null and p.equals('51')">
+			   and  workplace like '인천%'
+		  </when>
+		  <when test="p!=null and p.equals('52')">
+			   and (workplace like '%송도%' or workplace like '%남동구%' or workplace like '%옹진%')
+		  </when>
+		  <when test="p!=null and p.equals('53')">
+			   and (workplace like '%중구%' or workplace like '%인천 국제 공항%')
+		  </when>
+		  <when test="p!=null and p.equals('54')">
+			   and (workplace like '%부평%' or workplace like '%계양%' or workplace like '%서구%' or workplace like '%미추홀%' or workplace like '%강화%')
+		  </when>
+		  <!-- 경상 전체 -->
+		  <when test="p!=null and p.equals('61')">
+			   and  workplace like '경상%'
+		  </when>
+		  <when test="p!=null and p.equals('62')">
+			   and (workplace like '%경주%' or workplace like '%포항%' or workplace like '%울진%' or workplace like '%영덕%')
+		  </when>
+		  <when test="p!=null and p.equals('63')">
+			   and (workplace like '%거제%' or workplace like '%통영%')
+		  </when>
+		  <when test="p!=null and p.equals('64')">
+			   and (workplace like '%대구%' or workplace like '%구미%' or workplace like '%문경%' or workplace like '%안동%')
+		  </when>
+		  <when test="p!=null and p.equals('65')">
+			   and (workplace like '%울산%' or workplace like '%양산%')
+		  </when>
+		   <when test="p!=null and p.equals('66')">
+			   and (workplace like '%창원%' or workplace like '%김해%' or workplace like '%창녕%')
+		  </when>
+		  <when test="p!=null and p.equals('67')">
+			   and (workplace like '%사천%' or workplace like '%남해%' or workplace like '%진주%' or workplace like '%함양%')
+		  </when>
+		  <!-- 전라 전체 -->
+		   <when test="p!=null and p.equals('71')">
+			   and  workplace like '전라%'
+		  </when>
+		  <when test="p!=null and p.equals('72')">
+			   and (workplace like '%여수%')
+		  </when>
+		  <when test="p!=null and p.equals('73')">
+			   and (workplace like '%전주%')
+		  </when>
+		  <when test="p!=null and p.equals('74')">
+			   and (workplace like '%광주%')
+		  </when>
+		  <when test="p!=null and p.equals('75')">
+			   and (workplace like '%광양%' or workplace like '%군산%' or workplace like '%순천%' or workplace like '%화순%' or workplace like '%남원%')
+		  </when>
+		   <when test="p!=null and p.equals('76')">
+			   and (workplace like '%군산%' or workplace like '%익산%' or workplace like '%부안%' or workplace like '%진안%' or workplace like '%무주%')
+		  </when>
+		  <when test="p!=null and p.equals('77')">
+			   and (workplace like '%목포%' or workplace like '%나주%' or workplace like '%완도%' or workplace like '%해남%' or workplace like '%영암%')
+		  </when>
+		  <!-- 충청 전체 -->
+		  <when test="p!=null and p.equals('81')">
+			   and  workplace like '충청%'
+		  </when>
+		  <when test="p!=null and p.equals('82')">
+			   and (workplace like '%대전%')
+		  </when>
+		  <when test="p!=null and p.equals('83')">
+			   and (workplace like '%천안%' or workplace like '%아산%' or workplace like '%예산%' or workplace like '%당진%')
+		  </when>
+		  <when test="p!=null and p.equals('84')">
+			   and (workplace like '%보령%' or workplace like '%서산%' or workplace like '%태안%')
+		  </when>
+		  <when test="p!=null and p.equals('85')">
+			   and (workplace like '%청주%' or workplace like '%제천%' or workplace like '%충주%' or workplace like '%보은%' or workplace like '%금산%')
+		  </when>
+		</choose>
 		  <choose>		
    			<when test="sort!=null and sort.equals('recomm')">
 				order by avg desc
@@ -76,7 +264,6 @@
 			</when>
 			</choose>
 	</select>
-
 </mapper>
 
 

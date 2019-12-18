@@ -86,6 +86,20 @@ public class LoginController {
 		public String bhome(HttpSession session){		
 			return ".business";
 		}
+		
+	//사업자 업체이동
+				@RequestMapping(value="business_view/view",method=RequestMethod.GET)
+				public String hchome(int house_num,HttpSession session){
+					session.setAttribute("house_num", house_num);
+					session.setAttribute("houseCnt", 1);
+					session.setAttribute("approval", 1);
+					return ".business";
+				}
+				//사업자 홈
+				@RequestMapping(value="business_view/kakaotalk")
+				public String talk(HttpSession session){		
+					return "/business_view/ac/kakaotalk";
+				}
 }
 	
 	
