@@ -223,20 +223,23 @@
                     </div>
                   </div>
                 </div>
-                <!-- Card Body -->
+               <!-- Card Body -->
                 <div class="card-body">
                   <div class="chart-pie pt-4 pb-2">
                     <canvas id="myPieChart"></canvas>
                   </div>
                   <div class="mt-4 text-center small">
                     <span class="mr-2">
-                      <i class="fas fa-circle text-primary"></i> Direct
+                      <i class="fas fa-circle text-danger"></i> 모텔
                     </span>
                     <span class="mr-2">
-                      <i class="fas fa-circle text-success"></i> Social
+                      <i class="fas fa-circle text-primary"></i> 호텔
                     </span>
                     <span class="mr-2">
-                      <i class="fas fa-circle text-info"></i> Referral
+                      <i class="fas fa-circle text-success"></i> 리조트
+                    </span>
+                     <span class="mr-2">
+                      <i class="fas fa-circle text-warning"></i> 펜션
                     </span>
                   </div>
                 </div>
