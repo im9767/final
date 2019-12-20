@@ -157,5 +157,14 @@ public class MembersDaoImpl implements MembersDao{
 		return sqlSessionTemplate.insert(NAMESPACE+".reviewImgInsert", map);
 	}
 	
+	// 회원 리뷰목록
+	@Override
+	public List<HashMap<String, Object>> reviewList(HashMap<String, Object> map){
+		return sqlSessionTemplate.selectList(NAMESPACE+".reviewList", map);
+	}
 	
+	// 회원 리뷰 개수
+	public int reviewCount(String mid){
+		return sqlSessionTemplate.selectOne(NAMESPACE+".reviewCount", mid);
+	}
 }

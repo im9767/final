@@ -262,4 +262,35 @@ public class MembersMypageController {
 		return "redirect:/";
 		
 	}
+	
+	// 회원 후기 목록
+	@RequestMapping(value="/members/reviewList",method=RequestMethod.GET)
+	public String reviewList(@RequestParam(value="pageNum",defaultValue="1")int pageNum,Model model,HttpSession session){
+		
+		HashMap<String, Object> parameter = new HashMap<String, Object>();
+		
+		String mid = (String) session.getAttribute("id");
+		
+		int totalRowCount = membersService.reviewCount(mid);
+		
+		PageUtil pagination = new PageUtil(pageNum, totalRowCount, 10, 5);
+		
+		parameter.put("mid", mid);
+		parameter.put("startRow", pagination.getStartRow());
+		parameter.put("endRow", pagination.getEndRow());
+		
+		List<HashMap<String, Object>> reviewList = membersService.reviewList(parameter);
+		
+		HashMap<String, Object> map = membersService.myinfo(mid);
+		
+		model.addAttribute("map",map);
+		
+		
+		model.addAttribute("reviewList", reviewList);
+		
+		model.addAttribute("pagination", pagination);
+		
+		return ".members_p.reviewList";
+		
+	}
 }

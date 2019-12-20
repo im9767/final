@@ -26,7 +26,7 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/styles/main_styles.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/styles/responsive.css">
 
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+ 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 	<!-- 결제 연동 api -->
 	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
@@ -46,7 +46,7 @@
 	integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
 	<link rel="icon" type="image/png" sizes="16x16" href="${cp }/resources/favicon/favicon-16x16.png">
-
+	
 	<!-- 드롭다운 서브메뉴 CSS -->
     <link type="text/css" href="${pageContext.request.contextPath }/resources/styles/bootstrap-submenu.css" rel="stylesheet">
 

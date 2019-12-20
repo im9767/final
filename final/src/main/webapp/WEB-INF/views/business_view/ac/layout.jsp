@@ -57,6 +57,7 @@ $(function(){
 	setInterval(() => {
 		$("#mmsg").css("color",cols[index++]);
 		if(index==3) index=0;
+		
 	}, 700);
 	Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 	Chart.defaults.global.defaultFontColor = '#858796';
@@ -247,6 +248,7 @@ $(function(){
 <div id="wrapper">
 <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+
 	  
 	  <c:choose>
 	  	<c:when test="${houseCnt > 0 }">
@@ -269,6 +271,7 @@ $(function(){
 	  	</c:otherwise>
 	  </c:choose>
 
+
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
 
@@ -283,6 +286,7 @@ $(function(){
       <!-- Nav Item - Pages Collapse Menu -->
       
       <c:choose>
+
       	<c:when test="${houseCnt==1 && approval==1}">      
       <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsemember" aria-expanded="true" aria-controls="collapsemember">
@@ -296,6 +300,7 @@ $(function(){
           </div>
         </div>
       </li>      
+
       
 	  <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapserooms" aria-expanded="true" aria-controls="collapserooms">
@@ -412,7 +417,7 @@ $(function(){
 
   <!-- Page level custom scripts -->
   <script src="${cp}/resources/admin/js/demo/chart-area-demo.js"></script>
-  <script src="${cp}/resources/admin/js/demo/chart-pie-demo.js"></script>
+<%--   <script src="${cp}/resources/admin/js/demo/chart-pie-demo.js"></script> --%>
   <script src="${cp}/resources/admin/js/demo/datatables-demo.js"></script>
 </body>
 </html>

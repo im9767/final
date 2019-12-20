@@ -66,7 +66,7 @@ public class BusinessLoginController {
 					model.addAttribute("staticList",staticList);
 					model.addAttribute("piechart",piechart);
 					model.addAttribute("year",year);
-				return ".business";
+					return ".business";
 				}else{
 					return ".business_view.ac.main_sub";
 				}
@@ -77,6 +77,9 @@ public class BusinessLoginController {
 				session.setAttribute("houseCnt", houseCnt);
 				List<HashMap<String, Object>> comlist=servicey.selhnumlist(bid);
 				model.addAttribute("comlist",comlist);
+				model.addAttribute("staticList",staticList);
+				model.addAttribute("piechart",piechart);
+				model.addAttribute("year",year);
 				return ".business";
 			}
 		}else{
@@ -131,6 +134,9 @@ public class BusinessLoginController {
 				session.setAttribute("houseCnt", houseCnt);
 				List<HashMap<String, Object>> comlist=servicey.selhnumlist(bid);
 				model.addAttribute("comlist",comlist);
+				model.addAttribute("staticList",staticList);
+				model.addAttribute("piechart",piechart);
+				model.addAttribute("year",year);
 				return ".business";
 			}
 		}else{
