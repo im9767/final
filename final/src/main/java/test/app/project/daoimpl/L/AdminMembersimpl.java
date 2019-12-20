@@ -51,6 +51,10 @@ public class AdminMembersimpl implements AdminMembersDao{
 	public int houseImgInsert(HouseImgVo vo) {
 		return SqlSessionTemplate.insert(NAMESPACE2+".houseimgInsert",vo);
 	}
+	@Override
+	public int allCnt() {
+		return SqlSessionTemplate.selectOne(NAMESPACE+".allCnt");
+	}
 	
 }
 

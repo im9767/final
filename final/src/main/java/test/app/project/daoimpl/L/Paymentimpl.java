@@ -57,6 +57,10 @@ public class Paymentimpl implements PaymentDao{
 	public List<HashMap<String, Object>> businessPiechart(HashMap<String, Object> map) {
 		return sqlSessionTemplate.selectList(NAMESPACE+".businesschart",map);
 	}
+	@Override
+	public int businessAll(HashMap<String, Object> map) {
+		return sqlSessionTemplate.selectOne(NAMESPACE+".businessAll",map);
+	}
 	
 }
 
