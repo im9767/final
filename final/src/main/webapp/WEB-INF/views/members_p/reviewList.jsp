@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<title>Q&A 목록</title>
+<title>나의 후기</title>
 
 <div class="mypage-wrap">
 		
@@ -20,45 +20,37 @@
 		<!-- 마이페이지 컨텐츠 -->
 		<section class="mypage-cont">
 			<header class="n-section-title">
-				<h3 class="tit">문의 내역</h3>
+				<h3 class="tit">후기 목록</h3>
 			</header>
 			<br>
 			<table class="table">
 			  <thead>
-			    <tr>
-			      <th scope="col">문의번호</th>
-			      <th scope="col">분류</th>
+			    <tr style="text-align: center;">
+			      <th scope="col">#</th>
+			      <th scope="col">숙소명</th>
 			      <th scope="col">제목</th>
-			      <th scope="col">답변여부</th>
+			      <th scope="col">작성일</th>
 			    </tr>
 			  </thead>
 			  <tbody>
-			  	<c:forEach var="qnalist" items="${qnalist }" varStatus="i">
-			  		<tr>
-				      <th scope="row">${qnalist.QNA_NUM }</th>
-				      <td>${qnalist.QNA_CATEGORY_NAME }</td>
-				      <td><a href="${pageContext.request.contextPath }/members/qnaDetail?qna_num=${qnalist.QNA_NUM}">${qnalist.QNA_TITLE }</a></td>
-				      <c:choose>
-				      	<c:when test="${empty qnalist.ANWSER }">
-				      		<td style="color:red;">답변대기</td>
-				      	</c:when>
-				      	<c:otherwise>
-				      		<td style="color:blue;">답변완료</td>
-				      	</c:otherwise>
-				      </c:choose>
-				      
+			  	<c:forEach var="reviewList" items="${reviewList }" varStatus="i">
+			  		<tr style="text-align: center;">
+				      <th scope="row">${(pagination.pageNum-1)*10+i.index+1 }</th>
+				      <td>${reviewList.COMPANY }<span style="font-size: 0.9em;">&nbsp;[${reviewList.ROOMNAME }]</span></td>
+				      <td><a href="#">${reviewList.REVIEW_TITLE }</a></td>
+				      <td>${reviewList.REVIEW_DATE }</td>
 				    </tr>
 			  	</c:forEach>
 			  </tbody>
 			</table>
 			 <!-- 페이징 -->
 			<nav aria-label="Page navigation example">
-			  <ul class="pagination justify-content-end">
+			  <ul class="pagination justify-content-center">
 			  
 			    <c:choose>
 			  		<c:when test="${pagination.startPageNum > pagination.pageBlockCount }">
 				    	<li class="page-item">
-				    		<a class="page-link" href="${cp }/members/qnalist?pageNum=${pagination.startPageNum-1 }">이전</a>
+				    		<a class="page-link" href="${cp }/members/reviewList?pageNum=${pagination.startPageNum-1 }">이전</a>
 				    	</li>
 					</c:when>
 					 <c:otherwise>
@@ -73,13 +65,13 @@
 			   		<c:choose>
 			   			<c:when test="${pagination.pageNum == i }">
 				   			<li class="page-item active">
-				   				<a class="page-link" href="${cp }/members/qnalist?pageNum=${i }">${i }</a>
+				   				<a class="page-link" href="${cp }/members/reviewList?pageNum=${i }">${i }</a>
 				   				<span class="sr-only">(current)</span>
 				   			</li>
 			   			</c:when>
 			   			<c:otherwise>
 				   			<li class="page-item">
-				   				<a class="page-link" href="${cp }/members/qnalist?pageNum=${i }">${i }</a>
+				   				<a class="page-link" href="${cp }/members/reviewList?pageNum=${i }">${i }</a>
 				   			</li>
 			   			</c:otherwise>
 			   		</c:choose>
@@ -89,7 +81,7 @@
 			   <c:choose>
 				 <c:when test="${pagination.endPageNum<pagination.totalPageCount }">
 					    <li class="page-item">
-					   	  <a class="page-link" href="${cp }/members/qnalist?pageNum=${pagination.endPageNum+1 }">다음</a>
+					   	  <a class="page-link" href="${cp }/members/reviewList?pageNum=${pagination.endPageNum+1 }">다음</a>
 					   	</li>
 				 </c:when>
 				 <c:otherwise>

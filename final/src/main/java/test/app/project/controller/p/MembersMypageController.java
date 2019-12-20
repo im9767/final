@@ -178,7 +178,16 @@ public class MembersMypageController {
 	
 	// 회원 리뷰작성 페이지 이동
 	@RequestMapping(value="/members/reviewWrite",method=RequestMethod.GET)
-	public String reviewForm(String house_save_name,int room_num,String roomname,String company,Model model){
+	public String reviewForm(String house_save_name,int room_num,String roomname,String company,Model model,HttpSession session){
+		
+		String mid = (String) session.getAttribute("id");
+		
+		int cntCoupon = membersService.cntCoupon(mid);
+		model.addAttribute("cntCoupon",cntCoupon);
+		
+		HashMap<String, Object> map = membersService.myinfo(mid);
+		
+		model.addAttribute("map",map);
 		
 		model.addAttribute("house_save_name", house_save_name);
 		model.addAttribute("room_num", room_num);
@@ -251,6 +260,37 @@ public class MembersMypageController {
 		membersService.reviewInsert(review, map);
 		
 		return "redirect:/";
+		
+	}
+	
+	// 회원 후기 목록
+	@RequestMapping(value="/members/reviewList",method=RequestMethod.GET)
+	public String reviewList(@RequestParam(value="pageNum",defaultValue="1")int pageNum,Model model,HttpSession session){
+		
+		HashMap<String, Object> parameter = new HashMap<String, Object>();
+		
+		String mid = (String) session.getAttribute("id");
+		
+		int totalRowCount = membersService.reviewCount(mid);
+		
+		PageUtil pagination = new PageUtil(pageNum, totalRowCount, 10, 5);
+		
+		parameter.put("mid", mid);
+		parameter.put("startRow", pagination.getStartRow());
+		parameter.put("endRow", pagination.getEndRow());
+		
+		List<HashMap<String, Object>> reviewList = membersService.reviewList(parameter);
+		
+		HashMap<String, Object> map = membersService.myinfo(mid);
+		
+		model.addAttribute("map",map);
+		
+		
+		model.addAttribute("reviewList", reviewList);
+		
+		model.addAttribute("pagination", pagination);
+		
+		return ".members_p.reviewList";
 		
 	}
 }

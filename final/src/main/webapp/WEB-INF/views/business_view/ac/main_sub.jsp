@@ -42,7 +42,7 @@
                   <a href="#" class="btn btn-warning btn-circle btn-lg">
                     <i class="fas fa-exclamation-triangle"></i>
                   </a>
-                  <a href="#">
+                  <a href="${cp}/business_view/inserthouse">
                   &nbsp;<span id="mmsg" style="font-size:30px;color:red;font-family: 고딕;font-weight: bold">
                   	업체등록 및 요청을 먼저 해주세요!!!
                   </span><span style="font-size:25px;font-family: 궁서체;font-weight: bold">(최소 1개 이상)</span>

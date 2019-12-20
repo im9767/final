@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import test.app.project.dao.L.PaymentDao;
-import test.app.project.vo.HouseVo;
 
 @Repository
 public class Paymentimpl implements PaymentDao{
@@ -54,8 +53,17 @@ public class Paymentimpl implements PaymentDao{
 	public List<HashMap<String, Object>> businessStatics(HashMap<String, Object> map) {
 		return sqlSessionTemplate.selectList(NAMESPACE+".businessStatics",map);
 	}
+	@Override
+	public List<HashMap<String, Object>> businessPiechart(HashMap<String, Object> map) {
+		return sqlSessionTemplate.selectList(NAMESPACE+".businesschart",map);
+	}
 	
 }
+
+
+
+
+
 
 
 

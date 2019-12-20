@@ -51,4 +51,8 @@ public interface MembersDao {
 	
 	public int reviewImgInsert(HashMap<String, Object> map);
 	
+	public List<HashMap<String, Object>> reviewList(HashMap<String, Object> map);
+	
+	public int reviewCount(String mid);
+	
 }

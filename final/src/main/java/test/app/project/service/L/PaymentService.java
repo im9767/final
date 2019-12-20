@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import test.app.project.daoimpl.L.Paymentimpl;
-import test.app.project.vo.HouseVo;
-import test.app.project.vo.MembersVo;
 
 @Service
 public class PaymentService {
@@ -47,6 +45,10 @@ public class PaymentService {
 	//사업자 년,월에 대한 매출액 구하기
 	public List<HashMap<String, Object>> businessStatics(HashMap<String, Object> map){
 		return dao.businessStatics(map);
+	}
+	//사업자모드 pie차트 업종별 갯수 구하기
+	public List<HashMap<String, Object>> businesschart(HashMap<String, Object> map){
+		return dao.businessPiechart(map);
 	}
 }
 
