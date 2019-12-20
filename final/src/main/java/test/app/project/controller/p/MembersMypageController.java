@@ -94,7 +94,7 @@ public class MembersMypageController {
 		
 		int totalRowCount = membersService.bookingCount(mid);
 		
-		PageUtil pagination = new PageUtil(pageNum, totalRowCount, 5, 5);
+		PageUtil pagination = new PageUtil(pageNum, totalRowCount, 10, 5);
 		
 		HashMap<String, Object> parameter = new HashMap<String, Object>();
 		parameter.put("mid", mid);
