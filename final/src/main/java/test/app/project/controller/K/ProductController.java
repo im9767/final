@@ -2,6 +2,7 @@ package test.app.project.controller.K;
 
 
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -23,23 +24,24 @@ public class ProductController {
 
 	@RequestMapping(value="/product/accommodationList", method=RequestMethod.GET)
 	public String accomlist(Model model,String sort, Date startday, Date endday, Date start_date, Date end_date, String date,
-							String booking,String p){
+							String t,String p){
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
-	
+		DecimalFormat dc = new DecimalFormat("###,###,###");
 		Date today = new Date();
 		Calendar cal = Calendar.getInstance();
 		cal.setTime(today);
 		cal.add(Calendar.DATE, 1);
-		
+
+		System.out.println(t);
 		if(date!=null && startday==null){
 			//start_date만 있을때
 			map.put("sort", sort);
 			map.put("date", date);
 			map.put("start_date", sdf.format(start_date));
 			map.put("end_date",  sdf.format(end_date));
-			map.put("booking", booking);
 			map.put("p", p);
+			map.put("t",t);
 			System.out.println("sort"+sort);
 			System.out.println("date"+date);
 			model.addAttribute("start_date",sdf.format(start_date));
@@ -49,8 +51,8 @@ public class ProductController {
 			//startday만 있을때
 			map.put("sort", sort);
 			map.put("date", date);
-			map.put("booking", booking);
 			map.put("p", p);
+			map.put("t",t);
 			model.addAttribute("start_date",sdf.format(today));
 			model.addAttribute("end_date", sdf.format(cal.getTime()));
 			System.out.println("2");
@@ -59,16 +61,17 @@ public class ProductController {
 			//startday, start_date 둘 다 없을때 
 			map.put("sort", sort);
 			map.put("date", date);
-			map.put("booking", booking);
 			map.put("p", p);
+			map.put("t",t);
 			model.addAttribute("start_date",sdf.format(today));
 			model.addAttribute("end_date", sdf.format(cal.getTime()));
 		}
 		List<RoomsVo> list=service.list(map);
 		System.out.println("list:" + list);
+		model.addAttribute("t",t);
+		model.addAttribute("p",p);
 		model.addAttribute("list",list);
-	
-		
+		model.addAttribute("dc",dc);
 		
 		return ".product.accommodationList";
 	}
