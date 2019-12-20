@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import test.app.project.util.PageUtil;
@@ -45,6 +46,24 @@ public class eventboardsController {
 		
 		return ".public.eventboards";
 	}
+	
+	//이벤트처리 세부사항 뿌려주기
+	@RequestMapping(value="/public/eventdetail",method=RequestMethod.GET)
+	public String eventboarddetail(int event_num,Model model){
+		//전페이지에서 이벤트식별번호 받아서 넣어주기
+		System.out.println(event_num);
+		HashMap<String,Object> map=new HashMap<String, Object>();
+		map.put("event_num", event_num);
+		
+		
+		//여기서 디테일 리스로 넣어서 필요한거 뽑아서 쓰는구문
+		List<EventImgVo> eventdetail =EventBoardsService.eventDetailList(map);
+		
+		model.addAttribute("eventdetail", eventdetail);
+		
+		return ".public.eventdetail";
+	}
+	
 	
 	
 	

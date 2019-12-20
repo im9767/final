@@ -13,5 +13,8 @@ public interface EventBoardsDao {
 	
 	
 	public int eventBoardsCount();
+
+
+	List<EventImgVo> eventdetailList(HashMap<String, Object> map);
 	
 }

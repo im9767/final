@@ -2,38 +2,36 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-
 <div style="width:80%;min-height: 1200px;margin: auto;padding: 40px;margin-top: 150px;">
 
 	<div class="accordion" id="accordionExample" style="min-height: 800px;">
 	
 	<c:forEach var="event" items="${event }" varStatus="i">
 	
-		  <div class="card">
-		    <div class="card-header" id="heading_${i.index }">
-		      <h2 class="mb-0">
-		        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapse_${i.index }" aria-expanded="true" aria-controls="collapse_${i.index }">
-		      
-		          ${event.etitle }<br>
-		      	
-		        </button>
-		      </h2>
-		    </div>
+	
+	<div class="card mb-3">
+					
+		      		<p>이벤트 제목: ${event.etitle }</p>
+		<p>이벤트 기간 ${event.estartdate} ~ ${event.eenddate}</p>      		
 		
-		    <div id="collapse_${i.index }" class="collapse" aria-labelledby="heading_${i.index }" data-parent="#accordionExample">
-		      <div class="card-body">
-		      
-		      		
-		      		<p>${event.eregdate }</p>
-		      		<p>${event.etitle }</p>
-		      <img src="../resources/upload/${event.savefilename}" style="width: 1024px; height:297px;"><br>
-		      </div>
-		    </div>
-		  </div>
+ <a class="page-link" href="${cp }/public/eventdetail?event_num=${event.event_num}">
+ 
+  <img src="../resources/upload/${event.savefilename}" class="card-img-top" alt="...">
+ 
+  </a>
+  
+  <div class="card-body">
+    <h5 class="card-title">${event.etitle }</h5>
+    <p class="card-text">첫번재 카드모양</p>
+  </div>
+</div>
+
+	
+	
 	
 	</c:forEach>
 	<c:if test="${empty event }">
-		<h2 style="text-align: center;">이벤트 읎어.</h2>
+		<h2 style="text-align: center;">이벤트 없습니다.</h2>
 	</c:if>
 	</div>
 

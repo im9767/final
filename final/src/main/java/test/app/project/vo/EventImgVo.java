@@ -10,16 +10,21 @@ public class EventImgVo {
 	private String	etitle ;
 	private Date eregdate;
 	private int	ehit;
+	private Date estartdate;
+ 	private	Date eenddate;
 	private String	savefilename;
 	
 	public EventImgVo(){}
 
-	public EventImgVo(int event_num, String etitle, Date eregdate, int ehit, String savefilename) {
+	public EventImgVo(int event_num, String etitle, Date eregdate, int ehit, Date estartdate, Date eenddate,
+			String savefilename) {
 		super();
 		this.event_num = event_num;
 		this.etitle = etitle;
 		this.eregdate = eregdate;
 		this.ehit = ehit;
+		this.estartdate = estartdate;
+		this.eenddate = eenddate;
 		this.savefilename = savefilename;
 	}
 
@@ -55,6 +60,22 @@ public class EventImgVo {
 		this.ehit = ehit;
 	}
 
+	public Date getEstartdate() {
+		return estartdate;
+	}
+
+	public void setEstartdate(Date estartdate) {
+		this.estartdate = estartdate;
+	}
+
+	public Date getEenddate() {
+		return eenddate;
+	}
+
+	public void setEenddate(Date eenddate) {
+		this.eenddate = eenddate;
+	}
+
 	public String getSavefilename() {
 		return savefilename;
 	}
@@ -62,9 +83,7 @@ public class EventImgVo {
 	public void setSavefilename(String savefilename) {
 		this.savefilename = savefilename;
 	}
-	
-	
-	
+
 	
 	
  

@@ -20,9 +20,18 @@ public class EventBoardsDaoImpl implements EventBoardsDao {
 	
 	private final String NAMESPACE="test.app.mybatis.mapper.MD.EventBoardsMapper";
 	
+	
+	//여기는 이벤트 페이지 맨처음에 1번 이름 달린 이미지 한개만 뿌려주는거
 	@Override
 	public List<EventImgVo> eventList(HashMap<String, Object> map){
 		return sqlSessionTemplate.selectList(NAMESPACE+".eventList",map);
+		
+	}
+	
+	//여기는 이벤트 세부 페이지 들어
+	@Override
+	public List<EventImgVo> eventdetailList(HashMap<String, Object> map){
+		return sqlSessionTemplate.selectList(NAMESPACE+".eventList2",map);
 		
 	}
 	
