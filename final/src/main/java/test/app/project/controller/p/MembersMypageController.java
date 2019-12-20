@@ -71,7 +71,7 @@ public class MembersMypageController {
 	
 	// 회원정보 수정하기
 	@RequestMapping(value="/members/infoupdate",method=RequestMethod.POST)
-	public String infoupdate(String mname, String mid, String mpwd, String memail, String mphone, Model model){
+	public String infoupdate(String mname, String mid,@RequestParam(value="mpwd", required=false) String mpwd, String memail, String mphone, Model model){
 		
 		MembersVo vo = new MembersVo();
 		

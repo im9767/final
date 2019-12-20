@@ -58,6 +58,8 @@
     <!-- jquery추가 -->
     <script type="text/javascript" src="${pageContext.request.contextPath }/resources/jquery/jquery-3.4.1.js"></script>
     
+    <script type="text/javascript" src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.2.js" charset="utf-8"></script>
+    
 </head>
 <body>
 <div class="layer_fix layer_unfix pop_login pop_mem_reserve">
@@ -86,18 +88,12 @@
             	<div><a href="${pageContext.request.contextPath }/members/join"><span>회원가입</span></a></div>
             </div>
             
-            <!--
-            <div class="layer_fix_footer">
-                <p>
-                    <a href="http://www.withinnovation.co.kr/" target="_blank">회사소개</a>|
-                    <a href="https://www.goodchoice.kr/more/terms">이용약관</a>|
-                    <a href="https://www.goodchoice.kr/more/terms/privacy">개인정보처리방침</a>|
-                    <a href="https://www.goodchoice.kr/more/terms/teenager">청소년보호정책</a>
-                </p>
-                <p class="copyright">Copyright WITHINOVATION Corp. All rights reserved.</p>
-            </div>
-            -->
         </form>
+        
+        <div id="naver_id_login" style="text-align:center"><a href="${url}">
+		<img width="223" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a></div>
+        
+        
     </section>
 </div>
 </body>
