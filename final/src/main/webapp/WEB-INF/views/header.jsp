@@ -21,6 +21,7 @@
 									<a href="${pageContext.request.contextPath }/house/detail" style='color:white;'>예약내역</a>
 								</li>
 
+
 								<li class="language" style='background-color: red;border:none; height: auto;'>
 									<a href="#" style='color:white;'>
 										더보기

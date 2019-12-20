@@ -19,7 +19,7 @@
 <link
 	href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
 	rel="stylesheet">
- 
+
 <!-- Custom styles for this template-->
 <link href="${cp}/resources/admin/admin-boot/css/sb-admin-2.min.css"
 	rel="stylesheet">
@@ -30,37 +30,19 @@
 	<div class="container">
 		<!-- Outer Row -->
 		<div class="row justify-content-center">
-			<div class="col-xl-10 col-lg-12 col-md-9" style="margin-top:200px;">
+			<div class="col-xl-10 col-lg-12 col-md-9">
 				<div class="card o-hidden border-0 shadow-lg my-5">
 					<div class="card-body p-0">
 						<!-- Nested Row within Card Body -->
 						<div class="col-lg-6" style="margin: auto">
 							<div class="p-5">
 								<div class="text-center">
-									<!-- 여기가 로그인창 위쪽 글씨 나오게 하는곳 -->
-									<h1 class="h4 text-gray-900 mb-4">사장님 로그인!</h1>
-								</div>
-
-								<form method="post"
-									action="${pageContext.request.contextPath }/business_view/loginok">
-									<div class="form-group">
-										<input type="text" class="form-control form-control-user"
-											name="bid" id="bid" placeholder="아이디 입력">
-									</div>
-									<div class="form-group">
-										<input type="password" class="form-control form-control-user"
-											name="bpwd" id="bpwd" placeholder="비밀번호 입력">
-									</div>
-									<input type="submit" class="btn btn-primary btn-user btn-block"
-										value="로그인">
-									<hr>
+								<form action="${cp}/business_view/login">
+									<h1 class="h4 text-gray-900 mb-4" style="font-size: x-large; text-align: center;">이메일 발송 성공!!!</h1><br>
+									<input type="submit"
+									class="btn btn-primary btn-user btn-block" value="로그인 페이지 이동" >
 								</form>
-								<div class="text-center">
-               				 <a class="small" href="${cp}/business_view/findpassword">비밀번호 찾기</a>
-             			 </div>			
-								 <div class="text-center">
-               				 <a class="small" href="${cp}/business_view/insertbusiness">사업자 가입</a>
-             			 </div>
+								</div>							
 							</div>
 						</div>
 					</div>
