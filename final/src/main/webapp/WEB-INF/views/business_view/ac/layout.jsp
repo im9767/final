@@ -336,14 +336,6 @@ $(function(){
           </div>
         </div>
       </li>
-	  
-      <!-- Divider -->
-      <hr class="sidebar-divider">
-
-      <!-- Heading -->
-      <div class="sidebar-heading">
-          기타
-      </div>
 
       <!-- Nav Item - Tables -->
   

@@ -54,10 +54,11 @@ public class BemailController {
 			email.setReceiver(vo.getBemail());
 			email.setSubject(bid + "님 비밀번호 찾기 메일입니다.");
 			emailSender.SendEmail(email);
-			return "business_view/ac/login";
-			
+			return "business_view/ac/emailsendsuess";
+		}else{
+			return "business_view/ac/emailsendfail";
 		}
-		return "business_view/ac/login";
+
 	}
 
 }

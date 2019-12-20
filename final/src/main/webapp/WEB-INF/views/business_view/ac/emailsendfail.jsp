@@ -25,36 +25,7 @@
 	rel="stylesheet">
 
 </head>
-<script type="text/javascript">
 
-var b=false;
-
-function emailcheck() {
-	var email = document.getElementById("bemail").value;
-	var echk = document.getElementById("echk")
-	var regExpEm = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
-	if (!regExpEm.test($("#bemail").val())) {
-		echk.style.color = "red";
-		echk.innerHTML = "이메일 형식이아닙니다.";
-	} else {
-		echk.style.color = "blue";
-		echk.innerHTML = "사용가능";
-		b=true;
-	}
-}
-
-function validate3() {
-	if ( b == true) {
-		console.log(b);
-		return true;
-	} else {
-		console.log(b);
-		return false;
-	}
-	
-}
-
-</script>
 <body class="bg-gradient-primary">
 	<div class="container">
 		<!-- Outer Row -->
@@ -66,24 +37,12 @@ function validate3() {
 						<div class="col-lg-6" style="margin: auto">
 							<div class="p-5">
 								<div class="text-center">
-									<!-- 여기가 로그인창 위쪽 글씨 나오게 하는곳 -->
-									<h1 class="h4 text-gray-900 mb-4">비밀번호찾기</h1>
-								</div>
-
-								<form method="post"
-									action="${pageContext.request.contextPath }/business_view/sendemail" onsubmit="return validate3()">
-									<div class="form-group">
-										<input type="text" class="form-control form-control-user"
-											name="bid" id="bid" placeholder="아이디 입력">
-									</div>
-									<div class="form-group">
-										<input type="text" class="form-control form-control-user"
-											name="bemail" id="bemail" placeholder="이메일 입력" onkeyup="emailcheck()"><span id="echk"></span>
-									</div>
-									<input type="submit" class="btn btn-primary btn-user btn-block"
-										value="로그인" >
-									<hr>
+								<form action="${cp}/business_view/findpassword">
+									<h1 class="h4 text-gray-900 mb-4" style="font-size: x-large; text-align: center;">이메일 발송 실패!!!</h1><br>
+									<input type="submit"
+									class="btn btn-primary btn-user btn-block" value="다시입력하러가기" >
 								</form>
+								</div>							
 							</div>
 						</div>
 					</div>
