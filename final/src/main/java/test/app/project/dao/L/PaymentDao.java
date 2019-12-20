@@ -3,9 +3,6 @@ package test.app.project.dao.L;
 import java.util.HashMap;
 import java.util.List;
 
-import test.app.project.vo.HouseVo;
-import test.app.project.vo.MembersVo;
-
 public interface PaymentDao {
 	int monthsale(HashMap<String, Object> map);
 	int periodsale(HashMap<String, Object> map);
@@ -22,6 +19,8 @@ public interface PaymentDao {
 	int businesscount(HashMap<String, Object> map);
 	//사업자 년,월 매출액 구하기 메소드
 	List<HashMap<String, Object>> businessStatics(HashMap<String, Object> map);
+	//사업자모드 pie차트 업종갯수 구하기
+	List<HashMap<String, Object>> businessPiechart(HashMap<String, Object> map);
 }
 
 

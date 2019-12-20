@@ -66,8 +66,16 @@
 			and b.bnum=#{company}
 		</if>
 	</select>
+	<!-- 관리자모드 pie차트 -->
 	<select id="chartcount" resultType="hashmap">
 		select bnum,count(bnum) as cnt from house 
+		group by bnum 
+		order by bnum
+	</select>
+	<!-- 사업자모드 pie차트 -->
+	<select id="businesschart" resultType="hashmap" parameterType="hashmap">
+		select bnum,nvl(count(*),0) as cnt from house 
+		where business_id=#{bid}
 		group by bnum 
 		order by bnum
 	</select>
