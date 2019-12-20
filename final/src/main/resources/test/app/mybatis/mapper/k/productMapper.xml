@@ -9,7 +9,7 @@
 			from
 			    (
 			        select 
-							trunc(hh.avg,1) avg,hh.room_price, h.company, h.workplace, hi.house_save_name, h.house_num
+							trunc(hh.avg,1) avg,hh.room_price, h.company, h.workplace, hi.house_save_name, h.house_num,h.bnum
 						from 
 							house h, house_img hi,
 						    	(select 
@@ -18,6 +18,7 @@
 						    		house h, rooms r, review rv, house_img hi
 						   		where 
 						   			h.house_num=r.house_num(+) and r.room_num=rv.room_num(+) and not r.room_price is null
+						   			
 						    	group by 
 						    		h.house_num) hh
 						where 
@@ -76,6 +77,7 @@
                 ) c
 			where 
 			    h.house_num(+) = b.house_num and c.house_num(+) = h.house_num
+			    and h.bnum=#{t}
 <!-- 		서울 지역choose문 -->
 		<choose>
 		  <when test="p!=null and p.equals('01')">

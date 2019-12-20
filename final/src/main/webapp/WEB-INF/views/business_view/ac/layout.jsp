@@ -420,7 +420,7 @@ $(function(){
 
   <!-- Page level custom scripts -->
   <script src="${cp}/resources/admin/js/demo/chart-area-demo.js"></script>
-  <script src="${cp}/resources/admin/js/demo/chart-pie-demo.js"></script>
+<%--   <script src="${cp}/resources/admin/js/demo/chart-pie-demo.js"></script> --%>
   <script src="${cp}/resources/admin/js/demo/datatables-demo.js"></script>
 </body>
 </html>

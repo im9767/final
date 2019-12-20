@@ -23,7 +23,6 @@ public class LoginController {
 	public void setService(AdminService service) {
 		this.service = service;
 	}
-
 	@Autowired private PaymentService service1;
 	
 	@RequestMapping(value="/admin_view/login",method=RequestMethod.GET)
@@ -87,19 +86,41 @@ public class LoginController {
 			return ".business";
 		}
 		
-	//사업자 업체이동
-				@RequestMapping(value="business_view/view",method=RequestMethod.GET)
-				public String hchome(int house_num,HttpSession session){
-					session.setAttribute("house_num", house_num);
-					session.setAttribute("houseCnt", 1);
-					session.setAttribute("approval", 1);
-					return ".business";
-				}
-				//사업자 홈
-				@RequestMapping(value="business_view/kakaotalk")
-				public String talk(HttpSession session){		
-					return "/business_view/ac/kakaotalk";
-				}
+		//사업자 업체이동
+		@RequestMapping(value="business_view/view",method=RequestMethod.GET)
+		public String hchome(int house_num,HttpSession session,@RequestParam(value="year",defaultValue="2019")int year,
+				Model model){
+			String bid=(String)session.getAttribute("bid");
+			String bpwd=(String)session.getAttribute("bpwd");
+			int years=year+1;
+			HashMap<String,Object> map=new HashMap<String, Object>();
+			HashMap<String,Object> housemap=new HashMap<String, Object>();
+			HashMap<String,Object> businessmap=new HashMap<String, Object>();
+			HashMap<String, Object> piemap=new HashMap<String, Object>();
+			piemap.put("bid", bid);
+			businessmap.put("year", year);
+			businessmap.put("years", years);
+			businessmap.put("bid", bid);
+			java.util.List<HashMap<String, Object>> staticList=service1.businessStatics(businessmap);
+			java.util.List<HashMap<String, Object>> piechart=service1.businesschart(piemap);
+			map.put("bid",bid);
+			map.put("bpwd",bpwd);
+			housemap.put("bbid", bid);
+			model.addAttribute("staticList",staticList);
+			model.addAttribute("piechart",piechart);
+			model.addAttribute("year",year);
+			
+			session.setAttribute("house_num", house_num);
+			session.setAttribute("houseCnt", 1);
+			session.setAttribute("approval", 1);
+			
+			return ".business";
+		}
+	//사업자 홈
+	@RequestMapping(value="business_view/kakaotalk")
+	public String talk(HttpSession session){		
+		return "/business_view/ac/kakaotalk";
+	}
 }
 	
 	
