@@ -1,0 +1,102 @@
+ 
+  <fieldset>
+    <legend>Legend</legend>
+    
+    <div class="alert alert-dismissible alert-success">
+  <button type="button" class="close" data-dismiss="alert">&times;</button>
+  <strong>주의 사항!</strong> 각 항목별 주의사항을 지키시지 않을시 <a href="#" class="alert-link">승인이 되지 않을수 있습니다</a>.
+</div>
+    <button type="button" class="btn btn-primary btn-lg btn-block">주의 너는 죽어있다</button>
+    
+    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+  <label class="btn btn-primary active">
+    <input type="radio" name="options" id="option1" autocomplete="off" checked="">
+     여기에 무엇을 집어 넣어야할지 생각하자
+  </label>
+</div>
+
+	<!-- 이게 바로 체크 박스 -->
+	<div class="custom-control custom-switch">
+      <input type="checkbox" class="custom-control-input" id="customSwitch1" checked="">
+      <label class="custom-control-label" for="customSwitch1">  <p class="text-primary">  24번 펜션</p></label>
+    </div>
+  
+    	<div class="custom-control custom-switch">
+    	  <input type="checkbox" class="custom-control-input" id="customSwitch2" checked="">
+     	 <label class="custom-control-label" for="customSwitch2"> <p class="text-primary">  22번 호텔 </p></label>
+    	</div>
+  
+    <div class="custom-control custom-switch">
+      <input type="checkbox" class="custom-control-input" id="customSwitch3" checked="">
+      <label class="custom-control-label" for="customSwitch3"> <p class="text-primary"> 23번 리조트</p></label>
+    </div>
+  
+  
+  <div class="custom-control custom-switch">
+      <input type="checkbox" class="custom-control-input" id="customSwitch4" checked="">
+      <label class="custom-control-label" for="customSwitch4">  <p class="text-primary">  24번 펜션</p></label>
+    </div>
+    
+    
+    <!-- 이게 바로 체크 박스 -->
+    
+    <p class="text-muted"> 여기서부터 업소테이블 등록하기
+    <div class="form-group">
+      <label for="exampleInputEmail1">Email address</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+      <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+    </div>
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    </div>
+    
+    <!-- 버튼눌러서 사용하는칸 -->
+    <div class="form-group">
+      <label for="exampleSelect1">Example select</label>
+      <select class="form-control" id="exampleSelect1">
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+    </div>
+   
+   
+   
+    <!-- 라디오 박스 사용란 -->
+    <fieldset class="form-group">
+      <legend>Radio buttons</legend>
+      <div class="form-check">
+        <label class="form-check-label" id="housetype1">
+          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+         21번 모텔
+        </label>
+      </div>
+      <div class="form-check">
+      <label class="form-check-label" id="housetype2">
+          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
+         22번 호텔
+        </label>
+      </div>
+      <div class="form-check">
+      <label class="form-check-label" id="housetype3">
+          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option3">
+         23번 리조트
+        </label>
+      </div>
+      <div class="form-check">
+      <label class="form-check-label" id="housetype4">
+          <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios4" value="option4">
+         24번 펜션
+        </label>
+      </div>
+      
+    </fieldset>
+    
+    
+   
+</form>
+                  
+                  

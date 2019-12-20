@@ -44,8 +44,9 @@ public class RoomController {
 	public String inroom(HttpSession session){
 		return "/business_view/ac/writeroom";
 	}
-	//방등록체크
-	@RequestMapping(value="/business_view/writeroomok",method=RequestMethod.POST)
+
+	//방등록완료
+	@RequestMapping(value="business_view/writeroomok",method=RequestMethod.POST)
 	public String writeroomok(String rcontent,String rname,@RequestParam(required=false) List<MultipartFile> imgIn,int price,int max,HttpSession session) throws IOException{
 		HashMap<String, Object> irlist= new HashMap<String, Object>();
 		int house_num=(Integer)session.getAttribute("house_num");

@@ -382,12 +382,7 @@ $(function(){
         <a class="nav-link" href="${cp}/admin_view/writeamenities">
           <i class="fas fa-fw fa-table"></i>
           <span>편의시설 등록</span></a>
-      </li>
-	<li class="nav-item">
-        <a class="nav-link" href="${cp}/business_view/kakaotalk">
-          <i class="fas fa-fw fa-table"></i>
-          <span>카카오톡 상담</span></a>
-      </li>
+      </li>	
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 
