@@ -253,6 +253,7 @@
 	
 	</select>
 	
+	<!-- 리뷰 등록 -->
 	<insert id="reviewInsert" parameterType="review">
 	
 		INSERT INTO review VALUES(review_seq.nextval,#{room_num},#{mid},#{review_title},#{review_content},sysdate,#{kindness},#{clean},#{convenience})
@@ -264,6 +265,7 @@
 	
 	</insert>
 	
+	<!-- 리뷰 이미지 등록 -->
 	<insert id="reviewImgInsert" parameterType="hashmap">
 				<!-- 다중insert max값 얻어와서 적용 방법 sequence사용 시 값 중복으로 오류 -->
 <!-- 			<foreach collection="img" item="item" index="index" open="INSERT ALL" separator=" " close="SELECT * FROM DUAL"> -->
@@ -285,5 +287,39 @@
 		
 
 	</insert>
-
+	
+	<!-- 나의 후기 목록 -->
+	<select id="reviewList" parameterType="hashmap" resultType="hashmap">
+	
+		SELECT * FROM
+		(
+		    SELECT AA.*,rownum rnum from
+		        (
+		        SELECT
+		                h.company,
+		                r.room_num,
+		                r.roomname,
+		                re.review_title,
+		                TO_CHAR(re.review_date,'yyyy/mm/dd') review_date,
+		                re.review_num
+		        FROM
+		                review re,
+		                rooms r,
+		                house h
+		        WHERE 
+		                re.room_num = r.room_num
+		                AND r.house_num = h.house_num
+		                AND mid= #{mid}
+		        ORDER BY
+		                re.review_date DESC
+		        )AA   
+		)<![CDATA[WHERE rnum>=#{startRow} AND rnum<=#{endRow}]]>
+	
+	</select>
+	
+	<select id="reviewCount" parameterType="String" resultType="int">
+	
+		SELECT COUNT(*) FROM review WHERE mid=#{mid}
+	
+	</select>
 </mapper>

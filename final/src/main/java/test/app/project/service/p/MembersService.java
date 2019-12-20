@@ -129,4 +129,13 @@ public class MembersService {
 		return 1;
 		
 	}
+	
+	// 회원 리뷰 목록
+	public List<HashMap<String, Object>> reviewList(HashMap<String, Object> map){
+		return membersDaoImpl.reviewList(map);
+	}
+	// 회원 리뷰 개수
+	public int reviewCount(String mid){
+		return membersDaoImpl.reviewCount(mid);
+	}
 }
