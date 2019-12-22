@@ -26,51 +26,60 @@
 <link href="${cp}/resources/admin/admin-boot/css/sb-admin-2.min.css"
 	rel="stylesheet">
 
-<script type="text/javascript" src="${cp}/resources/admin/js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript"
+	src="${cp}/resources/admin/js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
-        $(function() {
-            $("#imgIn").on('change', function(){
-            	$("#imgbox img").remove();
-            	readURL(this);
-            });
-        });
-        var b=0;
-        function readURL(input) {
-        	for(var a=0;a<input.files.length;a++){
-           		var reader = new FileReader();         
-            	reader.onload = function (e){                               		
-            		console.log(input.files[b].name);         		
-            		var aa=$("<img src='"+e.target.result+"'><br>").appendTo("#imgbox");           	
-            		aa.css("width","200px");
-            		aa.css("height","200px");         		
-            		}
-            	reader.readAsDataURL(input.files[a]);
-            	}           
-        }
-    </script>
+	$(function() {
+		$("#imgIn").on('change', function() {
+			$("#imgbox img").remove();
+			readURL(this);
+		});
+	});
+	var b = 0;
+	function readURL(input) {
+		for (var a = 0; a < input.files.length; a++) {
+			var reader = new FileReader();
+			reader.onload = function(e) {
+				console.log(input.files[b].name);
+				var aa = $("<img src='"+e.target.result+"'><br>").appendTo(
+						"#imgbox");
+				aa.css("width", "200px");
+				aa.css("height", "200px");
+			}
+			reader.readAsDataURL(input.files[a]);
+		}
+	}
+</script>
 </head>
 <body class="bg-gradient-primary">
 
 	<div class="container">
 
-		<div class="card o-hidden border-0 shadow-lg my-5" style="padding-left: 10px; width: auto;">
+		<div class="card o-hidden border-0 shadow-lg my-5"
+			style="padding-left: 10px; width: auto;">
 			<div class="card-body p-0">
 				<!-- Nested Row within Card Body -->
 				<div class="row" style="height: auto;">
-					<div class="col-lg-7" style="margin-left: 10px; margin-top: 20px; margin-bottom: 20px;">
+					<div class="col-lg-7"
+						style="margin-left: 10px; margin-top: 20px; margin-bottom: 20px;">
 						<div class="text-center">
-							<h1 class="h4 text-gray-900 mb-4" style="text-align: left;">편의시설 등록</h1>
+							<h1 class="h4 text-gray-900 mb-4" style="text-align: left;">편의시설
+								등록</h1>
 						</div>
 						<div class="user" style="width: 900px; height: 700px;">
-							<form method="POST" action="${cp}/admin_view/writeamenitiesok" enctype="multipart/form-data">							
+							<form method="POST" action="${cp}/admin_view/writeamenitiesok"
+								enctype="multipart/form-data">
 								<hr style="width: 900px;">
-								<div id="imgbox"></div>																		
+								<div id="imgbox"></div>
 								<hr style="width: 900px;">
-								편의시설명:&nbsp;<input type="text" name="aname" style="width:800px;"><br>	<br>
-								&nbsp;&nbsp;&nbsp;내&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;용&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;<input type="text" name="acontent" style="width: 800px;height: 50px;">						
+								편의시설명:&nbsp;<input type="text" name="aname"
+									style="width: 800px;"><br> <br>
+								&nbsp;&nbsp;&nbsp;내&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;용&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;<input
+									type="text" name="acontent" style="width: 800px; height: 50px;">
 								<hr style="width: 900px;">
-								<input  type="file" id="imgIn" name="imgIn" class="btn btn-secondary btn-icon-split" >						
-								 <input type="submit" class="btn btn-primary btn-icon-split"
+								<input type="file" id="imgIn" name="imgIn"
+									class="btn btn-secondary btn-icon-split"> <input
+									type="submit" class="btn btn-primary btn-icon-split"
 									style="float: right" value="등록">
 							</form>
 						</div>
