@@ -6,12 +6,19 @@
 	
 	<!-- 회원가입 insert -->
 	<insert id="join" parameterType="members">
-		INSERT INTO members VALUES(#{mid},#{gnum},#{mpwd},#{mname},#{mphone},#{memail},sysdate,0)
+		INSERT INTO members VALUES(#{mid},#{gnum},#{mpwd},#{mname},#{mphone},#{memail},sysdate,#{login_type})
 	</insert>
-
+	
 	<!-- 로그인시 존재하는 회원인지 체크 -->
 	<select id="isMember" parameterType="members" resultType="members">
-		SELECT * FROM members WHERE mid=#{mid} AND mpwd=#{mpwd}
+		SELECT 
+				* 
+		FROM 
+				members 
+		WHERE 
+				mid=#{mid} 
+				AND mpwd=#{mpwd}
+				AND login_type=1
 	</select>
 	
 	<!-- 회원가입 아이디 중복검사 / 해당 아이디 회원 있는지 조회-->
@@ -38,7 +45,7 @@
 				m.mphone,
 				m.memail,
 				to_char(m.mregdate,'yyyy.mm.dd') mregdate,
-				m.mpoint,
+				m.login_type,
 				g.gname
 		FROM 
 				members m,grade g
@@ -60,7 +67,18 @@
 	<!-- 회원정보 수정하기 -->
 	<update id="myinfoupdate" parameterType="members">
 		UPDATE members
-		SET mpwd=#{mpwd},memail=#{memail},mphone=#{mphone}
+		<set>
+			<if test="mpwd != null">
+				mpwd=#{mpwd},
+			</if>
+			<if test="memail != null">
+				memail=#{memail},
+			</if>
+			<if test="mphone != null">
+				mphone=#{mphone}
+			</if>
+			
+		</set>
 		WHERE mid=#{mid}
 	</update>
 	
@@ -189,7 +207,7 @@
 				        h.house_num = himg.house_num
 				        AND h.house_num = r.house_num
 				        AND r.room_num = b.room_num
-				        AND b.mid = 'parkm422'
+				        AND b.mid = #{mid}
 				ORDER BY
 				        b.books_date DESC
 			)AA
@@ -316,10 +334,26 @@
 		)<![CDATA[WHERE rnum>=#{startRow} AND rnum<=#{endRow}]]>
 	
 	</select>
-	
+	<!-- 회원 리뷰 개수 얻어오기 -->
 	<select id="reviewCount" parameterType="String" resultType="int">
 	
 		SELECT COUNT(*) FROM review WHERE mid=#{mid}
 	
 	</select>
+	
+	<select id="naverLogin" parameterType="members" resultType="members">
+	
+		SELECT * FROM members WHERE mid=#{mid} AND mname=#{mname} AND memail=#{memail}
+		
+	</select>
+	
+	<!-- 네이버아이도로 로그인시 최초 1회 db에 회원등록 -->
+	<insert id="naverLoginInsert" parameterType="members">
+	
+		INSERT INTO members VALUES(#{mid},1,null,#{mname},null,#{memail},sysdate,#{login_type})
+	
+	</insert>
+	
+	
+	
 </mapper>

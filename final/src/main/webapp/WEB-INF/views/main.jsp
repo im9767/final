@@ -17,157 +17,63 @@
 		</div>
 	</div>
 </div>
-
+<br><br>
 <!-- Best Sellers -->
-
-	<div class="best_sellers">
-		<div class="container">
-			<div class="row">
-				<div class="col text-center">
-					<div class="section_title new_arrivals_title">
-						<h2>Best Sellers</h2>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col">
-					<div class="product_slider_container" style="height:190px;">
-						<div class="owl-carousel owl-theme product_slider" style="height:190px;">
-
-							<!-- Slide 1 -->
-
-							<div class="owl-item product_slider_item" style="height:186px;">
-								<div class="product-item" style="height:180px;">
-									<div class="product discount" style="height:190px;">
-										<div class="product_image">
-											<img src="${pageContext.request.contextPath }/resources/images/product_1.png" alt="" style="height:180px;">
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<!-- Slide 2 -->
-
-							<div class="owl-item product_slider_item" style="height:186px;">
-								<div class="product-item women" style="height:180px;">
-									<div class="product" style="height:190px;">
-										<div class="product_image">
-											<img src="${pageContext.request.contextPath }/resources/images/product_2.png" alt="" style="height:180px;">
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<!-- Slide 3 -->
-
-							<div class="owl-item product_slider_item" style="height:186px;">
-								<div class="product-item women" style="height:180px;">
-									<div class="product" style="height:190px;">
-										<div class="product_image">
-											<img src="${pageContext.request.contextPath }/resources/images/product_3.png" alt="" style="height:180px;">
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<!-- Slide 4 -->
-
-							<div class="owl-item product_slider_item" style="height:186px;">
-								<div class="product-item accessories" style="height:180px;">
-									<div class="product">
-										<div class="product_image">
-											<img src="${pageContext.request.contextPath }/resources/images/product_4.png" alt="" style="height:180px;">
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<!-- Slide 5 -->
-
-							<div class="owl-item product_slider_item" style="height:186px;">
-								<div class="product-item women men">
-									<div class="product" style="height:190px;">
-										<div class="product_image">
-											<img src="${pageContext.request.contextPath }/resources/images/product_5.png" alt="" style="height:180px;">
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<!-- Slide 6 -->
-
-							<div class="owl-item product_slider_item" style="height:186px;">
-								<div class="product-item accessories" style="height:180px;">
-									<div class="product discount" style="height:190px;">
-										<div class="product_image">
-											<img src="${pageContext.request.contextPath }/resources/images/product_6.png" alt="" style="height:180px;">
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<!-- Slide 7 -->
-
-							<div class="owl-item product_slider_item" style="height:186px;">
-								<div class="product-item women" style="height:180px;">
-									<div class="product" style="height:190px;">
-										<div class="product_image">
-											<img src="${pageContext.request.contextPath }/resources/images/product_7.png" alt="" style="height:180px;">
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<!-- Slide 8 -->
-
-							<div class="owl-item product_slider_item" style="height:186px;">
-								<div class="product-item accessories" style="height:180px;">
-									<div class="product" style="height:190px;">
-										<div class="product_image">
-											<img src="${pageContext.request.contextPath }/resources/images/product_8.png" alt="" style="height:180px;">
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<!-- Slide 9 -->
-
-							<div class="owl-item product_slider_item" style="height:186px;">
-								<div class="product-item men" style="height:180px;">
-									<div class="product" style="height:190px;">
-										<div class="product_image">
-											<img src="${pageContext.request.contextPath }/resources/images/product_9.png" alt="" style="height:180px;">
-										</div>
-									</div>
-								</div>
-							</div>
-
-							<!-- Slide 10 -->
-
-							<div class="owl-item product_slider_item" style="height:186px;">
-								<div class="product-item men" style="height:180px;">
-									<div class="product" style="height:190px;">
-										<div class="product_image">
-											<img src="${pageContext.request.contextPath }/resources/images/product_10.png" alt="" style="height:180px;">
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-
-						<!-- Slider Navigation -->
-
-						<div class="product_slider_nav_left product_slider_nav d-flex align-items-center justify-content-center flex-column">
-							<i class="fa fa-chevron-left" aria-hidden="true"></i>
-						</div>
-						<div class="product_slider_nav_right product_slider_nav d-flex align-items-center justify-content-center flex-column">
-							<i class="fa fa-chevron-right" aria-hidden="true"></i>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+	<ul class="col-12" style="width:100%;text-align: center;">
+		<li id="motel" class="card bg-dark text-white" style="width:300px;height:300px;display: inline-block;border: none;margin-right: 10px;cursor: pointer;">
+		  <img src="${cp }/resources/upload/abcde-모텔.jpg" class="card-img" alt="..." style="width:300px;height:300px;opacity: 0.7;">
+		  <div class="card-img-overlay" style="padding: 80px;padding-top: 120px;">
+		    <h5 class="card-title" style="font-size: 2em;font-weight: bold;color: white;">모 텔</h5>
+		  </div>
+		</li>
+		<li id="hotel" class="card bg-dark text-white" style="width:300px;height:300px;display: inline-block;border: none;margin-right: 10px;cursor: pointer;">
+		  <img src="${cp }/resources/upload/abcde-hotel.jpg" class="card-img" alt="..." style="width:300px;height:300px;opacity: 0.7;">
+		  <div class="card-img-overlay" style="padding: 80px;padding-top: 120px;">
+		   <h5 class="card-title" style="font-size: 2em;font-weight: bold;color: white;">호 텔</h5></div>
+		</li>
+		<li id="resort" class="card bg-dark text-white" style="width:300px;height:300px;display: inline-block;border: none;margin-right: 10px;cursor: pointer;">
+		  <img src="${cp }/resources/upload/abcde-리조트.jpg" class="card-img" alt="..." style="width:300px;height:300px;opacity: 0.7;">
+		  <div class="card-img-overlay" style="padding: 80px;padding-top: 120px;">
+		   <h5 class="card-title" style="font-size: 2em;font-weight: bold;color: white;">리조트</h5></div>
+		</li>
+		<li id="pension" class="card bg-dark text-white" style="width:300px;height:300px;display: inline-block;border: none;margin-right: 10px;cursor: pointer;">
+		  <img src="${cp }/resources/upload/abcde-펜션.jpg" class="card-img" alt="..." style="width:300px;height:300px;opacity: 0.7;">
+		  <div class="card-img-overlay" style="padding: 80px;padding-top: 105px;">
+		    <h5 class="card-title" style="font-size: 2em;font-weight: bold;color: white;">펜 션<br>풀빌라</h5>
+		  </div>
+		</li>
+	</ul>
+	
+	<script>
+	
+		$(function(){
+			$("#motel").click(function(){
+				
+				location.href="${cp}/product/accommodationList?t=21&p=01";
+				
+			});
+			
+			$("#hotel").click(function(){
+							
+				location.href="${cp}/product/accommodationList?t=22&p=01";
+							
+			});
+						
+			$("#resort").click(function(){
+				
+				location.href="${cp}/product/accommodationList?t=23&p=01";
+				
+			});
+			
+			$("#pension").click(function(){
+				
+				location.href="${cp}/product/accommodationList?t=24&p=01";
+				
+			});
+		});
+	
+	</script>
+	
 <!-- New Arrivals -->
 
 	<div class="new_arrivals">

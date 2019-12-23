@@ -138,4 +138,13 @@ public class MembersService {
 	public int reviewCount(String mid){
 		return membersDaoImpl.reviewCount(mid);
 	}
+	
+	public boolean naverLogin(MembersVo vo){
+		return membersDaoImpl.naverLogin(vo);
+	}
+	
+	public int naverLoginInsert(MembersVo vo){
+		return membersDaoImpl.naverLoginInsert(vo);
+	}
+	
 }

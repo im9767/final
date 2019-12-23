@@ -20,7 +20,7 @@
 			<div id="carouselExampleControls" class="carousel slide" data-ride="false" style="width:100%;padding:10px;margin: auto;">
 				<div class="carousel-inner">
 					<div class="carousel-item active">
-			      		<img src="${pageContext.request.contextPath }/resources/h_img/${houseImg.house_save_name}" class="d-block w-100" alt="...">
+			      		<img src="${pageContext.request.contextPath }/resources/upload/${houseImg.house_save_name}" class="d-block w-100" alt="...">
 			    	</div>
 			    <div class="carousel-item">
 			      		<img src="${pageContext.request.contextPath }/resources/images/banner_2.jpg" class="d-block w-100" alt="...">
@@ -139,7 +139,7 @@
 						<div style="margin: auto;width:95%;min-height: 250px;">
 							<!-- 객실 대표이미지 -->
 							<div style="width:50%;height:250px;float: left;">
-								<img id="room-${idx.index }" class="room" style="width:90%;height: 250px;cursor: pointer;" alt="객실사진" src="${pageContext.request.contextPath }/resources/images/banner_1.jpg">
+								<img id="room-${idx.index }" class="room" style="width:90%;height: 250px;cursor: pointer;" alt="객실사진" src="${cp }/resources/upload/${rooms.rooms_img.get(idx.index).room_save_name}">
 							</div>
 							<!-- 객실 정보 -->
 							<div style="width:50%;height:250px;float: left;margin-bottom: 20px;">
@@ -159,7 +159,7 @@
 										<a href="${cp }/members/login" class="btn btn-danger btn-lg" role="button" style="width: 100%;position: absolute;bottom: 0px;color:white;">숙박 예약</a>
 									</c:when>
 									<c:otherwise>
-										<a href="${cp }/members/payment?sdt=${sdt}&edt=${edt}&room_num=${rooms.room_num}&room_name=${rooms.roomname }&room_price=${rooms.room_price}&company=${houseinfo.company}" 
+										<a href="${cp }/members/payment?sdt=${sdt}&edt=${edt}&room_num=${rooms.room_num}&room_name=${rooms.roomname }&room_price=${rooms.room_price}&company=${houseinfo.company}"
 										class="btn btn-danger btn-lg" role="button" style="width: 100%;position: absolute;bottom: 0px;color:white;">숙박 예약</a>
 									</c:otherwise>
 								</c:choose>
@@ -182,13 +182,13 @@
 									<c:if test="${i.index == 0 }">
 									
 									    <div class="carousel-item active">
-									      <img style="width:100%;height: 400px;" src="${cp }/resources/room_img/${roomImg.room_org_name}" class="d-block w-100" alt="...">
+									      <img style="width:100%;height: 400px;" src="${cp }/resources/upload/${roomImg.room_save_name}" class="d-block w-100" alt="...">
 									    </div>
 									
 									</c:if>
 									<c:if test="${i.index >0 }">
 										<div class="carousel-item">
-									      <img style="width:100%;height: 400px;" src="${cp }/resources/room_img/${roomImg.room_org_name}" class="d-block w-100" alt="...">
+									      <img style="width:100%;height: 400px;" src="${cp }/resources/upload/${roomImg.room_save_name}" class="d-block w-100" alt="...">
 									    </div>
 									
 									</c:if>    
@@ -239,7 +239,7 @@
 					   			<c:forEach var="amen" items="${houseAmen }">
 					   				<li style="display: inline-block;margin-right: 10px;">
 					   					<div>
-					   					<img style="width:60px;height:60px;" src="${cp }/resources/a_icon/${amen.ORGFILENAME}"><br><span>${amen.AMENITIES_NAME }</span>
+					   					<img style="width:60px;height:60px;" src="${cp }/resources/upload/${amen.SAVEFILENAME}"><br><span>${amen.AMENITIES_NAME }</span>
 					   					</div>
 					   				</li>
 								</c:forEach>
