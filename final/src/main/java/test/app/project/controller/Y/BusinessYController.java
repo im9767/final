@@ -186,6 +186,8 @@ public class BusinessYController {
 					if(!f.delete()) {
 						new Exception("삭제실패");
 						}		
+					System.out.println(uploadPath);		
+
 					map.put("bid", bid);
 					*/
 					//업체이미지 원본명

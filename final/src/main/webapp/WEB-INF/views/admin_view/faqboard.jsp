@@ -27,7 +27,7 @@
         <div class="container-fluid">
 		
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">공지사항</h1>
+          <h1 class="h3 mb-2 text-gray-800">FAQ게시판</h1>
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
           
@@ -43,7 +43,6 @@
                     <tr>          
                       <th>카테고리</th>
                       <th>질문</th>
-                      <th>답글</th>
                       <th>삭제</th>
                     </tr>
                   </thead>
@@ -70,7 +69,6 @@
       					</c:otherwise>
       					</c:choose>
                       <td>${vo.ftitle }</td>
-                      <td>${vo.fcontent}</td> 
                       <td><a href="${cp}/admin_view/delfaq?fnum=${vo.fnum}">삭제</a></td>                           
                     </tr>
                     </c:forEach>

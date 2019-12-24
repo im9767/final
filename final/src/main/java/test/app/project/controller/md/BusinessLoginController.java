@@ -48,6 +48,9 @@ public class BusinessLoginController {
 		map.put("bid",bid);
 		map.put("bpwd",bpwd);
 		housemap.put("bbid", bid);
+		//사업자모드 총 업체갯수
+		int businessAll=pservice.businessAll(piemap);
+		session.setAttribute("businessAll", businessAll);
 		//사업자 아이디로 조회한 업체수
 		int houseCnt=service.houseCnt(housemap);
 		HashMap<String,Object> business=service.login(map);

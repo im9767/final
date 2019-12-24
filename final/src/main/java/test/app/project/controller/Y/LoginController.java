@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttribute;
 
+import test.app.project.service.L.MembersService1;
 import test.app.project.service.L.PaymentService;
 import test.app.project.service.Y.AdminService;
 import test.app.project.vo.EventVo;
@@ -24,6 +25,7 @@ public class LoginController {
 		this.service = service;
 	}
 	@Autowired private PaymentService service1;
+	@Autowired private MembersService1 service2;
 	
 	@RequestMapping(value="/admin_view/login",method=RequestMethod.GET)
 	public String loginForm(){
@@ -44,13 +46,15 @@ public class LoginController {
 		HashMap<String,Object> admin=service.login(map);
 		java.util.List<HashMap<String, Object>> piechart=service1.piechart();
 		java.util.List<HashMap<String, Object>> slist=service1.statics(map1);
+		int allCnt=service2.allCnt(); //등록된업체 전체 갯수
 		if(admin!=null){
 			session.setAttribute("aid",aid);
 			session.setAttribute("apwd",apwd);
-			model.addAttribute("list",piechart);
+			session.setAttribute("list",piechart);
 			model.addAttribute("slist",slist);
 			session.setAttribute("eelist",elist);
 			model.addAttribute("year",year);
+			session.setAttribute("allCnt", allCnt);
 			return ".admin";
 		}else{
 			return "admin_view/login";
