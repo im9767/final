@@ -6,7 +6,14 @@
 	
 	<!-- 회원가입 insert -->
 	<insert id="join" parameterType="members">
-		INSERT INTO members VALUES(#{mid},#{gnum},#{mpwd},#{mname},#{mphone},#{memail},sysdate,#{login_type})
+		INSERT INTO members VALUES(#{mid},
+									(SELECT gnum FROM grade WHERE gname='브론즈'),
+									#{mpwd},
+									#{mname},
+									#{mphone},
+									#{memail},
+									sysdate,
+									#{login_type})
 	</insert>
 	
 	<!-- 로그인시 존재하는 회원인지 체크 -->

@@ -18,7 +18,7 @@
 	</div>
 </div>
 <br><br>
-<!-- Best Sellers -->
+<!-- 숙박 종류 -->
 	<ul class="col-12" style="width:100%;text-align: center;">
 		<li id="motel" class="card bg-dark text-white" style="width:300px;height:300px;display: inline-block;border: none;margin-right: 10px;cursor: pointer;">
 		  <img src="${cp }/resources/upload/abcde-모텔.jpg" class="card-img" alt="..." style="width:300px;height:300px;opacity: 0.7;">
@@ -49,176 +49,63 @@
 		$(function(){
 			$("#motel").click(function(){
 				
-				location.href="${cp}/product/accommodationList?t=21&p=01";
+				location.href="${cp}/product/accommodationList?t=41&p=01";
 				
 			});
 			
 			$("#hotel").click(function(){
 							
-				location.href="${cp}/product/accommodationList?t=22&p=01";
+				location.href="${cp}/product/accommodationList?t=42&p=01";
 							
 			});
 						
 			$("#resort").click(function(){
 				
-				location.href="${cp}/product/accommodationList?t=23&p=01";
+				location.href="${cp}/product/accommodationList?t=43&p=01";
 				
 			});
 			
 			$("#pension").click(function(){
 				
-				location.href="${cp}/product/accommodationList?t=24&p=01";
+				location.href="${cp}/product/accommodationList?t=44&p=01";
 				
 			});
 		});
 	
 	</script>
-	
-<!-- New Arrivals -->
-
-	<div class="new_arrivals">
-		<div class="container">
-			<div class="row">
-				<div class="col text-center">
-					<div class="section_title new_arrivals_title">
-						<h2>New Arrivals</h2>
-					</div>
-				</div>
-			</div>
-			<div class="row align-items-center">
-				<div class="col text-center">
-					<div class="new_arrivals_sorting">
-						<ul class="arrivals_grid_sorting clearfix button-group filters-button-group">
-							<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center active is-checked" data-filter="*">all</li>
-							<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".women">women's</li>
-							<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".accessories">accessories</li>
-							<li class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center" data-filter=".men">men's</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col">
-					<div class="product-grid" data-isotope='{ "itemSelector": ".product-item", "layoutMode": "fitRows" }'>
-
-						<!-- Product 1 -->
-
-						<div class="product-item men">
-							<div class="product discount product_filter">
-								<div class="product_image">
-									<img src="${pageContext.request.contextPath }/resources/images/product_1.png" alt="">
-								</div>
-								<div class="favorite favorite_left"></div>
-								<div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>-$20</span></div>
-								<div class="product_info">
-									<h6 class="product_name"><a href="single.html">Fujifilm X100T 16 MP Digital Camera (Silver)</a></h6>
-									<div class="product_price">$520.00<span>$590.00</span></div>
-								</div>
-							</div>
-							<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
-						</div>
-
-						<!-- Product 2 -->
-
-						<div class="product-item women">
-							<div class="product product_filter">
-								<div class="product_image">
-									<img src="${pageContext.request.contextPath }/resources/images/product_2.png" alt="">
-								</div>
-								<div class="favorite"></div>
-								<div class="product_bubble product_bubble_left product_bubble_green d-flex flex-column align-items-center"><span>new</span></div>
-								<div class="product_info">
-									<h6 class="product_name"><a href="single.html">Samsung CF591 Series Curved 27-Inch FHD Monitor</a></h6>
-									<div class="product_price">$610.00</div>
-								</div>
-							</div>
-							<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
-						</div>
-
-						<!-- Product 3 -->
-
-						<div class="product-item women">
-							<div class="product product_filter">
-								<div class="product_image">
-									<img src="${pageContext.request.contextPath }/resources/images/product_3.png" alt="">
-								</div>
-								<div class="favorite"></div>
-								<div class="product_info">
-									<h6 class="product_name"><a href="single.html">Blue Yeti USB Microphone Blackout Edition</a></h6>
-									<div class="product_price">$120.00</div>
-								</div>
-							</div>
-							<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
-						</div>
-
-						<!-- Product 4 -->
-
-						<div class="product-item accessories">
-							<div class="product product_filter">
-								<div class="product_image">
-									<img src="${pageContext.request.contextPath }/resources/images/product_4.png" alt="">
-								</div>
-								<div class="product_bubble product_bubble_right product_bubble_red d-flex flex-column align-items-center"><span>sale</span></div>
-								<div class="favorite favorite_left"></div>
-								<div class="product_info">
-									<h6 class="product_name"><a href="single.html">DYMO LabelWriter 450 Turbo Thermal Label Printer</a></h6>
-									<div class="product_price">$410.00</div>
-								</div>
-							</div>
-							<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
-						</div>
-
-						<!-- Product 5 -->
-
-						<div class="product-item women men">
-							<div class="product product_filter">
-								<div class="product_image">
-									<img src="${pageContext.request.contextPath }/resources/images/product_5.png" alt="">
-								</div>
-								<div class="favorite"></div>
-								<div class="product_info">
-									<h6 class="product_name"><a href="single.html">Pryma Headphones, Rose Gold & Grey</a></h6>
-									<div class="product_price">$180.00</div>
-								</div>
-							</div>
-							<div class="red_button add_to_cart_button"><a href="#">add to cart</a></div>
-						</div>
-					</div>
-				</div>
-			</div>
+	<br>
+<!-- 이벤트 -->
+	<div style="width:100%;">
+		<p><h4 style="width:1245px;margin: auto;font-weight: bold;">이벤트</h4></p>
+		<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width:1245px;margin: auto;">
+		  <ol class="carousel-indicators">
+		    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+		    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+		    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+		    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+		  </ol>
+		  <div class="carousel-inner" style="width:100%;background-color: gray;height: 200px;right:5px;">
+		    <div class="carousel-item active">
+		      <img src="${cp }/resources/event_img/43c78e5d5f709c00a1ec37eec3673465.jpg" class="d-block w-100" alt="...">
+		    </div>
+		    <div class="carousel-item">
+		      <img src="${cp }/resources/event_img/66ed508baa83eda8fe488d1748ae55ea.jpg" class="d-block w-100" alt="...">
+		    </div>
+		    <div class="carousel-item">
+		      <img src="${cp }/resources/event_img/91d3f8ae9baf9957615e7ee75f3875de.png" class="d-block w-100" alt="...">
+		    </div>
+		    <div class="carousel-item">
+		      <img src="${cp }/resources/event_img/b42ef43dbdd536fb53360a76c6bb3437.jpg" class="d-block w-100" alt="...">
+		    </div>
+		  </div>
+		  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+		    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		    <span class="sr-only">Previous</span>
+		  </a>
+		  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+		    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+		    <span class="sr-only">Next</span>
+		  </a>
 		</div>
 	</div>
-
-
 <!-- Banner -->
-
-<div class="banner">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-4">
-				<div class="banner_item align-items-center"
-					style="background-image:url(${pageContext.request.contextPath }/resources/images/banner_1.jpg)">
-					<div class="banner_category">
-						<a href="categories.html">women's</a>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="banner_item align-items-center"
-					style="background-image:url(${pageContext.request.contextPath }/resources/images/banner_2.jpg)">
-					<div class="banner_category">
-						<a href="categories.html">accessories's</a>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="banner_item align-items-center"
-					style="background-image:url(${pageContext.request.contextPath }/resources/images/banner_3.jpg)">
-					<div class="banner_category">
-						<a href="categories.html">men's</a>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>

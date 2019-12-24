@@ -139,7 +139,7 @@
 						<div style="margin: auto;width:95%;min-height: 250px;">
 							<!-- 객실 대표이미지 -->
 							<div style="width:50%;height:250px;float: left;">
-								<img id="room-${idx.index }" class="room" style="width:90%;height: 250px;cursor: pointer;" alt="객실사진" src="${cp }/resources/upload/${rooms.rooms_img.get(idx.index).room_save_name}">
+								<img id="room-${idx.index }" class="room" style="width:90%;height: 250px;cursor: pointer;" alt="객실사진" src="${cp }/resources/upload/${rooms.rooms_img.get(0).room_save_name}">
 							</div>
 							<!-- 객실 정보 -->
 							<div style="width:50%;height:250px;float: left;margin-bottom: 20px;">
