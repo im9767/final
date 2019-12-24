@@ -13,7 +13,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.4.1.js"></script>
-
+<script type="text/javascript">
+	sessionStorage.setItem("contextpath","${pageContext.request.contextPath}");
+</script>
 	<!-- mypage css -->
 	<link rel="stylesheet" type="text/css" href="${cp }/resources/mypage/mypage.css">
 	<!-- /mypage css -->
@@ -64,10 +66,10 @@
 	</div>
 </div>
 </body>
-
 <script src="${pageContext.request.contextPath}/resources/styles/bootstrap4/popper.js"></script>
 <script src="${pageContext.request.contextPath}/resources/styles/bootstrap4/bootstrap.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/plugins/Isotope/isotope.pkgd.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
 <script src="${pageContext.request.contextPath}/resources/plugins/easing/easing.js"></script>
+<script src="${pageContext.request.contextPath}/resources/js/mainImg.js"></script>
 </html>

@@ -9,8 +9,6 @@ import java.sql.Date;
  * @version $Id$
  */
 public class MembersVo{
-
-
 	/** 회원아이디. */
 	private String mid;
 
@@ -32,15 +30,14 @@ public class MembersVo{
 	/** 가입일. */
 	private java.sql.Date mregdate;
 
-	/** 포인트. */
+	/** 가입종류. */
 	private int login_type;
-
+	
 	/**
 	 * 생성자.
 	 */
-	public MembersVo() {
-	}
-
+	public MembersVo(){}
+	
 	public MembersVo(String mid, int gnum, String mpwd, String mname, String mphone, String memail, Date mregdate,
 			int login_type) {
 		super();
@@ -117,5 +114,4 @@ public class MembersVo{
 	public void setLogin_type(int login_type) {
 		this.login_type = login_type;
 	}
-	
 }

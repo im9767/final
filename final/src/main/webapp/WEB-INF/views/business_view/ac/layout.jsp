@@ -179,13 +179,13 @@ $(function(){
 		var chartstr=[0,0,0,0];
 		<c:forEach var="vo" items="${piechart}">
 			//chartstr.push('${vo.CNT}');
-			if('${vo.BNUM}'== '21'){
+			if('${vo.BNUM}'== '41'){
 				chartstr[0] = '${vo.CNT}';
-			}else if('${vo.BNUM}'== '22'){
+			}else if('${vo.BNUM}'== '42'){
 				chartstr[1] = '${vo.CNT}';
-			}else if('${vo.BNUM}'== '23'){
+			}else if('${vo.BNUM}'== '43'){
 				chartstr[2] = '${vo.CNT}';
-			}else if('${vo.BNUM}'== '24'){
+			}else if('${vo.BNUM}'== '44'){
 				chartstr[3] = '${vo.CNT}';
 			}
 		</c:forEach>

@@ -140,10 +140,10 @@
                       	<form action="${cp}/business/register" method="post">
                       	<select onchange="this.form.submit()" name="company" class="form-control form-control-user" style="width:230px;">
                       		<option value="20" <c:if test="${company=='20'}">selected</c:if>>전체</option>
-                      		<option value="22" <c:if test="${company=='22'}">selected</c:if>>호텔</option>
-                      		<option value="21" <c:if test="${company=='21'}">selected</c:if>>모텔</option>
-                      		<option value="24" <c:if test="${company=='24'}">selected</c:if>>펜션</option>
-                      		<option value="23" <c:if test="${company=='23'}">selected</c:if>>리조트</option>
+                      		<option value="42" <c:if test="${company=='42'}">selected</c:if>>호텔</option>
+                      		<option value="41" <c:if test="${company=='41'}">selected</c:if>>모텔</option>
+                      		<option value="44" <c:if test="${company=='44'}">selected</c:if>>펜션</option>
+                      		<option value="43" <c:if test="${company=='43'}">selected</c:if>>리조트</option>
                       	</select>
                       </form>
                       </div>
