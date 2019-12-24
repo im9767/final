@@ -31,7 +31,7 @@ public class MembersJoinController {
 		System.out.println("email:"+email);
 		System.out.println("phone:"+phone);
 		
-		MembersVo vo = new MembersVo(id, 1, pwd1, name, phone, email, null, 0);
+		MembersVo vo = new MembersVo(id, 1, pwd1, name, phone, email, null, 1);
 		
 		int n = membersService.join(vo);
 		

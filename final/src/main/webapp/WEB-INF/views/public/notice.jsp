@@ -5,7 +5,7 @@
 
 <div style="width:80%;min-height: 1200px;margin: auto;padding: 40px;margin-top: 150px;">
 
-	<div class="accordion" id="accordionExample" style="min-height: 800px;">
+	<div class="accordion" id="accordionExample" style="min-height: 500px;">
 	
 	<c:forEach var="notice" items="${notice }" varStatus="i">
 	

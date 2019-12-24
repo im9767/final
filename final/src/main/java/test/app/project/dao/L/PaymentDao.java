@@ -21,6 +21,8 @@ public interface PaymentDao {
 	List<HashMap<String, Object>> businessStatics(HashMap<String, Object> map);
 	//사업자모드 pie차트 업종갯수 구하기
 	List<HashMap<String, Object>> businessPiechart(HashMap<String, Object> map);
+	//사업자모드 업종 총 갯수 구하기
+	int businessAll(HashMap<String, Object> map);
 }
 
 

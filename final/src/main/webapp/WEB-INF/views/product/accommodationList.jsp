@@ -72,6 +72,7 @@
 									</li>
 								</ul>
 							</li>
+							
 							<li
 								class="grid_sorting_button button d-flex flex-column justify-content-center align-items-center"
 								data-filter="*" style="width: 200px;" id="recomm">추천 순</li>
@@ -112,7 +113,7 @@
 							style="border: none; padding: 10px; margin-top:15px; background: balck;">
 							<input type="hidden" value="${vo.house_num }" class="house_num">
 							<img
-								src="${pageContext.request.contextPath }/resources/h_img/${vo.house_save_name}"
+								src="${pageContext.request.contextPath }/resources/upload/${vo.house_save_name}"
 								alt=""
 								style="border-radius: 15px; height: 300px; width: 85%; background: black;">
 							<div class="card-img-overlay"

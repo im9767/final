@@ -140,10 +140,10 @@
                       	<form action="${cp}/business/register" method="post">
                       	<select onchange="this.form.submit()" name="company" class="form-control form-control-user" style="width:230px;">
                       		<option value="20" <c:if test="${company=='20'}">selected</c:if>>전체</option>
-                      		<option value="22" <c:if test="${company=='22'}">selected</c:if>>호텔</option>
-                      		<option value="21" <c:if test="${company=='21'}">selected</c:if>>모텔</option>
-                      		<option value="24" <c:if test="${company=='24'}">selected</c:if>>펜션</option>
-                      		<option value="23" <c:if test="${company=='23'}">selected</c:if>>리조트</option>
+                      		<option value="42" <c:if test="${company=='42'}">selected</c:if>>호텔</option>
+                      		<option value="41" <c:if test="${company=='41'}">selected</c:if>>모텔</option>
+                      		<option value="44" <c:if test="${company=='44'}">selected</c:if>>펜션</option>
+                      		<option value="43" <c:if test="${company=='43'}">selected</c:if>>리조트</option>
                       	</select>
                       </form>
                       </div>
@@ -256,28 +256,41 @@
               <!-- Project Card Example -->
               <div class="card shadow mb-4">
                 <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
+                  <h6 class="m-0 font-weight-bold text-primary">등록업종 비율</h6>
                 </div>
-                <div class="card-body">
-                  <h4 class="small font-weight-bold">Server Migration <span class="float-right">20%</span></h4>
+                <c:forEach var="vo" items="${piechart}">
+                	<c:choose>
+                		<c:when test="${vo.BNUM=='41'}">
+                			<c:set var="motel" value="${vo.CNT}"/>
+                		</c:when>
+                		<c:when test="${vo.BNUM=='42'}">
+                			<c:set var="hotel" value="${vo.CNT}"/>
+                		</c:when>
+                		<c:when test="${vo.BNUM=='43'}">
+                			<c:set var="resort" value="${vo.CNT}"/>
+                		</c:when>
+                		<c:otherwise>
+                			<c:set var="pension" value="${vo.CNT}"/>
+                		</c:otherwise>
+                	</c:choose>
+                </c:forEach>
+                <c:set var="allCnt" value="${businessAll}"/>
+                 <div class="card-body">
+                  <h4 class="small font-weight-bold">모텔 <span class="float-right">${motel*100/allCnt}%</span></h4>
                   <div class="progress mb-4">
-                    <div class="progress-bar bg-danger" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bg-danger" role="progressbar" style="width: ${motel*100/allCnt}%" aria-valuenow="${motel*100/allCnt}" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
-                  <h4 class="small font-weight-bold">Sales Tracking <span class="float-right">40%</span></h4>
+                  <h4 class="small font-weight-bold">호텔 <span class="float-right">${hotel*100/allCnt}%</span></h4>
                   <div class="progress mb-4">
-                    <div class="progress-bar bg-warning" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar" role="progressbar" style="width: ${hotel*100/allCnt}%" aria-valuenow="${hotel*100/allCnt}" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
-                  <h4 class="small font-weight-bold">Customer Database <span class="float-right">60%</span></h4>
+                  <h4 class="small font-weight-bold">리조트 <span class="float-right">${resort*100/allCnt}%</span></h4>
                   <div class="progress mb-4">
-                    <div class="progress-bar" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bg-success" role="progressbar" style="width: ${resort*100/allCnt}%" aria-valuenow="${resort*100/allCnt}" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
-                  <h4 class="small font-weight-bold">Payout Details <span class="float-right">80%</span></h4>
+                  <h4 class="small font-weight-bold">펜션 <span class="float-right">${pension*100/allCnt}%</span></h4>
                   <div class="progress mb-4">
-                    <div class="progress-bar bg-info" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <h4 class="small font-weight-bold">Account Setup <span class="float-right">Complete!</span></h4>
-                  <div class="progress">
-                    <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar bg-warning" role="progressbar" style="width: ${pension*100/allCnt}%" aria-valuenow="${pension*100/allCnt}" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
                 </div>
               </div>

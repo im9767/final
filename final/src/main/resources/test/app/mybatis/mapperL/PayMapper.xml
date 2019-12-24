@@ -42,12 +42,16 @@
 			mphone,
 			memail,
 			to_char(mregdate,'yyyy-mm-dd') as mregdate,
-			mpoint,
+			login_type,
 			gname
 		from 
 			members m, grade g
 		where
 			m.gnum=g.gnum
+	</select>
+	<!-- 관리자모드 업종 총 갯수 구하기 -->
+	<select id="allCnt" resultType="int">
+		select NVL(count(*),0) from house
 	</select>
 	<!-- 관리자모드 업종별 갯수 구하기 -->
 	<select id="companycount" resultType="int" parameterType="hashmap">
@@ -55,6 +59,13 @@
 		<if test="company!='20' and company!=null">
 			where bnum=#{company}
 		</if>
+	</select>
+	<!-- 사업자모드 업체 총 갯수 구하기 -->
+	<select id="businessAll" resultType="int" parameterType="hashmap">
+		select nvl(count(*),0)
+		from b_event b, house h
+		where b.bnum=h.bnum
+		and h.business_id=#{bid}
 	</select>
 	<!-- 사업자모드 업종별 갯수 구하기 -->
 	<select id="businesscount" resultType="int" parameterType="hashmap">

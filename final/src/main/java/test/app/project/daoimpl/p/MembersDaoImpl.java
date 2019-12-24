@@ -167,4 +167,18 @@ public class MembersDaoImpl implements MembersDao{
 	public int reviewCount(String mid){
 		return sqlSessionTemplate.selectOne(NAMESPACE+".reviewCount", mid);
 	}
+	
+	
+	// 네이버 로그인
+	@Override
+	public boolean naverLogin(MembersVo vo) {
+		return (sqlSessionTemplate.selectOne(NAMESPACE+".naverLogin", vo) == null) ? true : false;
+	}
+	
+	
+	// 네이버 로그인 최초 1회 db에 회원정보 저장
+	@Override
+	public int naverLoginInsert(MembersVo vo) {
+		return sqlSessionTemplate.insert(NAMESPACE+".naverLoginInsert", vo);
+	}
 }
