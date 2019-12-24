@@ -358,7 +358,10 @@
 			location.href="${pageContext.request.contextPath}/product/accommodationList?t=${t}&p=${p}&sort=rowPrice&startday="+today+"&endday="+nextday;
 		}
 	});
-  
+  	$('.house').hover(function(){
+  		$(this).css("cursor","pointer");
+  	});
+	
 	$('.house').click(function(){
 		var house_num = $(this).find('.house_num').val()
 		location.href="${pageContext.request.contextPath }/house/detail?house_num="+house_num+"&sdt=${start_date}&edt=${end_date}"
