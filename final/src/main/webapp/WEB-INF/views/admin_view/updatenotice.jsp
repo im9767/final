@@ -43,11 +43,11 @@
 						</div>
 						<div class="user" style="width: 900px; height: 700px;">
 							<c:forEach var="vo" items="${upnoticelist}">
-								<form method="GET" action="${cp}/admin_view/upnoticeok">
+								<form method="POST" action="${cp}/admin_view/upnoticeok">
 								<input type="text" name="nnum" id="nnum" value="${vo.nnum}" hidden="">
 									<div class="form-group row">
 										<div class="col-sm-6 mb-3 mb-sm-0">
-										<div class="input-group input-group-sm mb-3">
+										<div class="input-group input-group-sm mb-3" style="width: 900px;">
 											<div class="input-group-prepend">
 												<span class="input-group-text" id="inputGroup-sizing-sm">제목</span>
 											</div>

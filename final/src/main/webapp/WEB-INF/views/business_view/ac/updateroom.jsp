@@ -118,7 +118,7 @@ function readURL(input) {
 								<hr style="width: 900px;">
 								<input multiple="multiple" type="file" id="imgIn" name="imgIn" class="btn btn-secondary btn-icon-split" >						
 								 <input type="submit" class="btn btn-primary btn-icon-split"
-									style="float: right;  margin-right:50px;" value="수정하기">
+									style="float: right;  margin-right:50px; width: 100px;" value="수정하기">
 							</form>
 						</div>
 						<hr>

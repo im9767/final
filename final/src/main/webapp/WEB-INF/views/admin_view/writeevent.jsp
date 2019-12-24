@@ -43,7 +43,7 @@
             		console.log(input.files[b].name);
             		//var aa=$("<img src='"+e.target.result+"' name='"+input.files[b].name+"'><br>").appendTo("#imgbox");
             		var aa=$("<img src='"+e.target.result+"'name='imgs'><br>").appendTo("#imgbox");           		
-            		aa.css("width","700px");
+            		aa.css("width","1000px");
             		aa.css("height","700px");
             		console.log(b++);
             		}
@@ -65,23 +65,22 @@
 							<h1 class="h4 text-gray-900 mb-4" style="text-align: left;">이벤트
 								작성</h1>
 						</div>
-						<div class="user" style="width: 900px; height: 700px;">
+						<div class="user" style="width: 1000px; height: auto;">
 							<form method="POST" action="${cp}/admin_view/writeeventok" enctype="multipart/form-data">
 								<div class="form-group row" style="width: auto">
 									<div class="col-sm-6 mb-3 mb-sm-0" style="width: auto">
 										<input type="text" name="etitle" id="etitle" placeholder="제목">
-									</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-									시작&nbsp;<input type="date" id="edate" name="edate" style="float:right;" value="">&nbsp;
-									종료&nbsp;<input type="date" id="sdate" name="sdate" style="float:right;" value="">
-								</div><hr style="width: 900px;">													
-								<div id="imgbox"></div>						
-								<hr style="width: 900px;">
+									</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									시작&nbsp;<input type="date" id="edate" name="sdate" style="float:right;" value="null">&nbsp;
+									종료&nbsp;<input type="date" id="sdate" name="edate" style="float:right;" value="null">
+								</div><hr style="width: 1000px;">													
+								<div id="imgbox"></div>		
+								<hr style="width: 1000px;">
 								<input multiple="multiple" type="file" id="imgIn" name="imgIn" class="btn btn-secondary btn-icon-split" >						
 								 <input type="submit" class="btn btn-primary btn-icon-split"
-									style="float: right" value="작성하기">
+									style="float: right; width: 100px;" value="작성하기">
 							</form>
 						</div>
-						<hr>
 					</div>
 				</div>
 			</div>

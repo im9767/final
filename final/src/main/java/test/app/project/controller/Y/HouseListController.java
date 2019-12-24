@@ -52,7 +52,7 @@ public class HouseListController {
 		if (n > 0) {
 			return "redirect:/admin_view/housetable";
 		} else {
-			return "admin_view/housetable";
+			return "business_view/ac/allfail";
 		}
 	}
 	//승인대기 업체조회
@@ -79,7 +79,7 @@ public class HouseListController {
 			if (n > 0) {
 				return "redirect:/admin_view/apphouse";
 			} else {
-				return "admin_view/apphouse";
+				return "business_view/ac/allfail";
 			}
 		}
 	//승인해주기
@@ -89,7 +89,7 @@ public class HouseListController {
 		if (n > 0) {
 			return "redirect:/admin_view/apphouse";
 		} else {
-			return "admin_view/apphouse";
+			return "business_view/ac/allfail";
 		}
 	}
 	//거절하기
@@ -108,7 +108,7 @@ public class HouseListController {
 			if (n > 0) {
 				return "redirect:/admin_view/apphouse";
 			} else {
-				return "admin_view/apphouse";
+				 return "business_view/ac/allfail";
 			}
 		}
 	

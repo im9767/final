@@ -15,7 +15,7 @@ import test.app.project.dao.Y.AdminDao;
 import test.app.project.vo.AmenitiesVo;
 import test.app.project.vo.EventVo;
 import test.app.project.vo.EventimagesVo;
-
+import test.app.project.vo.FaqVo;
 import test.app.project.vo.NoticeVo;
 import test.app.project.vo.RoomsImgVo;
 import test.app.project.vo.RoomsVo;
@@ -122,6 +122,16 @@ public class AdminService {
 	}
 	public List<HashMap<String, Object>> selamenities(){
 		return dao.selamenities();
+	}
+	//FAQ
+	public List<FaqVo> flistAll(){
+		return dao.flistAll();
+	}
+	public int wfaq(HashMap<String,Object> map){
+		return dao.wfaq(map);
+	}
+	public int faqdelete(int fnum){
+		return dao.faqdelete(fnum);
 	}
 	
 }

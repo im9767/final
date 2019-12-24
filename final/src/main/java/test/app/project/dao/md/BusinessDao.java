@@ -19,7 +19,6 @@ public class BusinessDao {
 	private final String NAMESPACE="test.app.mybatis.mapper.MD.BusinessMapper";
 	
 	public HashMap<String,Object> login(HashMap<String,Object> map){
-		System.out.println("businessdao");
 		return sqlSessionTemplate.selectOne(NAMESPACE+".login",map);
 	}
 	

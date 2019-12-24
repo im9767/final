@@ -44,7 +44,7 @@
 						<div class="user" style="width: 900px; height: auto;">	
 						<c:forEach  var="vo" items="${eventinfolist}" varStatus="vs">	
 						<c:if test="${vs.index==0 }">
-								<div class="form-group row" style="width: auto; " >
+								<div class="form-group row" style="width: auto;" >
 									<div class="col-sm-6 mb-3 mb-sm-0" style="width: auto; font-size: 1.7em; color: black;">										
 									<span>${vo.ETITLE}</span>
 									</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -52,7 +52,7 @@
 									<span>종료날짜:${vo.EENDDATE}</span>																	
 								</div><hr style="width: 900px;">														
 								</c:if>																					
-								<img src="../resources/upload/${vo.SAVEFILENAME}" style="width: 700px; height: 700px;"><br>																														
+								<img src="../resources/upload/${vo.SAVEFILENAME}" style="width: 1000px; height: 700px;"><br>																														
 								</c:forEach>																																								
 						<hr style="width: 900px;">
 						<div>
