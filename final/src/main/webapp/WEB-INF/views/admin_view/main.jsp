@@ -264,13 +264,13 @@
                 </div>
                 <c:forEach var="vo" items="${list}">
                 	<c:choose>
-                		<c:when test="${vo.BNUM=='21'}">
+                		<c:when test="${vo.BNUM=='41'}">
                 			<c:set var="motel" value="${vo.CNT}"/>
                 		</c:when>
-                		<c:when test="${vo.BNUM=='22'}">
+                		<c:when test="${vo.BNUM=='42'}">
                 			<c:set var="hotel" value="${vo.CNT}"/>
                 		</c:when>
-                		<c:when test="${vo.BNUM=='23'}">
+                		<c:when test="${vo.BNUM=='43'}">
                 			<c:set var="resort" value="${vo.CNT}"/>
                 		</c:when>
                 		<c:otherwise>

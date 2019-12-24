@@ -55,15 +55,14 @@
 </head>
 <body>
 <div class="super_container">
-	<div id="header">
+	
 		<tiles:insertAttribute name="header"/>
-	</div>
-	<div id="main">
+
 		<tiles:insertAttribute name="main"/>
-	</div>
-	<div id="footer">
+	
+	
 		<tiles:insertAttribute name="footer"/>
-	</div>
+
 </div>
 </body>
 <script src="${pageContext.request.contextPath}/resources/styles/bootstrap4/popper.js"></script>
