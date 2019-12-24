@@ -144,10 +144,10 @@
                       <form action="${cp}/company/register" method="post">
                       	<select onchange="this.form.submit()" name="company" class="form-control form-control-user" style="width:230px;">
                       		<option value="20" <c:if test="${company=='20'}">selected</c:if>>전체</option>
-                      		<option value="22" <c:if test="${company=='22'}">selected</c:if>>호텔</option>
-                      		<option value="21" <c:if test="${company=='21'}">selected</c:if>>모텔</option>
-                      		<option value="24" <c:if test="${company=='24'}">selected</c:if>>펜션</option>
-                      		<option value="23" <c:if test="${company=='23'}">selected</c:if>>리조트</option>
+                      		<option value="42" <c:if test="${company=='42'}">selected</c:if>>호텔</option>
+                      		<option value="41" <c:if test="${company=='41'}">selected</c:if>>모텔</option>
+                      		<option value="44" <c:if test="${company=='44'}">selected</c:if>>펜션</option>
+                      		<option value="43" <c:if test="${company=='43'}">selected</c:if>>리조트</option>
                       	</select>
                       </form>
                       </div>
@@ -258,7 +258,7 @@
             <div class="col-lg-6 mb-4">
 
               <!-- Project Card Example -->
-              <div class="card shadow mb-4">
+              <div class="card shadow mb-4" style="left:350px">
                 <div class="card-header py-3">
                   <h6 class="m-0 font-weight-bold text-primary">등록업체 비율</h6>
                 </div>
@@ -353,34 +353,7 @@
 
             </div>
 
-            <div class="col-lg-6 mb-4">
-
-              <!-- Illustrations -->
-              <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Illustrations</h6>
-                </div>
-                <div class="card-body">
-                  <div class="text-center">
-                    <img class="img-fluid px-3 px-sm-4 mt-3 mb-4" style="width: 25rem;" src="img/undraw_posting_photo.svg" alt="">
-                  </div>
-                  <p>Add some quality, svg illustrations to your project courtesy of <a target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a constantly updated collection of beautiful svg images that you can use completely free and without attribution!</p>
-                  <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on unDraw &rarr;</a>
-                </div>
-              </div>
-
-              <!-- Approach -->
-              <div class="card shadow mb-4">
-                <div class="card-header py-3">
-                  <h6 class="m-0 font-weight-bold text-primary">Development Approach</h6>
-                </div>
-                <div class="card-body">
-                  <p>SB Admin 2 makes extensive use of Bootstrap 4 utility classes in order to reduce CSS bloat and poor page performance. Custom CSS classes are used to create custom components and custom utility classes.</p>
-                  <p class="mb-0">Before working with this theme, you should become familiar with the Bootstrap framework, especially the utility classes.</p>
-                </div>
-              </div>
-
-            </div>
+            
           </div>
 
         </div>
