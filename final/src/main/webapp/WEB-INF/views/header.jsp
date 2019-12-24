@@ -30,7 +30,7 @@
 									<ul class="language_selection" style=' height: auto;'>
 										<li><a href="${cp }${cp }noticeList">공지사항</a></li>
 										<li><a href="${cp }/public/eventboards">이벤트</a></li>
-										<li><a href="#">FAQ</a></li>
+										<li><a href="${cp}/public/faq">FAQ</a></li>
 										<li><a href="#">약관 및 정책</a></li>
 									</ul>
 								</li>

@@ -11,6 +11,7 @@ import java.util.UUID;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.util.FileCopyUtils;
@@ -52,10 +53,13 @@ public class AmenitiesController {
 					AmenitiesVo vo=new AmenitiesVo(0,aname,acontent,orgfilename,savefilename);
 					service.writeamenities(vo);
 					return ".admin";
+		   }catch(DataIntegrityViolationException dvo){
+			   dvo.printStackTrace();
+			   return "business_view/ac/allfail";
 		   }catch(IOException io){
 			   io.printStackTrace();
+			   return "business_view/ac/allfail";
 		   }
-				return ".admin";
 		}
 }
 	

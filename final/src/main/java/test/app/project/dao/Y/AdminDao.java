@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import test.app.project.vo.AmenitiesVo;
 import test.app.project.vo.EventVo;
 import test.app.project.vo.EventimagesVo;
+import test.app.project.vo.FaqVo;
 import test.app.project.vo.HouseVo;
 import test.app.project.vo.HouseintroVo;
 import test.app.project.vo.NoticeVo;
@@ -120,6 +121,17 @@ public class AdminDao {
 	}
 	public List<HashMap<String, Object>> selamenities(){
 		return sqlSessionTemplate.selectList("test.app.mybatis.mapperY.AdminMapper.allamenities");
+	}
+	//faq
+	public List<FaqVo> flistAll(){
+		return sqlSessionTemplate.selectList("test.app.mybatis.mapperY.AdminMapper.flistAll");
+	}
+	public int wfaq(HashMap<String,Object> map){
+		return 
+		sqlSessionTemplate.insert("test.app.mybatis.mapperY.AdminMapper.wfaq",map);
+	}
+	public int faqdelete(int fnum){
+		return sqlSessionTemplate.delete("test.app.mybatis.mapperY.AdminMapper.faqdelete",fnum);
 	}
 }
 

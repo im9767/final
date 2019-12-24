@@ -38,35 +38,47 @@
 				<div class="row" style="height: 900px">
 					<div class="col-lg-7" style="margin-left: 100px; margin-top: 20px;">
 						<div class="text-center">
-							<h1 class="h4 text-gray-900 mb-4" style="text-align: left;">공지사항
+							<h1 class="h4 text-gray-900 mb-4" style="text-align: left;">FAQ
 								작성</h1>
 						</div>
 						<div class="user" style="width: 900px; height: 700px;">
-							<form method="POST" action="${cp}/admin_view/writenoticeok">
+							<form method="POST" action="${cp}/admin_view/writefaqok">
 								<div class="form-group row">
 									<div class="col-sm-6 mb-3 mb-sm-0">
-										<div class="input-group input-group-sm mb-3" style="width:900px;">
+										<div class="input-group input-group-sm mb-3" style="width:500px;">
 											<div class="input-group-prepend">
-												<span class="input-group-text" id="inputGroup-sizing-sm">제목</span>
-											</div>
-											<input type="text" name="ntitle" placeholder="제목" class="form-control"
+												<span class="input-group-text" id="inputGroup-sizing-sm">질문</span>
+											
+											</div>							
+											<input type="text" name="ftitle" placeholder="질문" class="form-control"
 												aria-label="Sizing example input"
-												aria-describedby="inputGroup-sizing-sm">
-										</div>
-									</div>
+												aria-describedby="inputGroup-sizing-sm"> 												
+										</div>									
+									</div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+										<select name="fcnum" class="form-control form-control-user" style="width: 230px; float: right;">
+									<option value="1">환불</option>
+									<option value="2">이용문의</option>
+									<option value="3">예약</option>
+									<option value="4">쿠폰</option>
+									<option value="5">결제</option>
+									<option value="6">기타</option>
+								</select>
 								</div>
 								<div class="input-group">
 									<div class="input-group-prepend">
-										<span class="input-group-text">내용</span>
+										<span class="input-group-text">답변</span>
 									</div>
-									<textarea class="form-control" name="ncontent"
-										aria-label="With textarea" placeholder="내용"
+									<textarea class="form-control" name="fcontent"
+										aria-label="With textarea" placeholder="답변"
 										style="width: 1000px; height: 650px;"></textarea>
 								</div>
 								<hr>
 								<div style="float: right">
 								<a
-									href="${cp}/admin_view/noticeboard"
+									href="${cp}/admin_view/faqboard"
 									class="btn btn-secondary btn-icon-split"><span>뒤로가기</span>
 								</a>
 								<input type="submit" class="btn btn-primary btn-icon-split"

@@ -53,7 +53,7 @@ function validate() {
 </head>
 <body class="bg-gradient-primary">
 	<div class="container">
-		<div class="card o-hidden border-0 shadow-lg my-5" style="margin-left: 300px; width: 500px;">
+		<div class="card o-hidden border-0 shadow-lg my-5" style="margin-left: 300px; width: 440px;">
 			<div class="card-body p-0">
 				<!-- Nested Row within Card Body -->
 				<div class="row" style="height: auto;">
@@ -61,19 +61,20 @@ function validate() {
 						<div class="text-center">
 							<h1 class="h4 text-gray-900 mb-4" style="text-align: left;">편의시설 수정</h1>
 						</div>
-						<div class="user" style="width: 500px; height: 700px;">
+						<div class="user" style="width: 400px; height: 700px;">
 							<form method="POST" name="frm1" onsubmit="return validate();" action="${cp}/business_view/updateamenitiesok" enctype="multipart/form-data">																															
 								<hr style="width: 900px;">
-								<c:forEach var="vo" items="${selam}" varStatus="vs">
-								<input type="checkbox"  style="width: 100px; height: 100px;" value="${vo.AMENITIES_NAME}" name="am"><span style="font-size: 2em;">${vo.AMENITIES_NAME}</span><br>
+								<c:forEach var="vo" items="${selam}" varStatus="vs"><img src="../resources/upload/${vo.SAVEFILENAME}.png" style="width:200px; height:200px; float: left;">
+								<input type="checkbox"  style="width: 200px; height: 200px; margin-left:500" value="${vo.AMENITIES_NAME}" name="am"><span style="font-size: 2em;margin-left: 40px;">${vo.AMENITIES_NAME}</span>
+								<br>
 								</c:forEach>
 								<hr style="width: 900px;">
 								<div id="subitem"></div>
 								<a href="${cp}/business/view"
-											class="btn btn-secondary btn-icon-split"><span>뒤로가기</span>
+											class="btn btn-secondary btn-icon-split" style="float:right; width: 100px;"><span>뒤로가기</span>
 										</a>					
 								 <input type="submit" class="btn btn-primary btn-icon-split"
-									style="float: right; margin-right:50px;" value="수정" onclick="valiDate()">
+									style="float: right; margin-right:10px; width:100px;" value="수정" onclick="valiDate()">
 							</form>
 						</div>
 					</div>

@@ -304,6 +304,7 @@ $(function(){
           <i class="fas fa-fw fa-table"></i>
           <span>공지사항</span></a>
       </li>
+      
       <li class="nav-item">
         <a class="nav-link" href="${cp}/admin_view/eventboard">
           <i class="fas fa-fw fa-table"></i>
@@ -382,6 +383,12 @@ $(function(){
         <a class="nav-link" href="${cp}/admin_view/writeamenities">
           <i class="fas fa-fw fa-table"></i>
           <span>편의시설 등록</span></a>
+      </li>	
+      
+      <li class="nav-item">
+        <a class="nav-link" href="${cp}/admin_view/faqboard">
+          <i class="fas fa-fw fa-table"></i>
+          <span>faq 등록</span></a>
       </li>	
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">

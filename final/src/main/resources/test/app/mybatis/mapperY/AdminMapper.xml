@@ -95,6 +95,16 @@
 	<insert id="inserthouseintro" parameterType="test.app.project.vo.HouseintroVo" >
 		insert into houseintro values(houseintro_seq.nextval,#{house_num},#{amenities_num})
 	</insert>
+	<!-- faq -->
+	<select id="flistAll"  resultType="test.app.project.vo.FaqVo">
+		select * from faq
+	</select>
+	<insert id="wfaq" parameterType="hashmap" >
+		insert into faq values(faq_seq.nextval,#{ftitle},#{fcontent},#{fcnum})
+	</insert>
+	<delete id="faqdelete" parameterType="int" >
+		delete faq where fnum=#{fnum}
+	</delete>
 </mapper>
 
 
