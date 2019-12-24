@@ -175,7 +175,7 @@ $(function(){
 		    },
 		  }
 		});
-		// Pie Chart Example
+		// Pie Chart Example  동그란 차트 사용 
 		var pctx = document.getElementById("myPieChart");
 		var chartstr=[0,0,0,0];
 		<c:forEach var="vo" items="${piechart}">
