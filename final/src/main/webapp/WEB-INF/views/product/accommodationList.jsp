@@ -112,7 +112,7 @@
 							style="border: none; padding: 10px; margin-top:15px; background: balck;">
 							<input type="hidden" value="${vo.house_num }" class="house_num">
 							<img
-								src="${pageContext.request.contextPath }/resources/h_img/${vo.house_save_name}"
+								src="${pageContext.request.contextPath }/resources/upload/${vo.house_save_name}"
 								alt=""
 								style="border-radius: 15px; height: 300px; width: 85%; background: black;">
 							<div class="card-img-overlay"

@@ -78,6 +78,9 @@
 			where 
 			    h.house_num(+) = b.house_num and c.house_num(+) = h.house_num
 			    and h.bnum=#{t}
+			 <if test="s!=null">
+			    and (h.workplace like '%${s}%' or h.company like '%${s}%')
+			 </if>
 <!-- 		서울 지역choose문 -->
 		<choose>
 		  <when test="p!=null and p.equals('01')">

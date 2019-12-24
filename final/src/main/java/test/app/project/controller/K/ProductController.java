@@ -24,7 +24,7 @@ public class ProductController {
 
 	@RequestMapping(value="/product/accommodationList", method=RequestMethod.GET)
 	public String accomlist(Model model,String sort, Date startday, Date endday, Date start_date, Date end_date, String date,
-							String t,String p){
+							String t,String p,String s){
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd");
 		DecimalFormat dc = new DecimalFormat("###,###,###");
@@ -42,6 +42,7 @@ public class ProductController {
 			map.put("end_date",  sdf.format(end_date));
 			map.put("p", p);
 			map.put("t",t);
+			map.put("s", s);
 			System.out.println("sort"+sort);
 			System.out.println("date"+date);
 			model.addAttribute("start_date",sdf.format(start_date));
@@ -53,6 +54,7 @@ public class ProductController {
 			map.put("date", date);
 			map.put("p", p);
 			map.put("t",t);
+			map.put("s", s);
 			model.addAttribute("start_date",sdf.format(today));
 			model.addAttribute("end_date", sdf.format(cal.getTime()));
 			System.out.println("2");
@@ -63,6 +65,7 @@ public class ProductController {
 			map.put("date", date);
 			map.put("p", p);
 			map.put("t",t);
+			map.put("s", s);
 			model.addAttribute("start_date",sdf.format(today));
 			model.addAttribute("end_date", sdf.format(cal.getTime()));
 		}
@@ -70,6 +73,7 @@ public class ProductController {
 		System.out.println("list:" + list);
 		model.addAttribute("t",t);
 		model.addAttribute("p",p);
+		model.addAttribute("s",s);
 		model.addAttribute("list",list);
 		model.addAttribute("dc",dc);
 		
