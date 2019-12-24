@@ -30,17 +30,8 @@ public class MembersVo{
 	/** 媛��엯�씪. */
 	private java.sql.Date mregdate;
 
-	/** �룷�씤�듃. */
-	private int mpoint;
-
-	//암호화 추가
-	private String salt;
-
-
 	/** 가입종류. */
 	private int login_type;
-	
-
 	
 	/* 생성자.
 	 */
@@ -59,36 +50,11 @@ public class MembersVo{
 		this.mregdate = mregdate;
 		this.login_type = login_type;
 	}
-	//salt 추가 생성자 오버로딩
-	public MembersVo(String mid, int gnum, String mpwd, String mname, String mphone, String memail, Date mregdate,
-			int mpoint, String salt) {
-		super();
-		this.mid = mid;
-		this.gnum = gnum;
-		this.mpwd = mpwd;
-		this.mname = mname;
-		this.mphone = mphone;
-		this.memail = memail;
-		this.mregdate = mregdate;
-		this.mpoint = mpoint;
-		this.salt = salt;
-	}
-	
 	
 	//salt getter, setter
 	
-
 	public String getMid() {
 		return mid;
-	}
-
-
-	public String getSalt() {
-		return salt;
-	}
-
-	public void setSalt(String salt) {
-		this.salt = salt;
 	}
 
 	public void setMid(String mid) {
