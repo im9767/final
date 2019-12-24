@@ -40,6 +40,15 @@ public class HouseListController {
 	@RequestMapping(value = "/admin_view/deletehouse", method = RequestMethod.GET)
 	public String deletehouse(int house_Num, HttpSession session) {
 		int n = service.deletehouse(house_Num);
+		String uploadPath=
+				session.getServletContext().getRealPath("/resources/upload");
+		System.out.println(uploadPath);		
+		String savefilename=service1.himgsavename(house_Num);
+		
+		File f=new File(uploadPath +"\\" + savefilename);
+		if(!f.delete()) {
+			new Exception("삭제실패");
+			}
 		if (n > 0) {
 			return "redirect:/admin_view/housetable";
 		} else {
@@ -87,6 +96,15 @@ public class HouseListController {
 		@RequestMapping(value = "/admin_view/daegihouse", method = RequestMethod.GET)
 		public String daegihouse(int house_Num, HttpSession session) {
 			int n = service.appfail(house_Num);
+			String uploadPath=
+					session.getServletContext().getRealPath("/resources/upload");
+			System.out.println(uploadPath);		
+			String savefilename=service1.himgsavename(house_Num);
+			
+			File f=new File(uploadPath +"\\" + savefilename);
+			if(!f.delete()) {
+				new Exception("삭제실패");
+				}	
 			if (n > 0) {
 				return "redirect:/admin_view/apphouse";
 			} else {

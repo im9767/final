@@ -3,7 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!-- Footer -->
 
-	<footer class="footer">
+	<footer class="footer" style="clear:both;">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-6">

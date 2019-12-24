@@ -20,7 +20,7 @@
 		<!-- 마이페이지 컨텐츠 -->
 		<section class="mypage-cont">
 			<header class="n-section-title">
-				<h3 class="tit">예약 내역</h3>
+				<h3 class="tit">결제 내역</h3>
 			</header>
 			<br>
 			<table class="table">

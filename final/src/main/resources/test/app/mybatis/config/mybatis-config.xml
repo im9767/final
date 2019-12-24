@@ -26,8 +26,11 @@
 		<typeAlias type="test.app.project.vo.HouseintroVo" alias="houseintro"/>
 		<typeAlias type="test.app.project.vo.RoomsImgVo" alias="roomsImg"/>
 		<typeAlias type="test.app.project.vo.PaymentVo" alias="payment"/>
+		<typeAlias type="test.app.project.vo.EventVo" alias="event"/>
+		<typeAlias type="test.app.project.vo.EventImgVo" alias="EventImgVo"/>
 		<typeAlias type="test.app.project.vo.ReviewVo" alias="review"/>
 		<typeAlias type="test.app.project.vo.ReiewImgVo" alias="reviewImg"/>
+
 	</typeAliases>
 
 	<mappers>
@@ -38,10 +41,9 @@
 		<mapper resource="test/app/mybatis/mapperL/RoomlistMapper.xml"/>
 		<mapper resource="test/app/mybatis/mapper/k/productMapper.xml"/>
 		<mapper resource="test/app/mybatis/mapper/p/NoticeMapper.xml"/>
-
 		<mapper resource="test/app/mybatis/mapper/MD/BusinessMapper.xml"/>
+		<mapper resource="test/app/mybatis/mapper/MD/EventBoardsMapper.xml"/>
 		<mapper resource="test/app/mybatis/mapperY/BusinessYMapper.xml"/>
-
 		<mapper resource="test/app/mybatis/mapper/p/HouseMapper.xml"/>
 		<mapper resource="test/app/mybatis/mapper/p/PaymentMapper.xml"/>
 

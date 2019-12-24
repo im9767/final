@@ -10,8 +10,6 @@ import java.sql.Date;
  */
 public class MembersVo{
 
-
-	/** �쉶�썝�븘�씠�뵒. */
 	private String mid;
 
 	/** �쉶�썝�벑湲됲뀒�씠釉�. */
@@ -37,14 +35,20 @@ public class MembersVo{
 
 	//암호화 추가
 	private String salt;
-	/**
-	 * �깮�꽦�옄.
-	 */
-	public MembersVo() {
-	}
 
-	public MembersVo(String mid, int gnum, String mpwd, String mname, String mphone, String memail,
-			java.sql.Date mregdate, int mpoint) {
+
+	/** 가입종류. */
+	private int login_type;
+	
+
+	
+	/* 생성자.
+	 */
+	public MembersVo(){}
+	
+	public MembersVo(String mid, int gnum, String mpwd, String mname, String mphone, String memail, Date mregdate,
+			int login_type) {
+
 		super();
 		this.mid = mid;
 		this.gnum = gnum;
@@ -53,7 +57,7 @@ public class MembersVo{
 		this.mphone = mphone;
 		this.memail = memail;
 		this.mregdate = mregdate;
-		this.mpoint = mpoint;
+		this.login_type = login_type;
 	}
 	//salt 추가 생성자 오버로딩
 	public MembersVo(String mid, int gnum, String mpwd, String mname, String mphone, String memail, Date mregdate,
@@ -139,14 +143,11 @@ public class MembersVo{
 		this.mregdate = mregdate;
 	}
 
-	public int getMpoint() {
-		return mpoint;
+	public int getLogin_type() {
+		return login_type;
 	}
 
-	public void setMpoint(int mpoint) {
-		this.mpoint = mpoint;
+	public void setLogin_type(int login_type) {
+		this.login_type = login_type;
 	}
-	
-	
-
 }

@@ -50,6 +50,10 @@ public class PaymentService {
 	public List<HashMap<String, Object>> businesschart(HashMap<String, Object> map){
 		return dao.businessPiechart(map);
 	}
+	//사업자모드 업종 총 갯수 구하기
+	public int businessAll(HashMap<String, Object> map){
+		return dao.businessAll(map);
+	}
 }
 
 

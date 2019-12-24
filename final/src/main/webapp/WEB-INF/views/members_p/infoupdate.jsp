@@ -32,13 +32,13 @@
 			    <input value="${vo.mid }" type="text" class="form-control" id="mid" name="mid" aria-describedby="emailHelp" style="width:500px;text-align: left;" readonly>
 			    <small id="emailHelp" class="form-text text-muted">아이디는 변경 할 수 없습니다.</small>
 			  </div>
-			  
+			  <c:if test="${vo.login_type == 1 }">
 			  <div class="form-group">
 			    <label for="exampleInputPassword1">비밀번호</label>
 			    <input value="${vo.mpwd }" type="password" class="form-control" id="mpwd" name="mpwd" style="width:500px;text-align: left;">
 			    <small id="emailHelp" class="form-text text-muted">비밀번호는 영문/숫자/특수 문자를 포함한 8자이상 입력</small>
 			  </div>
-			  
+			  </c:if>
 			  
 			  <div class="form-group">
 			    <label for="exampleInputEmail1">이메일</label>
@@ -69,25 +69,30 @@ function validation(){
 
 	var fmt = RegExp(/^\d{6}[1234]\d{6}$/); //형식 설정
 	
-	// 비밀번호 공백 검사
-	if($("#mpwd").val() == ""){ 
-		alert("패스워드 입력바람"); 
-		$("#pwd1").focus(); 
-		return false; 
-	} 
-	if($("#mid").val() == $("#mpwd").val()){ 
-		alert("아이디와 비밀번호가 같습니다"); 
-		$("#pwd1").val(""); 
-		$("#pwd1").focus(); 
-		return false; 
-	} 
-	//비밀번호 유효성검사
-	if(!regExpPw.test($("#mpwd").val())){ 
-		alert("비밀번호를 형식에 맞게 입력해주세요."); 
-		$("#pwd1").val(""); 
-		$("#pwd1").focus();
-		return false; 
-	} 
+	var login_type = '${vo.login_type}';
+
+	if(login_type == '1'){
+		
+		// 비밀번호 공백 검사
+		if($("#mpwd").val() == ""){ 
+			alert("패스워드 입력바람"); 
+			$("#pwd1").focus(); 
+			return false; 
+		} 
+		if($("#mid").val() == $("#mpwd").val()){ 
+			alert("아이디와 비밀번호가 같습니다"); 
+			$("#pwd1").val(""); 
+			$("#pwd1").focus(); 
+			return false; 
+		} 
+		//비밀번호 유효성검사
+		if(!regExpPw.test($("#mpwd").val())){ 
+			alert("비밀번호를 형식에 맞게 입력해주세요."); 
+			$("#pwd1").val(""); 
+			$("#pwd1").focus();
+			return false; 
+		} 
+	}
 	
 	if($("#memail").val() == ""){
 		alert("이메일을 입력해주세요");

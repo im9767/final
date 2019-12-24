@@ -41,7 +41,16 @@ public class MembersService1 {
 	public int houseImgInsert(HouseImgVo vo){
 		return dao.houseImgInsert(vo);
 	}
+	//업체전체 갯수 구하기
+	public int allCnt(){
+		return dao.allCnt();
+	}
 }
+
+
+
+
+
 
 
 
