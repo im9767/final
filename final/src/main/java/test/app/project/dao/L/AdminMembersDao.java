@@ -25,4 +25,15 @@ public interface AdminMembersDao {
 	HouseVo getBnum(HashMap<String, Object> map);
 	//업체이미지 추가하는 메소드
 	int houseImgInsert(HouseImgVo vo);
+	//업체전체 갯수 구하는 메소드
+	int allCnt();
 }
+
+
+
+
+
+
+
+
+

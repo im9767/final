@@ -335,9 +335,9 @@ $(function(){
               		<select name="gnum" id="gnum" class="form-control form-control-user" style="width:150px;display: inline-block;
               		margin-top: 10px;">
 	                  <option value="4" <c:if test="${gnum=='4'}">selected</c:if>>전체</option>
-	                  <option value="3" <c:if test="${gnum=='3'}">selected</c:if>>골드</option>
+	                  <option value="1" <c:if test="${gnum=='1'}">selected</c:if>>골드</option>
 	                  <option value="2" <c:if test="${gnum=='2'}">selected</c:if>>실버</option>
-	                  <option value="1" <c:if test="${gnum=='1'}">selected</c:if>>브론즈</option>
+	                  <option value="3" <c:if test="${gnum=='3'}">selected</c:if>>브론즈</option>
            		   </select>
          		 
          		 </div> 
@@ -382,12 +382,7 @@ $(function(){
         <a class="nav-link" href="${cp}/admin_view/writeamenities">
           <i class="fas fa-fw fa-table"></i>
           <span>편의시설 등록</span></a>
-      </li>
-	<li class="nav-item">
-        <a class="nav-link" href="${cp}/business_view/kakaotalk">
-          <i class="fas fa-fw fa-table"></i>
-          <span>카카오톡 상담</span></a>
-      </li>
+      </li>	
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">
 

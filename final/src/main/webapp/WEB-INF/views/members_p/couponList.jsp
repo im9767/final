@@ -53,9 +53,7 @@
 			</table>
 		</section>
 		<!-- //contents -->
-		<!--래플 당첨결과-->
-		<div class="layer_cont layer-raffle-result" id="raffle_result" style="display:none; position: fixed; top:50%; left: 60%; margin-left:-800px;  z-index: 100;margin-top:-404px"></div>
-		<!--//래플 당첨결과-->
+
 	</div>
 	<!-- //mypage area -->
 </div>

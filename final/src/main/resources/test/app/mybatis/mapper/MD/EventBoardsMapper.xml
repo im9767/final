@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="test.app.mybatis.mapper.MD.EventBoardsMapper">
+
+	<!-- 이벤트 페이지에 뿌릴 항목들 식별키,제목,조회수,이벤트시작/종료일,이미지 -->
+	<!--  등록일 기준으로 뿌리는것  이벤트 바깥 페이지-->
+	<select id="eventList" parameterType="hashmap" resultType="EventImgVo">
+	
+	select * from 
+(
+	select AA.*, rownum rnum from
+	(
+	SELECT
+            e.event_num,
+			e.etitle,
+			e.eregdate,
+			e.ehit,
+			e.estartdate,
+            e.eenddate,
+            d.savefilename
+	FROM 
+			event E ,(  select * from eventimages where savefilename like '%1.jpg' or  savefilename  like '%1.png') D
+	WHERE 
+			E.event_num=D.event_num
+	order by
+			eregdate desc 
+			
+	)AA
+)<![CDATA[WHERE rnum>=#{startRow} AND rnum<=#{endRow}]]>
+	</select>	
+	
+	<!-- 애는 이벤트 들어가서 모든이미지 뿌려주는거 -->
+		<select id="eventList2" parameterType="hashmap" resultType="EventImgVo">
+	
+	SELECT
+            e.event_num,
+			e.etitle,
+			e.eregdate,
+			e.ehit,
+			e.estartdate,
+            e.eenddate,
+            d.savefilename
+	FROM 
+			event E ,
+			 eventimages D
+	WHERE 
+			E.event_num=D.event_num
+			AND E.event_num=${event_num}
+
+			
+	</select>	
+	
+	
+	
+	<!-- 카운팅 -->
+	<select id="eventBoardsCount" resultType="int">
+	
+		SELECT COUNT(*) FROM event
+	
+	</select>
+	
+	<!-- 이벤트이미지 가져오기 -->
+  <select id="eventBoardsImg" parameterType="hashmap" resultType="event">
+   select savefilename from eventimages where event_num=${event_num}
+  
+  </select>
+	
+</mapper>
+
+
+
+
+
+
+
+
+

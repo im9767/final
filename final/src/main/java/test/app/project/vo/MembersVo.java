@@ -1,5 +1,7 @@
 package test.app.project.vo;
 
+import java.sql.Date;
+
 /**
  * 회원테이블 모델 클래스.
  * 
@@ -7,8 +9,6 @@ package test.app.project.vo;
  * @version $Id$
  */
 public class MembersVo{
-
-
 	/** 회원아이디. */
 	private String mid;
 
@@ -30,17 +30,16 @@ public class MembersVo{
 	/** 가입일. */
 	private java.sql.Date mregdate;
 
-	/** 포인트. */
-	private int mpoint;
-
+	/** 가입종류. */
+	private int login_type;
+	
 	/**
 	 * 생성자.
 	 */
-	public MembersVo() {
-	}
-
-	public MembersVo(String mid, int gnum, String mpwd, String mname, String mphone, String memail,
-			java.sql.Date mregdate, int mpoint) {
+	public MembersVo(){}
+	
+	public MembersVo(String mid, int gnum, String mpwd, String mname, String mphone, String memail, Date mregdate,
+			int login_type) {
 		super();
 		this.mid = mid;
 		this.gnum = gnum;
@@ -49,7 +48,7 @@ public class MembersVo{
 		this.mphone = mphone;
 		this.memail = memail;
 		this.mregdate = mregdate;
-		this.mpoint = mpoint;
+		this.login_type = login_type;
 	}
 
 	public String getMid() {
@@ -108,14 +107,11 @@ public class MembersVo{
 		this.mregdate = mregdate;
 	}
 
-	public int getMpoint() {
-		return mpoint;
+	public int getLogin_type() {
+		return login_type;
 	}
 
-	public void setMpoint(int mpoint) {
-		this.mpoint = mpoint;
+	public void setLogin_type(int login_type) {
+		this.login_type = login_type;
 	}
-	
-	
-
 }

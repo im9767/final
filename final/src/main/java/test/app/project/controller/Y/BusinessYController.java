@@ -156,7 +156,7 @@ public class BusinessYController {
 				public String inhouseok2(int bnum,String intro,String checkintime,String checkouttime,String company,String license,String ceo,String orgaddr,
 						String workplace,String com_tel,String[] sublist,MultipartFile file,HttpSession session) {
 					HashMap<String, Object> map=new HashMap<String, Object>();
-					int house_num=(Integer) session.getAttribute("house_num");
+
 					map.put("bnum", bnum);
 					map.put("intro", intro);
 					map.put("checkintime", checkintime);
@@ -180,12 +180,7 @@ public class BusinessYController {
 					String uploadPath=
 							session.getServletContext().getRealPath("/resources/upload");
 					System.out.println(uploadPath);		
-					String savefilename=service.himgsavename(house_num);
-					
-					File f=new File(uploadPath +"\\" + savefilename);
-					if(!f.delete()) {
-						new Exception("삭제실패");
-						}		
+	
 					map.put("bid", bid);
 					//업체이미지 원본명
 					String house_org_name=file.getOriginalFilename();

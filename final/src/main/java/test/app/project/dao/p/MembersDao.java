@@ -55,4 +55,8 @@ public interface MembersDao {
 	
 	public int reviewCount(String mid);
 	
+	public boolean naverLogin(MembersVo vo);
+	
+	public int naverLoginInsert(MembersVo vo);
+	
 }
