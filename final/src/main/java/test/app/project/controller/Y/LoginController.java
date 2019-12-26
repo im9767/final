@@ -37,15 +37,12 @@ public class LoginController {
 		HashMap<String,Object> map=new HashMap<String, Object>();
 		HashMap<String,Object> map1=new HashMap<String, Object>();
 		session.setAttribute("aid", aid);
-		
 		map.put("aid",aid);
 		map.put("apwd",apwd);
-		
 		int years=year+1;
 		map1.put("year", year);
 		map1.put("years", years);
 		java.util.List<EventVo> elist=service.elistAll();
-		
 		HashMap<String,Object> admin=service.login(map);
 		java.util.List<HashMap<String, Object>> piechart=service1.piechart();
 		java.util.List<HashMap<String, Object>> slist=service1.statics(map1);

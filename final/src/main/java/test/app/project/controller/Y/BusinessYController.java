@@ -82,6 +82,7 @@ public class BusinessYController {
 			service.inupbinfo(map);
 		} catch (Exception e) {
 			e.printStackTrace();
+			return "business_view/ac/allfail";
 		}
 		return ".business";
 	}
@@ -100,13 +101,13 @@ public class BusinessYController {
 			int hnum=(Integer) sesson.getAttribute("house_num");
 			HashMap<String, Object> map= new HashMap<String, Object>();
 			for (int i = 0; i < sublist.length; i++) {
-				System.out.println(sublist[i]);
 				map.put("baname"+i,sublist[i]);
 			}
 			try {
 				service.upba(map,hnum);
 			} catch (Exception e) {
 				e.printStackTrace();
+				return "business_view/ac/allfail";
 			}
 			return ".business";
 		}
@@ -156,7 +157,6 @@ public class BusinessYController {
 				public String inhouseok2(int bnum,String intro,String checkintime,String checkouttime,String company,String license,String ceo,String orgaddr,
 						String workplace,String com_tel,String[] sublist,MultipartFile file,HttpSession session) {
 					HashMap<String, Object> map=new HashMap<String, Object>();
-
 					map.put("bnum", bnum);
 					map.put("intro", intro);
 					map.put("checkintime", checkintime);
@@ -173,15 +173,23 @@ public class BusinessYController {
 					map.put("anum", anum);
 					for(int a=0;a<sublist.length;a++){
 						map.put("sl"+a,sublist[a]);
-						System.out.println(sublist[a]);
 					}
 					//이미지 재업로드
 					try {
 					String uploadPath=
 							session.getServletContext().getRealPath("/resources/upload");
+					System.out.println(uploadPath);
+					/*
+					String savefilename=service.himgsavename(house_num);
+					
+					File f=new File(uploadPath +"\\" + savefilename);
+					if(!f.delete()) {
+						new Exception("삭제실패");
+						}		
 					System.out.println(uploadPath);		
-	
+
 					map.put("bid", bid);
+					*/
 					//업체이미지 원본명
 					String house_org_name=file.getOriginalFilename();
 					map.put("house_org_name", house_org_name);
@@ -197,6 +205,7 @@ public class BusinessYController {
 						service.inhouse(map);
 					} catch (Exception e) {
 						e.printStackTrace();
+						return "business_view/ac/allfail";
 					}														
 					return ".business_view.ac.main_sub";
 			}
@@ -254,6 +263,7 @@ public class BusinessYController {
 						service.rehouse(map);
 					} catch (Exception e) {
 						e.printStackTrace();
+						return "business_view/ac/allfail";
 					}														
 					return ".business_view.ac.main_sub";
 			}

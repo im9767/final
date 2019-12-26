@@ -43,8 +43,8 @@
 				console.log(input.files[b].name);
 				var aa = $("<img src='"+e.target.result+"'><br>").appendTo(
 						"#imgbox");
-				aa.css("width", "200px");
-				aa.css("height", "200px");
+				aa.css("width", "1000px");
+				aa.css("height", "500px");
 			}
 			reader.readAsDataURL(input.files[a]);
 		}
@@ -66,21 +66,21 @@
 							<h1 class="h4 text-gray-900 mb-4" style="text-align: left;">편의시설
 								등록</h1>
 						</div>
-						<div class="user" style="width: 900px; height: 700px;">
+						<div class="user" style="width: 1000px; height: auto;">
 							<form method="POST" action="${cp}/admin_view/writeamenitiesok"
 								enctype="multipart/form-data">
-								<hr style="width: 900px;">
+								<hr style="width: 1000px;">
 								<div id="imgbox"></div>
-								<hr style="width: 900px;">
-								편의시설명:&nbsp;<input type="text" name="aname"
-									style="width: 800px;"><br> <br>
-								&nbsp;&nbsp;&nbsp;내&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;용&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;<input
-									type="text" name="acontent" style="width: 800px; height: 50px;">
-								<hr style="width: 900px;">
+								<hr style="width: 1000px;">
+								편의시설명&nbsp;<input type="text" name="aname"
+									style="width: 1000px;"><br> <br>
+								&nbsp;&nbsp;&nbsp;내&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;용&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input
+									type="text" name="acontent" style="width: 1000px; height: 50px;">
+								<hr style="width: 1000px;">
 								<input type="file" id="imgIn" name="imgIn"
 									class="btn btn-secondary btn-icon-split"> <input
 									type="submit" class="btn btn-primary btn-icon-split"
-									style="float: right" value="등록">
+									style="float: right; width: 100px;" value="등록">
 							</form>
 						</div>
 					</div>

@@ -70,7 +70,7 @@
 								style="text-align: left; font-size: 50px;">업체등록</h1>
 						</div>
 						<div class="user"
-							style="width: 1800px; height: 1000px; margin-right: 100px;">
+							style="width: 1800px; height: auto; margin-right: 100px;">
 							<form method="POST" name="frm1" onsubmit="return validate1();"
 								action="${cp}/business_view/inserthouseok"
 								enctype="multipart/form-data">
@@ -86,9 +86,9 @@
 									<option value="41">숙박</option>
 								</select><br>
 								<div class="form-group">
-									<input type="text" class="form-control form-control-user"
+									<textarea class="form-control form-control-user"
 										name="intro" id="intro" placeholder="업소소개(문자)"
-										style="width: 1700px;">
+										style="width: 1700px; height: 150px;"></textarea>
 								</div>
 								<div class="form-group" style="width: 1500px;">
 									<input type="text" class="form-control form-control-user"
@@ -137,10 +137,10 @@
 											for="customSwitch+${vo.AMENITIES_NAME}">${vo.AMENITIES_NAME}</label>
 									</div>
 								</c:forEach>
-								 
-								<input type="file" name="file"><br>
+								 <div style="color:red;">*업소 이미지</div>
+								<input type="file" name="file" style="margin-top: 10px;"><br>
 								 <input	type="submit" class="btn btn-primary btn-user btn-block"
-									style="width: 1700px;" value="등록신청" onclick="validate()">
+									style="width: 1700px; margin-top:10px;" value="등록신청" onclick="validate()">
 								<hr>
 								<div id="subitem"></div>
 							</form>

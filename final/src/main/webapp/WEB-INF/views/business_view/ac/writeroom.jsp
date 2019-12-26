@@ -102,7 +102,7 @@
 								<hr style="width: 1750px;">
 								<input multiple="multiple" type="file" id="imgIn" name="imgIn" class="btn btn-secondary btn-icon-split" ><div id="subitem"></div>						
 								 <input type="submit" class="btn btn-primary btn-icon-split"
-									style="float: right; margin-right:50px;" value="등록" onclick="valiDate()">
+									style="float: right; margin-right:50px; width: 100px;" value="등록" onclick="valiDate()">
 							</form>
 						</div>
 					</div>

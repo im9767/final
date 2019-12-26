@@ -7,6 +7,7 @@ import java.util.List;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import test.app.project.service.Y.AdminService;
+import test.app.project.vo.FaqVo;
 import test.app.project.vo.HouseVo;
 import test.app.project.vo.NoticeVo;
 
@@ -37,16 +39,22 @@ public class BoardController {
 		return "admin_view/writenotice";
 	}
 	//공지사항 작성체크
-	@RequestMapping(value="/admin_view/writenoticeok",method=RequestMethod.GET)
-	public String writenoticeok(String ntitle,String ncontent,HttpSession session){
+	@RequestMapping(value="/admin_view/writenoticeok",method=RequestMethod.POST)
+	public String writenoticeok(String ntitle,String ncontent,HttpSession session) throws DataIntegrityViolationException{
+		try{
 		HashMap<String,Object> map=new HashMap<String, Object>();
+		
 		map.put("ntitle",ntitle);
 		map.put("ncontent",ncontent);
 		int n=service.wnotice(map);
 		if(n>0){
 			return "redirect:/admin_view/noticeboard";
 		}else{
-			return "admin_view/writenotice";
+			return "/business_view/ac/allfail";
+			}
+		}catch(DataIntegrityViolationException dvo){
+			dvo.printStackTrace();
+			return "/business_view/ac/allfail";
 		}
 	}
 	//공지사항 수정하기
@@ -58,13 +66,18 @@ public class BoardController {
 		return mv;
 	}
 	//공지사항 수정체크
-	@RequestMapping(value = "/admin_view/upnoticeok", method = RequestMethod.GET)
-	public String upnotice(NoticeVo vo){
+	@RequestMapping(value = "/admin_view/upnoticeok", method = RequestMethod.POST)
+	public String upnotice(NoticeVo vo) throws Exception{
+		try{
 		int n=service.upnotice(vo);
 		if (n > 0) {
 			return "redirect:/admin_view/noticeboard";
 		} else {
-			return "redirect:/admin_view/noticeboard";
+			return "/business_view/ac/allfail";
+			}
+		}catch(Exception dvo){
+			dvo.printStackTrace();
+			return "/business_view/ac/allfail";
 		}
 	}
 	//공지사항 삭제
@@ -74,7 +87,7 @@ public class BoardController {
 		if (n > 0) {
 			return "redirect:/admin_view/noticeboard";
 		} else {
-			return "redirect:/admin_view/noticeboard";
+			return "business_view/ac/allfail";
 		}
 	}
 	//공지사항 상세조회
@@ -85,6 +98,55 @@ public class BoardController {
 		mv.addObject("noticeinfolist", nlist);
 		return mv;
 	}
+	//관리자 faq전체조회
+		@RequestMapping(value = "/admin_view/faqboard", method = RequestMethod.GET)
+		public String allfaqlist(Model model) {
+			List<FaqVo> flist = service.flistAll();
+			model.addAttribute("allfaqlist", flist);
+			return ".faqboard";
+		}
+		//faq 작성
+		@RequestMapping(value = "/admin_view/writefaq", method = RequestMethod.GET)
+		public String writefaq(){
+			return "admin_view/writefaq";
+		}
+		//faq 작성체크
+		@RequestMapping(value="/admin_view/writefaqok",method=RequestMethod.POST)
+		public String writefaqok(String ftitle,String fcontent,String fcnum,HttpSession session) throws DataIntegrityViolationException{
+			try{
+			HashMap<String,Object> map=new HashMap<String, Object>();
+			
+			map.put("ftitle",ftitle);
+			map.put("fcontent",fcontent);
+			map.put("fcnum",fcnum);
+			int n=service.wfaq(map);
+			if(n>0){
+				return "redirect:/admin_view/faqboard";
+			}else{
+				return "/business_view/ac/allfail";
+				}
+			}catch(DataIntegrityViolationException dvo){
+				dvo.printStackTrace();
+				return "/business_view/ac/allfail";
+			}
+		}
+		//faq 삭제
+		@RequestMapping(value = "/admin_view/delfaq", method = RequestMethod.GET)
+		public String delfaq(int fnum, HttpSession session) {
+			int n = service.faqdelete(fnum);
+			if (n > 0) {
+				return "redirect:/admin_view/faqboard";
+			} else {
+				return "business_view/ac/allfail";
+			}
+		}
+		//회원사이트에서 faq전체조회
+				@RequestMapping(value = "/public/faq", method = RequestMethod.GET)
+				public String mallfaqlist(Model model) {
+					List<FaqVo> flist = service.flistAll();
+					model.addAttribute("faq", flist);
+					return ".public.faq";
+				}
 }
 	
 	
