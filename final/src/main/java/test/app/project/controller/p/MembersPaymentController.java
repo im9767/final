@@ -26,7 +26,7 @@ public class MembersPaymentController {
 	
 	
 	@RequestMapping(value="/members/payment")
-	public String payment(String sdt, String edt, int room_num, String room_name,int room_price,String company,Model model,HttpSession session){
+	public String payment(String sdt, String edt, int room_num, String room_name,int room_price,String company,String house_save_name,Model model,HttpSession session){
 		
 		String mid = (String) session.getAttribute("id");
 		
@@ -40,6 +40,7 @@ public class MembersPaymentController {
 		model.addAttribute("room_name",room_name); // 룸 이름
 		model.addAttribute("room_price",room_price); // 룸 가격
 		model.addAttribute("company",company); // 업체 이름
+		model.addAttribute("house_save_name", house_save_name); // 업체이미지명
 		
 		System.out.println("sdt:"+sdt);
 		System.out.println("edt:"+edt);
@@ -49,9 +50,11 @@ public class MembersPaymentController {
 		System.out.println("company:"+company);
 		System.out.println();
 		
-		String[] s = sdt.split("/"); // 박수 계산
-		String[] e = edt.split("/"); // 박수 계산
-		int days = Integer.parseInt(e[2])-Integer.parseInt(s[2]);
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("sdt", sdt);
+		map.put("edt", edt);
+		
+		int days = paymentService.days(map);
 		
 		model.addAttribute("days",days); // 숙박 일 수
 		

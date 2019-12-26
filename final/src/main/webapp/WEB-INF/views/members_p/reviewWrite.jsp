@@ -43,7 +43,7 @@
 			<div class="row row-cols-1 row-cols-md-2">
 			  <div class="col mb-4">
 			    <div class="card">
-			      <img src="${cp }/upload/${house_save_name}" class="card-img-top" alt="...">
+			      <img style="width:100%;height:300px;" src="${cp }/resources/upload/${house_save_name}" class="card-img-top" alt="...">
 			      <div class="card-body">
 			        <h5 class="card-title">${company }</h5>
 			        <p class="card-text">${roomname }</p>
@@ -265,19 +265,16 @@
 				
 				kindness = bb;
 				$("#kindness").val(kindness);
-				alert($("#kindness").val());
 				
 			}else if(a[0] == "clean"){
 				
 				clean = bb;
 				$("#clean").val(clean);
-				alert($("#clean").val());
 				
 			}else if(a[0] == "convenience"){
 				
 				convenience = bb;
 				$("#convenience").val(convenience);
-				alert($("#convenience").val());
 				
 			}
 			

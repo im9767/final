@@ -22,21 +22,8 @@
 					<div class="carousel-item active">
 			      		<img src="${pageContext.request.contextPath }/resources/upload/${houseImg.house_save_name}" class="d-block w-100" alt="...">
 			    	</div>
-			    <div class="carousel-item">
-			      		<img src="${pageContext.request.contextPath }/resources/images/banner_2.jpg" class="d-block w-100" alt="...">
-			    </div>
-			    <div class="carousel-item">
-			      		<img src="${pageContext.request.contextPath }/resources/images/banner_3.jpg" class="d-block w-100" alt="...">
-			    </div>
 			  </div>
-			  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-					<span class="sr-only">Previous</span>
-			  </a>
-			  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-			    	<span class="carousel-control-next-icon" aria-hidden="true"></span>
-			    	<span class="sr-only">Next</span>
-			  </a>
+
 			</div>
 						
 		</div>
@@ -159,7 +146,7 @@
 										<a href="${cp }/members/login" class="btn btn-danger btn-lg" role="button" style="width: 100%;position: absolute;bottom: 0px;color:white;">숙박 예약</a>
 									</c:when>
 									<c:otherwise>
-										<a href="${cp }/members/payment?sdt=${sdt}&edt=${edt}&room_num=${rooms.room_num}&room_name=${rooms.roomname }&room_price=${rooms.room_price}&company=${houseinfo.company}"
+										<a href="${cp }/members/payment?sdt=${sdt}&edt=${edt}&room_num=${rooms.room_num}&room_name=${rooms.roomname }&room_price=${rooms.room_price}&company=${houseinfo.company}&house_save_name=${houseImg.house_save_name}"
 										class="btn btn-danger btn-lg" role="button" style="width: 100%;position: absolute;bottom: 0px;color:white;">숙박 예약</a>
 									</c:otherwise>
 								</c:choose>
@@ -267,21 +254,24 @@
 			  </div>
 			  
 			  <!-- 리뷰 탭 -->
-			  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab" style="padding-top: 20px;padding-bottom: 10px;">
+			  <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab" style="padding-top: 20px;padding-bottom: 10px;min-height: 500px;">
 			  	
 			  		<div style="margin-bottom: 10px;">
 			  			<h2 style="text-align: center;">
 			  				<!-- 평균 점수에 따른 문구 -->
 							<c:choose>
-								<c:when test="${reviewScore >= 4 }">
+								<c:when test="${reviewCount == 0 }">
+									작성된 리뷰가 없습니다
+								</c:when>
+								<c:when test="${reviewScore >= 4 && reviewCount > 0}">
 									추천해요
 								</c:when>
-								<c:when test="${reviewScore >= 3 }">
+								<c:when test="${reviewScore >= 3 && reviewCount > 0}">
 									무난해요
 								</c:when>
-								<c:otherwise>
+								<c:when test="${reviewScore < 3 && reviewCount > 0}">
 									별로예요
-								</c:otherwise>
+								</c:when>
 							</c:choose>	
 						</h2>
 			  			<h2 style="text-align: center;color:orange;">
@@ -374,102 +364,78 @@
 						    </div>
 						   
 						    	${review.review_content }
-							
 						  	<div style="margin-top:15px;">
 							  	<c:forEach var="image" items="${review.review_img }">
-							  		<c:if test="${review.review_num == image.review_num && not empty image.review_save_name }">
-							  			<img src="${cp }/resources/upload/${image.review_save_name}" class="mr-3" alt="..." style="width:100px;height:100px;">
+							  		<c:if test="${not empty image.review_org_name }">
+							  			<img src="${cp }/resources/upload/${image.review_save_name}" class="mr-3" alt="사진" style="width:100px;height:100px;">
 							  		</c:if>
 							  	</c:forEach>
 						  	</div>
+						  	
 						  	<p style="margin-top: 15px;font-size: 1em;">
 						  		${review.review_date }
 						  	</p>
 						  </div>
+						  
 					
 						</div>
 						<hr>
 					</c:forEach>
 					
-				
-					<div class="media" style="padding:20px;">
-					  <img src="${cp }/resources/review_icon/ico_15.png" class="mr-3" alt="..." style="width:56px;height:56px;">
-					  <div class="media-body">
-					  
-					    <h5 class="mt-0">Media heading 
-					    	<span style="font-size: 0.7em;color:orange;">  친절도 : ★★★★★   청결도 : ★★★★  편의설 : ★★★</span>
-					    </h5>
-					    
-					    Cras sit amet nibh libero, in gravida nulla.nibh libero,gravida nulla.nibh lib in gravida nulla Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-					  	<div style="margin-top:15px;">
-					  		<img src="${cp }/resources/review_icon/ico_15.png" class="mr-3" alt="..." style="width:100px;height:100px;">
-					  		<img src="${cp }/resources/review_icon/ico_15.png" class="mr-3" alt="..." style="width:100px;height:100px;">
-					  		<img src="${cp }/resources/review_icon/ico_15.png" class="mr-3" alt="..." style="width:100px;height:100px;">
-					  		<img src="${cp }/resources/review_icon/ico_15.png" class="mr-3" alt="..." style="width:100px;height:100px;">
-					  	</div>
-					  </div>
-				
-					</div>
-					
-					<div class="media" style="padding:20px;">
-					  <img src="${cp }/resources/review_icon/ico_14.png" class="mr-3" alt="..." style="width:56px;height:56px;">
-					  <div class="media-body">
-					  
-					    <h5 class="mt-0">Media heading 
-					    	<span style="font-size: 0.7em;color:orange;">  친절도 : ★★★★★   청결도 : ★★★★  편의설 : ★★★</span>
-					    </h5>
-					    
-					    Cras sit amet nibh libero, in gravida nulla.nibh libero,gravida nulla.nibh lib in gravida nulla Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-					  	<div style="margin-top:15px;">
-					  		<img src="${cp }/resources/review_icon/ico_15.png" class="mr-3" alt="..." style="width:100px;height:100px;">
-					  		<img src="${cp }/resources/review_icon/ico_15.png" class="mr-3" alt="..." style="width:100px;height:100px;">
-					  		<img src="${cp }/resources/review_icon/ico_15.png" class="mr-3" alt="..." style="width:100px;height:100px;">
-					  		<img src="${cp }/resources/review_icon/ico_15.png" class="mr-3" alt="..." style="width:100px;height:100px;">
-					  	</div>
-					  </div>
-				
-					</div>
-					
-					<div class="media" style="padding:20px;">
-					  <img src="${cp }/resources/review_icon/ico_13.png" class="mr-3" alt="..." style="width:56px;height:56px;">
-					  <div class="media-body">
-					  
-					    <h5 class="mt-0">Media heading 
-					    	<span style="font-size: 0.7em;color:orange;">  친절도 : ★★★★★   청결도 : ★★★★  편의설 : ★★★</span>
-					    </h5>
-					    
-					    Cras sit amet nibh libero, in gravida nulla.nibh libero,gravida nulla.nibh lib in gravida nulla Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-					  	<div style="margin-top:15px;">
-					  		<img src="${cp }/resources/review_icon/ico_15.png" class="mr-3" alt="..." style="width:100px;height:100px;">
-					  		<img src="${cp }/resources/review_icon/ico_15.png" class="mr-3" alt="..." style="width:100px;height:100px;">
-					  		<img src="${cp }/resources/review_icon/ico_15.png" class="mr-3" alt="..." style="width:100px;height:100px;">
-					  		<img src="${cp }/resources/review_icon/ico_15.png" class="mr-3" alt="..." style="width:100px;height:100px;">
-					  	</div>
-					  </div>
-				
-					</div>
-					
-					<div class="media" style="padding:20px;">
-					  <img src="${cp }/resources/review_icon/ico_11.png" class="mr-3" alt="..." style="width:56px;height:56px;">
-					  <div class="media-body">
-					  
-					    <h5 class="mt-0">Media heading 
-					    	<span style="font-size: 0.7em;color:orange;">  친절도 : ★★★★★   청결도 : ★★★★  편의설 : ★★★</span>
-					    </h5>
-					    
-					    Cras sit amet nibh libero, in gravida nulla.nibh libero,gravida nulla.nibh lib in gravida nulla Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
-					  	<div style="margin-top:15px;">
-					  		<img src="${cp }/resources/review_icon/ico_15.png" class="mr-3" alt="..." style="width:100px;height:100px;">
-					  		<img src="${cp }/resources/review_icon/ico_15.png" class="mr-3" alt="..." style="width:100px;height:100px;">
-					  		<img src="${cp }/resources/review_icon/ico_15.png" class="mr-3" alt="..." style="width:100px;height:100px;">
-					  		<img src="${cp }/resources/review_icon/ico_15.png" class="mr-3" alt="..." style="width:100px;height:100px;">
-					  	</div>
-					  </div>
-				
-					</div>
-					
-					
+					<!-- 페이징 -->
+			<nav aria-label="Page navigation example">
+			  <ul class="pagination justify-content-center">
+			  
+			    <c:choose>
+			  		<c:when test="${pagination.startPageNum > pagination.pageBlockCount }">
+				    	<li class="page-item">
+				    		<a class="page-link" href="${cp }/house/detail?house_num=${houseAmen.get(0).HOUSE_NUM }&pageNum=${pagination.endPageNum+1 }&sdt=${sdt}&edt=${edt}">이전</a>
+				    	</li>
+					</c:when>
+					 <c:otherwise>
+					 	<li class="page-item disabled">
+						   	<a class="page-link" href="#" aria-disabled="true">이전</a>
+						</li>
+					 </c:otherwise>
+			   </c:choose>
+			   
+			   	<c:forEach var="i" begin="${pagination.startPageNum }" end="${pagination.endPageNum }">
+			   	
+			   		<c:choose>
+			   			<c:when test="${pagination.pageNum == i }">
+				   			<li class="page-item active">
+				   				<a class="page-link" href="${cp }/house/detail?house_num=${houseAmen.get(0).HOUSE_NUM }&pageNum=${pagination.endPageNum+1 }&sdt=${sdt}&edt=${edt}">${i }</a>
+				   				<span class="sr-only">(current)</span>
+				   			</li>
+			   			</c:when>
+			   			<c:otherwise>
+				   			<li class="page-item">
+				   				<a class="page-link" href="${cp }/house/detail?house_num=${houseAmen.get(0).HOUSE_NUM }&pageNum=${pagination.endPageNum+1 }&sdt=${sdt}&edt=${edt}">${i }</a>
+				   			</li>
+			   			</c:otherwise>
+			   		</c:choose>
+			   		
+			   	</c:forEach>
+			   	
+			   <c:choose>
+				 <c:when test="${pagination.endPageNum<pagination.totalPageCount }">
+					    <li class="page-item">
+					   	  <a class="page-link" href="${cp }/house/detail?house_num=${houseAmen.get(0).HOUSE_NUM }&pageNum=${pagination.endPageNum+1 }&sdt=${sdt}&edt=${edt}">다음</a>
+					   	</li>
+				 </c:when>
+				 <c:otherwise>
+				 			<li class="page-item disabled">
+					      		<a class="page-link" href="#" aria-disabled="true">다음</a>
+					        </li>
+			 	 </c:otherwise>
+			 	</c:choose>
+
+			  </ul>
+			</nav>
 			  </div>
+			
+			<br>
+			  
 		</div>
 				
 		<!-- 지도 -->

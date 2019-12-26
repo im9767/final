@@ -166,7 +166,7 @@
     		} 
     		//비밀번호 유효성검사
     		if(!regExpPw.test($("#pwd1").val())){ 
-    			alert("형식에 맞게 입력해주세요"); 
+    			alert("비밀번호는 영문/숫자/특수문자를 포함해주세요"); 
     			$("#pwd1").val(""); 
     			$("#pwd1").focus();
     			return false; 
@@ -199,8 +199,8 @@
     <section>
     <form id="joinForm" action="${pageContext.request.contextPath }/members/join" autocomplete="off" method="post" novalidate="novalidate" onsubmit="return validation()">
         <input type="hidden" name="yeogi_token" value="0f614d316fc01f334a06ae92f426580b">
-        <div class="fix_title">
-            <h1 class="page_head"><a href="${pageContext.request.contextPath }/" title="여기어때">여기어때</a></h1>
+        <div class="col-4" style="text-align: center;">
+            <h1 class="page_head"><a href="${pageContext.request.contextPath }/" title="여기어때"><img style="width:140px;height:70px;" src="${cp }/resources/logo/aa.jpg"></a></h1>
         </div>
 
         <div class="join">

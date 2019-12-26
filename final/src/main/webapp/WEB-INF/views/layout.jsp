@@ -28,7 +28,7 @@
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/styles/main_styles.css">
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/styles/responsive.css">
 
- 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
 	<!-- 결제 연동 api -->
 	<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
@@ -41,7 +41,7 @@
 	<!-- 사이드바 마진, 데이트피커 주말 색 변경 css -->
 	<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/resources/styles/accomm.css">
 	<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
-	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<!-- 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
 
 	<!-- 부트스트랩 기본 css -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" 
@@ -67,8 +67,8 @@
 </body>
 <script src="${pageContext.request.contextPath}/resources/styles/bootstrap4/popper.js"></script>
 <script src="${pageContext.request.contextPath}/resources/styles/bootstrap4/bootstrap.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/plugins/Isotope/isotope.pkgd.min.js"></script>
-<script src="${pageContext.request.contextPath}/resources/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
-<script src="${pageContext.request.contextPath}/resources/plugins/easing/easing.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/mainImg.js"></script>
+<%-- <script src="${pageContext.request.contextPath}/resources/plugins/Isotope/isotope.pkgd.min.js"></script> --%>
+<%-- <script src="${pageContext.request.contextPath}/resources/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script> --%>
+<%-- <script src="${pageContext.request.contextPath}/resources/plugins/easing/easing.js"></script> --%>
+<%-- <script src="${pageContext.request.contextPath}/resources/js/mainImg.js"></script> --%>
 </html>
