@@ -6,15 +6,34 @@
 <html>
 <head>
 <meta charset="UTF-8">
-
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Colo Shop Template">
-
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
 <script src="${pageContext.request.contextPath}/resources/js/jquery-3.4.1.js"></script>
 <script type="text/javascript">
+$(function(){
 	sessionStorage.setItem("contextpath","${pageContext.request.contextPath}");
+	var ctx=getContextPath();
+	function getContextPath(){
+		return sessionStorage.getItem("contextpath");
+	}
+	var imgArr=new Array();
+	imgArr[0]=ctx+"/resources/images/slider1.jpg";
+	imgArr[1]=ctx+"/resources/images/slider6.jpg";
+	imgArr[2]=ctx+"/resources/images/slider3.jpg";
+	imgArr[3]=ctx+"/resources/images/slider5.jpg";
+	var index=1;
+	var main_slider=document.getElementById("main_slider");
+	setInterval(function(){
+		$("#main_slider").stop().fadeOut(500,function(){
+			main_slider.style.backgroundImage="url("+imgArr[index++]+")";
+			$("#main_slider").fadeIn(500);
+			if(index==4){
+				index=0;
+			}
+		});
+	},3000);
+});
 </script>
 	<!-- mypage css -->
 	<link rel="stylesheet" type="text/css" href="${cp }/resources/mypage/mypage.css">
@@ -55,14 +74,11 @@
 </head>
 <body>
 <div class="super_container">
-	
 		<tiles:insertAttribute name="header"/>
 
 		<tiles:insertAttribute name="main"/>
 	
-	
 		<tiles:insertAttribute name="footer"/>
-
 </div>
 </body>
 <script src="${pageContext.request.contextPath}/resources/styles/bootstrap4/popper.js"></script>
@@ -70,5 +86,5 @@
 <script src="${pageContext.request.contextPath}/resources/plugins/Isotope/isotope.pkgd.min.js"></script>
 <script src="${pageContext.request.contextPath}/resources/plugins/OwlCarousel2-2.2.1/owl.carousel.js"></script>
 <script src="${pageContext.request.contextPath}/resources/plugins/easing/easing.js"></script>
-<script src="${pageContext.request.contextPath}/resources/js/mainImg.js"></script>
+<%-- <script src="${pageContext.request.contextPath}/resources/js/mainImg.js"></script> --%>
 </html>
