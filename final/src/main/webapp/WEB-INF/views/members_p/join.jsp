@@ -142,16 +142,6 @@
     			return false;
     		}
 
-    		
-			/*
-    		// 이름 유효성 검사
-    		if(!getCheck.test($("#name").val())){
-    			alert("이름형식에 맞게 입력해주세요"); 
-    			$("#name").val("");
-    			$("#name").focus();
-    			return false; 
-    		}
-    		*/
     		// 비밀번호 공백 검사
     		if($("#pwd1").val() == ""){ 
     			alert("패스워드 입력바람"); 
