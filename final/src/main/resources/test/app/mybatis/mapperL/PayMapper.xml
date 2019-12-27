@@ -21,7 +21,7 @@
 	<!-- 관리자모드에서 기간별 매출액 구하기 -->
 	<select id="periodsale" resultType="int" parameterType="hashmap">
 		select NVL(sum(pay),0) from payment 
-		<![CDATA[where pay_day >= #{startday} and pay_day <= #{endday}]]>
+		<![CDATA[where to_char(pay_day,'yyyy/mm/dd') >= #{startday} and to_char(pay_day,'yyyy/mm/dd') <= #{endday}]]>
 	</select>
 	<!-- 사업자모드에서 기간별 매출액 구하기 -->
 	<select id="businessPeriod" resultType="int" parameterType="hashmap">
