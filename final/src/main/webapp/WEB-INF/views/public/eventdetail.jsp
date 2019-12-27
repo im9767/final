@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 
-<div style="width:80%;min-height: 1200px;width:80%;margin: auto;padding: 40px;margin-top:150px;">
+<div style="width:60%;min-height: 1200px;width:80%;margin: auto;padding: 40px;margin-top:150px;">
 
 	<div class="accordion" id="accordionExample" style="min-height: 800px;width:100%;margin: auto;">
 	
