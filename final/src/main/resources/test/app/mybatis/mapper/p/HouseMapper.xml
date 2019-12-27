@@ -12,7 +12,8 @@
 		        amen.amenities_name,
 		        amen.amenities_content,
 		        amen.orgfilename,
-		        amen.savefilename
+		        amen.savefilename,
+		        h.house_num
 		FROM
 		        house h,
 		        houseintro intro,

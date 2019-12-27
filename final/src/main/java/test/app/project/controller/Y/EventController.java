@@ -126,6 +126,7 @@ public class EventController {
 		List<HashMap<String, Object>> nlist = service.seleventinfo(event_Num);
 		ModelAndView mv = new ModelAndView("admin_view/selevent");
 		mv.addObject("eventinfolist", nlist);
+		mv.addObject("list", nlist);
 		return mv;
 	}
 	//이벤트 수정하기

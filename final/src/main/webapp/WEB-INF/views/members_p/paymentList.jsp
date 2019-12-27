@@ -36,10 +36,12 @@
 			    </tr>
 			  </thead>
 			  <tbody>
+			  	<c:choose>
+			  	<c:when test="${not empty paymentList }">
 			  	<c:forEach var="paymentList" items="${paymentList }">
 				  	<tr style="text-align: center;">
 				  		<th style="vertical-align:middle;">${paymentList.PAY_NUM }</th>
-				  		<td style="vertical-align:middle;"><a style="text-decoration: none;" href="${cp }/house/detail?house_num=${paymentList.HOUSE_NUM}"><img style="width:200px;height:100px;" src="${cp }/upload/${paymentList.HOUSE_SAVE_NAME }"></a></td>
+				  		<td style="vertical-align:middle;"><a style="text-decoration: none;" href="${cp }/house/detail?house_num=${paymentList.HOUSE_NUM}"><img style="width:200px;height:100px;" src="${cp }/resources/upload/${paymentList.HOUSE_SAVE_NAME }"></a></td>
 				  		<td style="vertical-align:middle;"><a style="text-decoration: none;" href="${cp }/house/detail?house_num=${paymentList.HOUSE_NUM}">${paymentList.COMPANY }</a></td>
 				  		<td style="vertical-align:middle;">${dc.format(paymentList.PAY) }원</td>
 				  		<td style="vertical-align:middle;">${paymentList.PAY_DAY }</td>
@@ -63,6 +65,13 @@
 				  		
 				  	</tr>
 			  	</c:forEach>
+			  	</c:when>
+			  	<c:otherwise>
+			  		<tr>
+				      <td scope="row" colspan="7" style="padding:150px;text-align: center;">결제 내역이 없습니다</td>
+				    </tr>
+			  	</c:otherwise>
+			  	</c:choose>
 			  </tbody>
 			</table>
 			

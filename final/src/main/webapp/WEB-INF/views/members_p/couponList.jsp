@@ -31,6 +31,8 @@
 			    </tr>
 			  </thead>
 			  <tbody>
+			  	<c:choose>
+			  	<c:when test="${not empty couponList }">
 			  	<c:forEach var="couponList" items="${couponList }">
 			  		<tr>
 				      <th>${couponList.coupon_num }</th>
@@ -49,6 +51,13 @@
 				      <td>${couponList.making_date }</td>
 				    </tr>
 			  	</c:forEach>
+			  	</c:when>
+			  	<c:otherwise>
+			  		<tr>
+				      <td scope="row" colspan="5" style="padding:150px;text-align: center;">보유중인 쿠폰이 없습니다</td>
+				    </tr>
+			  	</c:otherwise>
+			  	</c:choose>
 			  </tbody>
 			</table>
 		</section>

@@ -23,14 +23,18 @@
 </script>
 </head>
 <body>
+<div style="width:100%;height: 400px;text-align: center;padding:100px;">
 <c:choose>
 	<c:when test="${code == 'success' }">
-		<h1>작성하신 메일로 임시비밀번호를 발송했습니다.</h1>
+		<h5>작성하신 메일로 임시비밀번호를 발송했습니다.</h5>
 	</c:when>
 	<c:otherwise>
-		<h3>요청 작업을 수행하지 못하였습니다.</h3>
+		<h5>요청 작업을 수행하지 못하였습니다.</h5>
 	</c:otherwise>
 </c:choose>
+<p style="text-align: center;">
 <input type="button" id="close" value="닫기" class="btn btn-primary">
+</p>
+</div>
 </body>
 </html>

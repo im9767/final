@@ -11,6 +11,7 @@ import test.app.project.daoimpl.p.MembersDaoImpl;
 import test.app.project.vo.CouponVo;
 import test.app.project.vo.MembersVo;
 import test.app.project.vo.QnaboardVo;
+import test.app.project.vo.ReiewImgVo;
 import test.app.project.vo.ReviewVo;
 
 @Service
@@ -119,10 +120,9 @@ public class MembersService {
 		membersDaoImpl.reviewInsert(vo, map);
 		
 		System.out.println("review_num:"+vo.getReview_num());
-		
+		String org_name = ((List<ReiewImgVo>) map.get("img")).get(0).getReview_org_name();
 		map.put("review_num", vo.getReview_num());
-		
-		if(map.size() > 1){
+		if(map.size() > 1 && org_name != null && org_name != ""){
 			int n = membersDaoImpl.reviewImgInsert(map);
 			System.out.println("n:"+n);
 		}

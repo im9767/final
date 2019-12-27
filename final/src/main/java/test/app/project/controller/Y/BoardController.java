@@ -18,6 +18,7 @@ import test.app.project.service.Y.AdminService;
 import test.app.project.vo.FaqVo;
 import test.app.project.vo.HouseVo;
 import test.app.project.vo.NoticeVo;
+import test.app.project.vo.QnaboardVo;
 
 @Controller
 public class BoardController {
@@ -146,6 +147,37 @@ public class BoardController {
 					List<FaqVo> flist = service.flistAll();
 					model.addAttribute("faq", flist);
 					return ".public.faq";
+				}
+				//관리자 faq전체조회
+				@RequestMapping(value = "/admin_view/qnaboard", method = RequestMethod.GET)
+				public String allqnalist(Model model) {
+					List<QnaboardVo> qlist = service.qlistAll();
+					model.addAttribute("allqnalist", qlist);
+					return ".qnaboard";
+				}
+				//QNA 답글달기
+				@RequestMapping(value = "/admin_view/selqna", method = RequestMethod.GET)
+				public String qnawrite(Model model,int qna_num){
+					List<QnaboardVo> selqnalist = service.selqnalist(qna_num);
+					model.addAttribute("selqna", selqnalist);
+					return "admin_view/writeqna";
+				}
+				//qna 답변체크
+				@RequestMapping(value="/admin_view/writeqnaok",method=RequestMethod.POST)
+				public String writeqnaok(QnaboardVo vo,HttpSession session) throws DataIntegrityViolationException{
+					try{
+						System.out.println(vo.getQna_num());
+						System.out.println(vo.getAnwser());
+					int n=service.wqna(vo);
+					if(n>0){
+						return "redirect:/admin_view/qnaboard";
+					}else{
+						return "/business_view/ac/allfail";
+						}
+					}catch(DataIntegrityViolationException dvo){
+						dvo.printStackTrace();
+						return "/business_view/ac/allfail";
+					}
 				}
 }
 	

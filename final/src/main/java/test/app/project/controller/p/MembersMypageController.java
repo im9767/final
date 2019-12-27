@@ -276,7 +276,8 @@ public class MembersMypageController {
 				convenience);
 
 		HashMap<String, Object> map = new HashMap<String, Object>();
-
+		System.out.println("size : " + multipartFile.size());
+		System.out.println(multipartFile);
 		if (multipartFile != null) {
 
 			String path = session.getServletContext().getRealPath("/resources/upload");
@@ -325,7 +326,7 @@ public class MembersMypageController {
 		}
 		membersService.reviewInsert(review, map);
 
-		return "redirect:/";
+		return "redirect:/members/reviewList";
 
 	}
 

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import test.app.project.service.p.HouseService;
+import test.app.project.util.PageUtil;
 import test.app.project.vo.HouseImgVo;
 import test.app.project.vo.HouseVo;
 import test.app.project.vo.ReviewJoinVo;
@@ -28,7 +29,7 @@ public class HouseDetailController {
 	
 	// 업소 상세페이지 이동
 	@RequestMapping(value="/house/detail")
-	public String product_detail(@RequestParam(value="house_num",defaultValue="83")int house_num,String sdt,String edt,Model model){
+	public String product_detail(@RequestParam(value="house_num",defaultValue="83")int house_num,String sdt,String edt,@RequestParam(value="pageNum",defaultValue="1")int pageNum,Model model){
 		
 		if(sdt == null){
 			HashMap<String, Object> date = houseService.getDate();
@@ -77,6 +78,10 @@ public class HouseDetailController {
 		HouseImgVo houseImg = houseService.houseImg(house_num);
 		
 		model.addAttribute("houseImg", houseImg);
+		
+		PageUtil pagination = new PageUtil(pageNum, reviewCount, 10, 5);
+		
+		model.addAttribute("pagination", pagination);
 		
 		return ".house_p.detail";
 	}

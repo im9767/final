@@ -105,6 +105,16 @@
 	<delete id="faqdelete" parameterType="int" >
 		delete faq where fnum=#{fnum}
 	</delete>
+	<!-- faq -->
+	<select id="qlistAll"  resultType="test.app.project.vo.QnaboardVo">
+		select * from qnaboard where anwser is null
+	</select>
+	<select id="selqnalist" parameterType="int" resultType="test.app.project.vo.QnaboardVo" >
+		select * from qnaboard where qna_num=#{qna_num}
+	</select>
+	<update id="wqna" parameterType="test.app.project.vo.QnaboardVo">
+		update qnaboard set anwser=#{anwser},anwser_date=sysdate where qna_num=#{qna_num}
+	</update>
 </mapper>
 
 

@@ -129,8 +129,8 @@
 				q.qna_title,
 				q.qna_content,
 				q.anwser,
-				to_char(q.qna_date,'yyyy/mm/dd hh:mi') qna_date,
-				to_char(q.anwser_date,'yyyy/mm/dd hh:mi') anwser_date,
+				to_char(q.qna_date,'yyyy/mm/dd hh24:mi') qna_date,
+				to_char(q.anwser_date,'yyyy/mm/dd hh24:mi') anwser_date,
 				qc.qna_category_name
 		FROM 
 				qnaboard q,qna_category qc
@@ -303,12 +303,12 @@
 			insert into review_img(review_img_num, review_num, review_org_name, review_save_name)
 			select review_img_seq.nextval, A.* from(
 			 <foreach item="item" collection="img" separator="UNION ALL " >
+			   
 			   select #{review_num} as review_num,
 			          #{item.review_org_name} as review_org_name,
 			          #{item.review_save_name} as review_save_name
 			   from dual
 			 </foreach>) A
-
 		
 
 	</insert>

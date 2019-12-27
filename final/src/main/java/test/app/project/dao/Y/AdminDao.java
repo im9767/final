@@ -14,6 +14,7 @@ import test.app.project.vo.FaqVo;
 import test.app.project.vo.HouseVo;
 import test.app.project.vo.HouseintroVo;
 import test.app.project.vo.NoticeVo;
+import test.app.project.vo.QnaboardVo;
 import test.app.project.vo.RoomsImgVo;
 import test.app.project.vo.RoomsVo;
 
@@ -133,6 +134,18 @@ public class AdminDao {
 	public int faqdelete(int fnum){
 		return sqlSessionTemplate.delete("test.app.mybatis.mapperY.AdminMapper.faqdelete",fnum);
 	}
+	//QNA
+		public List<QnaboardVo> qlistAll(){
+			return sqlSessionTemplate.selectList("test.app.mybatis.mapperY.AdminMapper.qlistAll");
+		}
+		public List<QnaboardVo> selqnalist(int qna_num){
+			return 
+			sqlSessionTemplate.selectList("test.app.mybatis.mapperY.AdminMapper.selqnalist",qna_num);
+		}
+		public int wqna(QnaboardVo vo){
+			return 
+			sqlSessionTemplate.update("test.app.mybatis.mapperY.AdminMapper.wqna",vo);
+		}
 }
 
 

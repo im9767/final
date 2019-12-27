@@ -64,10 +64,8 @@
                  	 </a>
                  	 </c:if>
                  	 </c:forEach>
-                	</div> 
-                	 							
+                	</div>               	 							
 						</div>
-						<hr>
 					</div>
 				</div>
 			</div>
