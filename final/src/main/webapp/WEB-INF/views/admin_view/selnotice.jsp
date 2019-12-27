@@ -29,7 +29,7 @@
     <div class="card o-hidden border-0 shadow-lg my-5">
       <div class="card-body p-0">
         <!-- Nested Row within Card Body -->
-        <div class="row" style="height: 800px">
+        <div class="row" style="height: auto; margin-bottom:10px;">
           <div class="col-lg-7" style="margin-left: 100px; margin-top: 20px;">     
               <div class="text-center">
                 <h1 class="h4 text-gray-900 mb-4" style="text-align: left; font-size: xx-large;">공지사항 세부내용</h1>
@@ -42,7 +42,8 @@
                     <hr style="width: 900px;">
                   </div>                 
                 </div>
-                <div style="font-size: 1.5em; color: black;">내용</div><textarea id="ncontent" name ="ncontent" style="width: 800px; height: 500px; border:0 solid white;" readonly="readonly">${vo.ncontent}</textarea>                                    
+                <div style="font-size: 1.5em; color: black;">내용</div><textarea id="ncontent" name ="ncontent" style="width: 800px;
+                height: 500px; border:0 solid white;" readonly="readonly">${vo.ncontent}</textarea>                                    
                 <hr style="width: 900px;">
                 <div>
                 	<span>등록날짜:${vo.nregdate}</span>

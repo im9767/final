@@ -62,10 +62,13 @@ function validate() {
 							<h1 class="h4 text-gray-900 mb-4" style="text-align: left;">편의시설 수정</h1>
 						</div>
 						<div class="user" style="width: 400px; height: 700px;">
-							<form method="POST" name="frm1" onsubmit="return validate();" action="${cp}/business_view/updateamenitiesok" enctype="multipart/form-data">																															
+							<form method="POST" name="frm1" onsubmit="return validate();" 
+							action="${cp}/business_view/updateamenitiesok" enctype="multipart/form-data">																															
 								<hr style="width: 900px;">
-								<c:forEach var="vo" items="${selam}" varStatus="vs"><img src="../resources/upload/${vo.SAVEFILENAME}.png" style="width:200px; height:200px; float: left;">
-								<input type="checkbox"  style="width: 200px; height: 200px; margin-left:500" value="${vo.AMENITIES_NAME}" name="am"><span style="font-size: 2em;margin-left: 40px;">${vo.AMENITIES_NAME}</span>
+								<c:forEach var="vo" items="${selam}" varStatus="vs">
+								<img src="../resources/a_icon/${vo.ORGFILENAME}" style="width:200px; height:200px; float: left;">
+								<input type="checkbox"  style="width: 200px; height: 200px; margin-left:500" 
+								value="${vo.AMENITIES_NAME}" name="am"><span style="font-size: 2em;margin-left: 40px;">${vo.AMENITIES_NAME}</span>
 								<br>
 								</c:forEach>
 								<hr style="width: 900px;">

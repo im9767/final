@@ -27,48 +27,42 @@
         <div class="container-fluid">
 		
           <!-- Page Heading -->
-          <h1 class="h3 mb-2 text-gray-800">FAQ게시판</h1>
+          <h1 class="h3 mb-2 text-gray-800">QNA게시판</h1>
           <!-- DataTales Example -->
           <div class="card shadow mb-4">
-            <div class="card-header py-3">
-                <a href="${cp}/admin_view/writefaq" class="btn btn-primary btn-icon-split" style="float:right">
-                    <span class="text">작성하기</span>
-                  </a>
+          
+            <div class="card-header py-3">         
             </div>
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
-                    <tr>          
+                    <tr>
+                   	 <th>번호</th>       
                       <th>카테고리</th>
-                      <th>질문</th>
-                      <th>삭제</th>
+                      <th>제목</th>
+                      <th>문의날짜</th> 
+                      <th>상태</th>             
                     </tr>
                   </thead>
-                  <tbody>
-                  	<c:forEach var="vo" items="${allfaqlist}" varStatus="vs">
+                  <tbody>             
+                  	<c:forEach var="vo" items="${allqnalist}" varStatus="vs">
                     <tr>
+                     <td>${vs.index+1}</td>
                       <c:choose>
-                      <c:when test="${vo.fcnum==1}">      
-    						<td>교환</td>
-      					</c:when>
-      					<c:when test="${vo.fcnum==2}">      
-    						<td>이용문의</td>
-      					</c:when>
-      					<c:when test="${vo.fcnum==3}">      
+                      <c:when test="${vo.qna_category_num==21}">      
     						<td>예약</td>
       					</c:when>
-      					<c:when test="${vo.fcnum==4}">      
-    						<td>쿠폰</td>
+      					<c:when test="${vo.qna_category_num==22}">      
+    						<td>환불</td>
       					</c:when>
-      					<c:when test="${vo.fcnum==5}">      
-    						<td>결제</td>
-      					</c:when><c:otherwise>
-      					<td>기타</td>
-      					</c:otherwise>
+      					<c:when test="${vo.qna_category_num==23}">      
+    						<td>기타</td>
+      					</c:when>  					
       					</c:choose>
-                      <td>${vo.ftitle }</td>
-                      <td><a href="${cp}/admin_view/delfaq?fnum=${vo.fnum}">삭제</a></td>                           
+                      <td><a href="${cp}/admin_view/selqna?qna_num=${vo.qna_num}">${vo.qna_title}</a></td>
+                      <td>${vo.qna_date}</td>  
+                      <td>대기중</td>                   
                     </tr>
                     </c:forEach>
                   </tbody>

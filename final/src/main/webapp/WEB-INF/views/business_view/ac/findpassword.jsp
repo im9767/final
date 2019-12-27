@@ -81,7 +81,7 @@ function validate3() {
 											name="bemail" id="bemail" placeholder="이메일 입력" onkeyup="emailcheck()"><span id="echk"></span>
 									</div>
 									<input type="submit" class="btn btn-primary btn-user btn-block"
-										value="로그인" >
+										value="이메일로 비밀번호 발송" >
 									<hr>
 								</form>
 							</div>
