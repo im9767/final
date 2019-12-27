@@ -59,8 +59,8 @@
         <form id="loginForm" action="${pageContext.request.contextPath }/members/sendpw" autocomplete="off" method="post" novalidate="novalidate">
             <input type="hidden" name="returnUrl" value="">
             <input type="hidden" name="yeogi_token" value="bfb3061953ce059cff1db4fae76c0f3e">
-            <div class="fix_title">
-                <h1 class="page_head"><a href="https://www.goodchoice.kr/" title="여기어때">여기어때</a></h1>
+            <div class="col-4" style="text-align: center;">
+                <h1 class="page_head"><a href="#" title="여기어때"><img style="width:140px;height: 50px;" src="${cp }/resources/logo/aa.jpg"></a></h1>
             </div>
             <strong class="sub_title">비밀번호 재설정</strong>
             <p class="txt_top">

@@ -33,6 +33,8 @@
 			    </tr>
 			  </thead>
 			  <tbody>
+			  	<c:choose>
+			  	<c:when test="${not empty reviewList }">
 			  	<c:forEach var="reviewList" items="${reviewList }" varStatus="i">
 			  		<tr style="text-align: center;">
 				      <th scope="row">${(pagination.pageNum-1)*10+i.index+1 }</th>
@@ -41,6 +43,13 @@
 				      <td>${reviewList.REVIEW_DATE }</td>
 				    </tr>
 			  	</c:forEach>
+			  	</c:when>
+			  	<c:otherwise>
+			  		<tr>
+				      <td scope="row" colspan="4" style="padding:150px;text-align: center;">작성된 리뷰가 없습니다</td>
+				    </tr>
+			  	</c:otherwise>
+			  	</c:choose>
 			  </tbody>
 			</table>
 			 <!-- 페이징 -->

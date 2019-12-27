@@ -66,8 +66,8 @@
     <section>
         <form id="loginForm" action="${pageContext.request.contextPath }/members/login" autocomplete="off" method="post" novalidate="novalidate">
             <input type="hidden" name="yeogi_token" value="c4c5ed781de43637abfb026919f86f9b">
-            <div class="fix_title">
-                <strong class="logo"><a href="${pageContext.request.contextPath }/">여기어때</a></strong>
+            <div class="col-4" style="text-align: center;">
+                <strong class="logo"><a href="${pageContext.request.contextPath }/"><img src="${cp }/resources/logo/aa.jpg" style="width:140px;height:70px;"></a></strong>
             </div>
             <button type="button" id="kakao-login-btn" class="btn_start btn_kakao" data-device-type="W"><span><i class="icon-ic_login_kakaotalk"></i>카카오톡으로 로그인</span></button>
             <button type="button" id="facebook-login-btn" class="btn_start btn_fb"><span><i class="icon-icn_login_facebook"></i>Facebook으로 로그인</span></button>

@@ -43,5 +43,9 @@ public class MembersPaymentService {
 		return paymentDaoImpl.couponSelect(mid);
 	}
 	
+	public int days(HashMap<String, Object> map){
+		return paymentDaoImpl.days(map);
+	}
+	
 	
 }

@@ -51,8 +51,6 @@ public class MembersVo{
 		this.login_type = login_type;
 	}
 	
-	//salt getter, setter
-	
 	public String getMid() {
 		return mid;
 	}

@@ -36,10 +36,12 @@
 			    </tr>
 			  </thead>
 			  <tbody>
+			  	<c:choose>
+			  	<c:when test="${not empty bookingList }">
 			  	<c:forEach var="bookingList" items="${bookingList }" varStatus="i">
 			  		<tr style="text-align: center;">
 				      <th style="vertical-align:middle;" scope="row">${bookingList.BOOKING_NUM }</th>
-				      <td style="vertical-align:middle;"><img style="width:200px;height:100px;" src="${cp }/upload/${bookingList.HOUSE_SAVE_NAME }"></td>
+				      <td style="vertical-align:middle;"><img style="width:200px;height:100px;" src="${cp }/resources/upload/${bookingList.HOUSE_SAVE_NAME }"></td>
 				      <td style="vertical-align:middle;"><a href="${pageContext.request.contextPath }/house/detail?house_num=${bookingList.HOUSE_NUM }">${bookingList.COMPANY }</a></td>
 				      <td style="vertical-align:middle;">${bookingList.ROOMNAME }</td>
 				      <td style="vertical-align:middle;" scope="row">${bookingList.START_DATE }</td>
@@ -47,6 +49,13 @@
 				      <td style="vertical-align:middle;" scope="row">${bookingList.BOOK_STATUS }</td>
 				    </tr>
 			  	</c:forEach>
+			  	</c:when>
+			  	<c:otherwise>
+			  		<tr>
+				      <td scope="row" colspan="7" style="padding:150px;text-align: center;">예약 내역이 없습니다</td>
+				    </tr>
+			  	</c:otherwise>
+			  	</c:choose>
 			  </tbody>
 			</table>
 			
