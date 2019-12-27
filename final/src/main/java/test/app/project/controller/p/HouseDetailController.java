@@ -83,6 +83,8 @@ public class HouseDetailController {
 		
 		model.addAttribute("pagination", pagination);
 		
+		model.addAttribute("house_num",house_num);
+		
 		return ".house_p.detail";
 	}
 	

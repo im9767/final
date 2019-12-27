@@ -22,7 +22,7 @@
 			
 			if($("#coupon").val() == "0"){ // 쿠폰을 선택하지 않았을 때
 				
-				var payment_money = parseInt("${room_price}"); // 룸 가격 할인 미적용 가격 가져오기
+				var payment_money = parseInt("${rInfo.room_price}"); // 룸 가격 할인 미적용 가격 가져오기
 				
 				$("#pay_money").val(payment_money);
 				
@@ -47,7 +47,7 @@
 				
 				var sale = parseInt(coupon[1])/100.0; // 할인율 구하기
 
-				$("#pay_money").val(parseInt("${room_price}")-(parseInt("${room_price}")*sale)); // 결제 금액에 룸 가격에서 할인율을 뺀 가격 적용
+				$("#pay_money").val(parseInt("${rInfo.room_price}")-(parseInt("${rInfo.room_price}")*sale)); // 결제 금액에 룸 가격에서 할인율을 뺀 가격 적용
 				
 				var payment_money = parseInt($("#pay_money").val()); // 할인 적용된 금액 대입
 				
@@ -58,7 +58,7 @@
 			// 쿠폰 타입이 2(차감할인)
 			}else if(coupon[0] == "2"){
 				
-				$("#pay_money").val(parseInt(parseInt("${room_price}")) - parseInt(coupon[1])); // 결제 금액에 룸가격에서  차감금액 뺀 가격 적용
+				$("#pay_money").val(parseInt(parseInt("${rInfo.room_price}")) - parseInt(coupon[1])); // 결제 금액에 룸가격에서  차감금액 뺀 가격 적용
 				
 				var payment_money = parseInt($("#pay_money").val()); // 할인 적용된 금액 대입
 				
@@ -147,14 +147,14 @@
 
 <div style="width:65%;min-height: 1000px;margin: auto;padding: 40px;margin-top: 150px;">
 	
-	<input type="hidden" id="pay_money" name="pay_money" value="${room_price }">
+	<input type="hidden" id="pay_money" name="pay_money" value="${rInfo.room_price }">
 	<input type="hidden" id="start_date" name="start_date" value="${sdt }">
 	<input type="hidden" id="end_date" name="end_date" value="${edt }">
-	<input type="hidden" id="room_num" name="room_num" value="${room_num }">
+	<input type="hidden" id="room_num" name="room_num" value="${rInfo.room_num }">
 	
 	<div style="float:left;width:70%">
 		<p>
-		<img src="${cp }/resources/upload/${house_save_name}" style="width:85%;height:250px;border-radius: 5px;">
+		<img src="${cp }/resources/upload/${hInfo.HOUSE_SAVE_NAME}" style="width:85%;height:250px;border-radius: 5px;">
 		</p>
 		<h4>예약자 정보</h4>
 		<br>
@@ -198,15 +198,15 @@
 	
             <section class="info" style="border-bottom: 1px solid lightgray;margin: 30px 20px 0px 20px;">
             
-                <p class="name" style="font-size: 1.2em;"><strong>숙소이름</strong><br><span style="color:black;">${company }</span></p>
-                <p style="font-size: 1.2em;"><strong>객실타입/기간</strong><br><span style="color:black;">${room_name } / ${days }박</span></p>
+                <p class="name" style="font-size: 1.2em;"><strong>숙소이름</strong><br><span style="color:black;">${hInfo.COMPANY }</span></p>
+                <p style="font-size: 1.2em;"><strong>객실타입/기간</strong><br><span style="color:black;">${rInfo.roomname } / ${days }박</span></p>
 
                 <p style="font-size: 1.2em;"><strong>체크인</strong><br><span style="color:black;">${sdt }</span></p>
                 <p style="font-size: 1.2em;"><strong>체크아웃</strong><br><span style="color:black;">${edt }</span></p>
                 
             </section>
             <section class="total_price_pc" style="margin: 20px 20px 30px 20px;">
-                <p style="font-size: 1.2em;"><strong><b>총 결제 금액</b>(VAT포함)</strong><br><span id="price" class="in_price" style="color:red;font-size: 1.5em;">${dc.format(room_price) }원</span>
+                <p style="font-size: 1.2em;"><strong><b>총 결제 금액</b>(VAT포함)</strong><br><span id="price" class="in_price" style="color:red;font-size: 1.5em;">${dc.format(rInfo.room_price) }원</span>
                 </p>
                 <ul>
                     <li>※ 해당 객실가는 세금, 봉사료가 포함된 금액입니다</li>
