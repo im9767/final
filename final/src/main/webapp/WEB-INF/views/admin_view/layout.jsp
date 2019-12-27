@@ -388,7 +388,12 @@ $(function(){
       <li class="nav-item">
         <a class="nav-link" href="${cp}/admin_view/faqboard">
           <i class="fas fa-fw fa-table"></i>
-          <span>faq 등록</span></a>
+          <span>FAQ게시판</span></a>
+      </li>	
+      <li class="nav-item">
+        <a class="nav-link" href="${cp}/admin_view/qnaboard">
+          <i class="fas fa-fw fa-table"></i>
+          <span>QNA게시판</span></a>
       </li>	
       <!-- Divider -->
       <hr class="sidebar-divider d-none d-md-block">

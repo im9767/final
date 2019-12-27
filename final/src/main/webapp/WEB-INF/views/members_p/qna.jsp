@@ -28,15 +28,15 @@
 			  </div>
 			  
 			<div class="custom-control custom-radio custom-control-inline">
-			  <input type="radio" id="customRadioInline1" name="qna_category_num" class="custom-control-input" value="1">
+			  <input type="radio" id="customRadioInline1" name="qna_category_num" class="custom-control-input" value="21">
 			  <label class="custom-control-label" for="customRadioInline1">예약</label>
 			</div>
 			<div class="custom-control custom-radio custom-control-inline">
-			  <input type="radio" id="customRadioInline2" name="qna_category_num" class="custom-control-input" value="2">
+			  <input type="radio" id="customRadioInline2" name="qna_category_num" class="custom-control-input" value="22">
 			  <label class="custom-control-label" for="customRadioInline2">환불</label>
 			</div>
 			<div class="custom-control custom-radio custom-control-inline">
-			  <input type="radio" id="customRadioInline3" name="qna_category_num" class="custom-control-input" value="3">
+			  <input type="radio" id="customRadioInline3" name="qna_category_num" class="custom-control-input" value="23">
 			  <label class="custom-control-label" for="customRadioInline3">기타</label>
 			</div>
 			

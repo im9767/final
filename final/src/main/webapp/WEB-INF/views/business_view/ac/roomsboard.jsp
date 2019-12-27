@@ -55,7 +55,6 @@
 									<th>최대인원</th>
 									<th>수정</th>
 									<th>삭제</th>
-
 								</tr>
 							</thead>
 							<tbody>
@@ -70,7 +69,6 @@
 											href="${cp}/business_view/uproom?room_num=${vo.ROOM_NUM}">수정</a></td>
 										<td><a
 											href="${cp}/business_view/delroom?room_num=${vo.ROOM_NUM}">삭제</a></td>
-
 									</tr>
 								</c:forEach>
 							</tbody>

@@ -129,8 +129,8 @@
 				q.qna_title,
 				q.qna_content,
 				q.anwser,
-				to_char(q.qna_date,'yyyy/mm/dd hh:mi') qna_date,
-				to_char(q.anwser_date,'yyyy/mm/dd hh:mi') anwser_date,
+				to_char(q.qna_date,'yyyy/mm/dd hh24:mi') qna_date,
+				to_char(q.anwser_date,'yyyy/mm/dd hh24:mi') anwser_date,
 				qc.qna_category_name
 		FROM 
 				qnaboard q,qna_category qc

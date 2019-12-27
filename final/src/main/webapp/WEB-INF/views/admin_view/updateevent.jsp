@@ -38,8 +38,7 @@
         var b=0;
         function readURL(input) {
         	for(var a=0;a<input.files.length;a++){
-           		var reader = new FileReader();
-           		
+           		var reader = new FileReader();        		
             	reader.onload = function (e){                               		
             		console.log(input.files[b].name);
             		var aa=$("<img src='"+e.target.result+"'><br>").appendTo("#imgbox");           		
@@ -62,8 +61,7 @@
 				<div class="row" style="height: auto;">
 					<div class="col-lg-7" style="margin-left: 10px; margin-top: 20px; margin-bottom: 20px;">
 						<div class="text-center">
-							<h1 class="h4 text-gray-900 mb-4" style="text-align: left;">이벤트
-								수정</h1>
+							<h1 class="h4 text-gray-900 mb-4" style="text-align: left;">이벤트 수정</h1>
 						</div>
 						<div class="user" style="width: 1000px; height: auto;">
 							<form method="POST" action="${cp}/admin_view/updateeventok" enctype="multipart/form-data">

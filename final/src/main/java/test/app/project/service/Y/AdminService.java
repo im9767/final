@@ -17,6 +17,7 @@ import test.app.project.vo.EventVo;
 import test.app.project.vo.EventimagesVo;
 import test.app.project.vo.FaqVo;
 import test.app.project.vo.NoticeVo;
+import test.app.project.vo.QnaboardVo;
 import test.app.project.vo.RoomsImgVo;
 import test.app.project.vo.RoomsVo;
 
@@ -133,7 +134,16 @@ public class AdminService {
 	public int faqdelete(int fnum){
 		return dao.faqdelete(fnum);
 	}
-	
+	//QNA
+		public List<QnaboardVo> qlistAll(){
+			return dao.qlistAll();
+		}
+		public List<QnaboardVo> selqnalist(int qna_num){
+			return dao.selqnalist(qna_num);
+		}
+		public int wqna(QnaboardVo vo){
+			return dao.wqna(vo);
+		}
 }
 
 
