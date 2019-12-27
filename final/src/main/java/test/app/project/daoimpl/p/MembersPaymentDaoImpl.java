@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import test.app.project.dao.p.MembersPaymentDao;
 import test.app.project.vo.BookingTableVo;
 import test.app.project.vo.CouponVo;
+import test.app.project.vo.RoomsVo;
 
 @Repository
 public class MembersPaymentDaoImpl implements MembersPaymentDao{
@@ -47,6 +48,16 @@ public class MembersPaymentDaoImpl implements MembersPaymentDao{
 	@Override
 	public int days(HashMap<String, Object> map) {
 		return sqlSessionTemplate.selectOne(NAMESPACE+".days", map);
+	}
+
+	@Override
+	public HashMap<String, Object> hInfo(int house_num) {
+		return sqlSessionTemplate.selectOne(NAMESPACE+".hInfo", house_num);
+	}
+
+	@Override
+	public RoomsVo rInfo(int room_num) {
+		return sqlSessionTemplate.selectOne(NAMESPACE+".rInfo", room_num);
 	}
 
 	

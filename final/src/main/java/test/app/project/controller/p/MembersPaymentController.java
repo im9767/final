@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import test.app.project.service.p.MembersPaymentService;
 import test.app.project.vo.BookingTableVo;
 import test.app.project.vo.CouponVo;
+import test.app.project.vo.RoomsVo;
 
 @Controller
 public class MembersPaymentController {
@@ -26,7 +27,7 @@ public class MembersPaymentController {
 	
 	
 	@RequestMapping(value="/members/payment")
-	public String payment(String sdt, String edt, int room_num, String room_name,int room_price,String company,String house_save_name,Model model,HttpSession session){
+	public String payment(String sdt, String edt, int room_num, int house_num,Model model,HttpSession session){
 		
 		String mid = (String) session.getAttribute("id");
 		
@@ -34,20 +35,26 @@ public class MembersPaymentController {
 		
 		model.addAttribute("coupon", coupon);
 		
+		HashMap<String, Object> hInfo = paymentService.hInfo(house_num);
+		RoomsVo rInfo = paymentService.rInfo(room_num);
+		
+		model.addAttribute("hInfo", hInfo);
+		model.addAttribute("rInfo", rInfo);
+		
 		model.addAttribute("sdt",sdt); // 숙박 시작일
 		model.addAttribute("edt",edt); // 숙박 종료일
-		model.addAttribute("room_num",room_num); // 룸 식별번호
-		model.addAttribute("room_name",room_name); // 룸 이름
-		model.addAttribute("room_price",room_price); // 룸 가격
-		model.addAttribute("company",company); // 업체 이름
-		model.addAttribute("house_save_name", house_save_name); // 업체이미지명
+//		model.addAttribute("room_num",room_num); // 룸 식별번호
+//		model.addAttribute("room_name",room_name); // 룸 이름
+//		model.addAttribute("room_price",room_price); // 룸 가격
+//		model.addAttribute("company",company); // 업체 이름
+//		model.addAttribute("house_save_name", house_save_name); // 업체이미지명
 		
 		System.out.println("sdt:"+sdt);
 		System.out.println("edt:"+edt);
-		System.out.println("room_num:"+room_num);
-		System.out.println("room_name:"+room_name);
-		System.out.println("room_price:"+room_price);
-		System.out.println("company:"+company);
+//		System.out.println("room_num:"+room_num);
+//		System.out.println("room_name:"+room_name);
+//		System.out.println("room_price:"+room_price);
+//		System.out.println("company:"+company);
 		System.out.println();
 		
 		HashMap<String, Object> map = new HashMap<String, Object>();

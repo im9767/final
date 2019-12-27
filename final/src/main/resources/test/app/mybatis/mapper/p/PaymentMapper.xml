@@ -55,4 +55,28 @@
 	
 	</select>
 	
+	<select id="hInfo" parameterType="int" resultType="hashmap">
+	
+		SELECT 
+				*
+		FROM 
+				house h,
+				house_img himg
+		WHERE 
+				h.house_num = himg.house_num
+				AND h.house_num = #{house_num}
+	
+	</select>
+	
+	<select id="rInfo" parameterType="int" resultType="rooms">
+	
+		SELECT
+				*
+		FROM
+				rooms
+		WHERE
+				room_num = #{room_num}
+		
+	</select>
+	
 </mapper>
