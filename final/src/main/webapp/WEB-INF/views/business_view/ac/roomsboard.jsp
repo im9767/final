@@ -26,10 +26,7 @@
 		<div class="container-fluid">
 
 			<!-- Page Heading -->
-			<h1 class="h3 mb-2 text-gray-800">Tables</h1>
-			<p class="mb-4">DataTables is a third party plugin that is used
-				to generate the demo table below. For more information about
-				DataTables, please visit the.</p>
+			<h1 class="h3 mb-2 text-gray-800">객실정보</h1>
 
 			<!-- DataTales Example -->
 			<div class="card shadow mb-4">
@@ -39,8 +36,7 @@
 						class="btn btn-primary btn-icon-split" style="float: right"> <span
 						class="text">작성하기</span>
 					</a>
-					<h6 class="m-0 font-weight-bold text-primary">DataTables
-						Example</h6>
+					<h6 class="m-0 font-weight-bold text-primary">객실정보</h6>
 				</div>
 				<div class="card-body">
 					<div class="table-responsive">
