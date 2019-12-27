@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="test.app.mybatis.mapper.p.MainMapper">
+
+	<resultMap type="test.app.project.vo.EventJoinVo" id="eventJoin">
+		
+		<result property="event_num" column="event_num"/>
+		<result property="etitle" column="etitle"/>
+		<result property="eregdate" column="eregdate"/>
+		<result property="ehit" column="ehit"/>
+		<result property="estartdate" column="estartdate"/>
+		<result property="eenddate" column="eenddate"/>
+
+		<collection property="eventImg" ofType="test.app.project.vo.EventimagesVo">
+		
+			<result property="eimgnum" column="eimgnum"/>
+			<result property="orgfilename" column="orgfilename"/>
+			<result property="savefilename" column="savefilename"/>
+		
+		</collection>
+		
+	</resultMap>
+	
+	<select id="event" resultMap="eventJoin">
+	
+		SELECT 
+				e.event_Num event_num,
+				e.etitle etitle,
+				e.eregdate eregdate,
+				e.ehit ehit,
+				e.estartdate estartdate,
+				e.eenddate eenddate,
+				eim.eimgnum eimgnum,
+				eim.orgfilename orgfilename,
+				eim.savefilename 
+		FROM 
+				event e,
+				eventimages eim
+        WHERE 
+        		e.event_num = eim.event_num
+        ORDER BY
+        		 e.eregdate desc,
+        		 eim.orgfilename ASC
+				
+	</select>
+	
+</mapper>

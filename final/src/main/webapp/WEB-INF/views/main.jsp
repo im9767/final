@@ -74,24 +74,35 @@
 		<p><h4 style="width:1245px;margin: auto;font-weight: bold;">이벤트</h4></p>
 		<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width:1245px;margin: auto;">
 		  <ol class="carousel-indicators">
-		    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-		    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-		    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-		    <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+		  
+		  	<c:forEach var="event" items="${event }" varStatus="idx">
+		  		<c:choose>
+			  		<c:when test="${idx.index == 0 }">
+			  			<li data-target="#carouselExampleIndicators" data-slide-to="${idx.index }" class="active"></li>	
+			  		</c:when>
+			  		<c:otherwise>
+			  			<li data-target="#carouselExampleIndicators" data-slide-to="${idx.index }"></li>	
+			  		</c:otherwise>
+		  		</c:choose>
+		  	</c:forEach>
 		  </ol>
 		  <div class="carousel-inner" style="width:100%;background-color: gray;height: 200px;right:5px;">
-		    <div class="carousel-item active">
-		      <img src="${cp }/resources/event_img/43c78e5d5f709c00a1ec37eec3673465.jpg" class="d-block w-100" alt="...">
-		    </div>
-		    <div class="carousel-item">
-		      <img src="${cp }/resources/event_img/66ed508baa83eda8fe488d1748ae55ea.jpg" class="d-block w-100" alt="...">
-		    </div>
-		    <div class="carousel-item">
-		      <img src="${cp }/resources/event_img/91d3f8ae9baf9957615e7ee75f3875de.png" class="d-block w-100" alt="...">
-		    </div>
-		    <div class="carousel-item">
-		      <img src="${cp }/resources/event_img/b42ef43dbdd536fb53360a76c6bb3437.jpg" class="d-block w-100" alt="...">
-		    </div>
+		  
+		  	<c:forEach var="event" items="${event }" varStatus="idx">
+		  		<c:choose>
+			  		<c:when test="${idx.index == 0 }">
+			  			<div class="carousel-item active">
+					      <img src="${cp }/resources/upload/${event.eventImg.get(0).savefilename }" class="d-block w-100" alt="...">
+					    </div>
+			  		</c:when>
+			  		<c:otherwise>
+			  			<div class="carousel-item">
+					      <img src="${cp }/resources/upload/${event.eventImg.get(0).savefilename }" class="d-block w-100" alt="...">
+					    </div>	
+			  		</c:otherwise>
+		  		</c:choose>
+		  	</c:forEach>
+
 		  </div>
 		  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
 		    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
