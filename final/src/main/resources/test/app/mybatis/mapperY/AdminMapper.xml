@@ -53,7 +53,8 @@
 		select * from event
 	</select>
 	<select id="seleventinfo"  parameterType="int" resultType="hashmap">
-		select e.event_num,e.etitle,to_char(e.eregdate,'yyyy-mm-dd') eregdate,to_char(e.estartdate,'yyyy-mm-dd') estartdate,to_char(e.eenddate,'yyyy-mm-dd') eenddate,e.ehit,ei.orgfilename,ei.savefilename from event e,eventimages ei where e.event_num=ei.event_num and ei.event_num=#{event_Num}
+		select e.event_num,e.etitle,to_char(e.eregdate,'yyyy-mm-dd') eregdate,to_char(e.estartdate,'yyyy-mm-dd') 
+		estartdate,to_char(e.eenddate,'yyyy-mm-dd') eenddate,e.ehit,ei.orgfilename,ei.savefilename from event e,eventimages ei where e.event_num=ei.event_num and ei.event_num=#{event_Num}
 	</select>
 	<select id="imginfo"  parameterType="int" resultType="String">
 		select savefilename from eventimages where event_num=#{event_Num} 
@@ -77,7 +78,8 @@
 		select event_num from event where etitle=#{etitle}
 	</select>
 	<select id="selevent"  parameterType="int" resultType="hashmap">
-		select e.event_num,e.etitle,to_char(e.eregdate,'yyyy-mm-dd') eregdate,to_char(e.estartdate,'yyyy-mm-dd') estartdate,to_char(e.eenddate,'yyyy-mm-dd') eenddate,e.ehit,ei.orgfilename,ei.savefilename from event e,eventimages ei where e.event_num=ei.event_num and ei.event_num=#{event_Num}
+		select e.event_num,e.etitle,to_char(e.eregdate,'yyyy-mm-dd') eregdate,to_char(e.estartdate,'yyyy-mm-dd') estartdate,to_char(e.eenddate,'yyyy-mm-dd') 
+		eenddate,e.ehit,ei.orgfilename,ei.savefilename from event e,eventimages ei where e.event_num=ei.event_num and ei.event_num=#{event_Num}
 	</select>
 	<update id="upevent" parameterType="test.app.project.vo.EventVo">
 		update event set etitle=#{etitle},estartdate=#{estartdate},eenddate=#{eenddate} where event_num=#{event_Num}

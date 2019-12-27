@@ -26,9 +26,7 @@
 
 </head>
 <script type="text/javascript">
-
 var b=false;
-
 function emailcheck() {
 	var email = document.getElementById("bemail").value;
 	var echk = document.getElementById("echk")
@@ -51,9 +49,7 @@ function validate3() {
 		console.log(b);
 		return false;
 	}
-	
 }
-
 </script>
 <body class="bg-gradient-primary">
 	<div class="container">
