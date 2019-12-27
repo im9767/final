@@ -46,6 +46,7 @@
 		<mapper resource="test/app/mybatis/mapperY/BusinessYMapper.xml"/>
 		<mapper resource="test/app/mybatis/mapper/p/HouseMapper.xml"/>
 		<mapper resource="test/app/mybatis/mapper/p/PaymentMapper.xml"/>
+		<mapper resource="test/app/mybatis/mapper/p/MainMapper.xml"/>
 
 	</mappers>
 </configuration>  
