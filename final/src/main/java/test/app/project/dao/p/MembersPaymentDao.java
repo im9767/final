@@ -5,6 +5,7 @@ import java.util.List;
 
 import test.app.project.vo.BookingTableVo;
 import test.app.project.vo.CouponVo;
+import test.app.project.vo.RoomsVo;
 
 public interface MembersPaymentDao {
 	
@@ -17,4 +18,8 @@ public interface MembersPaymentDao {
 	public int couponUpdate(HashMap<String, Object> map);
 	
 	public int days(HashMap<String, Object> map);
+	
+	public HashMap<String, Object> hInfo(int house_num);
+	
+	public RoomsVo rInfo(int room_num);
 }
