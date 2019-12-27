@@ -15,7 +15,7 @@ import test.app.project.vo.EventImgVo;
 import test.app.project.vo.EventVo;
 import test.app.project.vo.EventimagesVo;
 
-//ÀÌº¥Æ® ÆäÀÌÁö »Ñ·ÁÁÖ´Â ±¸¹®
+//ï¿½Ìºï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ñ·ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½
 @Controller
 public class eventboardsController {
 	
@@ -30,13 +30,13 @@ public class eventboardsController {
 		
 		
 		
-		//ÆäÀÌÂ¡ Ã³¸®
+		//ï¿½ï¿½ï¿½ï¿½Â¡ Ã³ï¿½ï¿½
 		HashMap<String , Object> map = new HashMap<String, Object>();
 		
 		map.put("startRow", pagination.getStartRow());
 		map.put("endRow", pagination.getEndRow());
 		
-		//ÀÌº¥Æ® Á¦¸ñÀÌ¶û Á¶È¸¼öµî »Ì¾Æ¿À´Â°Å
+		//ï¿½Ìºï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½Ì¶ï¿½ ï¿½ï¿½È¸ï¿½ï¿½ï¿½ï¿½ ï¿½Ì¾Æ¿ï¿½ï¿½Â°ï¿½
 		List<EventImgVo> event = EventBoardsService.eventList(map);
 		
 		model.addAttribute("pagination", pagination);
@@ -47,16 +47,17 @@ public class eventboardsController {
 		return ".public.eventboards";
 	}
 	
-	//ÀÌº¥Æ®Ã³¸® ¼¼ºÎ»çÇ× »Ñ·ÁÁÖ±â
+	//ï¿½Ìºï¿½Æ®Ã³ï¿½ï¿½ ï¿½ï¿½ï¿½Î»ï¿½ï¿½ï¿½ ï¿½Ñ·ï¿½ï¿½Ö±ï¿½
 	@RequestMapping(value="/public/eventdetail",method=RequestMethod.GET)
 	public String eventboarddetail(int event_num,Model model){
-		//ÀüÆäÀÌÁö¿¡¼­ ÀÌº¥Æ®½Äº°¹øÈ£ ¹Þ¾Æ¼­ ³Ö¾îÁÖ±â
+		//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìºï¿½Æ®ï¿½Äºï¿½ï¿½ï¿½È£ ï¿½Þ¾Æ¼ï¿½ ï¿½Ö¾ï¿½ï¿½Ö±ï¿½
 		System.out.println(event_num);
 		HashMap<String,Object> map=new HashMap<String, Object>();
 		map.put("event_num", event_num);
 		
+	
 		
-		//¿©±â¼­ µðÅ×ÀÏ ¸®½º·Î ³Ö¾î¼­ ÇÊ¿äÇÑ°Å »Ì¾Æ¼­ ¾²´Â±¸¹®
+		//ï¿½ï¿½ï¿½â¼­ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ö¾î¼­ ï¿½Ê¿ï¿½ï¿½Ñ°ï¿½ ï¿½Ì¾Æ¼ï¿½ ï¿½ï¿½ï¿½Â±ï¿½ï¿½ï¿½
 		List<EventImgVo> eventdetail =EventBoardsService.eventDetailList(map);
 		
 		model.addAttribute("eventdetail", eventdetail);
