@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 import test.app.project.daoimpl.p.MembersPaymentDaoImpl;
 import test.app.project.vo.BookingTableVo;
 import test.app.project.vo.CouponVo;
+import test.app.project.vo.RoomsVo;
 
 @Service
 public class MembersPaymentService {
@@ -45,6 +46,14 @@ public class MembersPaymentService {
 	
 	public int days(HashMap<String, Object> map){
 		return paymentDaoImpl.days(map);
+	}
+	
+	public HashMap<String, Object> hInfo(int house_num){
+		return paymentDaoImpl.hInfo(house_num);
+	}
+	
+	public RoomsVo rInfo(int room_num){
+		return paymentDaoImpl.rInfo(room_num);
 	}
 	
 	

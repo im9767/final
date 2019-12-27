@@ -146,7 +146,7 @@
 										<a href="${cp }/members/login" class="btn btn-danger btn-lg" role="button" style="width: 100%;position: absolute;bottom: 0px;color:white;">숙박 예약</a>
 									</c:when>
 									<c:otherwise>
-										<a href="${cp }/members/payment?sdt=${sdt}&edt=${edt}&room_num=${rooms.room_num}&room_name=${rooms.roomname }&room_price=${rooms.room_price}&company=${houseinfo.company}&house_save_name=${houseImg.house_save_name}"
+										<a href="${cp }/members/payment?sdt=${sdt}&edt=${edt}&room_num=${rooms.room_num}&house_num=${house_num}"
 										class="btn btn-danger btn-lg" role="button" style="width: 100%;position: absolute;bottom: 0px;color:white;">숙박 예약</a>
 									</c:otherwise>
 								</c:choose>
