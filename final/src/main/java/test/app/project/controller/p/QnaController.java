@@ -115,7 +115,14 @@ public class QnaController {
 		model.addAttribute("cntCoupon", cntCoupon);
 
 		HashMap<String, Object> qnaDetail = membersService.qnaDetail(qna_num);
-
+		String a = (String)qnaDetail.get("ANWSER");
+		System.out.println((String)qnaDetail.get("ANWSER"));
+		if(a != null){
+			a.replaceAll("\r\n", "<br>");
+			System.out.println(a);
+			qnaDetail.put("ANWSER", a);
+		}
+		
 		model.addAttribute("qnaDetail", qnaDetail);
 
 		return ".members_p.qnaDetail";

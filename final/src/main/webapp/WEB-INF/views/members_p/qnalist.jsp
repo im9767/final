@@ -33,6 +33,8 @@
 			    </tr>
 			  </thead>
 			  <tbody>
+			  	<c:choose>
+			  	<c:when test="${not empty qnalist }">
 			  	<c:forEach var="qnalist" items="${qnalist }" varStatus="i">
 			  		<tr>
 				      <th scope="row">${qnalist.QNA_NUM }</th>
@@ -49,6 +51,13 @@
 				      
 				    </tr>
 			  	</c:forEach>
+			  	</c:when>
+			  	<c:otherwise>
+			  		<tr>
+				      <td scope="row" colspan="4" style="padding:150px;text-align: center;">작성된 문의글이 없습니다</td>
+				    </tr>
+			  	</c:otherwise>
+			  	</c:choose>
 			  </tbody>
 			</table>
 			 <!-- 페이징 -->

@@ -11,7 +11,7 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<title>SB Admin 2 - Register</title>
+<title>SB Admin 2 - Register 재등록</title>
 
 <!-- Custom fonts for this template-->
 <link

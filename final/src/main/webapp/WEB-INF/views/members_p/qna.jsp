@@ -23,7 +23,7 @@
 			<form action="${pageContext.request.contextPath }/members/qna" method="post" onsubmit="return validation()" style="margin-left:10px;">
 			  <div class="form-group">
 			    <label for="exampleInputEmail1" style="font-size: 22px;">제목</label>
-			    <input type="text" class="form-control col-8" id="qna_title" name="qna_title">
+			    <input type="text" class="form-control col-8" id="qna_title" name="qna_title" style="text-align: left;">
 <!-- 			    <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
 			  </div>
 			  

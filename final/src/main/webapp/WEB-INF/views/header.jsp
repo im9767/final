@@ -77,9 +77,6 @@
 										</c:choose>	
 								
 								</li>
-								<li class="account" style='background-color: red;border:none;'>
-									<a href="${pageContext.request.contextPath }/product/accommodationList" style='color:white;'>업소목록(임시)</a>
-								</li>	
 							</ul>
 						</div>
 					</div>
@@ -94,7 +91,7 @@
 				<div class="row">
 					<div class="col-lg-12 text-right">
 						<div class="logo_container">
-							<a href="${pageContext.request.contextPath }/" style="text-decoration: none;"><span class="aa" style="color:black;">요기</span><span style="font-size: 40px;">어때</span></a>
+							<a href="${pageContext.request.contextPath }/" style="text-decoration: none;"><img style="width:140px;height:70px;" src="${cp }/resources/logo/aa.jpg"></a>
 						</div>
 						<nav class="navbar">
 							<ul class="navbar_user">

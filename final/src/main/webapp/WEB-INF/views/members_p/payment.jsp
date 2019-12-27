@@ -125,8 +125,7 @@
 		        	}).done(function(data){
 		        		//alert(data.code);
 		        		if(data.code){
-		        			alert("서버에 데이터 저장 완료!");
-		        			location.href="${cp}/";
+		        			location.href="${cp}/members/paymentList";
 		        		}else{
 		        			alert("서버에 데이터 저장 실패!");
 		        		}
@@ -154,6 +153,9 @@
 	<input type="hidden" id="room_num" name="room_num" value="${room_num }">
 	
 	<div style="float:left;width:70%">
+		<p>
+		<img src="${cp }/resources/upload/${house_save_name}" style="width:85%;height:250px;border-radius: 5px;">
+		</p>
 		<h4>예약자 정보</h4>
 		<br>
 		<form>

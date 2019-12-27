@@ -15,4 +15,6 @@ public interface MembersPaymentDao {
 	public List<CouponVo> couponSelect(String mid);
 	
 	public int couponUpdate(HashMap<String, Object> map);
+	
+	public int days(HashMap<String, Object> map);
 }
