@@ -2,11 +2,11 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=30bb107b12e41312b691fdb21e9b30cc&libraries=services"></script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=30bb107b12e41312b691fdb21e9b30cc"></script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=30bb107b12e41312b691fdb21e9b30cc&libraries=LIBRARY"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=de0e7b65cd859c82269d132f35c0d6a8&libraries=services"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=de0e7b65cd859c82269d132f35c0d6a8"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=de0e7b65cd859c82269d132f35c0d6a8&libraries=LIBRARY"></script>
 
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=30bb107b12e41312b691fdb21e9b30cc&libraries=services,clusterer,drawing"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=de0e7b65cd859c82269d132f35c0d6a8&libraries=services,clusterer,drawing"></script>
 
 <div style="width:65%;min-height: 1200px;margin: auto;padding: 40px;margin-top: 150px;">
 	
