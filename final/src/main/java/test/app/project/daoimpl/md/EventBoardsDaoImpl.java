@@ -39,6 +39,11 @@ public class EventBoardsDaoImpl implements EventBoardsDao {
 		return sqlSessionTemplate.selectOne(NAMESPACE+".eventBoardsCount");
 	}
 	
+	public int hitup(int event_Num){
+		return sqlSessionTemplate.update("test.app.mybatis.mapperY.AdminMapper.hitup",event_Num);
+	}
+
+
 	
 
 	

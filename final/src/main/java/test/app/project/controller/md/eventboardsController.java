@@ -42,8 +42,6 @@ public class eventboardsController {
 		model.addAttribute("pagination", pagination);
 		model.addAttribute("event", event);
 
-	
-		
 		return ".public.eventboards";
 	}
 	
@@ -55,7 +53,7 @@ public class eventboardsController {
 		HashMap<String,Object> map=new HashMap<String, Object>();
 		map.put("event_num", event_num);
 		
-		
+		EventBoardsService.hitup(event_num);
 		//여기서 디테일 리스로 넣어서 필요한거 뽑아서 쓰는구문
 		List<EventImgVo> eventdetail =EventBoardsService.eventDetailList(map);
 		

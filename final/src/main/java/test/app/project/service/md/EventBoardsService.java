@@ -33,10 +33,13 @@ public class EventBoardsService {
 		return eventBoardsDaoImpl.eventBoardsCount();
 	}
 	
-
+	public int hitup(int event_Num){
+		return eventBoardsDaoImpl.hitup(event_Num);
+	}
 
 	
 	//이게 이벤트 테이블 세부내용 가져다 쓰게 하는거
+	
 	public List<EventImgVo> eventDetailList(HashMap<String, Object> map){
 		
 		
