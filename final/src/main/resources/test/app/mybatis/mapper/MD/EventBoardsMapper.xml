@@ -64,7 +64,6 @@
 	<!-- 이벤트이미지 가져오기 -->
   <select id="eventBoardsImg" parameterType="hashmap" resultType="event">
    select savefilename from eventimages where event_num=${event_num}
-  
   </select>
 	
 </mapper>

@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
-<div style="width:50%;min-height: 1200px;margin: auto;padding: 40px;margin-top: 150px;">
+<div style="width:40%;min-height: 1200px;margin: auto;padding: 40px;margin-top: 150px;">
 	<div class="accordion" id="accordionExample" style="min-height: 800px;">
 	<c:forEach var="event" items="${event }" varStatus="i">
 	<div class="card mb-3">	

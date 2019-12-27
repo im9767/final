@@ -42,22 +42,15 @@ public class eventboardsController {
 		model.addAttribute("pagination", pagination);
 		model.addAttribute("event", event);
 
-	
-		
 		return ".public.eventboards";
 	}
 	
-	//�̺�Ʈó�� ���λ��� �ѷ��ֱ�
 	@RequestMapping(value="/public/eventdetail",method=RequestMethod.GET)
 	public String eventboarddetail(int event_num,Model model){
-		//������������ �̺�Ʈ�ĺ���ȣ �޾Ƽ� �־��ֱ�
 		System.out.println(event_num);
 		HashMap<String,Object> map=new HashMap<String, Object>();
 		map.put("event_num", event_num);
-		
-	
-		
-		//���⼭ ������ ������ �־ �ʿ��Ѱ� �̾Ƽ� ���±���
+		EventBoardsService.hitup(event_num);
 		List<EventImgVo> eventdetail =EventBoardsService.eventDetailList(map);
 		
 		model.addAttribute("eventdetail", eventdetail);
