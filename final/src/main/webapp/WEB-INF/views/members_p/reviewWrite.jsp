@@ -43,10 +43,10 @@
 			<div class="row row-cols-1 row-cols-md-2">
 			  <div class="col mb-4">
 			    <div class="card">
-			      <img style="width:100%;height:300px;" src="${cp }/resources/upload/${house_save_name}" class="card-img-top" alt="...">
+			      <img style="width:100%;height:300px;" src="${cp }/resources/upload/${reviewParameter.HOUSE_SAVE_NAME}" class="card-img-top" alt="...">
 			      <div class="card-body">
-			        <h5 class="card-title">${company }</h5>
-			        <p class="card-text">${roomname }</p>
+			        <h5 class="card-title">${reviewParameter.COMPANY }</h5>
+			        <p class="card-text">${reviewParameter.ROOMNAME }</p>
 			      </div>
 			    </div>
 			  </div>
@@ -100,7 +100,7 @@
 				    <input multiple="multiple" name="file1" type="file" class="form-control-file col-5" id="exampleFormControlFile1">
 				    <div id="preview"></div>
 				</div>
-				<input type="hidden" value="${room_num }" name="room_num">
+				<input type="hidden" value="${reviewParameter.ROOM_NUM }" name="room_num">
 				<div class="form-group">
 					<button type="submit" class="btn btn-success">리뷰 등록</button>
 			    </div>

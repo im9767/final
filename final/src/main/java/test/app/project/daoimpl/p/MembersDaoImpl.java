@@ -181,4 +181,9 @@ public class MembersDaoImpl implements MembersDao{
 	public int naverLoginInsert(MembersVo vo) {
 		return sqlSessionTemplate.insert(NAMESPACE+".naverLoginInsert", vo);
 	}
+
+	@Override
+	public HashMap<String, Object> reviewParameter(HashMap<String, Object> parameter) {
+		return sqlSessionTemplate.selectOne(NAMESPACE+".reviewParameter", parameter);
+	}
 }

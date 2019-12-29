@@ -361,6 +361,27 @@
 	
 	</insert>
 	
+	<!-- 리뷰작성페이지 이동시 파라미터 -->
+	<select id="reviewParameter" parameterType="hashmap" resultType="hashmap">
+	
+		SELECT 
+		        h.house_num,
+		        h.company,
+		        himg.house_save_name,
+		        r.room_num,
+		        r.roomname
+		FROM
+		        house h,
+		        house_img himg,
+		        rooms r
+		WHERE
+		        h.house_num = himg.house_num
+		        AND h.house_num = r.house_num
+		        AND h.house_num = #{house_num}
+		        AND r.room_num = #{room_num}
+	
+	</select>
+	
 	
 	
 </mapper>
