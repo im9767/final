@@ -12,7 +12,6 @@
 	var b = false;
 	var c = false;
 	var d = false;
-
 	function bidcheck() {
 		var bid = document.getElementById("bid").value;
 		$.ajax({
@@ -23,14 +22,13 @@
 				var id = $("#bid").val();
 				if (check) {
 					$("#idCheck").css("color", "red");
-					$("#idCheck").text("이미 있는 아이디입니다");			
+					$("#idCheck").text("이미 있는 아이디입니다");
 				} else if (id.length > 3 && check == false) {
 					$("#idCheck").css("color", "blue");
 					$("#idCheck").text("사용 가능");
-					a=true;
+					a = true;
 				}
 			}
-
 		});
 	}
 	function pwd1check() {
@@ -43,7 +41,7 @@
 			span1.innerHTML = "8자이상 입력하세요."
 		} else if (bpwd.length >= 8) {
 			span1.innerHTML = "";
-			b=true;
+			b = true;
 		}
 	}
 	function pwd2check() {
@@ -53,7 +51,7 @@
 		if (bpwd == chkpwd) {
 			span2.style.color = "blue";
 			span2.innerHTML = "비밀번호가 일치합니다.";
-			c=true;
+			c = true;
 		} else if (chkpwd == "") {
 			span2.style.color = "red";
 			span2.innerHTML = "입력하세요.";
@@ -72,10 +70,9 @@
 		} else {
 			echk.style.color = "blue";
 			echk.innerHTML = "사용가능";
-			d=true;
+			d = true;
 		}
 	}
-
 	function validate() {
 		if (a == true && b == true && c == true && d == true) {
 			return true;

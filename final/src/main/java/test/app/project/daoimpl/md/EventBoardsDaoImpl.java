@@ -21,19 +21,20 @@ public class EventBoardsDaoImpl implements EventBoardsDao {
 	private final String NAMESPACE="test.app.mybatis.mapper.MD.EventBoardsMapper";
 	
 	
-	//¿©±â´Â ÀÌº¥Æ® ÆäÀÌÁö ¸ÇÃ³À½¿¡ 1¹ø ÀÌ¸§ ´Þ¸° ÀÌ¹ÌÁö ÇÑ°³¸¸ »Ñ·ÁÁÖ´Â°Å
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìºï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ã³ï¿½ï¿½ï¿½ï¿½ 1ï¿½ï¿½ ï¿½Ì¸ï¿½ ï¿½Þ¸ï¿½ ï¿½Ì¹ï¿½ï¿½ï¿½ ï¿½Ñ°ï¿½ï¿½ï¿½ ï¿½Ñ·ï¿½ï¿½Ö´Â°ï¿½
 	@Override
 	public List<EventImgVo> eventList(HashMap<String, Object> map){
 		return sqlSessionTemplate.selectList(NAMESPACE+".eventList",map);
 		
 	}
 	
-	//¿©±â´Â ÀÌº¥Æ® ¼¼ºÎ ÆäÀÌÁö µé¾î
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìºï¿½Æ® ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 	@Override
 	public List<EventImgVo> eventdetailList(HashMap<String, Object> map){
 		return sqlSessionTemplate.selectList(NAMESPACE+".eventList2",map);
 		
 	}
+	
 	
 	public int eventBoardsCount(){
 		return sqlSessionTemplate.selectOne(NAMESPACE+".eventBoardsCount");
@@ -44,6 +45,7 @@ public class EventBoardsDaoImpl implements EventBoardsDao {
 	}
 
 
+	
 	
 
 	

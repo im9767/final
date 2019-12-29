@@ -29,6 +29,12 @@ public class BusinessYController {
 		this.service = service;
 	}
 	//사업자정보 수정페이지 이동
+		@RequestMapping(value="/mediamp4",method=RequestMethod.GET)
+		public String media(HttpSession session){
+			return "/mediamp4";
+		
+		}
+	//사업자정보 수정페이지 이동
 	@RequestMapping(value="business_view/updatebusinessinfo",method=RequestMethod.GET)
 	public ModelAndView upinfo(HttpSession session){
 		int house_num=(Integer)session.getAttribute("house_num");

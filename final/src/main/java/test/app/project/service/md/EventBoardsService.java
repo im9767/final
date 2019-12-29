@@ -5,13 +5,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
+
 
 import test.app.project.daoimpl.md.EventBoardsDaoImpl;
 import test.app.project.vo.EventImgVo;
-import test.app.project.vo.EventVo;
-import test.app.project.vo.EventimagesVo;
-import test.app.project.vo.NoticeVo;
 
 @Service
 public class EventBoardsService {
@@ -36,7 +33,6 @@ public class EventBoardsService {
 	public int hitup(int event_Num){
 		return eventBoardsDaoImpl.hitup(event_Num);
 	}
-
 	
 	//이게 이벤트 테이블 세부내용 가져다 쓰게 하는거
 	
