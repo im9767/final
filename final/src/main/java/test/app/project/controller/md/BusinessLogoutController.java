@@ -12,6 +12,6 @@ public class BusinessLogoutController {
 		session.removeAttribute("bid");
 		session.removeAttribute("bpwd");
 		session.removeAttribute("house_num");
-		return ".main";
+		return "redirect:/";
 	}
 }
