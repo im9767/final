@@ -83,6 +83,7 @@
 		}
 		
 		var payment_type = $("#payment_type_select").val();
+		alert(payment_type);
 		var pay_money = $("#pay_money").val();
 		var start_date = $("#start_date").val();
 		var end_date = $("#end_date").val();
