@@ -79,7 +79,7 @@ public class LoginController {
 	public String adminLogout(HttpSession session){
 		session.removeAttribute("aid");
 		session.removeAttribute("apwd");
-		return ".main";
+		return "redirect:/";
 	}
 	//사업자 홈
 		@RequestMapping(value="business/view")

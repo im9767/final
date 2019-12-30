@@ -18,12 +18,12 @@
 								<!-- Currency hf/ Language / My Account -->
 
 								<li class="currency" style='background-color: red;border:none;'>
-									<a href="${pageContext.request.contextPath }/house/detail" style='color:white;'>예약내역</a>
+									<a href="${pageContext.request.contextPath }/house/detail" style='color:white;font-weight: bold;font-size: 20px'>예약내역</a>
 								</li>
 
 
 								<li class="language" style='background-color: red;border:none; height: auto;'>
-									<a href="#" style='color:white;'>
+									<a href="#" style='color:white;font-size: 20px;font-weight: bold'>
 										더보기
 										<i class="fa fa-angle-down" style="margin-top: 19px;"></i>
 									</a>
@@ -37,23 +37,23 @@
 								<li class="account" style='background-color: red;border:none;'>
 									<c:choose>
 										<c:when test="${empty sessionScope.id }">			
-											<a href="${pageContext.request.contextPath }/members/login" style='color:white;'>로그인</a>	
+											<a href="${pageContext.request.contextPath }/members/login" style='color:white;font-size: 20px;font-weight: bold'>로그인</a>	
 										</c:when>
 										<c:otherwise>
-											<a href="${pageContext.request.contextPath }/members/logout" style='color:white;'>로그아웃</a>
+											<a href="${pageContext.request.contextPath }/members/logout" style='color:white;font-size: 20px;font-weight: bold'>로그아웃</a>
 										</c:otherwise>
 									</c:choose>
 									<c:choose>
 										<c:when test="${not empty aid}">
 											<li class="account" style='background-color: red;border:none;'>
-													<a href="${cp}/admin" style='color:white;'>
+													<a href="${cp}/admin" style='color:white;font-size: 20px;font-weight: bold'>
 														관리자페이지로이동
 													</a>
 											</li>
 											</c:when>
 											<c:otherwise>
 											<li class="account" style='background-color: red;border:none;'>
-													<a href="<c:url value='/admin_view/login'/>" style='color:white;'>
+													<a href="<c:url value='/admin_view/login'/>" style='color:white;font-size: 20px;font-weight: bold'>
 														관리자
 													</a>
 											</li>
@@ -62,14 +62,14 @@
 											<c:choose>
 										<c:when test="${not empty bid }">
 											<li class="account" style='background-color: red;border:none;'>
-													<a href="${cp}/business/loginok" style='color:white;'>
+													<a href="${cp}/business/loginok" style='color:white;font-size: 20px;font-weight: bold'>
 														사업자페이지로이동
 													</a>
 											</li>
 											</c:when>
 											<c:otherwise>
 											<li class="account" style='background-color: red;border:none;'>
-													<a href="<c:url value='/business_view/login'/>" style='color:white;'>
+													<a href="<c:url value='/business_view/login'/>" style='color:white;font-size: 20px;font-weight: bold'>
 														사업자
 													</a>
 											</li>
