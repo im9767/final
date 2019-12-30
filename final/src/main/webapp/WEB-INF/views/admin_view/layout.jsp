@@ -281,24 +281,6 @@ $(function(){
         </div>
       </li>
 	  
-      <!-- Divider -->
-      <hr class="sidebar-divider">
-
-      <!-- Heading -->
-      <div class="sidebar-heading">
-        기타
-      </div>
-
-      <!-- Nav Item - Charts -->
-      <li class="nav-item">
-        <a class="nav-link" href="${cp}/admin">
-          <i class="fas fa-fw fa-chart-area"></i>
-          <span>Charts</span></a>
-      </li>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider">
-	  
       <li class="nav-item">
         <a class="nav-link" href="${cp}/admin_view/noticeboard">
           <i class="fas fa-fw fa-table"></i>
