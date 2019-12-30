@@ -182,8 +182,8 @@
 		  	  <label for="payment_type_select">결제수단 선택</label><br>
 			  <select name="payment_type" class="custom-select col-4" id="payment_type_select">
 		        <option value="kakaopay" selected>카카오페이</option>
-		        <option value="1">카드결제 (신용,체크)</option>
-		        <option value="3">휴대폰 결제</option>
+		        <option value="inicis">이니시스</option>
+		        <option value="uplus">U+결제</option>
 		      </select>
 		  </div>
 	
