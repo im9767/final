@@ -8,10 +8,8 @@
 		<div class="top_nav" style='background-color: red;'>
 			<div class="container">
 				<div class="row">
-					<div class="col-md-6">
-	
-					</div>
-					<div class="col-md-6 text-right">
+					
+					<div class="col-md-12 text-right">
 						<div class="top_nav_right">
 							<ul class="top_nav_menu">
 
@@ -65,7 +63,7 @@
 											</li>
 											</c:otherwise>
 										</c:choose>	
-											<c:choose>
+										<c:choose>
 										<c:when test="${not empty bid }">
 											<li class="account" style='background-color: red;border:none;'>
 													<a href="${cp}/business/loginok" style='color:white;font-size: 20px;font-weight: bold'>

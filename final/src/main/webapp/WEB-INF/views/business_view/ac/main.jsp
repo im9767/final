@@ -9,9 +9,9 @@
       <div id="content">
 		<div class="d-sm-flex align-items-center justify-content-between mb-4" style="padding-left:1400px;padding-top:15px">
             <div>
-	            <a href="${cp}/admin_view/gohome" class="btn btn-primary btn-icon-split">
+	            <a href="${cp}/" class="btn btn-primary btn-icon-split">
 	               <span class="text">메인페이지 이동</span>
-	            </a>    
+	            </a>
 	            <a href="${cp}/business/logout" class="btn btn-danger btn-icon-split">
 	               <span class="text">로그아웃</span>
 	            </a>
