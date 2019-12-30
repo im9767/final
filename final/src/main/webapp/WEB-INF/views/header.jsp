@@ -8,10 +8,8 @@
 		<div class="top_nav" style='background-color: red;'>
 			<div class="container">
 				<div class="row">
-					<div class="col-md-6">
-	
-					</div>
-					<div class="col-md-6 text-right">
+					
+					<div class="col-md-12 text-right">
 						<div class="top_nav_right">
 							<ul class="top_nav_menu">
 
@@ -41,49 +39,85 @@
 										<li><a href="#">약관 및 정책</a></li>
 									</ul>
 								</li>
-								<li class="account" style='background-color: red;border:none;'>
-									<c:choose>
-										<c:when test="${empty sessionScope.id }">			
-											<a href="${pageContext.request.contextPath }/members/login" style='color:white;'>로그인</a>	
-										</c:when>
-										<c:otherwise>
-											<a href="${pageContext.request.contextPath }/members/logout" style='color:white;'>로그아웃</a>
-										</c:otherwise>
-									</c:choose>
-									<c:choose>
-										<c:when test="${not empty aid}">
-											<li class="account" style='background-color: red;border:none;'>
-													<a href="${cp}/admin" style='color:white;'>
-														관리자페이지로이동
-													</a>
-											</li>
-											</c:when>
-											<c:otherwise>
-											<li class="account" style='background-color: red;border:none;'>
-													<a href="<c:url value='/admin_view/login'/>" style='color:white;'>
-														관리자
-													</a>
-											</li>
-											</c:otherwise>
-										</c:choose>	
-											<c:choose>
-										<c:when test="${not empty bid }">
-											<li class="account" style='background-color: red;border:none;'>
-													<a href="${cp}/business/loginok" style='color:white;'>
-														사업자페이지로이동
-													</a>
-											</li>
-											</c:when>
-											<c:otherwise>
-											<li class="account" style='background-color: red;border:none;'>
-													<a href="<c:url value='/business_view/login'/>" style='color:white;'>
-														사업자
-													</a>
-											</li>
-											</c:otherwise>
-										</c:choose>	
 								
-								</li>
+								<c:choose>
+									<c:when test="${empty sessionScope.id && empty aid && empty bid}">
+										<li class="account" style='background-color: red;border:none;'>
+											<a href="${pageContext.request.contextPath }/members/login" style='color:white;'>로그인</a>
+										</li>
+										<li class="account" style='background-color: red;border:none;'>
+											<a href="<c:url value='/admin_view/login'/>" style='color:white;'>관리자</a>
+										</li>
+										<li class="account" style='background-color: red;border:none;'>
+											<a href="<c:url value='/business_view/login'/>" style='color:white;'>사업자</a>
+										</li>
+									</c:when>
+									<c:when test="${not empty sessionScope.id }">
+										<li class="account" style='background-color: red;border:none;'>
+											<a href="${pageContext.request.contextPath }/members/logout" style='color:white;'>로그아웃</a>
+										</li>
+									</c:when>
+									<c:when test="${not empty aid}">
+										<li class="account" style='background-color: red;border:none;'>
+											<a href="${pageContext.request.contextPath }/members/logout" style='color:white;'>로그아웃</a>
+										</li>
+										<li class="account" style='background-color: red;border:none;'>
+											<a href="${cp}/admin" style='color:white;'>관리자페이지로이동</a>
+										</li>
+									</c:when>
+									<c:when test="${not empty bid }">
+										<li class="account" style='background-color: red;border:none;'>
+											<a href="${pageContext.request.contextPath }/members/logout" style='color:white;'>로그아웃</a>
+										</li>
+										<li class="account" style='background-color: red;border:none;'>
+											<a href="${cp}/business/loginok" style='color:white;'>사업자페이지로이동</a>
+										</li>
+									</c:when>
+								</c:choose>
+								
+<!-- 								<li class="account" style='background-color: red;border:none;'> -->
+<%-- 									<c:choose> --%>
+<%-- 										<c:when test="${empty sessionScope.id }">			 --%>
+<%-- 											<a href="${pageContext.request.contextPath }/members/login" style='color:white;'>로그인</a>	 --%>
+<%-- 										</c:when> --%>
+<%-- 										<c:otherwise> --%>
+<%-- 											<a href="${pageContext.request.contextPath }/members/logout" style='color:white;'>로그아웃</a> --%>
+<%-- 										</c:otherwise> --%>
+<%-- 									</c:choose> --%>
+<%-- 									<c:choose> --%>
+<%-- 										<c:when test="${not empty aid}"> --%>
+<!-- 											<li class="account" style='background-color: red;border:none;'> -->
+<%-- 													<a href="${cp}/admin" style='color:white;'> --%>
+<!-- 														관리자페이지로이동 -->
+<!-- 													</a> -->
+<!-- 											</li> -->
+<%-- 											</c:when> --%>
+<%-- 											<c:otherwise> --%>
+<!-- 											<li class="account" style='background-color: red;border:none;'> -->
+<%-- 													<a href="<c:url value='/admin_view/login'/>" style='color:white;'> --%>
+<!-- 														관리자 -->
+<!-- 													</a> -->
+<!-- 											</li> -->
+<%-- 											</c:otherwise> --%>
+<%-- 										</c:choose>	 --%>
+<%-- 											<c:choose> --%>
+<%-- 										<c:when test="${not empty bid }"> --%>
+<!-- 											<li class="account" style='background-color: red;border:none;'> -->
+<%-- 													<a href="${cp}/business/loginok" style='color:white;'> --%>
+<!-- 														사업자페이지로이동 -->
+<!-- 													</a> -->
+<!-- 											</li> -->
+<%-- 											</c:when> --%>
+<%-- 											<c:otherwise> --%>
+<!-- 											<li class="account" style='background-color: red;border:none;'> -->
+<%-- 													<a href="<c:url value='/business_view/login'/>" style='color:white;'> --%>
+<!-- 														사업자 -->
+<!-- 													</a> -->
+<!-- 											</li> -->
+<%-- 											</c:otherwise> --%>
+<%-- 										</c:choose>	 --%>
+								
+<!-- 								</li> -->
 							</ul>
 						</div>
 					</div>
