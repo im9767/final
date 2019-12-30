@@ -6,7 +6,7 @@
 	<div class="accordion" id="accordionExample" style="min-height: 800px;">
 	<c:forEach var="event" items="${event }" varStatus="i">
 	<div class="card mb-3">	
-		      		<p>이벤트 제목: ${event.etitle } 이벤트 기간:${event.eenddate}  ~ ${event.estartdate}      조회수:${event.ehit}</p>      		
+		      		<p>이벤트 제목: ${event.etitle } 이벤트 기간:${event.eenddate} ~ ${event.estartdate}      조회수:${event.ehit}</p>      		
  <a class="page-link" href="${cp }/public/eventdetail?event_num=${event.event_num}">
   <img src="../resources/upload/${event.savefilename}" class="card-img-top" alt="...">
   </a>

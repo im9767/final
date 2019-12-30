@@ -20,8 +20,6 @@
 								<li class="currency" style='background-color: red;border:none;'>
 									<a href="${pageContext.request.contextPath }/house/detail" style='color:white;font-weight: bold;font-size: 20px'>예약내역</a>
 								</li>
-
-
 								<li class="language" style='background-color: red;border:none; height: auto;'>
 									<a href="#" style='color:white;font-size: 20px;font-weight: bold'>
 										더보기
@@ -75,7 +73,6 @@
 											</li>
 											</c:otherwise>
 										</c:choose>	
-								
 								</li>
 							</ul>
 						</div>
