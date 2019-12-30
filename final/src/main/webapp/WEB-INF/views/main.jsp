@@ -13,6 +13,7 @@
 	</div>
 </div>
 <br><br>
+
 <!-- 숙박 종류 -->
 	<ul class="col-12" style="width:100%;text-align: center;">
 		<li id="motel" class="card bg-dark text-white" style="width:300px;height:300px;display: inline-block;border: none;margin-right: 10px;cursor: pointer;">
@@ -39,8 +40,13 @@
 		</li>
 	</ul>
 	
-	<script>
-	
+	 <script type="text/javascript">
+	 var popupX = (window.screen.width / 2) - (90 / 2);
+	 var popupY= (window.screen.height / 2) - (600 / 2);
+		window.onload=function(){
+			window.open("${cp}/mediamp4","_blank","width=700,height=400,left="+ popupX + ", top="+ popupY);
+			}
+
 		$(function(){
 			$("#motel").click(function(){
 				
@@ -70,6 +76,7 @@
 	</script>
 	<br>
 <!-- 이벤트 -->
+
 	<div style="width:100%;">
 		<p><h4 style="width:1245px;margin: auto;font-weight: bold;">이벤트</h4></p>
 		<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="width:1245px;margin: auto;">

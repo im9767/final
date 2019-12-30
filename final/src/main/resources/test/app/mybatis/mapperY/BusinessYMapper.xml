@@ -86,7 +86,8 @@
 	</insert>
 	<!-- 업체 재등록 -->
 	<update id="uph"  parameterType="test.app.project.vo.HouseVo">
-		update house set bnum=#{bnum},intro=#{intro},checkintime=#{checkintime},checkouttime=#{checkouttime},company=#{company},license=#{license},ceo=#{ceo},orgaddr=#{orgaddr},workplace=#{workplace},com_tel=#{com_Tel},approval=0 where business_id=#{business_id}
+		update house set bnum=#{bnum},intro=#{intro},checkintime=#{checkintime},checkouttime=#{checkouttime},company=#{company},license=#{license},
+		ceo=#{ceo},orgaddr=#{orgaddr},workplace=#{workplace},com_tel=#{com_Tel},approval=0 where business_id=#{business_id}
 	</update>
 	<!-- 사업자 비번찾기 -->
 	<select id="findpwdy"  parameterType="hashmap" resultType="test.app.project.vo.BusinessVo">
@@ -101,8 +102,9 @@
 	</select>
 	<!-- 예약회원조회-->
 	<select id="allbooking" parameterType="int"   resultType="hashmap">
-		select b.booking_num,r.roomname,m.mid,m.mname,b.name,m.mphone,TO_CHAR(b.start_date,'YYYY-MM-DD') start_date,TO_CHAR(b.end_date,'YYYY-MM-DD') end_date from house h,rooms r,booking_table b,members m
-where h.house_num=r.house_num and r.room_num=b.room_num and m.mid=b.mid and h.house_num=#{house_num} order by b.books_date desc
+		select b.booking_num,r.roomname,m.mid,m.mname,b.name,m.mphone,TO_CHAR(b.start_date,'YYYY-MM-DD') start_date,TO_CHAR(b.end_date,'YYYY-MM-DD')
+		 end_date from house h,rooms r,booking_table b,members m
+			where h.house_num=r.house_num and r.room_num=b.room_num and m.mid=b.mid and h.house_num=#{house_num} order by b.books_date desc
 	</select>
 </mapper>
 
