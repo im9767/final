@@ -4,23 +4,14 @@
 <script type="text/javascript" src="${cp}/resources/admin/js/jquery-3.2.1.min.js"></script>
 <script type="text/javascript">
 function setCookie(name, value, expiredays){
-
 	var todayDate = new Date();
-
 	todayDate.setDate(todayDate.getDate() + expiredays);
-
 	document.cookie = name + "=" + escape( value ) + "; path=/; expires=" + todayDate.toGMTString() + ";"
-
 	}
-
 	function delcook(){
-
 	setCookie("close","close",1);
-
 	window.close();
-
 	}
-
 </script>
 
 <video controls autoplay loop  playsinline muted style="width :100%; height: 390px;">
