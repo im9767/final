@@ -77,10 +77,10 @@
 								<!-- 이 아래는 업소테이블 입력하는곳 -->
 								<select name="bnum" class="form-control form-control-user"
 									style="width: 230px;">
-									<option value="22">호텔</option>
-									<option value="21">모텔</option>
-									<option value="24">펜션</option>
-									<option value="23">리조트</option>
+									<option value="42">호텔</option>
+									<option value="41">모텔</option>
+									<option value="44">펜션</option>
+									<option value="43">리조트</option>
 								</select><br> <select name="snum"
 									class="form-control form-control-user" style="width: 230px;">
 									<option value="22">숙박</option>
