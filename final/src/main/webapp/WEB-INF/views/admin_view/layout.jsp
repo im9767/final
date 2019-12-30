@@ -332,6 +332,7 @@ $(function(){
                   			발행쿠폰명
                			</div>
                		</div>
+               		
                		<!-- 
                	<select name="coupon_typenum" id="coupon_typenum" class="form-control form-control-user" style="width:150px;display: inline-block;
               		margin-top: 10px;">
