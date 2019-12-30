@@ -69,7 +69,7 @@
             <div class="col-4" style="text-align: center;">
                 <strong class="logo"><a href="${pageContext.request.contextPath }/"><img src="${cp }/resources/logo/aa.jpg" style="width:140px;height:70px;"></a></strong>
             </div>
-            <button type="button" id="kakao-login-btn" class="btn_start btn_kakao" data-device-type="W"><span><i class="icon-ic_login_kakaotalk"></i>카카오톡으로 로그인</span></button>
+            <a href="${kakaoUrl}"><img style="width:336px;height:56px;margin-bottom: 10px;" src="${cp }/resources/kakao/kakao_account_login_btn_medium_narrow.png"/></a>
             <button type="button" id="facebook-login-btn" class="btn_start btn_fb"><span><i class="icon-icn_login_facebook"></i>Facebook으로 로그인</span></button>
             <a href="${url}"><img style="width:336px;height:56px;" src="https://developers.naver.com/doc/review_201802/CK_bEFnWMeEBjXpQ5o8N_20180202_7aot50.png"/></a>
             <p class="space_or"><span>또는</span></p>

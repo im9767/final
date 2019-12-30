@@ -186,4 +186,14 @@ public class MembersDaoImpl implements MembersDao{
 	public HashMap<String, Object> reviewParameter(HashMap<String, Object> parameter) {
 		return sqlSessionTemplate.selectOne(NAMESPACE+".reviewParameter", parameter);
 	}
+
+	@Override
+	public boolean kakaoLogin(MembersVo vo) {
+		return (sqlSessionTemplate.selectOne(NAMESPACE+".kakaoLogin", vo) == null) ? true : false;
+	}
+
+	@Override
+	public int kakaoLoginInsert(MembersVo vo) {
+		return sqlSessionTemplate.insert(NAMESPACE+".kakaoLoginInsert", vo);
+	}
 }

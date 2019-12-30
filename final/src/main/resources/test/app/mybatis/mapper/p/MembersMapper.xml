@@ -382,6 +382,15 @@
 	
 	</select>
 	
+	<select id="kakaoLogin" parameterType="members" resultType="members">
 	
+		SELECT * FROM members WHERE mid=#{mid} AND mname=#{mname} AND memail=#{memail}
 	
+	</select>
+	
+	<insert id="kakaoLoginInsert" parameterType="members">
+	
+		INSERT INTO members VALUES(#{mid},1,null,#{mname},null,#{memail},sysdate,#{login_type})
+	
+	</insert>
 </mapper>

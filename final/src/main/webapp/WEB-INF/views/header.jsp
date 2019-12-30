@@ -16,10 +16,18 @@
 							<ul class="top_nav_menu">
 
 								<!-- Currency hf/ Language / My Account -->
-
-								<li class="currency" style='background-color: red;border:none;'>
-									<a href="${pageContext.request.contextPath }/house/detail" style='color:white;font-weight: bold;font-size: 20px'>예약내역</a>
-								</li>
+								<c:choose>
+									<c:when test="${not empty sessionScope.id }">
+										<li class="currency" style='background-color: red;border:none;'>
+											<a href="${pageContext.request.contextPath }/members/bookingList" style='color:white;font-size: 20px;font-weight: bold'>예약내역</a>
+										</li>
+									</c:when>
+									<c:otherwise>
+										<li class="currency" style='background-color: red;border:none;'>
+											<a href="${pageContext.request.contextPath }/members/login" style='color:white;font-size: 20px;font-weight: bold'>예약내역</a>
+										</li>
+									</c:otherwise>
+								</c:choose>
 								<li class="language" style='background-color: red;border:none; height: auto;'>
 									<a href="#" style='color:white;font-size: 20px;font-weight: bold'>
 										더보기

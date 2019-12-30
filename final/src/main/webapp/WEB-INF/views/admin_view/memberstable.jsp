@@ -69,8 +69,8 @@
                     					<b><span style="color:#31B404;font-family:sans-serif">네이버</span></b>
                     				</c:when>
                     				<c:when test="${vo.LOGIN_TYPE=='3'}">
-                    					<img src="${cp}/resources/admin/구글.png" style="width:20px;height:20px">
-                    					<b><span style="color:#0080FF;font-family:sans-serif">구글</span></b>
+                    					<img src="${cp}/resources/admin/카카오.jpg" style="width:20px;height:20px">
+                    					<b><span style="color:#FACC2E;font-family:sans-serif">카카오</span></b>
                     				</c:when>
                     			</c:choose>
                     		</td>

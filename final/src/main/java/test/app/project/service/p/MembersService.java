@@ -152,4 +152,12 @@ public class MembersService {
 		return membersDaoImpl.reviewParameter(parameter);
 	}
 	
+	public boolean kakaoLogin(MembersVo vo){
+		return membersDaoImpl.kakaoLogin(vo);
+	}
+	
+	public int kakaoLoginInsert(MembersVo vo){
+		return membersDaoImpl.kakaoLoginInsert(vo);
+	}
+	
 }

@@ -61,4 +61,8 @@ public interface MembersDao {
 	
 	public HashMap<String, Object> reviewParameter(HashMap<String, Object> parameter);
 	
+	public boolean kakaoLogin(MembersVo vo);
+	
+	public int kakaoLoginInsert(MembersVo vo);
+	
 }
