@@ -69,6 +69,7 @@
                       		 <i class="fas fa-check"></i>
                       	</button>
                       	</form>
+                      	
                       </div>
                       <br>
                       <div class="h3 mb-0 font-weight-bold text-gray-800">${coma}원</div>
