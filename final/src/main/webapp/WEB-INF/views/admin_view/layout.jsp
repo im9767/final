@@ -69,7 +69,7 @@ $(function(){
 	    datasets: [{
 	      data: chartstr,
 	      backgroundColor: ['#e74a3b','#4e73df', '#1cc88a', '#f6c23e'],
-	      hoverBackgroundColor: ['#e74a3b','#2e59d9', '#17a673', '#2c9faf'],
+	      hoverBackgroundColor: ['#e74a3b','#2e59d9', '#17a673', '#F7D358'],
 	      hoverBorderColor: "rgba(234, 236, 244, 1)",
 	    }],
 	  },
