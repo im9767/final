@@ -59,4 +59,6 @@ public interface MembersDao {
 	
 	public int naverLoginInsert(MembersVo vo);
 	
+	public HashMap<String, Object> reviewParameter(HashMap<String, Object> parameter);
+	
 }

@@ -147,4 +147,9 @@ public class MembersService {
 		return membersDaoImpl.naverLoginInsert(vo);
 	}
 	
+	//리뷰페이지 이동시 파라미터
+	public HashMap<String, Object> reviewParameter(HashMap<String, Object> parameter){
+		return membersDaoImpl.reviewParameter(parameter);
+	}
+	
 }

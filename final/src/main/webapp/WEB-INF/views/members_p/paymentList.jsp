@@ -50,7 +50,7 @@
 				  			<c:when test="${paymentList.compare >= 0 }">
 				  			
 				  				<td style="vertical-align:middle;">
-				  					<a class="btn btn-danger" href="${cp }/members/reviewWrite?house_save_name=${paymentList.HOUSE_SAVE_NAME }&room_num=${paymentList.ROOM_NUM}&roomname=${paymentList.ROOMNAME}&company=${paymentList.COMPANY}">
+				  					<a class="btn btn-danger" href="${cp }/members/reviewWrite?house_num=${paymentList.HOUSE_NUM }&room_num=${paymentList.ROOM_NUM}">
 				  						리뷰 작성
 				  					</a>
 				  				</td>		

@@ -74,6 +74,7 @@
                       <div class="h3 mb-0 font-weight-bold text-gray-800">${coma}원</div>
                     </div>
                   </div>
+                  <a style="margin-top: 10px;" type="button" href="${cp }/admin/excelDown.do?year=${year}" class="btn btn-warning col-3">엑 셀</a>
                 </div>
               </div>
             </div>
@@ -302,7 +303,7 @@
           </div>
         </div>
         <!-- /.container-fluid -->
-
+        
       </div>
       <!-- End of Main Content -->
 
