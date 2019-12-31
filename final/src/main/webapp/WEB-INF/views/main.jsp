@@ -124,13 +124,13 @@ if(!checkPoupCookie("close")){
 						
 			$("#resort").click(function(){
 				
-				location.href="${cp}/product/accommodationList?t=43&p=01";
+				location.href="${cp}/product/accommodationList?t=43&p=21";
 				
 			});
 			
 			$("#pension").click(function(){
 				
-				location.href="${cp}/product/accommodationList?t=44&p=01";
+				location.href="${cp}/product/accommodationList?t=44&p=11";
 				
 			});
 		});
